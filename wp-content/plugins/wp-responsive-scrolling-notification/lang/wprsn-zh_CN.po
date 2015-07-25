@@ -1,0 +1,151 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Responsive Scrolling Notification\n"
+"POT-Creation-Date: 2014-07-25 18:22+0800\n"
+"PO-Revision-Date: 2014-07-25 18:22+0800\n"
+"Last-Translator: Coolwp <coolwp.com@gmail.com>\n"
+"Language-Team: suoling.net <suifengtec@qq.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-responsive-scrolling-notification.php:61
+msgid "Notification"
+msgstr "通知设置"
+
+#: wp-responsive-scrolling-notification.php:362
+#, fuzzy
+msgid "Notification Options"
+msgstr "通知设置"
+
+#: wp-responsive-scrolling-notification.php:365
+msgid "Notification Image (optional):"
+msgstr "通知上的图片(可选)："
+
+#: wp-responsive-scrolling-notification.php:366
+msgid "Upload Image"
+msgstr "上传图片"
+
+#: wp-responsive-scrolling-notification.php:367
+msgid "image width:"
+msgstr "图片宽度:"
+
+#: wp-responsive-scrolling-notification.php:368
+msgid "image title:"
+msgstr "图片标题:"
+
+#: wp-responsive-scrolling-notification.php:369
+msgid "image float:"
+msgstr "图片浮动:"
+
+#: wp-responsive-scrolling-notification.php:370
+msgid "image link to:"
+msgstr "图片链接到:"
+
+#: wp-responsive-scrolling-notification.php:372
+msgid "Notification Text (optional):"
+msgstr "通知上的文字(可选)："
+
+#: wp-responsive-scrolling-notification.php:375
+msgid "Global setting:"
+msgstr "常规设置:"
+
+#: wp-responsive-scrolling-notification.php:380
+msgid "opacity(0.1-1):"
+msgstr "透明度(0.1-1):"
+
+#: wp-responsive-scrolling-notification.php:381
+msgid "background:"
+msgstr "背景:"
+
+#: wp-responsive-scrolling-notification.php:382
+msgid "font color:"
+msgstr "字体颜色:"
+
+#: wp-responsive-scrolling-notification.php:383
+msgid "width:"
+msgstr "宽度:"
+
+#: wp-responsive-scrolling-notification.php:384
+msgid "height:"
+msgstr "高度:"
+
+#: wp-responsive-scrolling-notification.php:386
+msgid "position top:"
+msgstr "距顶:"
+
+#: wp-responsive-scrolling-notification.php:387
+msgid "position right:"
+msgstr "距右:"
+
+#: wp-responsive-scrolling-notification.php:388
+msgid "position bottom:"
+msgstr "距底:"
+
+#: wp-responsive-scrolling-notification.php:389
+msgid "position left:"
+msgstr "距左:"
+
+#: wp-responsive-scrolling-notification.php:393
+msgid "Appear from (scrollTop):"
+msgstr "距页面顶部多少开始显示:"
+
+#: wp-responsive-scrolling-notification.php:395
+msgid "Animation ease in:"
+msgstr "入场动画:"
+
+#: wp-responsive-scrolling-notification.php:404
+msgid "ease out:"
+msgstr "退场动画:"
+
+#: wp-responsive-scrolling-notification.php:415
+msgid "autohide delay:"
+msgstr "自动隐藏延迟:"
+
+#: wp-responsive-scrolling-notification.php:417
+msgid "post/page ID:"
+msgstr "文章/页面ID:"
+
+#: wp-responsive-scrolling-notification.php:418
+msgid "make the notification visible when page loaded."
+msgstr "页面载入时显示通知。"
+
+#: wp-responsive-scrolling-notification.php:419
+msgid "Display close button?"
+msgstr "显示关闭按钮？"
+
+#: wp-responsive-scrolling-notification.php:420
+msgid "After close, store it in cookie?"
+msgstr "关闭后，存储cookie？"
+
+#: wp-responsive-scrolling-notification.php:421
+msgid "Do not show it again after:"
+msgstr "多少天以后不再显示:"
+
+#: wp-responsive-scrolling-notification.php:421
+msgid "days"
+msgstr "天 "
+
+#: wp-responsive-scrolling-notification.php:422
+msgid "Displays in frontend now?"
+msgstr "现在就在前台显示？"
+
+#: wp-responsive-scrolling-notification.php:469
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: wp-responsive-scrolling-notification.php:469
+msgid "(preview available after save)"
+msgstr "(保存后可在此页预览效果)"
+
+#~ msgid "Customize the notification"
+#~ msgstr "自定义通知"

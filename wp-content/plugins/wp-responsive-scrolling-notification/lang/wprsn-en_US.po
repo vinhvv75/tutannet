@@ -1,0 +1,147 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Responsive Scrolling Notification\n"
+"POT-Creation-Date: 2014-07-25 18:21+0800\n"
+"PO-Revision-Date: 2014-07-25 18:22+0800\n"
+"Last-Translator: Coolwp <coolwp.com@gmail.com>\n"
+"Language-Team: suoling.net <suifengtec@qq.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: wp-responsive-scrolling-notification.php:61
+msgid "Notification"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:362
+msgid "Notification Options"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:365
+msgid "Notification Image (optional):"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:366
+msgid "Upload Image"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:367
+msgid "image width:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:368
+msgid "image title:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:369
+msgid "image float:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:370
+msgid "image link to:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:372
+msgid "Notification Text (optional):"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:375
+msgid "Global setting:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:380
+msgid "opacity(0.1-1):"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:381
+msgid "background:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:382
+msgid "font color:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:383
+msgid "width:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:384
+msgid "height:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:386
+msgid "position top:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:387
+msgid "position right:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:388
+msgid "position bottom:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:389
+msgid "position left:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:393
+msgid "Appear from (scrollTop):"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:395
+msgid "Animation ease in:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:404
+msgid "ease out:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:415
+msgid "autohide delay:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:417
+msgid "post/page ID:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:418
+msgid "make the notification visible when page loaded."
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:419
+msgid "Display close button?"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:420
+msgid "After close, store it in cookie?"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:421
+msgid "Do not show it again after:"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:421
+msgid "days"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:422
+msgid "Displays in frontend now?"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:469
+msgid "Save Changes"
+msgstr ""
+
+#: wp-responsive-scrolling-notification.php:469
+msgid "(preview available after save)"
+msgstr ""

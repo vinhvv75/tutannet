@@ -1,0 +1,92 @@
+.wprsn-admin,.wprsn-admin h2{
+  width: 80%;
+  padding: 1%;
+  background: #f0f0f0;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f7f7f7', endColorstr='#e7e7e7');
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e7e7e7));
+  background: -webkit-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background: -moz-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background: -o-linear-gradient(top, #f7f7f7, #e7e7e7);
+  background: -ms-linear-gradient(top, #f7f7f7, #e7e7e7);
+  border: 1px solid #ddd;
+  border-raidus: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+}
+.wprsn-admin h2{
+width: 98%;
+}
+
+.wprsn-form-content textarea{
+  max-width:100%;
+  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  overflow:-moz-scrollbars-vertical;
+}
+
+.wprsn-admin{
+  width: 95%;
+}
+.wprsn-content{
+  margin-bottom: 8px;
+  padding: 0;
+  width: 100%;
+}
+.wprsn-image-input{
+  margin-right: 8px;
+  margin-bottom: 12px;
+  width: 60%;
+}
+.wprsn-form-content{
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 12px;
+  background: #EFEFEF;
+  padding: 8px;
+  border-radius: 4px;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.close-input-label,
+.wprsn-form-content select{
+  margin:auto 12px;
+}
+.wprsn-form-content .tiny-text{
+  width: 60px;
+  margin:12px;
+}
+.wprsn-form-content .bigger-text{
+  width: 100px;
+  margin:12px;
+}
+.wprsn-form-content .biggest-text{
+  width: 250px;
+  margin:12px;
+}
+.wprsn-form-content .wp-picker-container{
+  position: relative;
+    margin:12px;
+}
+.wprsn-form-content .wp-picker-holder{
+  position: absolute;
+}
+.wprsn-color-picker, .wprsn-form-content .wp-picker-clear{
+  position: relative;
+  top: 4px;
+}
+.wprsn-admin textarea{
+  margin-bottom: 8px;
+}
+.wprsn-admin input{
+  min-height: 14px;
+}
+input.wprsn-checkbox{
+  display: inline-block;
+  margin-right: 18px;
+}
+.wprsn-check-label{
+  display: inline-block;
+  margin-bottom: 6px;
+}

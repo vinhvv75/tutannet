@@ -1,0 +1,72 @@
+.wprsn-image{
+  margin: 0;
+  padding: 0;
+}
+.wprsn-image.floatnone{
+  float: none;
+}
+
+.wprsn-image.floatleft{
+  float: left;
+  margin-right: 8px;
+}
+
+.wprsn-image.floatright{
+  float: right;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.wprsn-close{
+  display: inline-block;
+  background: url(../img/close.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  cursor: pointer;
+}
+
+.wprsn-notification {
+  display: none;
+  position: fixed;
+  z-index: 100001;
+  color: #333;
+  background: rgba(0,0,0,0.5);
+  width: auto;
+  padding: 10px 10px 10px 10px;
+  line-height: 160%;
+  font-size: 12px;
+  text-align: left;
+  -webkit-box-shadow: 0 0 16px #666;
+  -moz-box-shadow: 0 0 16px #666;
+  box-shadow: 0 0 16px #666;
+}
+
+.wprsn-notification.topAll{
+  top: 0px;
+  left: 0px;
+  width: 99%;
+}
+.wprsn-notification.bottomAll{
+  bottom: 0px;
+  left: 0px;
+  width: 99%;
+}
+.wprsn-notification.topLeft{
+  top: 20px;
+  left: 20px;
+}
+.wprsn-notification.topRight{
+  top: 20px;
+  right: 20px;
+}
+.wprsn-notification.bottomLeft{
+  bottom: 20px;
+  left: 20px;
+}
+.wprsn-notification.bottomRight{
+  bottom: 20px;
+  right: 20px;
+}

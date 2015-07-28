@@ -1,24 +1,32 @@
 /*
-* Instant Article Script 0.1
+* Instant Article Script 1.0.0
+* Vo Xuan Vinh
 */
 
 jQuery(document).ready(function($){
 	var gallery = $('.cd-gallery'),
 		foldingPanel = $('.cd-folding-panel'),
 		mainContent = $('.cd-main'),
-		start, post_id, post_url;	
+		article_start, article_time, page_start, page_time,
+		post_id, post_url,
+		autosave_mode = 'all';	
+		
+		console.log('Loading Page ...');
+		page_start = new Date().getTime();
 	/* open folding content */
 	gallery.on('click', 'a', function(event){
-		console.log('Loading "' + $(this).attr('title') + '"');
-		start = new Date().getTime();
+		console.log('Loading "' + $(this).attr('title') + '" ...');
+		article_start = new Date().getTime();
 		post_id = $(this).attr('rel');
 		post_url = $(this).attr('href');
 		event.preventDefault();
-		openItemInfo(getBaseUrl() + 'ajaxpost/?id=' + $(this).attr('rel'));
+		var url = getPostUrl(post_id);
+		openItemInfo(url);		
+		
+//		var section = $(this).parents('[id^="instant-container-"]');
+//		var articleList = queryArticles(section,autosave_mode);
+//		$.when(articleList).done(function(){autoSaveArticleList(articleList);});
 	});
-	
-	var articleList = queryArticles(1,'all');
-	$.when(articleList).done(function(){autoSaveArticleList(articleList);});
 	/* close folding content */
 	foldingPanel.on('click', '.cd-close', function(event){
 		event.preventDefault();
@@ -53,7 +61,7 @@ jQuery(document).ready(function($){
 	function toggleContent(url, bool) {
 		if( bool ) {
 			/* load and show new content */
-			if (isSupportLocalStorage && isArticleSaved(post_id)) {
+			if (isArticleSaved(post_id)) {
 					retrieveArticle(post_id,function(){actionContent();});
 			 } else {
 				console.log('Reading for the first time');
@@ -85,10 +93,10 @@ jQuery(document).ready(function($){
 			$('body').addClass('overflow-hidden');
 			foldingPanel.addClass('is-open');
 			mainContent.addClass('fold-is-open');
-			var end = new Date().getTime();
-			var time = (end - start)/1000;
-			console.log('Time article loaded:', time, 'second(s)');
-			console.log('----------------------------------------');	
+			var article_end = new Date().getTime();
+			article_time = (article_end - article_start)/1000;
+			console.log('Time article', post_id, 'loaded:', article_time, 'second(s)');
+			console.log('----------------------------------------');
 	}
 
 	function viewportSize() {
@@ -96,48 +104,66 @@ jQuery(document).ready(function($){
 		return window.getComputedStyle(document.querySelector('.cd-main'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
 	}
 	
+	$(window).load(function($){
+		var page_end = new Date().getTime();
+		page_time = (page_end - page_start)/1000;
+		console.log('Time page loaded:', page_time, 'second(s)');
+		console.log('----------------------------------------');
+		
+		if (page_time < 60) {
+			var articleList = queryArticles(section,autosave_mode);
+			$.when(articleList).done(function(){autoSaveArticleList(articleList);});
+		}
+	});
 });
+
+
 
 function getBaseUrl() {
     var re = new RegExp(/^.*\//);
     return re.exec(window.location.href);
 }
 
+function getPostUrl(id) {
+	return getBaseUrl() + 'ajaxpost/?id=' + id;
+}
+
 function saveArticle(id) {
-	var readPost = $('#post-'+id),
-		readContent = readPost.parent(),
-		entry = readContent.prop('outerHTML');
-	if(typeof entry === 'undefined' || entry === null) {
-		console.log('Local Storage Failed!'); 
-	}
-	else {
-		localStorage.setItem('tutannet_post-' + id, entry);
-		console.log('Saved data of post id', id);
+	if (isSupportLocalStorage) {
+		var readPost = $('#post-'+id),
+			readContent = readPost.parent(),
+			entry = readContent.prop('outerHTML');
+		if(typeof entry === 'undefined' || entry === null) {
+			console.log('Local Storage Failed!'); 
+		}
+		else {
+			localStorage.setItem('tutannet_post-' + id, entry);
+			console.log('Saved data of article id', id);
+		}
 	}
 }
 
 function retrieveArticle(id,complete) {
-	console.log('Retrieving data of post id', id);
-	var content = localStorage.getItem('tutannet_post-' + id);
-	$(content).replaceAll('.instant-article');
-	$.when( $(content) ).done(function(){ complete(); });
-}
-
-// check if a certain post data is store in Local Storage
-function isArticleSaved(id) {
-	if (localStorage.getItem('tutannet_post-' + id) == null) { return false;}
-	else return true;
+	if (isSupportLocalStorage) {
+		console.log('Retrieving data of article id', id);
+		var content = localStorage.getItem('tutannet_post-' + id);
+		$(content).replaceAll('.instant-article');
+		$.when( $(content) ).done(function(){ complete(); });
+	} else return false;
 }
 
 function autoSaveArticle(id) {
-	if (!isArticleSaved(id)) {
+	if (!isArticleSaved(id) && isSupportLocalStorage) {
 		var cd = $('#instant-article-'+id);
-			url = getBaseUrl() + '/ajaxpost/?id=' + id;
+			url = getPostUrl(id);
 		cd.load(url,function(){
 			saveArticle(id); 
-			console.log('Auto saved data of post id', id);
-			$.when(saveArticle()).done(function(){
-				cd.empty();
+			$.when(saveArticle(id)).done(function(){ 
+				cd.empty(); 
+				$.when(cd).done(function(){
+					console.log('Auto saved');
+					console.log('----------------------------------------');
+				});
 			});
 		});
 		
@@ -151,20 +177,33 @@ function autoSaveArticleList(articleList) {
 }
 
 // Query articles in a section with id number
-function queryArticles(section_id,mode) {
-	var articles = $('.instant-articles'+section_id); //.instant-article1, instant-article2, ...
-	var articleList = $('div[id^="instant-article-"]');
-	var article_idList = [];
-	mode = '';
-	article_count = 0;
+function queryArticles(section,mode) {
+	var articleList = $(section).find($('div[id^="instant-article-"]'));
+	var articleIdList = [];
+	mode = 'none';
 	
 	if (mode === 'all') {
-		article_count = articleList.length;
+		var article_count = articleList.length;
 		for (i = 0; i < articleList.length; i++) {
-			article_idList[i] = $(articleList[i]).attr('rel');
+			articleIdList[i] = $(articleList[i]).attr('rel');
 		}
 	}
-	return article_idList;
+	else if (mode === 'none') {
+		return false;
+	}
+	else if (mode === 'one') {
+		return false;
+	}
+	else if (mode === 'side') {
+		return false;
+	}
+	return articleIdList;
+}
+
+// check if a certain post data is store in Local Storage
+function isArticleSaved(id) {
+	if (localStorage.getItem('tutannet_post-' + id) == null) { return false;}
+	else return true;
 }
 
 //check if the browser has Local Storage supported

@@ -31,7 +31,7 @@ get_header();
 	          	          if(!empty($block1_cat)):
 	          	              $posts_for_block1 = of_get_option('posts_for_block1');
 	          	              $category_info_1 = get_category_by_slug($block1_cat);
-	          	              echo '<ul class="cd-gallery instant-articles1">';
+	          	              echo '<ul id="instant-container-1" class="cd-gallery">';
 	          	              $block1_args = array(
 	          	                                  'category_name'=>$block1_cat,
 	          	                                  'post_status'=>'publish',

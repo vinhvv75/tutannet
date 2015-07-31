@@ -80,6 +80,9 @@ $(".first-block .rightposts-wrapper .blockposts-wrapper .post-title a").hover(fu
 		$('#first_block_imageHolder').addClass('fadeOutDown');
 }); 
 
+// remove tooltips
+window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }
+
 
 
 

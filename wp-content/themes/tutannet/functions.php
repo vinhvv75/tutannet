@@ -259,8 +259,9 @@ function tutannet_scripts() {
     wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
     wp_enqueue_style( '3d-folding-panel-style', get_template_directory_uri() . '/js/codyhouse/3d-folding-panel-style.css' );
+    wp_enqueue_style( 'jquery.bxslider', get_template_directory_uri() . '/css/jquery.bxslider.css' );
 
-    wp_enqueue_script( 'bxslider-js', get_template_directory_uri(). '/js/jquery.bxslider.min.js', array(), '4.1.2', true );
+    wp_enqueue_script( 'bxslider-js', get_template_directory_uri(). '/js/jquery.bxslider-rahisified.js', array('jquery'), '4.1.2', true );
     wp_enqueue_script( 'tutannet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/wow.min.js', array(), '1.0.1');

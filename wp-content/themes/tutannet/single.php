@@ -7,7 +7,6 @@
 
 get_header(); 
 global $post;
-$tutannet_show_breadcrumbs = of_get_option( 'show_hide_breadcrumbs' );
 $post_template_value =( of_get_option( 'global_post_template' ) == 'default-template' ) ? 'single' : 'style1';
 
 $tutannet_post_template = get_post_meta( $post -> ID, 'tutannet_post_template_layout', true );
@@ -22,12 +21,7 @@ else {
     }
 } 
 ?>
-<div class="apmag-container">
-    <?php
-        if ( (function_exists( 'tutannet_breadcrumbs' ) && $tutannet_show_breadcrumbs == 1 ) ) {
-    	    tutannet_breadcrumbs();
-        }
-    ?>
+<div class="container">
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 

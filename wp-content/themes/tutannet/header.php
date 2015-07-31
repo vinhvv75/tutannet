@@ -31,7 +31,7 @@
     <header id="masthead" class="site-header" role="banner">    
         
         <div class="top-menu-wrapper clearfix">
-            <div class="apmag-container">   
+            <div class="container">   
             <?php if ( has_nav_menu( 'top_menu' ) ) { ?>   
                 <nav id="top-navigation" class="top-main-navigation" role="navigation">
                             <button class="menu-toggle hide" aria-controls="menu" aria-expanded="false"><?php _e( 'Top Menu', 'tutannet' ); ?></button>
@@ -48,7 +48,7 @@
         </div>
          
         <div class="logo-ad-wrapper clearfix">
-            <div class="apmag-container">
+            <div class="container">
         		<div class="site-branding <?php echo esc_attr( $branding_class ) ;?>">
                     <div class="sitelogo-wrap">  
                         <a itemprop="url" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( $tutannet_logo ) ;?>" alt="<?php echo esc_attr( $tutannet_logo_alt ); ?>" title="<?php echo esc_attr( $tutannet_logo_title ); ?>" /></a>
@@ -73,7 +73,7 @@
         </div>
 
 		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<div class="apmag-container">
+			<div class="container">
                 <div class="nav-wrapper">
                     <div class="nav-toggle hide">
                         <span> </span>

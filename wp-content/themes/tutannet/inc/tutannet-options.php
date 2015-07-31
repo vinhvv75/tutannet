@@ -565,43 +565,7 @@ function optionsframework_options() {
     $options[] = array(
             'type' => 'groupend'
             );
-      /*------------------------Breadcrumbs template------------------------*/ 
-    $options[] = array(
-            'name' => __( 'Breadcrumbs', 'tutannet' ),
-            'id'   => 'post_template',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Show/Hide Breadcrumb', 'tutannet' ),                
-            'desc' => __( 'Show or hide breadcrumbs on site', 'tutannet' ),
-            'id' => 'show_hide_breadcrumbs',
-            'on' => __( 'Yes', 'tutannet'),
-            'off' => __( 'No', 'tutannet'),
-            'std' => '1',
-            'type' => 'switch'
-            );
-    $options[] = array(
-            'name' => __( 'Enable link on Home', 'tutannet' ),                
-            'desc' => __( 'Enable or disable homepage link at home in breadcrumbs', 'tutannet' ),
-            'id' => 'show_home_link_breadcrumbs',
-            'on' => __( 'Yes', 'tutannet'),
-            'off' => __( 'No', 'tutannet'),
-            'std' => '0',
-            'type' => 'switch'
-            );    
-    $options[] = array(
-            'name' => __( 'Enable Title on Single post', 'tutannet' ),                
-            'desc' => __( 'Show or hide article title on single post', 'tutannet' ),
-            'id' => 'show_article_breadcrumbs',
-            'on' => __( 'Yes', 'tutannet'),
-            'off' => __( 'No', 'tutannet'),
-            'std' => '1',
-            'type' => 'switch'
-            );
-    $options[] = array(
-            'type' => 'groupend'
-            );
-      /*------------------------Featured image settings------------------------*/ 
+           /*------------------------Featured image settings------------------------*/ 
     $options[] = array(
             'name' => __( 'Featured images', 'tutannet' ),
             'id'   => 'featured_image',

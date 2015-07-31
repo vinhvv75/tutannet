@@ -7,7 +7,7 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 get_header();

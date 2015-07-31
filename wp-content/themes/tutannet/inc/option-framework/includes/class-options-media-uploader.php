@@ -59,15 +59,15 @@ class Options_Framework_Media_Uploader {
 		if ( $value ) {
 			$class = ' has-file';
 		}
-		$output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="'.$name.'" value="' . $value . '" placeholder="' . __('No file chosen', 'accesspress-mag') .'" />' . "\n";
+		$output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="'.$name.'" value="' . $value . '" placeholder="' . __('No file chosen', 'tutannet') .'" />' . "\n";
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			if ( ( $value == '' ) ) {
-				$output .= '<input id="upload-' . $id . '" class="upload-button button" type="button" value="' . __( 'Upload', 'accesspress-mag' ) . '" />' . "\n";
+				$output .= '<input id="upload-' . $id . '" class="upload-button button" type="button" value="' . __( 'Upload', 'tutannet' ) . '" />' . "\n";
 			} else {
-				$output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . __( 'Remove', 'accesspress-mag' ) . '" />' . "\n";
+				$output .= '<input id="remove-' . $id . '" class="remove-file button" type="button" value="' . __( 'Remove', 'tutannet' ) . '" />' . "\n";
 			}
 		} else {
-			$output .= '<p><i>' . __( 'Upgrade your version of WordPress for full media support.', 'accesspress-mag' ) . '</i></p>';
+			$output .= '<p><i>' . __( 'Upgrade your version of WordPress for full media support.', 'tutannet' ) . '</i></p>';
 		}
 
 		if ( $_desc != '' ) {
@@ -91,7 +91,7 @@ class Options_Framework_Media_Uploader {
 				$output .= '';
 
 				// Standard generic output if it's not an image.
-				$title = __( 'View File', 'accesspress-mag' );
+				$title = __( 'View File', 'tutannet' );
 				$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
 			}
 		}
@@ -115,8 +115,8 @@ class Options_Framework_Media_Uploader {
 		wp_register_script( 'of-media-uploader', OPTIONS_FRAMEWORK_DIRECTORY .'js/media-uploader.js', array( 'jquery' ), Options_Framework::VERSION );
 		wp_enqueue_script( 'of-media-uploader' );
 		wp_localize_script( 'of-media-uploader', 'optionsframework_l10n', array(
-			'upload' => __( 'Upload', 'accesspress-mag' ),
-			'remove' => __( 'Remove', 'accesspress-mag' )
+			'upload' => __( 'Upload', 'tutannet' ),
+			'remove' => __( 'Remove', 'tutannet' )
 		) );
 	}
 }

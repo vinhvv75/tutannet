@@ -18,7 +18,6 @@
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain: optionsframework
- * Domain Path: /languages
  */
 
 // If this file is called directly, abort.
@@ -62,7 +61,7 @@ endif;
  */
 function optionsframework_option_name() {
 	// Change this to use your theme slug
-	return 'accesspress-mag-theme';
+	return 'tutannet-theme';
 }
 
 

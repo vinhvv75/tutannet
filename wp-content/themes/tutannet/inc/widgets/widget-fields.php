@@ -1,36 +1,36 @@
 <?php
 /**
- * @package Accesspress Mag
+ * @package TuTanNet
  */
-function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field = '', $athm_field_value = '') {
+function tutannet_widgets_show_widget_field($instance = '', $widget_field = '', $athm_field_value = '') {
     // Store Posts in array
-    $accesspress_mag_postlist[0] = array(
+    $tutannet_postlist[0] = array(
         'value' => 0,
         'label' => '--choose--'
     );
     $arg = array('posts_per_page' => -1);
-    $accesspress_mag_posts = get_posts($arg);
-    foreach ($accesspress_mag_posts as $accesspress_mag_post) :
-        $accesspress_mag_postlist[$accesspress_mag_post->ID] = array(
-            'value' => $accesspress_mag_post->ID,
-            'label' => $accesspress_mag_post->post_title
+    $tutannet_posts = get_posts($arg);
+    foreach ($tutannet_posts as $tutannet_post) :
+        $tutannet_postlist[$tutannet_post->ID] = array(
+            'value' => $tutannet_post->ID,
+            'label' => $tutannet_post->post_title
         );
     endforeach;
 
     extract($widget_field);
 
-    switch ($accesspress_mag_widgets_field_type) {
+    switch ($tutannet_widgets_field_type) {
 
         // Standard text field
         case 'text' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <input class="widefat" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="text" value="<?php echo esc_attr($athm_field_value) ; ?>" />
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <input class="widefat" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="text" value="<?php echo esc_attr($athm_field_value) ; ?>" />
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -40,12 +40,12 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'title' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <input class="widefat" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="text" value="<?php echo esc_attr($athm_field_value) ; ?>" />
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <input class="widefat" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="text" value="<?php echo esc_attr($athm_field_value) ; ?>" />
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -55,12 +55,12 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'url' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <input class="widefat" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="text" value="<?php echo $athm_field_value; ?>" />
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <input class="widefat" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="text" value="<?php echo $athm_field_value; ?>" />
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -70,8 +70,8 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'textarea' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <textarea class="widefat" rows="<?php echo $accesspress_mag_widgets_row; ?>" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>"><?php echo $athm_field_value; ?></textarea>
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <textarea class="widefat" rows="<?php echo $tutannet_widgets_row; ?>" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>"><?php echo $athm_field_value; ?></textarea>
             </p>
             <?php
             break;
@@ -81,8 +81,8 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'iframe_textarea' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <textarea class="widefat" rows="<?php echo $accesspress_mag_widgets_row; ?>" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>"><?php echo $athm_field_value; ?></textarea>
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <textarea class="widefat" rows="<?php echo $tutannet_widgets_row; ?>" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>"><?php echo $athm_field_value; ?></textarea>
             </p>
             <?php
             break;
@@ -92,12 +92,12 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'checkbox' :
             ?>
             <p>
-                <input id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="checkbox" value="1" <?php checked('1', $athm_field_value); ?>/>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?></label>
+                <input id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="checkbox" value="1" <?php checked('1', $athm_field_value); ?>/>
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?></label>
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -108,17 +108,17 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
             ?>
             <p>
                 <?php
-                echo $accesspress_mag_widgets_title;
+                echo $tutannet_widgets_title;
                 echo '<br />';
-                foreach ($accesspress_mag_widgets_field_options as $athm_option_name => $athm_option_title) {
+                foreach ($tutannet_widgets_field_options as $athm_option_name => $athm_option_title) {
                     ?>
-                    <input id="<?php echo $instance->get_field_id($athm_option_name); ?>" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="radio" value="<?php echo $athm_option_name; ?>" <?php checked($athm_option_name, $athm_field_value); ?> />
+                    <input id="<?php echo $instance->get_field_id($athm_option_name); ?>" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="radio" value="<?php echo $athm_option_name; ?>" <?php checked($athm_option_name, $athm_field_value); ?> />
                     <label for="<?php echo $instance->get_field_id($athm_option_name); ?>"><?php echo $athm_option_title; ?></label>
                     <br />
                 <?php } ?>
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                <?php if (isset($tutannet_widgets_description)) { ?>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -128,16 +128,16 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'select' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <select name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" class="widefat">
-                    <?php foreach ($accesspress_mag_widgets_field_options as $athm_option_name => $athm_option_title) { ?>
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <select name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" class="widefat">
+                    <?php foreach ($tutannet_widgets_field_options as $athm_option_name => $athm_option_title) { ?>
                         <option value="<?php echo $athm_option_name; ?>" id="<?php echo $instance->get_field_id($athm_option_name); ?>" <?php selected($athm_option_name, $athm_field_value); ?>><?php echo $athm_option_title; ?></option>
                     <?php } ?>
                 </select>
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -146,12 +146,12 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'number' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label><br />
-                <input name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="number" step="1" min="1" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" value="<?php echo $athm_field_value; ?>" class="small-text" />
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label><br />
+                <input name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="number" step="1" min="1" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" value="<?php echo $athm_field_value; ?>" class="small-text" />
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -161,16 +161,16 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'selectpost' :
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label>
-                <select name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" class="widefat">
-                    <?php foreach ($accesspress_mag_postlist as $accesspress_mag_single_post) { ?>
-                        <option value="<?php echo $accesspress_mag_single_post['value']; ?>" id="<?php echo $instance->get_field_id($accesspress_mag_single_post['label']); ?>" <?php selected($accesspress_mag_single_post['value'], $athm_field_value); ?>><?php echo $accesspress_mag_single_post['label']; ?></option>
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label>
+                <select name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" class="widefat">
+                    <?php foreach ($tutannet_postlist as $tutannet_single_post) { ?>
+                        <option value="<?php echo $tutannet_single_post['value']; ?>" id="<?php echo $instance->get_field_id($tutannet_single_post['label']); ?>" <?php selected($tutannet_single_post['value'], $athm_field_value); ?>><?php echo $tutannet_single_post['label']; ?></option>
                     <?php } ?>
                 </select>
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
             <?php
@@ -179,18 +179,18 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
         case 'upload' :
 
             $output = '';
-            $id = $instance->get_field_id($accesspress_mag_widgets_name);
+            $id = $instance->get_field_id($tutannet_widgets_name);
             $class = '';
             $int = '';
             $value = $athm_field_value;
-            $name = $instance->get_field_name($accesspress_mag_widgets_name);
+            $name = $instance->get_field_name($tutannet_widgets_name);
 
 
             if ($value) {
                 $class = ' has-file';
             }
             $output .= '<div class="sub-option widget-upload">';
-            $output .= '<label for="'.$instance->get_field_id($accesspress_mag_widgets_name).'">'.$accesspress_mag_widgets_title.'</label><br/>';
+            $output .= '<label for="'.$instance->get_field_id($tutannet_widgets_name).'">'.$tutannet_widgets_title.'</label><br/>';
             $output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="' . $name . '" value="' . $value . '" placeholder="' . __('No file chosen', 'textdomain') . '" />' . "\n";
             if (function_exists('wp_enqueue_media')) {
                 if (( $value == '')) {
@@ -206,7 +206,7 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
 
             if ($value != '') {
                 $remove = '<a class="remove-image">Remove</a>';
-                $attachment_id = accesspress_get_attachment_id_from_url($value);
+                $attachment_id = tutannet_get_attachment_id_from_url($value);
                 $image_array = wp_get_attachment_image_src( $attachment_id, 'medium');
                 $image = preg_match('/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value);
                 if ($image) {
@@ -233,13 +233,13 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
              add_thickbox();
             ?>
             <p>
-                <label for="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>"><?php echo $accesspress_mag_widgets_title; ?>:</label><br />
+                <label for="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>"><?php echo $tutannet_widgets_title; ?>:</label><br />
                 <span class="icon-receiver"><i class="<?php echo $athm_field_value; ?>"></i></span>
-                <input class="hidden-icon-input" name="<?php echo $instance->get_field_name($accesspress_mag_widgets_name); ?>" type="hidden" id="<?php echo $instance->get_field_id($accesspress_mag_widgets_name); ?>" value="<?php echo $athm_field_value; ?>" />
+                <input class="hidden-icon-input" name="<?php echo $instance->get_field_name($tutannet_widgets_name); ?>" type="hidden" id="<?php echo $instance->get_field_id($tutannet_widgets_name); ?>" value="<?php echo $athm_field_value; ?>" />
 
-                <?php if (isset($accesspress_mag_widgets_description)) { ?>
+                <?php if (isset($tutannet_widgets_description)) { ?>
                     <br />
-                    <small><?php echo $accesspress_mag_widgets_description; ?></small>
+                    <small><?php echo $tutannet_widgets_description; ?></small>
                 <?php } ?>
             </p>
 
@@ -732,42 +732,42 @@ function accesspress_mag_widgets_show_widget_field($instance = '', $widget_field
     }
 }
 
-function accesspress_mag_widgets_updated_field_value($widget_field, $new_field_value) {
+function tutannet_widgets_updated_field_value($widget_field, $new_field_value) {
 
     extract($widget_field);
 
     // Allow only integers in number fields
-    if ($accesspress_mag_widgets_field_type == 'number') {
+    if ($tutannet_widgets_field_type == 'number') {
         return absint($new_field_value);
 
         // Allow some tags in textareas
-    } elseif ($accesspress_mag_widgets_field_type == 'textarea') {
+    } elseif ($tutannet_widgets_field_type == 'textarea') {
         // Check if field array specifed allowed tags
-        if (!isset($accesspress_mag_widgets_allowed_tags)) {
+        if (!isset($tutannet_widgets_allowed_tags)) {
             // If not, fallback to default tags
-            $accesspress_mag_widgets_allowed_tags = '<p><strong><em><a>';
+            $tutannet_widgets_allowed_tags = '<p><strong><em><a>';
         }
         
-        return strip_tags($new_field_value, $accesspress_mag_widgets_allowed_tags);
+        return strip_tags($new_field_value, $tutannet_widgets_allowed_tags);
 
         // No allowed tags for all other fields
-    } elseif ($accesspress_mag_widgets_field_type == 'iframe_textarea') {
+    } elseif ($tutannet_widgets_field_type == 'iframe_textarea') {
         // Check if field array specifed allowed tags
-        if (!isset($accesspress_mag_widgets_allowed_tags)) {
+        if (!isset($tutannet_widgets_allowed_tags)) {
             // If not, fallback to default tags
-            $accesspress_mag_widgets_allowed_tags = '<iframe>';
+            $tutannet_widgets_allowed_tags = '<iframe>';
         }
         
-        return strip_tags($new_field_value, $accesspress_mag_widgets_allowed_tags);
+        return strip_tags($new_field_value, $tutannet_widgets_allowed_tags);
 
         // No allowed tags for all other fields
     } 
     
     
-    elseif ($accesspress_mag_widgets_field_type == 'url') {
+    elseif ($tutannet_widgets_field_type == 'url') {
         return esc_url_raw($new_field_value);
     }
-    elseif ($accesspress_mag_widgets_field_type == 'title') {
+    elseif ($tutannet_widgets_field_type == 'title') {
         return wp_kses_post($new_field_value);
     }
     else {
@@ -790,7 +790,7 @@ function optionsframework_media_scriptss($hook) {
         'remove' => __('Remove', 'textdomain')
     ));
 
-    wp_enqueue_style( 'accesspress-mag-font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css' );
+    wp_enqueue_style( 'tutannet-font-awesome', get_template_directory_uri() . '/css/font-awesome.min.css' );
     //wp_enqueue_style( 'ap-admin-css', get_template_directory_uri() . '/inc/css/ap-admin.css' );
     //wp_enqueue_script('ap-admin-js', get_template_directory_uri() . '/inc/js/ap-admin.js', array('jquery'));
     //wp_enqueue_script('ap-admin-js');

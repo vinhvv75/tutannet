@@ -5,7 +5,7 @@
  * The area of the page that contains both current comments
  * and the comment form.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 /*
@@ -25,18 +25,18 @@ if ( post_password_required() ) {
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'accesspress-mag' ),
+				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'tutannet' ),
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
 			?>
 		</h2>
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'accesspress-mag' ); ?></h2>
+			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'tutannet' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments', 'accesspress-mag' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'accesspress-mag' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments', 'tutannet' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'tutannet' ) ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-above -->
@@ -53,11 +53,11 @@ if ( post_password_required() ) {
 
 		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : // are there comments to navigate through ?>
 		<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'accesspress-mag' ); ?></h2>
+			<h2 class="screen-reader-text"><?php _e( 'Comment navigation', 'tutannet' ); ?></h2>
 			<div class="nav-links">
 
-				<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments', 'accesspress-mag' ) ); ?></div>
-				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'accesspress-mag' ) ); ?></div>
+				<div class="nav-previous"><?php previous_comments_link( __( 'Older Comments', 'tutannet' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments', 'tutannet' ) ); ?></div>
 
 			</div><!-- .nav-links -->
 		</nav><!-- #comment-nav-below -->
@@ -69,29 +69,29 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) :
 	?>
-		<p class="no-comments"><?php _e( 'Comments are closed.', 'accesspress-mag' ); ?></p>
+		<p class="no-comments"><?php _e( 'Comments are closed.', 'tutannet' ); ?></p>
 	<?php endif; ?>
 
 	<?php 
         $args = array(
 		'fields' => apply_filters(        
 		'comment_form_default_fields', array(
-		'author' =>'<div class="cmm-box-left"><div class="control-group"><div class="controls">'. '<input id="author" placeholder="'.__( 'Name *', 'accesspress-mag' ).'" name="author" type="text" value="' .
+		'author' =>'<div class="cmm-box-left"><div class="control-group"><div class="controls">'. '<input id="author" placeholder="'.__( 'Name *', 'tutannet' ).'" name="author" type="text" value="' .
 		esc_attr( $commenter['comment_author'] ) . '" size="30" aria-required="true" />'.
 		'</div></div>',
 
-		'email'  => '<div class="control-group"><div class="controls">' . '<input id="email" placeholder="'.__( 'Email Address *', 'accesspress-mag' ).'" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
+		'email'  => '<div class="control-group"><div class="controls">' . '<input id="email" placeholder="'.__( 'Email Address *', 'tutannet' ).'" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
 		'" size="30" aria-required="true" />'  .
 		'</div></div>',
 
 		'url'    => '<div class="control-group"><div class="controls">' .
-		'<input id="url" name="url" placeholder="'.__( 'Website', 'accesspress-mag' ).'" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /> ' .
+		'<input id="url" name="url" placeholder="'.__( 'Website', 'tutannet' ).'" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" /> ' .
 		'</div></div></div>'
 		)
 		),
 
 		'comment_field' => '<div class="cmm-box-right"><div class="control-group"><div class="controls">' .
-		'<textarea id="comment" name="comment" placeholder="'.__( 'Comment *', 'accesspress-mag' ).'" cols="45" rows="8" aria-required="true"></textarea>' .
+		'<textarea id="comment" name="comment" placeholder="'.__( 'Comment *', 'tutannet' ).'" cols="45" rows="8" aria-required="true"></textarea>' .
 		'</div></div></div> <div class="clearfix"> </div>',
 		'comment_notes_after' => '',
 		'comment_notes_before' => '',

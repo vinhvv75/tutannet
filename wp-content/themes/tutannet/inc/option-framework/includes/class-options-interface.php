@@ -244,7 +244,7 @@ class Options_Framework_Interface {
                 
             // Install Demo
             case 'demo':                                
-                    $output .='<a href="#">'.__('Install Demo', 'accesspress-mag').'</a>';
+                    $output .='<a href="#">'.__('Install Demo', 'tutannet').'</a>';
                 break;
 
 			// Typography

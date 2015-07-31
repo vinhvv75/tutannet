@@ -1,94 +1,94 @@
 <?php
 /**
- * AccessPress Mag Theme Options
+ * TuTanNet Theme Options
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
  
-add_action('add_meta_boxes', 'accesspress_mag_add_sidebar_layout_box'); 
+//add_action('add_meta_boxes', 'tutannet_add_sidebar_layout_box'); 
  
-function accesspress_mag_add_sidebar_layout_box()
+function tutannet_add_sidebar_layout_box()
 {
     
     add_meta_box(
-                 'accesspress_mag_post_settings', // $id
-                 __( 'Post settings', 'accesspress-mag' ), // $title
-                 'accesspress_mag_post_settings_callback', // $callback
+                 'tutannet_post_settings', // $id
+                 __( 'Post settings', 'tutannet' ), // $title
+                 'tutannet_post_settings_callback', // $callback
                  'post', // $page
                  'normal', // $context
                  'high'); // $priority
 
     add_meta_box(
-                 'accesspress_mag_page_settings', // $id
-                 __( 'Sidebar Layout', 'accesspress-mag' ), // $title
-                 'accesspress_mag_page_settings_callback', // $callback
+                 'tutannet_page_settings', // $id
+                 __( 'Sidebar Layout', 'tutannet' ), // $title
+                 'tutannet_page_settings_callback', // $callback
                  'page', // $page
                  'normal', // $context
                  'high'); // $priority
  
 }
 
-$accesspress_mag_sidebar_layout = array(
+$tutannet_sidebar_layout = array(
         'global-sidebar' => array(
                         'value'     => 'global-sidebar',
-                        'label'     => __( 'Theme option sidebar', 'accesspress-mag' ),
+                        'label'     => __( 'Theme option sidebar', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/theme-option-sidebar.png'
                     ), 
         'left-sidebar' => array(
                         'value'     => 'left-sidebar',
-                        'label'     => __( 'Left sidebar', 'accesspress-mag' ),
+                        'label'     => __( 'Left sidebar', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/left-sidebar.png'
                     ), 
         'right-sidebar' => array(
                         'value' => 'right-sidebar',
-                        'label' => __( 'Right sidebar<br/>(default)', 'accesspress-mag' ),
+                        'label' => __( 'Right sidebar<br/>(default)', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/right-sidebar.png'
                     ),
        
         'no-sidebar' => array(
                         'value'     => 'no-sidebar',
-                        'label'     => __( 'No sidebar', 'accesspress-mag' ),
+                        'label'     => __( 'No sidebar', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/no-sidebar.png'
                     )   
 
     );
 
-$accesspress_mag_page_sidebar_layout = array(
+$tutannet_page_sidebar_layout = array(
         'left-sidebar' => array(
                         'value'     => 'left-sidebar',
-                        'label'     => __( 'Left sidebar', 'accesspress-mag' ),
+                        'label'     => __( 'Left sidebar', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/left-sidebar.png'
                     ), 
         'right-sidebar' => array(
                         'value' => 'right-sidebar',
-                        'label' => __( 'Right sidebar<br/>(default)', 'accesspress-mag' ),
+                        'label' => __( 'Right sidebar<br/>(default)', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/right-sidebar.png'
                     ),
        
         'no-sidebar' => array(
                         'value'     => 'no-sidebar',
-                        'label'     => __( 'No sidebar', 'accesspress-mag' ),
+                        'label'     => __( 'No sidebar', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/no-sidebar.png'
                     )   
 
     );
 
-$accesspress_mag_post_template_layout = array(
+$tutannet_post_template_layout = array(
         'global-template' => array(
                         'value'     => 'global-template',
-                        'label'     => __( 'Theme option Template', 'accesspress-mag' ),
+                        'label'     => __( 'Theme option Template', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/post_template/post-templates-icons-theme.png',
                         'available'=> 'free'
                     ),
         'default-template' => array(
                         'value'     => 'default-template',
-                        'label'     => __( 'Default Template', 'accesspress-mag' ),
+                        'label'     => __( 'Default Template', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/post_template/post-templates-icons-0.png',
                         'available'=> 'free'
                     ), 
         'style1-template' => array(
                         'value' => 'style1-template',
-                        'label' => __( 'Style 1', 'accesspress-mag' ),
+                        'label' => __( 'Style 1', 'tutannet' ),
                         'thumbnail' => get_template_directory_uri() . '/inc/option-framework/images/post_template/post-templates-icons-1.png',
                         'available'=> 'free'
                     )
@@ -96,33 +96,33 @@ $accesspress_mag_post_template_layout = array(
 
 /*-------------------Function for Post settings meta box----------------------------*/
 
-function accesspress_mag_post_settings_callback()
+function tutannet_post_settings_callback()
 {
-    global $post, $accesspress_mag_post_template_layout, $accesspress_mag_sidebar_layout ;
-    wp_nonce_field( basename( __FILE__ ), 'accesspress_mag_post_settings_nonce' );
+    global $post, $tutannet_post_template_layout, $tutannet_sidebar_layout ;
+    wp_nonce_field( basename( __FILE__ ), 'tutannet_post_settings_nonce' );
 ?>
 
 <div class="my_post_settings">
         <table class="form-table">
             <tr>
-            <td colspan="4"><em class="f13"><?php _e( 'Post template:', 'accesspress-mag' )?></em></td>
+            <td colspan="4"><em class="f13"><?php _e( 'Post template:', 'tutannet' )?></em></td>
             </tr>
             
             <tr>
             <td>
             <?php  
-               foreach ($accesspress_mag_post_template_layout as $field) {  
-                            $accesspress_mag_post_template_metalayout = get_post_meta( $post->ID, 'accesspress_mag_post_template_layout', true );?>
+               foreach ($tutannet_post_template_layout as $field) {  
+                            $tutannet_post_template_metalayout = get_post_meta( $post->ID, 'tutannet_post_template_layout', true );?>
                                             
                             <div class="radio-post-template-wrapper" available="<?php echo $field['available'];?>" style="float:left; margin-right:30px;">
                             <label class="description">
                             <span><img src="<?php echo esc_url( $field['thumbnail'] ); ?>" alt="" /></span></br>
-                            <input type="radio" name="accesspress_mag_post_template_layout" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $accesspress_mag_post_template_metalayout ); if(empty($accesspress_mag_post_template_metalayout) && $field['value']=='global-template'){ echo "checked='checked'";} ?>/>&nbsp;<?php echo $field['label']; ?>
+                            <input type="radio" name="tutannet_post_template_layout" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $tutannet_post_template_metalayout ); if(empty($tutannet_post_template_metalayout) && $field['value']=='global-template'){ echo "checked='checked'";} ?>/>&nbsp;<?php echo $field['label']; ?>
                             </label>
                             </div>
                             <?php } // end foreach 
                             ?>
-                            <span class="pro-tmp-msg" style="display: none;"><?php _e( 'Template available in pro version', 'accesspress-mag' );?></span>
+                            <span class="pro-tmp-msg" style="display: none;"><?php _e( 'Template available in pro version', 'tutannet' );?></span>
                             <div class="clear"></div>
             </td>
             </tr>
@@ -131,19 +131,19 @@ function accesspress_mag_post_settings_callback()
         
         <table class="form-table">
             <tr>
-            <td colspan="4"><em class="f13"><?php _e( 'Post Sidebar', 'accesspress-mag' ); ?></em></td>
+            <td colspan="4"><em class="f13"><?php _e( 'Post Sidebar', 'tutannet' ); ?></em></td>
             </tr>
             
             <tr>
             <td>
             <?php  
-               foreach ($accesspress_mag_sidebar_layout as $field) {  
-                $accesspress_mag_sidebar_metalayout = get_post_meta( $post->ID, 'accesspress_mag_sidebar_layout', true ); ?>
+               foreach ($tutannet_sidebar_layout as $field) {  
+                $tutannet_sidebar_metalayout = get_post_meta( $post->ID, 'tutannet_sidebar_layout', true ); ?>
 
                 <div class="radio-image-wrapper" style="float:left; margin-right:30px;">
                 <label class="description">
                 <span><img src="<?php echo esc_url( $field['thumbnail'] ); ?>" alt="" /></span></br>
-                <input type="radio" name="accesspress_mag_sidebar_layout" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $accesspress_mag_sidebar_metalayout ); if(empty($accesspress_mag_sidebar_metalayout) && $field['value']=='global-sidebar'){ echo "checked='checked'";} ?>/>&nbsp;<?php echo $field['label']; ?>
+                <input type="radio" name="tutannet_sidebar_layout" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $tutannet_sidebar_metalayout ); if(empty($tutannet_sidebar_metalayout) && $field['value']=='global-sidebar'){ echo "checked='checked'";} ?>/>&nbsp;<?php echo $field['label']; ?>
                 </label>
                 </div>
                 <?php } // end foreach 
@@ -152,7 +152,7 @@ function accesspress_mag_post_settings_callback()
             </td>
             </tr>
             <tr>
-                <td><em class="f13"><?php _e( 'You can set up the sidebar content ', 'accesspress-mag' );?> <a href="<?php echo admin_url('/themes.php?page=options-framework'); ?>"><?php _e( 'here', 'accesspress-mag' )?></a></em></td>
+                <td><em class="f13"><?php _e( 'You can set up the sidebar content ', 'tutannet' );?> <a href="<?php echo admin_url('/themes.php?page=options-framework'); ?>"><?php _e( 'here', 'tutannet' )?></a></em></td>
             </tr>
         </table>
 </div>
@@ -162,26 +162,26 @@ function accesspress_mag_post_settings_callback()
 
 /*---------Function for Page sidebar meta box----------------------------*/
 
-function accesspress_mag_page_settings_callback()
+function tutannet_page_settings_callback()
 {
-    global $post, $accesspress_mag_page_sidebar_layout ;
-    wp_nonce_field( basename( __FILE__ ), 'accesspress_mag_page_settings_nonce' );
+    global $post, $tutannet_page_sidebar_layout ;
+    wp_nonce_field( basename( __FILE__ ), 'tutannet_page_settings_nonce' );
 ?>
         <table class="form-table">
             <tr>
-            <td colspan="4"><em class="f13"><?php _e('Page Sidebar','accesspress-mag'); ?></em></td>
+            <td colspan="4"><em class="f13"><?php _e('Page Sidebar','tutannet'); ?></em></td>
             </tr>
             
             <tr>
             <td>
             <?php  
-               foreach ($accesspress_mag_page_sidebar_layout as $field) {  
-                            $accesspress_mag_page_sidebar_metalayout = get_post_meta( $post->ID, 'accesspress_mag_page_sidebar_layout', true ); ?>
+               foreach ($tutannet_page_sidebar_layout as $field) {  
+                            $tutannet_page_sidebar_metalayout = get_post_meta( $post->ID, 'tutannet_page_sidebar_layout', true ); ?>
             
                             <div class="radio-image-wrapper" style="float:left; margin-right:30px;">
                             <label class="description">
                             <span><img src="<?php echo esc_url( $field['thumbnail'] ); ?>" alt="" /></span></br>
-                            <input type="radio" name="accesspress_mag_page_sidebar_layout" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $accesspress_mag_page_sidebar_metalayout ); if(empty($accesspress_mag_page_sidebar_metalayout) && $field['value']=='right-sidebar'){ echo "checked='checked'";} ?>/>&nbsp;<?php echo $field['label']; ?>
+                            <input type="radio" name="tutannet_page_sidebar_layout" value="<?php echo $field['value']; ?>" <?php checked( $field['value'], $tutannet_page_sidebar_metalayout ); if(empty($tutannet_page_sidebar_metalayout) && $field['value']=='right-sidebar'){ echo "checked='checked'";} ?>/>&nbsp;<?php echo $field['label']; ?>
                             </label>
                             </div>
                             <?php } // end foreach 
@@ -190,7 +190,7 @@ function accesspress_mag_page_settings_callback()
             </td>
             </tr>
             <tr>
-                <td><em class="f13"><?php _e( 'You can set up the sidebar content', 'accesspress-mag' );?> <a href="<?php echo esc_url( admin_url('/themes.php?page=options-framework') ); ?>"><?php _e( 'here', 'accesspress-mag' );?></a></em></td>
+                <td><em class="f13"><?php _e( 'You can set up the sidebar content', 'tutannet' );?> <a href="<?php echo esc_url( admin_url('/themes.php?page=options-framework') ); ?>"><?php _e( 'here', 'tutannet' );?></a></em></td>
             </tr>
         </table>
 
@@ -204,11 +204,11 @@ function accesspress_mag_page_settings_callback()
 
 /*-------------------Save function for Post Setting-------------------------*/
 
-function accesspress_mag_save_post_settings( $post_id ) { 
-    global $accesspress_mag_post_template_layout, $accesspress_mag_sidebar_layout, $post; 
+function tutannet_save_post_settings( $post_id ) { 
+    global $tutannet_post_template_layout, $tutannet_sidebar_layout, $post; 
 
     // Verify the nonce before proceeding.
-    if ( !isset( $_POST[ 'accesspress_mag_post_settings_nonce' ] ) || !wp_verify_nonce( $_POST[ 'accesspress_mag_post_settings_nonce' ], basename( __FILE__ ) ) )
+    if ( !isset( $_POST[ 'tutannet_post_settings_nonce' ] ) || !wp_verify_nonce( $_POST[ 'tutannet_post_settings_nonce' ], basename( __FILE__ ) ) )
         return;
 
     // Stop WP from clearing custom fields on autosave
@@ -222,39 +222,39 @@ function accesspress_mag_save_post_settings( $post_id ) {
             return $post_id;  
     }
     
-    foreach ($accesspress_mag_post_template_layout as $field) {  
+    foreach ($tutannet_post_template_layout as $field) {  
         //Execute this saving function
-        $old = get_post_meta( $post_id, 'accesspress_mag_post_template_layout', true); 
-        $new = sanitize_text_field($_POST['accesspress_mag_post_template_layout']);
+        $old = get_post_meta( $post_id, 'tutannet_post_template_layout', true); 
+        $new = sanitize_text_field($_POST['tutannet_post_template_layout']);
         if ($new && $new != $old) {  
-            update_post_meta($post_id, 'accesspress_mag_post_template_layout', $new);  
+            update_post_meta($post_id, 'tutannet_post_template_layout', $new);  
         } elseif ('' == $new && $old) {  
-            delete_post_meta($post_id,'accesspress_mag_post_template_layout', $old);  
+            delete_post_meta($post_id,'tutannet_post_template_layout', $old);  
         }
      } // end foreach  
      
-   foreach ($accesspress_mag_sidebar_layout as $field) {  
+   foreach ($tutannet_sidebar_layout as $field) {  
         //Execute this saving function
-        $old = get_post_meta( $post_id, 'accesspress_mag_sidebar_layout', true); 
-        $new = sanitize_text_field($_POST['accesspress_mag_sidebar_layout']);
+        $old = get_post_meta( $post_id, 'tutannet_sidebar_layout', true); 
+        $new = sanitize_text_field($_POST['tutannet_sidebar_layout']);
         if ($new && $new != $old) {  
-            update_post_meta($post_id, 'accesspress_mag_sidebar_layout', $new);  
+            update_post_meta($post_id, 'tutannet_sidebar_layout', $new);  
         } elseif ('' == $new && $old) {  
-            delete_post_meta($post_id,'accesspress_mag_sidebar_layout', $old);  
+            delete_post_meta($post_id,'tutannet_sidebar_layout', $old);  
         }
      } // end foreach   
      
        
 }
-add_action('save_post', 'accesspress_mag_save_post_settings');
+add_action('save_post', 'tutannet_save_post_settings');
 
 /*-------------------Save function for Page Setting-------------------------*/
 
-function accesspress_mag_save_page_settings( $post_id ) { 
-    global $accesspress_mag_sidebar_layout, $post; 
+function tutannet_save_page_settings( $post_id ) { 
+    global $tutannet_sidebar_layout, $post; 
 
     // Verify the nonce before proceeding.
-    if ( !isset( $_POST[ 'accesspress_mag_page_settings_nonce' ] ) || !wp_verify_nonce( $_POST[ 'accesspress_mag_page_settings_nonce' ], basename( __FILE__ ) ) )
+    if ( !isset( $_POST[ 'tutannet_page_settings_nonce' ] ) || !wp_verify_nonce( $_POST[ 'tutannet_page_settings_nonce' ], basename( __FILE__ ) ) )
         return;
 
     // Stop WP from clearing custom fields on autosave
@@ -268,17 +268,17 @@ function accesspress_mag_save_page_settings( $post_id ) {
             return $post_id;  
     }
     
-    foreach ($accesspress_mag_sidebar_layout as $field) {  
+    foreach ($tutannet_sidebar_layout as $field) {  
         //Execute this saving function
-        $old = get_post_meta( $post_id, 'accesspress_mag_page_sidebar_layout', true); 
-        $new = sanitize_text_field($_POST['accesspress_mag_page_sidebar_layout']);
+        $old = get_post_meta( $post_id, 'tutannet_page_sidebar_layout', true); 
+        $new = sanitize_text_field($_POST['tutannet_page_sidebar_layout']);
         if ($new && $new != $old) {  
-            update_post_meta($post_id, 'accesspress_mag_page_sidebar_layout', $new);  
+            update_post_meta($post_id, 'tutannet_page_sidebar_layout', $new);  
         } elseif ('' == $new && $old) {  
-            delete_post_meta($post_id,'accesspress_mag_page_sidebar_layout', $old);  
+            delete_post_meta($post_id,'tutannet_page_sidebar_layout', $old);  
         } 
      } // end foreach 
     
 }
-add_action('save_post', 'accesspress_mag_save_page_settings');
+add_action('save_post', 'tutannet_save_page_settings');
 ?>

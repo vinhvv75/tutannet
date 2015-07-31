@@ -2,15 +2,15 @@
 /**
  * The template for displaying search results pages.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 get_header(); ?>
 <div class="apmag-container">
      <?php   
-        $accesspress_mag_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
-        if ((function_exists('accesspress_mag_breadcrumbs') && $accesspress_mag_show_breadcrumbs == 1)) {
-			    accesspress_mag_breadcrumbs();
+        $tutannet_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
+        if ((function_exists('tutannet_breadcrumbs') && $tutannet_show_breadcrumbs == 1)) {
+			    tutannet_breadcrumbs();
             }
     ?>
 	<section id="primary" class="content-area">
@@ -19,7 +19,7 @@ get_header(); ?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><span><?php printf( __( 'Search Results for: %s', 'accesspress-mag' ), '</span><span>' . get_search_query() . '</span>' ); ?></h1>
+				<h1 class="page-title"><span><?php printf( __( 'Search Results for: %s', 'tutannet' ), '</span><span>' . get_search_query() . '</span>' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<?php /* Start the Loop */ ?>

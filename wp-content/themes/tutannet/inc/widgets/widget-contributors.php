@@ -3,26 +3,26 @@
 /**
  * Article Contributors Widgets
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 /**
- * Adds accesspress_mag_contributors widget.
+ * Adds tutannet_contributors widget.
  */
 add_action('widgets_init', 'article_contributors_widget');
 
 function article_contributors_widget() {
-    register_widget('accesspress_mag_article_contributors');
+    register_widget('tutannet_article_contributors');
 }
 
-class Accesspress_mag_article_contributors extends WP_Widget {
+class tutannet_article_contributors extends WP_Widget {
 
     /**
      * Register widget with WordPress.
      */
     public function __construct() {
         parent::__construct(
-            'Accesspress_mag_article_contributors', 'AP-Mag :  Article Contributors', array(
-            'description' => __('A widget that shows article contributors', 'accesspress-mag')
+            'tutannet_article_contributors', 'AP-Mag :  Article Contributors', array(
+            'description' => __('A widget that shows article contributors', 'tutannet')
                 )
         );
     }
@@ -34,9 +34,9 @@ class Accesspress_mag_article_contributors extends WP_Widget {
     private function widget_fields() {
         $fields = array(
             'contributors_title' => array(
-                'accesspress_mag_widgets_name' => 'contributors_title',
-                'accesspress_mag_widgets_title' => __('Title', 'accesspress-mag'),
-                'accesspress_mag_widgets_field_type' => 'title',
+                'tutannet_widgets_name' => 'contributors_title',
+                'tutannet_widgets_title' => __('Title', 'tutannet'),
+                'tutannet_widgets_field_type' => 'title',
             ),            
         );
 
@@ -118,7 +118,7 @@ class Accesspress_mag_article_contributors extends WP_Widget {
             extract($widget_field);
 
             // Use helper function to get updated field values
-            $instance[$accesspress_mag_widgets_name] = accesspress_mag_widgets_updated_field_value($widget_field, $new_instance[$accesspress_mag_widgets_name]);
+            $instance[$tutannet_widgets_name] = tutannet_widgets_updated_field_value($widget_field, $new_instance[$tutannet_widgets_name]);
         }
 
         return $instance;
@@ -141,8 +141,8 @@ class Accesspress_mag_article_contributors extends WP_Widget {
 
             // Make array elements available as variables
             extract($widget_field);
-            $accesspress_mag_widgets_field_value = !empty($instance[$accesspress_mag_widgets_name]) ? esc_attr($instance[$accesspress_mag_widgets_name]) : '';
-            accesspress_mag_widgets_show_widget_field($this, $widget_field, $accesspress_mag_widgets_field_value);
+            $tutannet_widgets_field_value = !empty($instance[$tutannet_widgets_name]) ? esc_attr($instance[$tutannet_widgets_name]) : '';
+            tutannet_widgets_show_widget_field($this, $widget_field, $tutannet_widgets_field_value);
         }
     }
 

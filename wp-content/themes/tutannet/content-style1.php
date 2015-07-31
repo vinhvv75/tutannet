@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts which have style 1 layout.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 ?>
 
@@ -11,8 +11,8 @@
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 		<div class="entry-meta clearfix">
             <?php echo get_the_category_list(); ?>
-            <?php accesspress_mag_posted_on(); ?>
-			<?php do_action('accesspress_mag_post_meta');?>
+            <?php tutannet_posted_on(); ?>
+			<?php do_action('tutannet_post_meta');?>
 		</div><!-- .entry-meta -->
         
 	</header><!-- .entry-header -->
@@ -22,7 +22,7 @@
             <?php
                 $show_featured_image = of_get_option('featured_image'); 
                 $image_id = get_post_thumbnail_id();
-                $image_path = wp_get_attachment_image_src( $image_id, 'accesspress-mag-singlepost-style1', true );
+                $image_path = wp_get_attachment_image_src( $image_id, 'tutannet-singlepost-style1', true );
                 $image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
                 if(has_post_thumbnail()){
                     if( $show_featured_image == 1 ){
@@ -35,22 +35,22 @@
         </div>
 		<div class="post_content"><?php the_content(); ?></div>   
         
-        <?php if ( is_active_sidebar( 'accesspress-mag-article-ad' ) ) : ?>
+        <?php if ( is_active_sidebar( 'tutannet-article-ad' ) ) : ?>
             <div class="article-ad-section">
-                <?php dynamic_sidebar( 'accesspress-mag-article-ad' ); ?> 
+                <?php dynamic_sidebar( 'tutannet-article-ad' ); ?> 
             </div>
         <?php endif; ?>
 
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . __( 'Pages:', 'accesspress-mag' ),
+				'before' => '<div class="page-links">' . __( 'Pages:', 'tutannet' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-        <?php //do_action('accesspress_mag_single_post_review');?>
-		<?php accesspress_mag_entry_footer(); ?>
+        <?php //do_action('tutannet_single_post_review');?>
+		<?php tutannet_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

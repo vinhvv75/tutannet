@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 if ( ! function_exists( 'the_posts_navigation' ) ) :
@@ -20,15 +20,15 @@ function the_posts_navigation() {
 	}
 	?>
 	<nav class="navigation posts-navigation clearfix" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'accesspress-mag' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Posts navigation', 'tutannet' ); ?></h2>
 		<div class="nav-links">
 
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'accesspress-mag' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( __( 'Older posts', 'tutannet' ) ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'accesspress-mag' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts', 'tutannet' ) ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -37,17 +37,17 @@ function the_posts_navigation() {
 }
 endif;
 
-if ( ! function_exists( 'accesspress_mag_post_navigation' ) ) :
+if ( ! function_exists( 'tutannet_post_navigation' ) ) :
 /**
  * Display navigation to next/previous post when applicable.
  *
  * @todo Remove this function when WordPress 4.3 is released.
  */
-function accesspress_mag_post_navigation() {
+function tutannet_post_navigation() {
     $trans_next = of_get_option( 'trans_next_article' );
-    if( empty( $trans_next ) ){ $trans_next = __( 'Next article', 'accesspress-mag' ); }
+    if( empty( $trans_next ) ){ $trans_next = __( 'Next article', 'tutannet' ); }
     $trans_prev = of_get_option( 'trans_previous_article' );
-    if( empty( $trans_prev ) ){ $trans_prev = __( 'Previous article', 'accesspress-mag' ) ; }
+    if( empty( $trans_prev ) ){ $trans_prev = __( 'Previous article', 'tutannet' ) ; }
 	// Don't print empty markup if there's nowhere to navigate.
 	$previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
 	$next     = get_adjacent_post( false, '', false );
@@ -57,7 +57,7 @@ function accesspress_mag_post_navigation() {
 	}
 	?>
 	<nav class="navigation post-navigation clearfix" role="navigation">
-		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'accesspress-mag' ); ?></h2>
+		<h2 class="screen-reader-text"><?php _e( 'Post navigation', 'tutannet' ); ?></h2>
 		<div class="nav-links">
 			<?php
 				previous_post_link( '<div class="nav-previous"><div class="link-caption"><i class="fa fa-angle-left"></i>'.esc_attr( $trans_prev ).'</div>%link</div>', '%title' );
@@ -69,11 +69,11 @@ function accesspress_mag_post_navigation() {
 }
 endif;
 
-if ( ! function_exists( 'accesspress_mag_posted_on' ) ) :
+if ( ! function_exists( 'tutannet_posted_on' ) ) :
 /**
  * Prints HTML with meta information for the current post-date/time and author.
  */
-function accesspress_mag_posted_on() {
+function tutannet_posted_on() {
     $show_post_date = of_get_option('post_show_date');
     $show_author = of_get_option('show_author_name');
     
@@ -91,7 +91,7 @@ function accesspress_mag_posted_on() {
     
     if($show_post_date==1){
 	  $posted_on = sprintf(
-    		_x( '%s', 'post date', 'accesspress-mag' ),$time_string
+    		_x( '%s', 'post date', 'tutannet' ),$time_string
     		
             //'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
     	);	   
@@ -102,7 +102,7 @@ function accesspress_mag_posted_on() {
     
     if($show_author==1){
         $byline = sprintf(
-    		_x( 'by %s', 'post author', 'accesspress-mag' ),
+    		_x( 'by %s', 'post author', 'tutannet' ),
     		'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
     	);
     } else {
@@ -114,27 +114,27 @@ function accesspress_mag_posted_on() {
 }
 endif;
 
-if ( ! function_exists( 'accesspress_mag_entry_footer' ) ) :
+if ( ! function_exists( 'tutannet_entry_footer' ) ) :
 /**
  * Prints HTML with meta information for the categories, tags and comments.
  */
-function accesspress_mag_entry_footer() {
+function tutannet_entry_footer() {
     /*
 	if ( ! is_single() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
 		echo '<span class="comments-link">';
-		comments_popup_link( __( 'Leave a comment', 'accesspress-mag' ), __( '1 Comment', 'accesspress-mag' ), __( '% Comments', 'accesspress-mag' ) );
+		comments_popup_link( __( 'Leave a comment', 'tutannet' ), __( '1 Comment', 'tutannet' ), __( '% Comments', 'tutannet' ) );
 		echo '</span>';
 	}
     */    
     if('post'==get_post_type() && !is_tag() ){
         $trans_tagged = of_get_option( 'trans_tagged' );
-        $accesspress_mag_show_tags = of_get_option('show_tags_post');
-         if($accesspress_mag_show_tags!='0'){
+        $tutannet_show_tags = of_get_option('show_tags_post');
+         if($tutannet_show_tags!='0'){
             /* translators: used between list items, there is a space after the comma */
-    		$tags_list = get_the_tag_list( '', __( ' ', 'accesspress-mag' ) );
+    		$tags_list = get_the_tag_list( '', __( ' ', 'tutannet' ) );
     		if ( $tags_list ) {
     		  if( empty( $trans_tagged ) ){
-    		      printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'accesspress-mag' ) . '</span>', $tags_list );
+    		      printf( '<span class="tags-links">' . __( 'Tagged %1$s', 'tutannet' ) . '</span>', $tags_list );
     		  } else {
     		      printf( '<span class="tags-links">' .esc_attr( $trans_tagged ).' %1$s </span>', $tags_list );
     		  }
@@ -142,11 +142,11 @@ function accesspress_mag_entry_footer() {
         }
     }
 
-	edit_post_link( __( 'Edit', 'accesspress-mag' ), '<span class="edit-link">', '</span>' );
+	edit_post_link( __( 'Edit', 'tutannet' ), '<span class="edit-link">', '</span>' );
 }
 endif;
 
-if ( ! function_exists( 'accesspress_mag_the_archive_title' ) ) :
+if ( ! function_exists( 'tutannet_the_archive_title' ) ) :
 /**
  * Shim for `the_archive_title()`.
  *
@@ -157,47 +157,47 @@ if ( ! function_exists( 'accesspress_mag_the_archive_title' ) ) :
  * @param string $before Optional. Content to prepend to the title. Default empty.
  * @param string $after  Optional. Content to append to the title. Default empty.
  */
-function accesspress_mag_the_archive_title( $before = '', $after = '' ) {
+function tutannet_the_archive_title( $before = '', $after = '' ) {
 	if ( is_category() ) {
-		$title = sprintf( __( '%s', 'accesspress-mag' ), single_cat_title( '', false ) );
+		$title = sprintf( __( '%s', 'tutannet' ), single_cat_title( '', false ) );
 	} elseif ( is_tag() ) {
-		$title = sprintf( __( 'Tag: %s', 'accesspress-mag' ), single_tag_title( '', false ) );
+		$title = sprintf( __( 'Tag: %s', 'tutannet' ), single_tag_title( '', false ) );
 	} elseif ( is_author() ) {
-		$title = sprintf( __( 'Author: %s', 'accesspress-mag' ), '<span class="vcard">' . get_the_author() . '</span>' );
+		$title = sprintf( __( 'Author: %s', 'tutannet' ), '<span class="vcard">' . get_the_author() . '</span>' );
 	} elseif ( is_year() ) {
-		$title = sprintf( __( 'Year: %s', 'accesspress-mag' ), get_the_date( _x( 'Y', 'yearly archives date format', 'accesspress-mag' ) ) );
+		$title = sprintf( __( 'Year: %s', 'tutannet' ), get_the_date( _x( 'Y', 'yearly archives date format', 'tutannet' ) ) );
 	} elseif ( is_month() ) {
-		$title = sprintf( __( 'Month: %s', 'accesspress-mag' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'accesspress-mag' ) ) );
+		$title = sprintf( __( 'Month: %s', 'tutannet' ), get_the_date( _x( 'F Y', 'monthly archives date format', 'tutannet' ) ) );
 	} elseif ( is_day() ) {
-		$title = sprintf( __( 'Day: %s', 'accesspress-mag' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'accesspress-mag' ) ) );
+		$title = sprintf( __( 'Day: %s', 'tutannet' ), get_the_date( _x( 'F j, Y', 'daily archives date format', 'tutannet' ) ) );
 	} elseif ( is_tax( 'post_format' ) ) {
 		if ( is_tax( 'post_format', 'post-format-aside' ) ) {
-			$title = _x( 'Asides', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Asides', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-gallery' ) ) {
-			$title = _x( 'Galleries', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Galleries', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-image' ) ) {
-			$title = _x( 'Images', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Images', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-video' ) ) {
-			$title = _x( 'Videos', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Videos', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-quote' ) ) {
-			$title = _x( 'Quotes', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Quotes', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-link' ) ) {
-			$title = _x( 'Links', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Links', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-status' ) ) {
-			$title = _x( 'Statuses', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Statuses', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-audio' ) ) {
-			$title = _x( 'Audio', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Audio', 'post format archive title', 'tutannet' );
 		} elseif ( is_tax( 'post_format', 'post-format-chat' ) ) {
-			$title = _x( 'Chats', 'post format archive title', 'accesspress-mag' );
+			$title = _x( 'Chats', 'post format archive title', 'tutannet' );
 		}
 	} elseif ( is_post_type_archive() ) {
-		$title = sprintf( __( 'Archives: %s', 'accesspress-mag' ), post_type_archive_title( '', false ) );
+		$title = sprintf( __( 'Archives: %s', 'tutannet' ), post_type_archive_title( '', false ) );
 	} elseif ( is_tax() ) {
 		$tax = get_taxonomy( get_queried_object()->taxonomy );
 		/* translators: 1: Taxonomy singular name, 2: Current taxonomy term */
-		$title = sprintf( __( '%1$s: %2$s', 'accesspress-mag' ), $tax->labels->singular_name, single_term_title( '', false ) );
+		$title = sprintf( __( '%1$s: %2$s', 'tutannet' ), $tax->labels->singular_name, single_term_title( '', false ) );
 	} else {
-		$title = __( 'Archives', 'accesspress-mag' );
+		$title = __( 'Archives', 'tutannet' );
 	}
 
 	/**
@@ -245,8 +245,8 @@ endif;
  *
  * @return bool
  */
-function accesspress_mag_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'accesspress_mag_categories' ) ) ) {
+function tutannet_categorized_blog() {
+	if ( false === ( $all_the_cool_cats = get_transient( 'tutannet_categories' ) ) ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
@@ -259,27 +259,27 @@ function accesspress_mag_categorized_blog() {
 		// Count the number of categories that are attached to the posts.
 		$all_the_cool_cats = count( $all_the_cool_cats );
 
-		set_transient( 'accesspress_mag_categories', $all_the_cool_cats );
+		set_transient( 'tutannet_categories', $all_the_cool_cats );
 	}
 
 	if ( $all_the_cool_cats > 1 ) {
-		// This blog has more than 1 category so accesspress_mag_categorized_blog should return true.
+		// This blog has more than 1 category so tutannet_categorized_blog should return true.
 		return true;
 	} else {
-		// This blog has only 1 category so accesspress_mag_categorized_blog should return false.
+		// This blog has only 1 category so tutannet_categorized_blog should return false.
 		return false;
 	}
 }
 
 /**
- * Flush out the transients used in accesspress_mag_categorized_blog.
+ * Flush out the transients used in tutannet_categorized_blog.
  */
-function accesspress_mag_category_transient_flusher() {
+function tutannet_category_transient_flusher() {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
 	// Like, beat it. Dig?
-	delete_transient( 'accesspress_mag_categories' );
+	delete_transient( 'tutannet_categories' );
 }
-add_action( 'edit_category', 'accesspress_mag_category_transient_flusher' );
-add_action( 'save_post',     'accesspress_mag_category_transient_flusher' );
+add_action( 'edit_category', 'tutannet_category_transient_flusher' );
+add_action( 'save_post',     'tutannet_category_transient_flusher' );

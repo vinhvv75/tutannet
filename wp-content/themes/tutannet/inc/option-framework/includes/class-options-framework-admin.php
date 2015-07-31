@@ -88,8 +88,8 @@ class Options_Framework_Admin {
 			'mode' => 'submenu',
 
             // Submenu default settings
-			'page_title' => __( 'Theme Options', 'accesspress-mag' ),
-			'menu_title' => __( 'Theme Options', 'accesspress-mag' ),
+			'page_title' => __( 'Theme Options', 'tutannet' ),
+			'menu_title' => __( 'Theme Options', 'tutannet' ),
 			'capability' => 'edit_theme_options',
 			'menu_slug' => 'ap-theme-options',
 			'parent_slug' => 'themes.php',
@@ -188,23 +188,15 @@ class Options_Framework_Admin {
 	<div class="clear"></div>
 	<div id="optionsframework-wrap" class="wrap apmag-themeoption">
     <div class="theme-header clearfix">
-		<div class="accesspress-mag-logo">
-    		<img src="<?php echo get_template_directory_uri();?>/images/logo.png" alt="<?php esc_attr_e('AccessPress Mag','accesspress-mag'); ?>" />
+		<div class="tutannet-logo">
+    		<img src="<?php echo get_template_directory_uri();?>/images/logo.png" alt="<?php esc_attr_e('TuTanNet','tutannet'); ?>" />
     		<div class="theme-name">
                 <?php 
                 $theme = wp_get_theme();
-                echo $theme->get( 'Name' )." V". $theme->get( 'Version' ) . __( ' - Theme Option Panel', 'accesspress-mag' ); ?>
+                echo $theme->get( 'Name' )." V". $theme->get( 'Version' ) . __( ' - Theme Option Panel', 'tutannet' ); ?>
             </div>
         </div>
-        <div class="ak-socials">
-            <p>
-              <a target="_blank" href="<?php echo esc_url( 'http://accesspressthemes.com/accesspress-mag/' ); ?>"><?php _e( 'Demo', 'accesspress-mag' ); ?></a> |
-              <a target="_blank" href="<?php echo esc_url( 'https://accesspressthemes.com/accesspress-mag-documentation' ); ?>"><?php _e( 'Documentation', 'accesspress-mag' ); ?></a> |  
-              <!--<a target="_blank" href="<?php //echo esc_url( 'https://wordpress.org/support/theme/accesspress-mag'); ?>"><?php //_e( 'Support', 'accesspress-mag'); ?></a>-->
-              <?php echo sprintf(__('Any question!! Click <a href="%s" target="_blank">here</a> for Live Chat.','accesspresslite'),esc_url('https://accesspressthemes.com/contact/')); ?>  
-            </p>
-        </div>
-        
+                
 		<?php //$menu = $this->menu_settings(); ?>
 		<!--<div class="big-title"><?php //echo esc_html( $menu['page_title'] ); ?></div>-->
 		</div>
@@ -226,33 +218,13 @@ class Options_Framework_Admin {
 
 						
 
-						<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'accesspress-mag' ); ?>" />
-						<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'accesspress-mag' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'accesspress-mag' ) ); ?>' );" />
+						<input type="submit" class="button-primary" name="update" value="<?php esc_attr_e( 'Save Options', 'tutannet' ); ?>" />
+						<input type="submit" class="reset-button button-secondary" name="reset" value="<?php esc_attr_e( 'Restore Defaults', 'tutannet' ); ?>" onclick="return confirm( '<?php print esc_js( __( 'Click OK to reset. Any theme settings will be lost!', 'tutannet' ) ); ?>' );" />
 						<div class="clear"></div>
 					</div>
 				</form>
 			</div> <!-- / #container -->
 		</div>
-		<div class="promo-banner clearfix">
-	        <div class="banner-image">
-	            <img src="<?php echo get_template_directory_uri().'/inc/option-framework/images/upgrade-mag-pro.jpg' ?>" />           
-	        </div> 
-	        <div class="button-link">
-    			<a href="http://accesspressthemes.com/accesspress-mag-pro/" target="_blank"><img src="<?php echo get_template_directory_uri().'/inc/option-framework/images/demo-btn.png'?>"/></a>
-    			<a href="https://accesspressthemes.com/wordpress-themes/accesspress-mag-pro/" target="_blank"><img src="<?php echo get_template_directory_uri().'/inc/option-framework/images/upgrade-btn.png' ?>"/></a>
-		    </div>
-	        <div class="any-question">
-	    		<?php echo sprintf( __('Any question!! Click <a href="%s" target="_blank"> here!! </a> for live chat', 'accesspress-mag'), esc_url('https://accesspressthemes.com/contact/')); ?>
-	    	</div>
-
-        	<div class="view-features">
-        	<h3><?php _e('View Features','accesspress-mag'); ?> <span>+<span></h3>
-    		
-    		<div style="display:none" class="view-features-img"> 
-            <img src="<?php echo get_template_directory_uri().'/inc/option-framework/images/upgrade-mag-pro-features.jpg'?>" />
-        	</div>
-        	</div>
-        </div>
 		<?php do_action( 'optionsframework_after' ); ?>
 		<div class="clear"></div>
 	</div> <!-- / .wrap -->
@@ -279,7 +251,7 @@ class Options_Framework_Admin {
 		 */
 
 		if ( isset( $_POST['reset'] ) ) {
-			add_settings_error( 'options-framework', 'restore_defaults', __( 'Default options restored.', 'accesspress-mag' ), 'updated fade' );
+			add_settings_error( 'options-framework', 'restore_defaults', __( 'Default options restored.', 'tutannet' ), 'updated fade' );
 			return $this->get_default_values();
 		}
 
@@ -333,7 +305,7 @@ class Options_Framework_Admin {
 	 */
 
 	function save_options_notice() {
-		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'accesspress-mag' ), 'updated fade' );
+		add_settings_error( 'options-framework', 'save_options', __( 'Options saved.', 'tutannet' ), 'updated fade' );
 	}
 
 	/**

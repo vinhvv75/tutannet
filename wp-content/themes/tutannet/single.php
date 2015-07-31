@@ -2,20 +2,20 @@
 /**
  * The template for displaying all single posts.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 get_header(); 
 global $post;
-$accesspress_mag_show_breadcrumbs = of_get_option( 'show_hide_breadcrumbs' );
+$tutannet_show_breadcrumbs = of_get_option( 'show_hide_breadcrumbs' );
 $post_template_value =( of_get_option( 'global_post_template' ) == 'default-template' ) ? 'single' : 'style1';
 
-$accesspress_mag_post_template = get_post_meta( $post -> ID, 'accesspress_mag_post_template_layout', true );
-if($accesspress_mag_post_template=='global-template'){
+$tutannet_post_template = get_post_meta( $post -> ID, 'tutannet_post_template_layout', true );
+if($tutannet_post_template=='global-template'){
     $content_value = $post_template_value;
 } 
 else {
-    if( $accesspress_mag_post_template == 'default-template' ){
+    if( $tutannet_post_template == 'default-template' ){
         $content_value = 'single';
     } else {
         $content_value = 'style1';
@@ -24,8 +24,8 @@ else {
 ?>
 <div class="apmag-container">
     <?php
-        if ( (function_exists( 'accesspress_mag_breadcrumbs' ) && $accesspress_mag_show_breadcrumbs == 1 ) ) {
-    	    accesspress_mag_breadcrumbs();
+        if ( (function_exists( 'tutannet_breadcrumbs' ) && $tutannet_show_breadcrumbs == 1 ) ) {
+    	    tutannet_breadcrumbs();
         }
     ?>
 	<div id="primary" class="content-area">
@@ -35,8 +35,8 @@ else {
 
 			<?php get_template_part( 'content', $content_value ); ?>
             <?php 
-                $accesspress_mag_show_author_box = of_get_option( 'show_author_box' );
-                if( $accesspress_mag_show_author_box == 1 ):
+                $tutannet_show_author_box = of_get_option( 'show_author_box' );
+                if( $tutannet_show_author_box == 1 ):
             ?>
             <div class="author-metabox">
                 <?php
@@ -57,7 +57,7 @@ else {
 
 			<?php 
                 $show_post_navigation = of_get_option( 'show_post_nextprev' );
-                if($show_post_navigation!='0'){ accesspress_mag_post_navigation(); }
+                if($show_post_navigation!='0'){ tutannet_post_navigation(); }
              ?>
 
 			<?php
@@ -67,7 +67,7 @@ else {
 				endif;
 			?>
             
-            <?php accesspress_mag_setPostViews(get_the_ID()); ?>
+            <?php tutannet_setPostViews(get_the_ID()); ?>
 
 		<?php endwhile; // end of the loop. ?>
 
@@ -76,7 +76,7 @@ else {
 
 <?php 
     $global_sidebar= of_get_option( 'global_post_sidebar' );
-    $post_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_sidebar_layout', true );
+    $post_sidebar = get_post_meta( $post -> ID, 'tutannet_sidebar_layout', true );
     if( $post_sidebar == 'global-sidebar' ){
         $sidebar_option = $global_sidebar;
     } else {

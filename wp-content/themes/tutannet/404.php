@@ -2,7 +2,7 @@
 /**
  * The template for displaying 404 pages (not found).
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 get_header(); ?>
@@ -14,10 +14,10 @@ get_header(); ?>
 				<div class="apmag-container">
 					<div class="page-content">
 						<div class="page-404-wrap clearfix">
-							<span class="oops"><?php _e( 'Oops!!', 'accesspress-mag' );?></span>
+							<span class="oops"><?php _e( 'Oops!!', 'tutannet' );?></span>
 							<div class="error-num"> 
-							<span class="num"><?php _e( '404', 'accesspress-mag' );?></span>
-							<span class="not_found"><?php _e( 'Page Not Found', 'accesspress-mag' );?></span>
+							<span class="num"><?php _e( '404', 'tutannet' );?></span>
+							<span class="not_found"><?php _e( 'Page Not Found', 'tutannet' );?></span>
 							</div>
 						</div>
 					</div><!-- .page-content -->

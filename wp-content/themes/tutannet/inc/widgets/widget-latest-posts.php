@@ -3,26 +3,26 @@
 /**
  * Latest Posts Widgets
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 /**
- * Adds accesspress_mag_latest_posts widget.
+ * Adds tutannet_latest_posts widget.
  */
 add_action( 'widgets_init', 'register_latest_posts_widget' );
 
 function register_latest_posts_widget() {
-    register_widget( 'accesspress_mag_register_latest_posts' );
+    register_widget( 'tutannet_register_latest_posts' );
 }
 
-class Accesspress_mag_register_latest_posts extends WP_Widget {
+class tutannet_register_latest_posts extends WP_Widget {
 
     /**
      * Register widget with WordPress.
      */
     public function __construct() {
         parent::__construct(
-            'accesspress_mag_register_latest_posts', 'AP-Mag :  Latest Posts', array(
-            'description' => __( 'A widget that shows latest posts', 'accesspress-mag' )
+            'tutannet_register_latest_posts', 'AP-Mag :  Latest Posts', array(
+            'description' => __( 'A widget that shows latest posts', 'tutannet' )
                 )
         );
     }
@@ -34,9 +34,9 @@ class Accesspress_mag_register_latest_posts extends WP_Widget {
     private function widget_fields() {
         $fields = array(
             'latest_posts_title' => array(
-                'accesspress_mag_widgets_name' => 'latest_posts_title',
-                'accesspress_mag_widgets_title' => __('Title', 'accesspress-mag'),
-                'accesspress_mag_widgets_field_type' => 'title',
+                'tutannet_widgets_name' => 'latest_posts_title',
+                'tutannet_widgets_title' => __('Title', 'tutannet'),
+                'tutannet_widgets_field_type' => 'title',
             ),            
         );
 
@@ -65,7 +65,7 @@ class Accesspress_mag_register_latest_posts extends WP_Widget {
                         while($latest_posts_query->have_posts()){
                             $latest_posts_query->the_post();
                             $image_id = get_post_thumbnail_id();
-                            $image_path = wp_get_attachment_image_src( $image_id, 'accesspress-mag-block-small-thumb', true );
+                            $image_path = wp_get_attachment_image_src( $image_id, 'tutannet-block-small-thumb', true );
                             $image_alt = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
                 ?>
                     <div class="latest-single-post clearfix">
@@ -73,7 +73,7 @@ class Accesspress_mag_register_latest_posts extends WP_Widget {
                             <?php if(has_post_thumbnail()): ?>
                             <img src="<?php echo esc_url( $image_path[0] );?>" alt="<?php echo esc_attr( $image_alt );?>" />
                             <?php else: ?>
-                            <img src="<?php echo esc_url( get_template_directory_uri(). '/images/no-image-small.jpg' );?>" alt="<?php _e( 'No image', 'accesspress-mag' );?>" />                            
+                            <img src="<?php echo esc_url( get_template_directory_uri(). '/images/no-image-small.jpg' );?>" alt="<?php _e( 'No image', 'tutannet' );?>" />                            
                             <?php endif ;?>
                         </a></div>
                         <div class="post-desc-wrapper">
@@ -81,11 +81,11 @@ class Accesspress_mag_register_latest_posts extends WP_Widget {
                                 <a href="<?php the_permalink();?>">
                                     <?php 
                                         $post_title = get_the_title();
-                                            echo accesspress_mag_letter_count( $post_title, 20 );
+                                            echo tutannet_letter_count( $post_title, 20 );
                                     ?>
                                 </a>
                             </h3>
-                            <div class="block-poston"><?php do_action( 'accesspress_mag_home_posted_on' );?></div>
+                            <div class="block-poston"><?php do_action( 'tutannet_home_posted_on' );?></div>
                         </div>                    
                     </div>
                 <?php
@@ -121,7 +121,7 @@ class Accesspress_mag_register_latest_posts extends WP_Widget {
             extract($widget_field);
 
             // Use helper function to get updated field values
-            $instance[ $accesspress_mag_widgets_name ] = accesspress_mag_widgets_updated_field_value( $widget_field, $new_instance[ $accesspress_mag_widgets_name ] );
+            $instance[ $tutannet_widgets_name ] = tutannet_widgets_updated_field_value( $widget_field, $new_instance[ $tutannet_widgets_name ] );
         }
 
         return $instance;
@@ -144,8 +144,8 @@ class Accesspress_mag_register_latest_posts extends WP_Widget {
 
             // Make array elements available as variables
             extract($widget_field);
-            $accesspress_mag_widgets_field_value = !empty($instance[$accesspress_mag_widgets_name]) ? esc_attr($instance[$accesspress_mag_widgets_name]) : '';
-            accesspress_mag_widgets_show_widget_field($this, $widget_field, $accesspress_mag_widgets_field_value);
+            $tutannet_widgets_field_value = !empty($instance[$tutannet_widgets_name]) ? esc_attr($instance[$tutannet_widgets_name]) : '';
+            tutannet_widgets_show_widget_field($this, $widget_field, $tutannet_widgets_field_value);
         }
     }
 

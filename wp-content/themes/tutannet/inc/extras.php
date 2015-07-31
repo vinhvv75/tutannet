@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 /**
@@ -13,7 +13,7 @@
  * @param array $classes Classes for the body element.
  * @return array
  */
-function accesspress_mag_body_classes( $classes ) {
+function tutannet_body_classes( $classes ) {
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
@@ -21,7 +21,7 @@ function accesspress_mag_body_classes( $classes ) {
 
 	return $classes;
 }
-add_filter( 'body_class', 'accesspress_mag_body_classes' );
+add_filter( 'body_class', 'tutannet_body_classes' );
 
 if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	/**
@@ -31,7 +31,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	 * @param string $sep Optional separator.
 	 * @return string The filtered title.
 	 */
-	function accesspress_mag_wp_title( $title, $sep ) {
+	function tutannet_wp_title( $title, $sep ) {
 		if ( is_feed() ) {
 			return $title;
 		}
@@ -49,11 +49,11 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 
 		// Add a page number if necessary:
 		if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-			$title .= " $sep " . sprintf( __( 'Page %s', 'accesspress-mag' ), max( $paged, $page ) );
+			$title .= " $sep " . sprintf( __( 'Page %s', 'tutannet' ), max( $paged, $page ) );
 		}
 
 		return $title;
 	}
-	add_filter( 'wp_title', 'accesspress_mag_wp_title', 10, 2 );
+	add_filter( 'wp_title', 'tutannet_wp_title', 10, 2 );
 
 endif;

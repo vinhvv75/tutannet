@@ -2,37 +2,37 @@
 /**
  * The sidebar containing the main widget area.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
-$accesspress_mag_theme_option = get_option( 'accesspress-mag-theme' );
+$tutannet_theme_option = get_option( 'tutannet-theme' );
 $sidebar_bottom_ad = of_get_option('value_sidebar_bottom_ad'); 
 $trans_ads = of_get_option( 'trans_advertisement' );
-if( empty( $trans_ads ) ){ $trans_ads = __( 'Advertisement', 'accesspress-mag' ); }
+if( empty( $trans_ads ) ){ $trans_ads = __( 'Advertisement', 'tutannet' ); }
 $trans_editor = of_get_option( 'trans_editor_picks' );
-if( empty( $trans_editor ) ){ $trans_editor = __( "Editor Pick's", "accesspress-mag" ); }
-$page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout', true);
+if( empty( $trans_editor ) ){ $trans_editor = __( "Editor Pick's", "tutannet" ); }
+$page_sidebar = get_post_meta( $post -> ID, 'tutannet_page_sidebar_layout', true);
 ?>
-<div id="secondary-<?php if( empty( $page_sidebar ) && ( $accesspress_mag_theme_option == '' ) ){ echo 'right-sidebar';}else{ echo $page_sidebar; } ?>" class="widget-area" role="complementary">
+<div id="secondary-<?php if( empty( $page_sidebar ) && ( $tutannet_theme_option == '' ) ){ echo 'right-sidebar';}else{ echo $page_sidebar; } ?>" class="widget-area" role="complementary">
     <div id="secondary" class="secondary-wrapper">
-        <?php if ( is_active_sidebar( 'accesspress-mag-home-top-sidebar' )) : ?>
+        <?php if ( is_active_sidebar( 'tutannet-home-top-sidebar' )) : ?>
         <div id="home-top-sidebar" class="widget-area wow fadeInUp" data-wow-delay="0.5s" role="complementary">
-        	<?php dynamic_sidebar( 'accesspress-mag-home-top-sidebar' ); ?>
+        	<?php dynamic_sidebar( 'tutannet-home-top-sidebar' ); ?>
         </div><!-- #secondary -->
         <?php  endif ; ?>
 
-        <?php if ( is_active_sidebar( 'accesspress-mag-homepage-sidebar-top-ad' ) ) : ?>
+        <?php if ( is_active_sidebar( 'tutannet-homepage-sidebar-top-ad' ) ) : ?>
             <div class="sidebar-top-ad widget-area wow fadeInUp" data-wow-delay="0.5s">
                 <h1 class="sidebar-title"><span><?php echo esc_attr( $trans_ads ) ;?></span></h1>
                 <div class="ad_content">
-                    <?php dynamic_sidebar( 'accesspress-mag-homepage-sidebar-top-ad' ); ?> 
+                    <?php dynamic_sidebar( 'tutannet-homepage-sidebar-top-ad' ); ?> 
                 </div>
             </div><!--header ad-->
         <?php endif; ?>
 
         
-        <?php if ( is_active_sidebar( 'accesspress-mag-home-middle-sidebar' )) : ?>
+        <?php if ( is_active_sidebar( 'tutannet-home-middle-sidebar' )) : ?>
         <div id="home-top-sidebar" class="widget-area wow fadeInRight" data-wow-delay="0.5s" role="complementary">
-        	<?php dynamic_sidebar( 'accesspress-mag-home-middle-sidebar' ); ?>
+        	<?php dynamic_sidebar( 'tutannet-home-middle-sidebar' ); ?>
         </div><!-- #secondary -->
         <?php endif ; ?>
         
@@ -60,8 +60,8 @@ $page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout
                         $e_counter++;
                         $editor_query->the_post();
                         $editor_image_id = get_post_thumbnail_id();
-                        $editor_big_image_path = wp_get_attachment_image_src( $editor_image_id, 'accesspress-mag-block-big-thumb', true );
-                        $editor_small_image_path = wp_get_attachment_image_src( $editor_image_id, 'accesspres-mag-block-small-thumb', true );
+                        $editor_big_image_path = wp_get_attachment_image_src( $editor_image_id, 'tutannet-block-big-thumb', true );
+                        $editor_small_image_path = wp_get_attachment_image_src( $editor_image_id, 'tutannet-block-small-thumb', true );
                         $editor_image_alt = get_post_meta( $editor_image_id, '_wp_attachment_image_alt', true );
             ?>
                 <div class="single_post clearfix <?php if( $e_counter == 1 ){ echo 'first-post non-zoomin'; }?>">
@@ -76,9 +76,9 @@ $page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout
                         if($e_counter>1){echo '<div class="post-desc-wrapper">';} 
                     ?>
                         <h3 class="post-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-                        <div class="block-poston"><?php do_action('accesspress_mag_home_posted_on');?></div>
-                        <div class="block-poston"><?php do_action('accesspress_mag_block_post_on');?></div>
-                        <?php if($e_counter>1){echo '</div>';} if($e_counter ==1 ):?><div class="post-content"><?php echo '<p>'. accesspress_mag_word_count( get_the_content(), 25) .'</p>' ;?></div><?php endif ;?>
+                        <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
+                        <div class="block-poston"><?php do_action('tutannet_block_post_on');?></div>
+                        <?php if($e_counter>1){echo '</div>';} if($e_counter ==1 ):?><div class="post-content"><?php echo '<p>'. tutannet_word_count( get_the_content(), 25) .'</p>' ;?></div><?php endif ;?>
                 </div>
             <?php
                     }
@@ -89,16 +89,16 @@ $page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout
             </div>
         </div>
         
-        <?php if ( is_active_sidebar( 'accesspress-mag-homepage-sidebar-middle-ad' ) ) : ?>
+        <?php if ( is_active_sidebar( 'tutannet-homepage-sidebar-middle-ad' ) ) : ?>
             <div class="sidebar-top-ad widget-area wow fadeInUp" data-wow-delay="0.5s">
                 <h1 class="sidebar-title"><span><?php echo esc_attr( $trans_ads ) ;?></span></h1>
-                <div class="ad_content"><?php dynamic_sidebar( 'accesspress-mag-homepage-sidebar-middle-ad' ); ?></div>
+                <div class="ad_content"><?php dynamic_sidebar( 'tutannet-homepage-sidebar-middle-ad' ); ?></div>
             </div><!--header ad-->
         <?php endif; ?>
         
-        <?php if ( is_active_sidebar( 'accesspress-mag-home-bottom-sidebar' )) : ?>
+        <?php if ( is_active_sidebar( 'tutannet-home-bottom-sidebar' )) : ?>
         <div id="home-top-sidebar" class="widget-area wow fadeInUp" data-wow-delay="0.5s" role="complementary">
-        	<?php dynamic_sidebar( 'accesspress-mag-home-bottom-sidebar' ); ?>
+        	<?php dynamic_sidebar( 'tutannet-home-bottom-sidebar' ); ?>
         </div><!-- #secondary -->
         <?php endif ; ?> 
     </div>

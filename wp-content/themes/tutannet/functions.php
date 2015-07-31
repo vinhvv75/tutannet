@@ -1,8 +1,8 @@
 <?php
 /**
- * Accesspress Mag functions and definitions
+ * TuTanNet functions and definitions
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 /**
@@ -12,7 +12,7 @@ if ( ! isset( $content_width ) ) {
 	$content_width = 640; /* pixels */
 }
 
-if ( ! function_exists( 'accesspress_mag_setup' ) ) :
+if ( ! function_exists( 'tutannet_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  *
@@ -20,15 +20,14 @@ if ( ! function_exists( 'accesspress_mag_setup' ) ) :
  * runs before the init hook. The init hook is too late for some features, such
  * as indicating support for post thumbnails.
  */
-function accesspress_mag_setup() {
+function tutannet_setup() {
 
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Accesspress Mag, use a find and replace
+	 * If you're building a theme based on TuTanNet, use a find and replace
 	 * to change 'tutannet' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'tutannet', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -85,15 +84,15 @@ function accesspress_mag_setup() {
 		'default-image' => '',
 	) ) );
 }
-endif; // accesspress_mag_setup
-add_action( 'after_setup_theme', 'accesspress_mag_setup' );
+endif; // tutannet_setup
+add_action( 'after_setup_theme', 'tutannet_setup' );
 
 /**
  * Register widget area.
  *
  * @link http://codex.wordpress.org/Function_Reference/register_sidebar
  */
-function accesspress_mag_widgets_init() {
+function tutannet_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'Home top sidebar', 'tutannet' ),
 		'id'            => 'tutannet-home-top-sidebar',
@@ -244,33 +243,30 @@ function accesspress_mag_widgets_init() {
 		'after_title'   => '</span></h1>',
 	) );
 }
-add_action( 'widgets_init', 'accesspress_mag_widgets_init' );
+add_action( 'widgets_init', 'tutannet_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
  */
-function accesspress_mag_scripts() {
-	$font_args = array(
-        'family' => 'Open+Sans:400,600,700,300|Oswald:400,700,300|Dosis:400,300,500,600,700',
-    );
-    wp_enqueue_style('google-fonts', add_query_arg($font_args, "//fonts.googleapis.com/css"));
+function tutannet_scripts() {
     $my_theme = wp_get_theme();
     $theme_version = $my_theme->get('Version'); 
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css');
-    wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($theme_version) ); 
+    wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($theme_version) );    
     wp_enqueue_style( 'fontawesome-font', get_template_directory_uri(). '/css/font-awesome.min.css' );	
     wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css');
+    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
     wp_enqueue_style( '3d-folding-panel-style', get_template_directory_uri() . '/js/codyhouse/3d-folding-panel-style.css' );
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
 
     wp_enqueue_script( 'bxslider-js', get_template_directory_uri(). '/js/jquery.bxslider.min.js', array(), '4.1.2', true );
     wp_enqueue_script( 'tutannet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/wow.min.js', array(), '1.0.1');
-	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/codyhouse/modernizr.js', array('jquery'), '2.8.3' );
 	wp_enqueue_script( 'tutannet-custom-scripts', get_template_directory_uri() . '/js/custom-scripts.js', array('jquery'), '1.0.1' );
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/codyhouse/modernizr.js', array('jquery'), '2.8.3' );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.5' );
 	wp_enqueue_script( 'pace', get_template_directory_uri() . '/js/pace.min.js', array(), '1.0.0' );
 	wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/js/instant-article.js', array(), '1.0.0' );
     
@@ -278,7 +274,7 @@ function accesspress_mag_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'accesspress_mag_scripts' );
+add_action( 'wp_enqueue_scripts', 'tutannet_scripts' );
 
 
 /**
@@ -289,7 +285,7 @@ require get_template_directory().'/inc/option-framework/options-framework.php';
 /**
  * Custom functions that act independently of the theme templates.
  */
-require get_template_directory() . '/inc/accesspress-functions.php';
+require get_template_directory() . '/inc/tutannet-functions.php';
 
 /**
  * Implement the Custom Header feature.
@@ -324,11 +320,11 @@ require get_template_directory() . '/inc/custom-metabox.php';
 /**
  * Load Options AP-Mag Widgets
  */
-require get_template_directory() . '/inc/accesspress-widgets.php';
+require get_template_directory() . '/inc/tutannet-widgets.php';
 
 /**
  * Load Options Plugin Activation
  */
-require get_template_directory() . '/inc/accesspress-plugin-activation.php';
+require get_template_directory() . '/inc/tutannet-plugin-activation.php';
 
 define('OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri(). '/inc/option-framework/');

@@ -7,15 +7,15 @@
  * and that other 'pages' on your WordPress site will use a
  * different template.
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 get_header(); ?>
 	<div class="apmag-container">
         <?php 
-            $accesspress_mag_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
-                if ((function_exists('accesspress_mag_breadcrumbs') && $accesspress_mag_show_breadcrumbs == 1)) {
-    				    accesspress_mag_breadcrumbs();
+            $tutannet_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
+                if ((function_exists('tutannet_breadcrumbs') && $tutannet_show_breadcrumbs == 1)) {
+    				    tutannet_breadcrumbs();
                     }
         ?>
 		<div id="primary" class="content-area">
@@ -38,7 +38,7 @@ get_header(); ?>
 		</div><!-- #primary -->
 
 <?php 
-$page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout', true);
+$page_sidebar = get_post_meta( $post -> ID, 'tutannet_page_sidebar_layout', true);
     if($page_sidebar!='no-sidebar'){
         $option_value = explode('-',$page_sidebar); 
         get_sidebar($option_value[0]);

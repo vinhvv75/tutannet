@@ -4,15 +4,15 @@
  *
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Accesspress Mag
+ * @package TuTanNet
  */
 
 get_header(); ?>
 <div class="apmag-container">
     <?php   
-        $accesspress_mag_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
-        if ((function_exists('accesspress_mag_breadcrumbs') && $accesspress_mag_show_breadcrumbs == 1)) {
-			    accesspress_mag_breadcrumbs();
+        $tutannet_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
+        if ((function_exists('tutannet_breadcrumbs') && $tutannet_show_breadcrumbs == 1)) {
+			    tutannet_breadcrumbs();
             }
     ?>
 	<div id="primary" class="content-area">
@@ -30,7 +30,7 @@ get_header(); ?>
 
 			<header class="page-header">
 				<?php
-					accesspress_mag_the_archive_title( '<h1 class="page-title"><span>', '</span></h1>' );
+					tutannet_the_archive_title( '<h1 class="page-title"><span>', '</span></h1>' );
 					//the_archive_description( '<div class="taxonomy-description">', '</div>' );
 				?>
 			</header><!-- .page-header -->

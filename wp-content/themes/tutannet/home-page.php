@@ -28,7 +28,7 @@ get_header();
 	          	      <?php 
 	          	          $block1_cat = of_get_option('featured_block_1');
 	          	          if(!empty($block1_cat)):
-	          	              $posts_for_block1 = 5;
+	          	              $posts_for_block1 = of_get_option('posts_for_block1');
 	          	              $category_info_1 = get_category_by_slug($block1_cat);
 	          	              $block1_args = array(
 	          	                                  'category_name'=>$block1_cat,
@@ -36,6 +36,7 @@ get_header();
 	          	                                  'posts_per_page'=>$posts_for_block1,
 	          	                                  'order'=>'DESC'
 	          	                                  );
+	          	              echo '<h3 class="block-cat-name row"> <span>'. esc_attr($category_info_1->name) .'</span></h3>';
 	          	              $block1_query = new WP_Query($block1_args);
 	          	              $b_counter = -1;
 	          	              $total_posts_block1 = $block1_query->found_posts;
@@ -45,6 +46,7 @@ get_header();
 	          	                      $block1_query->the_post();
 	          	                      $b1_image_id = get_post_thumbnail_id();
 	          	                      $b1_big_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-big-thumb',true);
+	          	                      $b1_small_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-small-thumb',true);
 	          	                      $b1_image_alt = get_post_meta($b1_image_id,'_wp_attachment_image_alt',true);
 	          	      ?>	         
 	          	      			
@@ -56,29 +58,30 @@ get_header();
 									    	echo '</a></div>';
 									    endif;
 									echo '</div>';
-									echo '<div class="rightposts-wrapper col-xs-5 cd-main">
-										<div id="instant-container-1" class="cd-gallery">
-										<h3 class="block-cat-name"> <span>' . esc_attr($category_info_1->name) . '</span></h3>'; 
-								  	echo '<div class="featuredposts-wrapper row">';} if($b_counter > 0 && $b_counter == 1){ echo '<div class="blockposts-wrapper row">';} ?>	          	      			
+									echo '<div class="rightposts-wrapper col-xs-4 wow fadeInRight cd-main">
+										<div id="instant-container-1" class="cd-gallery">'; 
+								  	echo '<div class="featuredposts-wrapper row">';} 
+								  	if ($b_counter > 0 && $b_counter == 1){ echo '<div class="blockposts-wrapper row">';} ?>	          	      			
 	          	                  <li id="news-<?php echo $b_counter;?>" class="cd-item">
 	          	                  	<div class="post-desc-wrapper">
 	          	                  	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
-	          	                  	    <h3 class="post-title"><a title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-	          	                  	    <?php if($b_counter == 0) {echo '<div class="post-content">' . get_the_excerpt() . '</div>';}?>
+	          	                  	    <h3 class="post-title"><a title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b1_small_image_path[0] );?>" ><?php the_title();?></a></h3>
+	          	                  	    <div class="post-content"><?php the_excerpt() ?></div>
 	          	                  	</div>
 	          	                  	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
 	          	                  </li>
-	          	      <?php        
-	          	      				if($b_counter == 0){ echo '</div>';} 
-//	          	      				if($b_counter>0 && $b_counter%2==0){echo '<div class="clearfix"></div>';}
-	          	      				if($b_counter>0 && $b_counter==$total_posts_block1){echo '</div>';}            
+	          	      			<?php  
+	          	      				if($b_counter == 0){ echo '</div>';}
+	          	      				if($b_counter>0 && $b_counter==$total_posts_block1){echo '</div>';} ?>
+	          	      	<?php
 	          	              	}
 	          	              }
+	          	              echo '</div>';
+	          	              echo '</div>';
+	          	              echo '</div>';
 	          	              endif;
-	          	      ?>
-	          	      
-	          	      	</div>
-	              	</div>	              	
+	          	      	?>
+	          	<div class="postimages-wrapper col-xs-4"><div id="first_block_imageHolder" class="animated"></div></div>
               </section>
               
               <div class="cd-folding-panel">

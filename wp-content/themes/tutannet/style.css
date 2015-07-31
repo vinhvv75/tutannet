@@ -2012,18 +2012,23 @@ body.boxed-layout {
 	
 	.post-desc-wrapper {
 		margin-bottom: 40px;
-		width: 80%;
-		margin: 0 10% 40px 0;
+		width: 90%;
+		margin: 0 0 20px 0;
 	}
 	
 	.post-title {
-		font: normal normal 20px Georgia, "Times New Roman", Times, serif;
+		font: normal normal 15px Georgia, "Times New Roman", Times, serif;
 		letter-spacing: 1px;
 		margin: 0;
 	}
 	
 	.post-title a {
 		color: #333333;
+	}
+	
+	.post-title a:hover {
+		color: #EF5224;
+		text-decoration: none;
 	}
 	
 	.block-poston {
@@ -2033,7 +2038,7 @@ body.boxed-layout {
 	.block-poston, 
 	.block-poston span {
 		color: #9B9B9B;
-		font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		font: 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 		font-style: normal;
 		text-transform: uppercase;
 		letter-spacing: 1px;
@@ -2053,7 +2058,7 @@ body.boxed-layout {
 	
 	.tagged_on a {
 		text-decoration: none;
-		color: #333333;
+		color: #004080;
 	}
 	
 	.post-content {
@@ -2069,7 +2074,10 @@ body.boxed-layout {
 /*--------------------------------------------------------------
 	first block css 
 	--------------------------------------------------------------*/
-
+	.first-block .leftposts-wrapper {
+		float: left;
+	}
+	
 	.first-block .leftposts-wrapper .post-image {
 		height: 100%;
 		overflow: hidden;
@@ -2093,7 +2101,8 @@ body.boxed-layout {
 	}
 	
 	.first-block .rightposts-wrapper {
-		margin-left: 2%;
+		padding-left: 3%;
+		float: none;
 	}
 	
 	.first-block .rightposts-wrapper .featuredposts-wrapper {
@@ -2101,20 +2110,24 @@ body.boxed-layout {
 	}
 	
 	.first-block .rightposts-wrapper .featuredposts-wrapper .post-title {
-		font-size: 32px;
+		font-size: 28px;
 	}		
 	
 	.first-block .rightposts-wrapper .featuredposts-wrapper .post-content {
-		font-size: 16px;
+		font-size: 13px;
 		line-height: 22px;
 		color: #4C4C4C;
 	}
 	
-	.first-block .rightposts-wrapper .post-image {
-		width: 20%;
+	.first-block .rightposts-wrapper .blockposts-wrapper .post-image {
+		display: none;
 	}
 	
-	.first-block .rightposts-wrapper .featuredposts-wrapper .post-image .big-image-overlay {
+	.first-block .rightposts-wrapper .blockposts-wrapper .post-content {
+		display: none;
+	}
+	
+	.first-block .leftposts-wrapper .featuredposts-wrapper .post-image .big-image-overlay {
 		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkYjllOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzMyNGE1ZCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 		background: -moz-linear-gradient(top,  rgba(125,185,232,0) 0%, rgba(50,74,93,0) 60%, rgba(0,0,0,1) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,185,232,0)), color-stop(60%,rgba(50,74,93,0)), color-stop(100%,rgba(0,0,0,1)));
@@ -2124,6 +2137,19 @@ body.boxed-layout {
 		background: linear-gradient(to bottom,  rgba(125,185,232,0) 0%,rgba(50,74,93,0) 60%,rgba(0,0,0,1) 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 );
 			}
+			
+	.first-block .postimages-wrapper {
+		float: right;
+		padding: 0;
+	}
+	
+	#first_block_imageHolder {
+		position: relative;
+	}
+	
+	#first_block_imageHolder img {
+		width: 100%;	
+	}
 	
 
 	
@@ -3063,7 +3089,7 @@ Galleries
 	Breadcrumb css 
 	--------------------------------------------------------------*/
 
-	#accesspres-mag-breadcrumbs,.woocommerce-breadcrumb {
+	#accesspres-mag-breadcrumbs {
 		background: none repeat scroll 0 0 #f1f1f1;
 		margin-bottom: 20px;
 		padding: 0;
@@ -3090,7 +3116,7 @@ Galleries
 		height: 0;
 	}
 
-	#accesspres-mag-breadcrumbs .ak-container, .woocommerce-breadcrumb .ak-container {
+	#accesspres-mag-breadcrumbs .ak-container {
 		float: left;
 		padding: 5px 0 5px 20px ;
 	}
@@ -3105,10 +3131,6 @@ Galleries
 
 	#accesspres-mag-breadcrumbs .ak-container > .current{
 		color: #dc3522;
-	}
-
-	.woocommerce-breadcrumb {
-		width: 143%;
 	}
 
 /*--------------------------------------------------------------

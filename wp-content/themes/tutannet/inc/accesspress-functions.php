@@ -387,7 +387,7 @@ add_action( 'tutannet_attachment_image_on', 'tutannet_attachment_image_on_cb', 1
 /*-------------------Excerpt length---------------------*/
 
 function tutannet_customize_excerpt_more( $more ) {
-	return '...';
+	return ' ...';
 }
 add_filter( 'excerpt_more', 'tutannet_customize_excerpt_more' );
 
@@ -399,7 +399,7 @@ function tutannet_word_count( $string, $limit ) {
 }
 
 function tutannet_excerpt_length( $length ) {
-	return 25;
+	return 40;
 }
 add_filter( 'excerpt_length', 'tutannet_excerpt_length', 10 );
 
@@ -533,39 +533,6 @@ function tutannet_excerpt(){
 	    echo '</div></div>';	  
 	  }
 	}
-    
-/*--------------WooCommerce breadcrumbs---------------------*/
-add_filter( 'woocommerce_breadcrumb_defaults', 'tutannet_woocommerce_breadcrumbs' ); 
-
-function tutannet_woocommerce_breadcrumbs() { 
-$seperator = ' <span class="bread_arrow"> > </span> ';    
-//$seperator =of_get_option( 'breadcrumb_seperator' ); 
-$trans_home = of_get_option( 'trans_home' );
-if( empty( $trans_home ) ){ $trans_home = __( 'Home', 'tutannet' ); }
-$home_text = $trans_home ;
-
-$trans_here = of_get_option( 'trans_you_are_here' );
-if( empty( $trans_here ) ){ $trans_here = __( 'You are here', 'tutannet' ); }
-//$home_text =of_get_option( 'breadcrumb_home' ); 
-return array( 
-'delimiter' => " ".$seperator." ", 
-'before' => '', 
-'after' => '', 
-'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb"><span class="bread-you">'.$trans_here.'</span><div class="ak-container">', 
-'wrap_after' => '</div></nav>', 
-'home' => _x( $home_text, 'breadcrumb', 'woocommerce' ), 
-); 
-} 
-
-add_action( 'init', 'tutannet_remove_wc_breadcrumbs' ); 
-function tutannet_remove_wc_breadcrumbs() { 
-remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 ); 
-} 
-
-$accesspress_show_breadcrumb = of_get_option( 'show_hide_breadcrumbs' ); 
-if((function_exists('tutannet_woocommerce_breadcrumbs') && $accesspress_show_breadcrumb == 1)) { 
-add_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 10, 0 ); 
-} 
 
 /*------------Remove bbpress breadcrumbs-----------------------*/
 

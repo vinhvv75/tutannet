@@ -1,0 +1,28 @@
+.easeOuQuad {
+	-webkit-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940) !important;
+	-moz-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940) !important;
+	-o-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940) !important;
+	transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940) !important; /* easeOutQuad */
+}
+
+.easeOutBack {
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1) !important; /* older webkit */
+	-webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275) !important;
+	-moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275) !important;
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275) !important;
+   	transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275) !important; /* easeOutBack */    
+}
+
+.easeOutCirc {
+	-webkit-transition-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000) !important;
+	-moz-transition-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000) !important;
+	-o-transition-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000) !important;
+	transition-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000) !important; /* easeOutCirc */
+}
+
+.easeOutSine {
+	-webkit-transition-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000) !important;
+	-moz-transition-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000) !important;
+	-o-transition-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000) !important;
+	transition-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000) !important; /* easeOutSine */
+}

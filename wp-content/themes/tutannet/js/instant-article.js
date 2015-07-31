@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
 		page_start = new Date().getTime();
 	/* open folding content */
 	gallery.on('click', 'a', function(event){
-		console.log('Loading "' + $(this).attr('title') + '" ...');
+		console.log('Loading "' + $(this).attr('title') + '"');
 		article_start = new Date().getTime();
 		post_id = $(this).attr('rel');
 		post_url = $(this).attr('href');
@@ -111,8 +111,8 @@ jQuery(document).ready(function($){
 		console.log('----------------------------------------');
 		
 		if (page_time < 60) {
-			var articleList = queryArticles(section,autosave_mode);
-			$.when(articleList).done(function(){autoSaveArticleList(articleList);});
+//			var articleList = queryArticles(section,autosave_mode);
+//			$.when(articleList).done(function(){autoSaveArticleList(articleList);});
 		}
 	});
 });
@@ -130,7 +130,7 @@ function getPostUrl(id) {
 
 function saveArticle(id) {
 	if (isSupportLocalStorage) {
-		var readPost = $('#post-'+id),
+		var readPost = jQuery('#post-'+id),
 			readContent = readPost.parent(),
 			entry = readContent.prop('outerHTML');
 		if(typeof entry === 'undefined' || entry === null) {
@@ -147,8 +147,8 @@ function retrieveArticle(id,complete) {
 	if (isSupportLocalStorage) {
 		console.log('Retrieving data of article id', id);
 		var content = localStorage.getItem('tutannet_post-' + id);
-		$(content).replaceAll('.instant-article');
-		$.when( $(content) ).done(function(){ complete(); });
+		jQuery(content).replaceAll('.instant-article');
+		jQuery.when( jQuery(content) ).done(function(){ complete(); });
 	} else return false;
 }
 

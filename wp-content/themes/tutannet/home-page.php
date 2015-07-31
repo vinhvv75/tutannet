@@ -18,20 +18,18 @@ get_header();
 
     <section class="slider-wrapper">
         <div class="tutannet-container"> 
-            <!--<?php do_action('accesspress_mag_slider');?>-->
+            <!--<?php do_action('tutannet_slider');?>-->
         </div>                  
     </section>
-    <div class="tutannet-container">
+    <div class="container">
 	<div id="primary-second" class="content-area">
 		<main id="main" class="site-main" role="main">
-              <section class="first-block wow fadeInUp clearfix" data-wow-delay="0.5s">
-	              <div class="cd-main">
+              <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 	          	      <?php 
 	          	          $block1_cat = of_get_option('featured_block_1');
 	          	          if(!empty($block1_cat)):
-	          	              $posts_for_block1 = of_get_option('posts_for_block1');
+	          	              $posts_for_block1 = 5;
 	          	              $category_info_1 = get_category_by_slug($block1_cat);
-	          	              echo '<ul id="instant-container-1" class="cd-gallery">';
 	          	              $block1_args = array(
 	          	                                  'category_name'=>$block1_cat,
 	          	                                  'post_status'=>'publish',
@@ -39,36 +37,48 @@ get_header();
 	          	                                  'order'=>'DESC'
 	          	                                  );
 	          	              $block1_query = new WP_Query($block1_args);
-	          	              $b_counter = 0;
+	          	              $b_counter = -1;
 	          	              $total_posts_block1 = $block1_query->found_posts;
 	          	              if($block1_query->have_posts()){
 	          	                  while($block1_query->have_posts()){
 	          	                      $b_counter++;
 	          	                      $block1_query->the_post();
 	          	                      $b1_image_id = get_post_thumbnail_id();
-	          	                      $b1_big_image_path = wp_get_attachment_image_src($b1_image_id,'accesspress-mag-block-big-thumb',true);
+	          	                      $b1_big_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-big-thumb',true);
 	          	                      $b1_image_alt = get_post_meta($b1_image_id,'_wp_attachment_image_alt',true);
-	          	      ?>
+	          	      ?>	         
+	          	      			
+								<?php if($b_counter == 0){ 
+									echo '<div class="leftposts-wrapper row col-xs-4 wow fadeInLeft">';
+										if(has_post_thumbnail()):  
+									    	echo '<div class="post-image easeOutCirc"><a href="' . get_the_permalink() . '">';
+									    	echo '<img src="' . esc_url( $b1_big_image_path[0] ) . '" alt="' . esc_attr($b1_image_alt) . '" />';
+									    	echo '</a></div>';
+									    endif;
+									echo '</div>';
+									echo '<div class="rightposts-wrapper col-xs-5 cd-main">
+										<div id="instant-container-1" class="cd-gallery">
+										<h3 class="block-cat-name"> <span>' . esc_attr($category_info_1->name) . '</span></h3>'; 
+								  	echo '<div class="featuredposts-wrapper row">';} if($b_counter > 0 && $b_counter == 1){ echo '<div class="blockposts-wrapper row">';} ?>	          	      			
 	          	                  <li id="news-<?php echo $b_counter;?>" class="cd-item">
-	          	                  	<a title="<?php the_title();?>" rel="<?php the_ID();?>" href="<?php the_permalink();?>"></a>
-	          	                  	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>">
+	          	                  	<div class="post-desc-wrapper">
+	          	                  	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
+	          	                  	    <h3 class="post-title"><a title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>"><?php the_title();?></a></h3>
+	          	                  	    <?php if($b_counter == 0) {echo '<div class="post-content">' . get_the_excerpt() . '</div>';}?>
 	          	                  	</div>
-	          	                          <div>
-	          	                          	<h2><?php the_title();?></h2>
-	          	                          	<b>View More</b>
-	          	                          </div>
+	          	                  	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
 	          	                  </li>
-	          	                  <?php if($b_counter%$total_posts_block1==0){echo '</ul>';}?>                    
-	          	      <?php                    
-	          	                  }
+	          	      <?php        
+	          	      				if($b_counter == 0){ echo '</div>';} 
+//	          	      				if($b_counter>0 && $b_counter%2==0){echo '<div class="clearfix"></div>';}
+	          	      				if($b_counter>0 && $b_counter==$total_posts_block1){echo '</div>';}            
+	          	              	}
 	          	              }
-	          	              endif ;
+	          	              endif;
 	          	      ?>
-	          	     
-	              	</div>
-	              	
-	              	
-	                  <?php wp_reset_query(); ?>
+	          	      
+	          	      	</div>
+	              	</div>	              	
               </section>
               
               <div class="cd-folding-panel">
@@ -108,8 +118,8 @@ get_header();
                                     $b_counter++;
                                     $block2_query->the_post();
                                     $b2_image_id = get_post_thumbnail_id();
-                                    $b2_big_image_path = wp_get_attachment_image_src($b2_image_id,'accesspress-mag-block-big-thumb',true);
-                                    $b2_small_image_path = wp_get_attachment_image_src($b2_image_id,'accesspress-mag-block-small-thumb',true);
+                                    $b2_big_image_path = wp_get_attachment_image_src($b2_image_id,'tutannet-block-big-thumb',true);
+                                    $b2_small_image_path = wp_get_attachment_image_src($b2_image_id,'tutannet-block-small-thumb',true);
                                     $b2_image_alt = get_post_meta($b2_image_id,'_wp_attachment_image_alt',true);
                     ?>
                                 <?php if($b_counter==1){echo '<div class="leftposts-wrapper">';} if($b_counter>1 && $b_counter==2){echo '<div class="rightposts-wrapper">';}?>
@@ -122,9 +132,9 @@ get_header();
                                     <?php endif ; ?>
                                         <div class="post-desc-wrapper">
                                             <h3 class="post-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-                                            <div class="block-poston"><?php do_action('accesspress_mag_home_posted_on');?></div>
+                                            <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
                                         </div>
-                                        <?php if($b_counter ==1 ):?><div class="post-content"><?php echo '<p>'. accesspress_mag_word_count( get_the_content(), 25 ) .'</p>' ;?></div><?php endif ;?>
+                                        <?php if($b_counter ==1 ):?><div class="post-content"><?php echo '<p>'. tutannet_word_count( get_the_content(), 25 ) .'</p>' ;?></div><?php endif ;?>
                                 </div>
                                 <?php if($b_counter==1){echo '</div>';} if($b_counter>1 && $b_counter==$total_posts_block2){echo '</div>';}?>                    
                     <?php                    
@@ -136,12 +146,6 @@ get_header();
                     ?>
               </section>
 
-            <?php 
-                if ( is_active_sidebar( 'accesspress-mag-homepage-inline-ad' ) ) : ?>
-                <div class="homepage-middle-ad wow flipInX" data-wow-delay="1s">
-                    <?php dynamic_sidebar( 'accesspress-mag-homepage-inline-ad' ); ?> 
-                </div>
-            <?php endif; ?>
 
               <section class="third-block clearfix wow fadeInUp" data-wow-delay="0.5s">
                     <?php 
@@ -166,8 +170,8 @@ get_header();
                                     $b_counter++;
                                     $block3_query->the_post();
                                     $b3_image_id = get_post_thumbnail_id();
-                                    $b3_big_image_path = wp_get_attachment_image_src($b3_image_id,'accesspress-mag-block-big-thumb',true);
-                                    $b3_small_image_path = wp_get_attachment_image_src($b3_image_id,'accesspress-mag-block-small-thumb',true);
+                                    $b3_big_image_path = wp_get_attachment_image_src($b3_image_id,'tutannet-block-big-thumb',true);
+                                    $b3_small_image_path = wp_get_attachment_image_src($b3_image_id,'tutannet-block-small-thumb',true);
                                     $b3_image_alt = get_post_meta($b3_image_id,'_wp_attachment_image_alt',true);
                     ?>
                         <?php if($b_counter==1){echo '<div class="toppost-wrapper">';} if($b_counter> 2 && $b_counter==3){echo '<div class="bottompost-wrapper">';}?>
@@ -179,9 +183,9 @@ get_header();
                             <?php endif ; ?>
                                 <div class="post-desc-wrapper">
                                     <h3 class="post-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-                                    <div class="block-poston"><?php do_action('accesspress_mag_home_posted_on');?></div>
+                                    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
                                 </div>
-                                <?php if($b_counter <=2 ):?><div class="post-content"><?php echo '<p>'. accesspress_mag_word_count( get_the_content(), 25) .'</p>' ;?></div><?php endif ;?>
+                                <?php if($b_counter <=2 ):?><div class="post-content"><?php echo '<p>'. tutannet_word_count( get_the_content(), 25) .'</p>' ;?></div><?php endif ;?>
                         </div>
                         <?php 
                             if($b_counter%2==0){echo '<div class="clearfix"></div>';}
@@ -220,7 +224,7 @@ get_header();
                                     $b_counter++;
                                     $block4_query->the_post();
                                     $b4_image_id = get_post_thumbnail_id();
-                                    $b4_big_image_path = wp_get_attachment_image_src($b4_image_id,'accesspress-mag-block-big-thumb',true);
+                                    $b4_big_image_path = wp_get_attachment_image_src($b4_image_id,'tutannet-block-big-thumb',true);
                                     $b4_image_alt = get_post_meta($b4_image_id,'_wp_attachment_image_alt',true);
                     ?>
                                 <div class="single_post non-zoomin clearfix">
@@ -231,7 +235,7 @@ get_header();
                                         </div>                                
                                     <?php endif ; ?>
                                         <h3 class="post-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
-                                        <div class="block-poston"><?php do_action('accesspress_mag_home_posted_on');?></div>
+                                        <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
                                 </div>
                                 <?php if($b_counter%2==0){echo '<div class="clearfix"></div>';}?>                    
                     <?php                    
@@ -246,7 +250,7 @@ get_header();
 	</div><!-- #primary -->
 <?php 
 wp_reset_query();
-//$page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout', true);
+//$page_sidebar = get_post_meta( $post -> ID, 'tutannet_page_sidebar_layout', true);
 $page_sidebar = 'no-sidebar';
     if($page_sidebar!='no-sidebar'){
         get_sidebar('home');

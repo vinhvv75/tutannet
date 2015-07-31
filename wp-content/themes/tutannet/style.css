@@ -16,8 +16,7 @@ Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 /*--------------------------------------------------------------
 Imports
 --------------------------------------------------------------*/
-@import url(http://fonts.googleapis.com/css?family=Noticia+Text&subset=latin,vietnamese);
-
+@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
 
 /*--------------------------------------------------------------
 Reset
@@ -1573,6 +1572,35 @@ body.boxed-layout {
 	Slider css 
 	--------------------------------------------------------------*/
 
+	.row-eq-height {
+	  display: -webkit-box;
+	  display: -webkit-flex;
+	  display: -ms-flexbox;
+	  display: flex;
+	}
+	
+	.bx-wrapper {
+		width: 100%;
+		height: 100%;
+	}
+	
+	.fill { 
+	    min-height: 100%;
+	    height: 100%;
+	    background: red;
+	    display: table-cell;
+	}
+	
+	.slide-image {
+		min-height: 100%;
+		height: 100%;
+	}
+	
+	.slide-image img {
+		min-height: 100%;
+		height: 100%;
+	}
+	
 	.slider-wrapper {
 		margin-bottom: 55px;
 	}
@@ -1683,7 +1711,7 @@ body.boxed-layout {
 		left: 0;
 		position: absolute;
 		top: 0;
-		width: 765px;
+		width: 100%;
 	}
 
 	.small_slide:after{
@@ -1729,7 +1757,11 @@ body.boxed-layout {
 
 	.small-slider-wrapper a .slide-image,
 	.slider a .slide-image{
-		overflow: hidden;
+		/*overflow: hidden;*/
+	}
+	
+	.big_slide {
+		height: 200% !important;	
 	}
 
 
@@ -1902,11 +1934,9 @@ body.boxed-layout {
 		z-index: 99;
 	}
 
-	.block-cat-name,
 	#secondary .widget-title,
 	#secondary .sidebar-title,
 	#colophon .widget-title {
-		/*background: url("images/slight-border.png") repeat-x scroll left bottom;*/
 		font: normal normal 24px Georgia, "Times New Roman", Times, serif;
 		line-height: 16px;
 		text-transform: uppercase;
@@ -1917,7 +1947,6 @@ body.boxed-layout {
 	.block-cat-name > span,
 	#secondary .widget-title > span,
 	#secondary .sidebar-title > span {
-		background: none repeat scroll 0 0 #ffffff;
 		padding-right: 10px;
 	}
 
@@ -1958,13 +1987,22 @@ body.boxed-layout {
 	common section css 
 	--------------------------------------------------------------*/	
 	
+	.block-cat-name {
+		font: normal normal 18px "Times New Roman", Times, serif;
+		line-height: 16px;
+		text-transform: uppercase;
+		color: #D2B55B;
+		letter-spacing: 2px;
+		margin: 0;
+		margin-bottom: 10px;
+	}
+	
 	.post-image .big-image-overlay, .post-image .big-title-overlay{
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		/*background: rgba(255,223,67,0);*/
 		-webkit-transition: background 0.3s ease 0s;
 		-moz-transition: background 0.3s ease 0s;
 		transition: background 0.3s ease 0s;
@@ -1972,98 +2010,111 @@ body.boxed-layout {
 		display: block;
 	}
 	
+	.post-desc-wrapper {
+		margin-bottom: 40px;
+		width: 80%;
+		margin: 0 10% 40px 0;
+	}
+	
+	.post-title {
+		font: normal normal 20px Georgia, "Times New Roman", Times, serif;
+		letter-spacing: 1px;
+		margin: 0;
+	}
+	
+	.post-title a {
+		color: #333333;
+	}
+	
+	.block-poston {
+		margin-bottom: 5px;
+	}
+	
+	.block-poston, 
+	.block-poston span {
+		color: #9B9B9B;
+		font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		font-style: normal;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+	}
+	
+	.posted-on.today {
+		color: #F38A6C;
+	}
+	
+	.posted-on.new {
+		color: #00AD83;
+	}
+	
+	.tagged_on {
+		padding-left: 5px;
+	}
+	
+	.tagged_on a {
+		text-decoration: none;
+		color: #333333;
+	}
+	
+	.post-content {
+		font: italic 14px/22px Georgia, "Times New Roman", Times, serif;
+		color: #4C4C4C;
+		margin-top: 10px;
+	}
+	
+	
+		
 	
 	
 /*--------------------------------------------------------------
 	first block css 
 	--------------------------------------------------------------*/
 
-	.first-block-wrapper .block-post-wrapper {
-		margin-left: 0;
-		position: relative;
+	.first-block .leftposts-wrapper .post-image {
+		height: 100%;
+		overflow: hidden;
 	}
 	
-	.first-block-wrapper .topposts-wrapper {
-		position: relative;
+	.first-block .leftposts-wrapper .post-image img {
+		height: 100%;
+		min-width: 200%;
+		-webkit-transition: all 2s;
+		-o-transition: all 2s;
+		transition: all 2s;
 	}
 	
-	.first-block-wrapper .topposts-wrapper .single_post {
-		width: 50%;
+	.first-block .leftposts-wrapper .post-image img:hover {
+		-ms-transform: translateX(-50%);
+		-webkit-transform: translateX(-50%);
+		transform: translateX(-50%); 
+		-webkit-transition: all 2s;
+		-o-transition: all 2s;
+		transition: all 2s;
 	}
 	
-	.first-block-wrapper .bottomposts-wrapper {
-		position: relative;
-		width: auto;
-		height: 250px;
+	.first-block .rightposts-wrapper {
+		margin-left: 2%;
 	}
 	
-	.first-block-wrapper .bottomposts-wrapper.holder {
-		position: relative;
-		overflow: visible;
+	.first-block .rightposts-wrapper .featuredposts-wrapper {
+		margin-bottom: 0;
 	}
 	
-	.first-block-wrapper .bottomposts-wrapper ul {
-		margin: 0;
-		padding: 0;
-		list-style: none;
+	.first-block .rightposts-wrapper .featuredposts-wrapper .post-title {
+		font-size: 32px;
+	}		
+	
+	.first-block .rightposts-wrapper .featuredposts-wrapper .post-content {
+		font-size: 16px;
+		line-height: 22px;
+		color: #4C4C4C;
 	}
 	
-	.first-block-wrapper .bottomposts-wrapper ul.list {
-		position: relative;
-		display: inline-block;
-		list-style: none;
+	.first-block .rightposts-wrapper .post-image {
+		width: 20%;
 	}
 	
-	.first-block-wrapper .bottomposts-wrapper ul.list.cloned {
-		position:absolute;
-		top:0;
-		left:0;
-	}
-	
-	.first-block-wrapper .bottomposts-wrapper li {
-		float: left;
-		/*width: 33%;*/
-		/*width: 300px;*/
-		margin: 0 !important;
-	}
-	
-	
-	
-	
-	
-	.first-block-wrapper .bottomposts-wrapper .single_post {
-		/*width: 33%;*/
-		/*display: inline-block;*/
-		/*float: left;*/
-		/*margin-left: 5px;*/
-		display: inline-block;
-	}
-	
-	.first-block-wrapper .bottomposts-wrapper .single_post:first-child {
-		margin-left: 0;
-	}
-	
-	.first-block .single_post.first-post .post-image {
-		position: relative;
-	}
-	
-	.first-block .single_post.first-post .post-desc-wrapper {
-		position: absolute;
-		bottom: 5%;
-		padding-left: 3%;
-		width: 90%;
-		margin: 0 auto;
-		text-align: left;
-		display: block;
-		z-index: 10;
-	}
-	
-	.first-block .single_post.first-post .post-desc-wrapper .post-title a,
-	.first-block .single_post.first-post .post-desc-wrapper .post-content {
-		color: #FFFFFF !important;
-	}
-	
-	.first-block .single_post.first-post .post-image .big-image-overlay {
+	.first-block .rightposts-wrapper .featuredposts-wrapper .post-image .big-image-overlay {
 		background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkYjllOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzMyNGE1ZCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 		background: -moz-linear-gradient(top,  rgba(125,185,232,0) 0%, rgba(50,74,93,0) 60%, rgba(0,0,0,1) 100%);
 		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,185,232,0)), color-stop(60%,rgba(50,74,93,0)), color-stop(100%,rgba(0,0,0,1)));
@@ -2074,9 +2125,7 @@ body.boxed-layout {
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 );
 			}
 	
-	.first-block .first-block-wrapper .topposts-wrapper .post-desc-wrapper {
-		width: 80%;
-	}
+
 	
 	
 	
@@ -2266,14 +2315,7 @@ body.boxed-layout {
 		color: #DC3522;
 	}
 
-	.block-poston, 
-	.block-poston span {
-		color: #9B9B9B;
-		font: 14px 'Noticia Text', serif;
-		font-style: normal;
-		text-transform: none;
-		letter-spacing: 1px;
-	}
+	
 
 	.block-post-wrapper .post-content {
 		margin-top: 5px;
@@ -2281,23 +2323,7 @@ body.boxed-layout {
 		color: #9B9B9B;
 	}
 
-	.block-poston .comment_count i, 
-	.block-poston .apmag-post-views i {
-		margin: 0 8px 0 25px;
-	}
 	
-	.block-poston.today {
-		background: #29AB87;
-		color: #fff;
-	}
-	
-	.block-poston.new-post {
-		color: #00AD83;
-		padding: 3px;
-		-webkit-border-radius: 3px;
-		-moz-border-radius: 3px;
-		border-radius: 3px;
-	}
 
 	.bottompost-wrapper .single_post {
 		float: left;
@@ -2386,13 +2412,12 @@ body.boxed-layout {
 	}
 
 
-	.first-block-wrapper .leftposts-wrapper, 
 	.second-block-wrapper .leftposts-wrapper{
 		width: 49%;
 		float: left;
 	}
+	
 
-	.first-block-wrapper .rightposts-wrapper,
 	.second-block-wrapper .rightposts-wrapper{
 		float: right;
 		width: 48.5%;

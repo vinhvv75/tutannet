@@ -22,38 +22,38 @@ if ( version_compare( $GLOBALS['wp_version'], '4.1', '<' ) ) :
 	 * @link https://make.wordpress.org/core/2014/10/29/title-tags-in-4-1/
 	 * @todo Remove this function when WordPress 4.3 is released.
 	 */
-	function accesspress_mag_render_title() {
+	function tutannet_render_title() {
 		?>
 		<title><?php wp_title( '|', true, 'right' ); ?></title>
 		<?php
 	}
-	add_action( 'wp_head', 'accesspress_mag_render_title' );
+	add_action( 'wp_head', 'tutannet_render_title' );
 endif;
 
-function accesspress_mag_header_scripts(){
+function tutannet_header_scripts(){
     
-    $accesspress_mag_favicon = of_get_option('favicon_upload');
-    if (!empty($accesspress_mag_favicon)) {
-        echo '<link rel="icon" type="image/png" href="' . esc_url( $accesspress_mag_favicon ) . '">';
+    $tutannet_favicon = of_get_option('favicon_upload');
+    if (!empty($tutannet_favicon)) {
+        echo '<link rel="icon" type="image/png" href="' . esc_url( $tutannet_favicon ) . '">';
     }
 }
 
-add_action('wp_head', 'accesspress_mag_header_scripts');
+add_action('wp_head', 'tutannet_header_scripts');
 
 /*---------Enqueue custom admin panel JS---------------*/
-function accesspress_mag_admin_scripts(){
-    wp_enqueue_script('accesspress-mag-custom-admin', get_template_directory_uri(). '/inc/option-framework/js/custom-admin.js', array( 'jquery'));    
+function tutannet_admin_scripts(){
+    wp_enqueue_script('tutannet-custom-admin', get_template_directory_uri(). '/inc/option-framework/js/custom-admin.js', array( 'jquery'));    
  }
-add_action('admin_enqueue_scripts','accesspress_mag_admin_scripts');
+add_action('admin_enqueue_scripts','tutannet_admin_scripts');
 
 /*---------Enqueue admin css---------------*/
-function accesspress_mag_admin_css(){
-    wp_enqueue_style('accesspress-mag-admin', get_template_directory_uri(). '/inc/option-framework/css/accesspress-mag-admin.css');    
+function tutannet_admin_css(){
+    wp_enqueue_style('tutannet-admin', get_template_directory_uri(). '/inc/option-framework/css/tutannet-admin.css');    
 }
-add_action('admin_head','accesspress_mag_admin_css');
+add_action('admin_head','tutannet_admin_css');
 
 /*-----------------------Homepage slider--------------------------*/
-function accesspress_mag_slider_cb(){
+function tutannet_slider_cb(){
         $slider_category = of_get_option( 'homepage_slider_category' );
         if(empty($slider_category)){
             $slider_category=''; }    
@@ -84,8 +84,8 @@ function accesspress_mag_slider_cb(){
                 $slide_counter++;                                                            
                 $slider_query->the_post();
                 $post_image_id = get_post_thumbnail_id();
-                $post_big_image_path = wp_get_attachment_image_src( $post_image_id, 'accesspress-mag-slider-big-thumb', true );
-                $post_small_image_path = wp_get_attachment_image_src( $post_image_id, 'accesspress-mag-slider-small-thumb', true );
+                $post_big_image_path = wp_get_attachment_image_src( $post_image_id, 'tutannet-slider-big-thumb', true );
+                $post_small_image_path = wp_get_attachment_image_src( $post_image_id, 'tutannet-slider-small-thumb', true );
                 $post_image_alt = get_post_meta( $post_image_id, '_wp_attachment_image_alt', true );
                 if($slide_counter%4==1):
             ?>                        
@@ -98,7 +98,7 @@ function accesspress_mag_slider_cb(){
                         <div class="big_slide wow fadeInLeft">
                             <div class="big-cat-box">
                                 <span class="cat-name"><?php $cat_name = get_the_category(); echo esc_attr( $cat_name[0]->name ); ?></span>
-                                <?php do_action('accesspress_mag_post_meta');?>
+                                <?php do_action('tutannet_post_meta');?>
                             </div>
                             <div class="slide-image"><img src="<?php echo esc_url( $post_big_image_path[0] );?>" alt="<?php echo esc_attr($post_image_alt);?>" /></div>
                             <?php if($slide_info==1):?>
@@ -130,10 +130,54 @@ function accesspress_mag_slider_cb(){
             echo '</div>';
             }
  }
-add_action( 'accesspress_mag_slider', 'accesspress_mag_slider_cb', 10 );
+add_action( 'tutannet_slider', 'tutannet_slider_cb', 10 );
+
+/*-----------------------Homepage First Block slider--------------------------*/
+function tutannet_first_slider_cb(){
+        $slider_category = of_get_option( 'featured_block_1' );
+        if(empty($slider_category)){
+            $slider_category=''; }    
+        $slide_count = of_get_option( 'posts_for_block1' );
+        $slider_args = array(
+                    'category_name'=>$slider_category,
+                    'post_type'=>'post',
+                    'post_status'=>'publish',
+                    'order'=>'DESC',
+                    'meta_query' => array(
+                                        array(
+                                            'key' => '_thumbnail_id',
+                                            'compare' => '!=',
+                                            'value' => null
+                                        )
+                                    )
+                        );
+        $slider_query = new WP_Query($slider_args);
+        $slide_counter = 0; 
+        if($slider_query->have_posts())
+        {
+            echo '<ul id="homeslider">';
+            while($slider_query->have_posts())
+            {
+                $slide_counter++;                                                            
+                $slider_query->the_post();
+                $post_image_id = get_post_thumbnail_id();
+                $post_big_image_path = wp_get_attachment_image_src( $post_image_id, 'tutannet-slider-big-thumb', true );
+                $post_image_alt = get_post_meta( $post_image_id, '_wp_attachment_image_alt', true );
+            ?>                        
+
+            				<li class="big_slide wow fadeInLeft">
+                            <div class="slide-image"><img src="<?php echo esc_url( $post_big_image_path[0] );?>" alt="<?php echo esc_attr($post_image_alt);?>" /></div>
+                            <div class="mag-slider-caption"><h3 class="slide-title"><?php the_title();?></h3></div>
+                            </li>
+            <?php 
+                }
+            echo '</ul>';
+            }
+ }
+add_action( 'tutannet_first_slider', 'tutannet_first_slider_cb', 10 );
 
 
-function accesspress_mag_slider_script(){
+function tutannet_slider_script(){
     $slider_controls = ( of_get_option( 'slider_controls' ) == "1" ) ? "true" : "false";
     $slider_auto_transaction = ( of_get_option( 'slider_auto_transition' ) == "1" ) ? "true" : "false";
     $slider_pager = ( of_get_option( 'slider_pager' ) == "1" ) ? "true" : "false";
@@ -143,18 +187,19 @@ function accesspress_mag_slider_script(){
             $("#homeslider").bxSlider({
                 controls:<?php echo esc_attr($slider_controls); ?>,
                 pager:<?php echo esc_attr($slider_pager);?>,
-                auto:<?php echo esc_attr($slider_auto_transaction);?>
+                auto: false
+//                <?php echo esc_attr($slider_auto_transaction);?>
                                         
             });
             });
     </script>
     <?php
 }
-add_action( 'wp_head', 'accesspress_mag_slider_script' );
+add_action( 'wp_head', 'tutannet_slider_script' );
 
 /*--------------------- Post Views-------------------*/
 
-function accesspress_mag_getPostViews($postID){
+function tutannet_getPostViews($postID){
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
     if($count==''){
@@ -165,7 +210,7 @@ function accesspress_mag_getPostViews($postID){
     return $count;
 }
 
-function accesspress_mag_setPostViews($postID) {
+function tutannet_setPostViews($postID) {
     $count_key = 'post_views_count';
     $count = get_post_meta($postID, $count_key, true);
     if($count==''){
@@ -182,14 +227,14 @@ function accesspress_mag_setPostViews($postID) {
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0); 
 
 /*--------------Sidebar layout for post & pages----------------------*/
-function accesspress_mag_sidebar_layout_class($classes){
+function tutannet_sidebar_layout_class($classes){
     global $post;
     	if( is_404()){
     	$classes[] = ' ';
     	}elseif(is_singular()){
  	    $global_sidebar= of_get_option( 'global_post_sidebar' );
-    	$post_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_sidebar_layout', true );        
-        $page_sidebar = get_post_meta( $post -> ID, 'accesspress_mag_page_sidebar_layout', true );
+    	$post_sidebar = get_post_meta( $post -> ID, 'tutannet_sidebar_layout', true );        
+        $page_sidebar = get_post_meta( $post -> ID, 'tutannet_page_sidebar_layout', true );
         if('post'==get_post_type()){
             if($post_sidebar=='global-sidebar'){
                 $post_class = $global_sidebar;
@@ -211,17 +256,17 @@ function accesspress_mag_sidebar_layout_class($classes){
     	}
     	return $classes;
     }
-add_filter( 'body_class', 'accesspress_mag_sidebar_layout_class' );
+add_filter( 'body_class', 'tutannet_sidebar_layout_class' );
 
 /*--------------Template style layout for post & pages----------------------*/
 
-function accesspress_mag_template_layout_class($classes){
+function tutannet_template_layout_class($classes){
     global $post;
     	if( is_404()){
     	$classes[] = ' ';
     	}elseif(is_singular()){
  	    $global_template= of_get_option( 'global_post_template' );
-    	$post_template = get_post_meta( $post -> ID, 'accesspress_mag_post_template_layout', true );
+    	$post_template = get_post_meta( $post -> ID, 'tutannet_post_template_layout', true );
         if('post'==get_post_type()){
             if($post_template=='global-template'){
                 $post_template_class = $global_template;
@@ -241,11 +286,11 @@ function accesspress_mag_template_layout_class($classes){
     	}
     	return $classes;
     }
-add_filter( 'body_class', 'accesspress_mag_template_layout_class' );
+add_filter( 'body_class', 'tutannet_template_layout_class' );
 
 /*---------------------Website layout---------------------------------*/
 
-function accesspress_mag_website_layout_class( $classes ){
+function tutannet_website_layout_class( $classes ){
     $website_layout = of_get_option( 'website_layout_option' );
     if($website_layout == 'boxed' ){
         $classes[] = 'boxed-layout';
@@ -254,10 +299,10 @@ function accesspress_mag_website_layout_class( $classes ){
     }
     return $classes;
 }
-add_filter( 'body_class', 'accesspress_mag_website_layout_class' );
+add_filter( 'body_class', 'tutannet_website_layout_class' );
 
 /*----------------------Meta post on -----------------------------------*/
-function accesspress_mag_post_meta_cb(){
+function tutannet_post_meta_cb(){
     global $post;
     $show_post_views = of_get_option('show_post_views');
     $show_comment_count = of_get_option('show_comment_count');
@@ -266,96 +311,116 @@ function accesspress_mag_post_meta_cb(){
         echo '<span class="comment_count"><i class="fa fa-comments"></i>'.esc_attr( $post_comment_count ).'</span>';
     }
     if($show_post_views==1){
-        echo '<span class="apmag-post-views"><i class="fa fa-eye"></i>'.esc_html( accesspress_mag_getPostViews(get_the_ID()) ).'</span>';
+        echo '<span class="apmag-post-views"><i class="fa fa-eye"></i>'.esc_html( tutannet_getPostViews(get_the_ID()) ).'</span>';
     }
 }
-add_action( 'accesspress_mag_post_meta', 'accesspress_mag_post_meta_cb', 10 );
+add_action( 'tutannet_post_meta', 'tutannet_post_meta_cb', 10 );
 
-function accesspress_mag_home_posted_on_cb(){
+function tutannet_home_posted_on_cb(){
     global $post;
-    $show_post_views = of_get_option('show_post_views');
-    $show_comment_count = of_get_option('show_comment_count');
-    $show_post_date = of_get_option('post_show_date');
     
 	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
 	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
 		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
 	}
-
+	
 	$time_string = sprintf( $time_string,
 		esc_attr( get_the_date( 'c' ) ),
-		esc_html( get_the_date() ),
+		esc_html( get_the_date('d.m.Y') ),
 		esc_attr( get_the_modified_date( 'c' ) ),
-		esc_html( get_the_modified_date() )
+		esc_html( get_the_modified_date('d.m.Y') )
 	);
+	
+	$tagged_on = '';
+	$posttags = get_the_tags();
+	if ( $posttags ) 
+	    {
+	        $tag = current( $posttags );
+	        $tagged_on = sprintf(
+	            '<a href="%1$s">%2$s</a>',
+	            get_tag_link( $tag->term_id ),
+	            esc_html( $tag->name )
+	         );
+	    }
     
-    if($show_post_date==1){
-	  $posted_on = sprintf(
-    		_x( '%s', 'post date', 'accesspress-mag' ),
-    		'<a href="' . esc_url( get_permalink() ) . '" rel="bookmark">' . $time_string . '</a>'
-    	);	   
-	} else {
-        $posted_on = '';
-    }
-    echo '<span class="posted-on">' . $posted_on . '</span>';
-    if($show_comment_count==1){
-        $post_comment_count = get_comments_number( $post->ID );
-        echo '<span class="comment_count"><i class="fa fa-comments"></i>'.esc_attr( $post_comment_count ).'</span>';
-    }
-    if($show_post_views==1){
-        echo '<span class="apmag-post-views"><i class="fa fa-eye"></i>'.esc_html( accesspress_mag_getPostViews(get_the_ID()) ).'</span>';
-    }
+	$posted_on = sprintf(
+    		_x( '%s', 'post date', 'tutannet' ),
+    		$time_string
+ 	);	   
+ 	
+ 	if ( get_the_date('d.m.Y') == date('d.m.Y') ) {$post_date_status = 'today'; $posted_on = 'Hôm nay';} 
+ 	elseif ( strtotime($post->post_date) > strtotime('-7 days') ) {$post_date_status = 'new';}
+ 	else {$post_date_status = '';}
+ 	
+ 	echo '<span class="posted-on '. $post_date_status .'">' . $posted_on . '</span>';
+ 	echo '<span class="tagged_on">' . $tagged_on . '</span>';   
 }
-add_action( 'accesspress_mag_home_posted_on', 'accesspress_mag_home_posted_on_cb', 10 );
+add_action( 'tutannet_home_posted_on', 'tutannet_home_posted_on_cb', 10 );
+
+function tutannet_attachment_image_on_cb(){
+	global $post;
+	
+	$attachments_image = get_children(
+	    array(
+	    'post_type' => 'attachment',
+	    'post_mime_type' => 'image',
+	    'post_parent' => $post->ID
+	    ));
+	    
+	$attachments_video = get_children(
+	    array(
+	    'post_type' => 'attachment',
+	    'post_mime_type' => 'video',
+	    'post_parent' => $post->ID
+	    ));
+	
+	if ( $attachments_image ) {
+		echo '<i class="fa fa-image"></i>';
+	}
+	
+	if ( $attachments_video ) {
+		echo '<i class="fa fa-video-camera"></i>';
+	}
+}
+add_action( 'tutannet_attachment_image_on', 'tutannet_attachment_image_on_cb', 10 );
 
 /*-------------------Excerpt length---------------------*/
 
-function accesspress_mag_customize_excerpt_more( $more ) {
+function tutannet_customize_excerpt_more( $more ) {
 	return '...';
 }
-add_filter( 'excerpt_more', 'accesspress_mag_customize_excerpt_more' );
+add_filter( 'excerpt_more', 'tutannet_customize_excerpt_more' );
 
-function accesspress_mag_word_count( $string, $limit ) {
+function tutannet_word_count( $string, $limit ) {
     $string = strip_tags( $string );
     $string = strip_shortcodes( $string );
     $words = explode( ' ', $string );
 	return implode( ' ', array_slice( $words, 0, $limit ));
 }
 
-function accesspress_mag_letter_count( $content, $limit ) {
-	$striped_content = strip_tags( $content );
-	$striped_content = strip_shortcodes( $striped_content );
-	$limit_content = mb_substr( $striped_content, 0 , $limit );
-	if( $limit_content < $content ){
-		$limit_content .= "..."; 
-	}
-	return $limit_content;
+function tutannet_excerpt_length( $length ) {
+	return 25;
 }
+add_filter( 'excerpt_length', 'tutannet_excerpt_length', 10 );
 
 /*---------------Get excerpt content-------------------*/
 
-function accesspress_mag_excerpt(){
+function tutannet_excerpt(){
     global $post;
-    $excerpt_type = of_get_option( 'excerpt_type' );
     $excerpt_length = of_get_option( 'excerpt_lenght' );
-    $excerpt_content = get_the_content($post -> ID);
-    //$excerpt_content = get_post_field('post_content', $post -> ID);
-    if( $excerpt_type == 'letters' ){
-        $excerpt_content = accesspress_mag_letter_count( $excerpt_content, $excerpt_length );
-    } else {
-        $excerpt_content = accesspress_mag_word_count( $excerpt_content, $excerpt_length );
-    }
+    $excerpt_content = get_the_excerpt($post -> ID);
+    $excerpt_content = tutannet_word_count( $excerpt_content, 10 );
     echo '<p>'. $excerpt_content .'</p>';
 }
 
 /*---------------- BreadCrumb --------------------------*/
 
-	function accesspress_mag_breadcrumbs() {
+	function tutannet_breadcrumbs() {
 	  global $post;
       $trans_here = of_get_option( 'trans_you_are_here' );
-      if( empty( $trans_here ) ){ $trans_here = __( 'You are here', 'accesspress-mag' ); }
+      if( empty( $trans_here ) ){ $trans_here = __( 'You are here', 'tutannet' ); }
       $trans_home = of_get_option( 'trans_home' );
-      if( empty( $trans_home ) ){ $trans_home = __( 'Home', 'accesspress-mag' ); }
+      if( empty( $trans_home ) ){ $trans_home = __( 'Home', 'tutannet' ); }
       $trans_search = of_get_option( '' );
       //if( empty() )
 
@@ -387,7 +452,7 @@ function accesspress_mag_excerpt(){
 	      echo $before .  single_cat_title('', false) . $after;
 	  
 	    } elseif ( is_search() ) {
-	      echo $before . __( "Search results for", "accesspress-mag" ).' "' . get_search_query() . '"' . $after;
+	      echo $before . __( "Search results for", "tutannet" ).' "' . get_search_query() . '"' . $after;
 	  
 	    } elseif ( is_day() ) {
 	      echo '<a href="' . get_year_link(get_the_time('Y')) . '">' . get_the_time('Y') . '</a> ' . $delimiter . ' ';
@@ -462,7 +527,7 @@ function accesspress_mag_excerpt(){
 	  
 	    if ( get_query_var('paged') ) {
 	      if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ' (';
-	      echo __('Page' , 'accesspress-mag') . ' ' . get_query_var('paged');
+	      echo __('Page' , 'tutannet') . ' ' . get_query_var('paged');
 	      if ( is_category() || is_day() || is_month() || is_year() || is_search() || is_tag() || is_author() ) echo ')';
 	    }	  
 	    echo '</div></div>';	  
@@ -470,17 +535,17 @@ function accesspress_mag_excerpt(){
 	}
     
 /*--------------WooCommerce breadcrumbs---------------------*/
-add_filter( 'woocommerce_breadcrumb_defaults', 'accesspress_mag_woocommerce_breadcrumbs' ); 
+add_filter( 'woocommerce_breadcrumb_defaults', 'tutannet_woocommerce_breadcrumbs' ); 
 
-function accesspress_mag_woocommerce_breadcrumbs() { 
+function tutannet_woocommerce_breadcrumbs() { 
 $seperator = ' <span class="bread_arrow"> > </span> ';    
 //$seperator =of_get_option( 'breadcrumb_seperator' ); 
 $trans_home = of_get_option( 'trans_home' );
-if( empty( $trans_home ) ){ $trans_home = __( 'Home', 'accesspress-mag' ); }
+if( empty( $trans_home ) ){ $trans_home = __( 'Home', 'tutannet' ); }
 $home_text = $trans_home ;
 
 $trans_here = of_get_option( 'trans_you_are_here' );
-if( empty( $trans_here ) ){ $trans_here = __( 'You are here', 'accesspress-mag' ); }
+if( empty( $trans_here ) ){ $trans_here = __( 'You are here', 'tutannet' ); }
 //$home_text =of_get_option( 'breadcrumb_home' ); 
 return array( 
 'delimiter' => " ".$seperator." ", 
@@ -492,26 +557,26 @@ return array(
 ); 
 } 
 
-add_action( 'init', 'accesspress_mag_remove_wc_breadcrumbs' ); 
-function accesspress_mag_remove_wc_breadcrumbs() { 
+add_action( 'init', 'tutannet_remove_wc_breadcrumbs' ); 
+function tutannet_remove_wc_breadcrumbs() { 
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20, 0 ); 
 } 
 
 $accesspress_show_breadcrumb = of_get_option( 'show_hide_breadcrumbs' ); 
-if((function_exists('accesspress_mag_woocommerce_breadcrumbs') && $accesspress_show_breadcrumb == 1)) { 
+if((function_exists('tutannet_woocommerce_breadcrumbs') && $accesspress_show_breadcrumb == 1)) { 
 add_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 10, 0 ); 
 } 
 
 /*------------Remove bbpress breadcrumbs-----------------------*/
 
-function accesspress_mag_bbp_no_breadcrumb ($arg){
+function tutannet_bbp_no_breadcrumb ($arg){
     return true ;
 }
-add_filter('bbp_no_breadcrumb', 'accesspress_mag_bbp_no_breadcrumb' );
+add_filter('bbp_no_breadcrumb', 'tutannet_bbp_no_breadcrumb' );
 
 /*--------------Install Required Plugins----------------------*/
 
-function accesspress_mag_required_plugins() {
+function tutannet_required_plugins() {
     /**
      * Array of plugin arrays. Required keys are name and slug.
      * If the source is NOT from the .org repo, then source is also required.
@@ -521,28 +586,28 @@ function accesspress_mag_required_plugins() {
         // This is an example of how to include a plugin pre-packaged with a theme.
         
          array(
-            'name'      => __( 'Newsletter', 'accesspress-mag' ), //The plugin name
+            'name'      => __( 'Newsletter', 'tutannet' ), //The plugin name
             'slug'      => 'newsletter',  // The plugin slug (typically the folder name)
             'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             ),
          array(
-            'name'      => __( 'AccessPress Social Icons', 'accesspress-mag' ), //The plugin name
+            'name'      => __( 'AccessPress Social Icons', 'tutannet' ), //The plugin name
             'slug'      => 'accesspress-social-icons',  // The plugin slug (typically the folder name)
             'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             ),
          array(
-            'name'      => __( 'AccessPress Social Counter', 'accesspress-mag' ), //The plugin name
+            'name'      => __( 'AccessPress Social Counter', 'tutannet' ), //The plugin name
             'slug'      => 'accesspress-social-counter',  // The plugin slug (typically the folder name)
             'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
             'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
             ),
          array(
-            'name'      => __( 'AccessPress Social Share', 'accesspress-mag' ), //The plugin name
+            'name'      => __( 'AccessPress Social Share', 'tutannet' ), //The plugin name
             'slug'      => 'accesspress-social-share',  // The plugin slug (typically the folder name)
             'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
             'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
@@ -566,10 +631,10 @@ function accesspress_mag_required_plugins() {
             'is_automatic' => true,                   // Automatically activate plugins after installation or not.
             'message'      => '',                      // Message to output right before the plugins table.
             'strings'      => array(
-                'page_title'                      => __( 'Install Required Plugins', 'accesspress-mag' ),
-                'menu_title'                      => __( 'Install Plugins', 'accesspress-mag' ),
-                'installing'                      => __( 'Installing Plugin: %s', 'accesspress-mag' ), // %s = plugin name.
-                'oops'                            => __( 'Something went wrong with the plugin API.', 'accesspress-mag' ),
+                'page_title'                      => __( 'Install Required Plugins', 'tutannet' ),
+                'menu_title'                      => __( 'Install Plugins', 'tutannet' ),
+                'installing'                      => __( 'Installing Plugin: %s', 'tutannet' ), // %s = plugin name.
+                'oops'                            => __( 'Something went wrong with the plugin API.', 'tutannet' ),
                 'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ), // %1$s = plugin name(s).
                 'notice_can_install_recommended'  => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ), // %1$s = plugin name(s).
                 'notice_cannot_install'           => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ), // %1$s = plugin name(s).
@@ -580,12 +645,12 @@ function accesspress_mag_required_plugins() {
                 'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ), // %1$s = plugin name(s).
                 'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
                 'activate_link'                   => _n_noop( 'Begin activating plugin', 'Begin activating plugins' ),
-                'return'                          => __( 'Return to Required Plugins Installer', 'accesspress-mag' ),
-                'plugin_activated'                => __( 'Plugin activated successfully.', 'accesspress-mag' ),
-                'complete'                        => __( 'All plugins installed and activated successfully. %s', 'accesspress-mag' ), // %s = dashboard link.
+                'return'                          => __( 'Return to Required Plugins Installer', 'tutannet' ),
+                'plugin_activated'                => __( 'Plugin activated successfully.', 'tutannet' ),
+                'complete'                        => __( 'All plugins installed and activated successfully. %s', 'tutannet' ), // %s = dashboard link.
                 'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
           )
     );
     tgmpa( $plugins, $config );
 }
-add_action( 'tgmpa_register', 'accesspress_mag_required_plugins' );
+add_action( 'tgmpa_register', 'tutannet_required_plugins' );

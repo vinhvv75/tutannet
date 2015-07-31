@@ -26,9 +26,9 @@ function accesspress_mag_setup() {
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
 	 * If you're building a theme based on Accesspress Mag, use a find and replace
-	 * to change 'accesspress-mag' to the name of your theme in all the template files
+	 * to change 'tutannet' to the name of your theme in all the template files
 	 */
-	load_theme_textdomain( 'accesspress-mag', get_template_directory() . '/languages' );
+	load_theme_textdomain( 'tutannet', get_template_directory() . '/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -48,19 +48,19 @@ function accesspress_mag_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
     
-    add_image_size( 'accesspress-mag-slider-big-thumb', 765, 496, true); //Big image for homepage slider
-    add_image_size( 'accesspress-mag-slider-small-thumb', 364, 164, true); //Small image for homepage slider
-    add_image_size( 'accesspress-mag-block-big-thumb', 554, 305, true ); //Big thumb for homepage block
-    add_image_size( 'accesspress-mag-block-small-thumb', 177, 118, true ); //Small thumb for homepage block
-    add_image_size( 'accesspress-mag-singlepost-default', 1132, 509, true); //Default image size for single post
-    add_image_size( 'accesspress-mag-singlepost-style1', 326, 235, true); //Style1 image size for single post 
+    add_image_size( 'tutannet-slider-big-thumb', 765, 496, true); //Big image for homepage slider
+    add_image_size( 'tutannet-slider-small-thumb', 364, 164, true); //Small image for homepage slider
+    add_image_size( 'tutannet-block-big-thumb', 554, 305, true ); //Big thumb for homepage block
+    add_image_size( 'tutannet-block-small-thumb', 177, 118, true ); //Small thumb for homepage block
+    add_image_size( 'tutannet-singlepost-default', 1132, 509, true); //Default image size for single post
+    add_image_size( 'tutannet-singlepost-style1', 326, 235, true); //Style1 image size for single post 
 
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Menu', 'accesspress-mag' ),
-		'top_menu' => __( 'Top Menu', 'accesspress-mag' ),
-		'top_menu_right' => __( 'Top Menu (Right)', 'accesspress-mag' ),
-		'footer_menu' => __( 'Footer Menu', 'accesspress-mag' ),
+		'primary' => __( 'Primary Menu', 'tutannet' ),
+		'top_menu' => __( 'Top Menu', 'tutannet' ),
+		'top_menu_right' => __( 'Top Menu (Right)', 'tutannet' ),
+		'footer_menu' => __( 'Footer Menu', 'tutannet' ),
 	) );
 
 	/*
@@ -95,8 +95,8 @@ add_action( 'after_setup_theme', 'accesspress_mag_setup' );
  */
 function accesspress_mag_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Home top sidebar', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-home-top-sidebar',
+		'name'          => __( 'Home top sidebar', 'tutannet' ),
+		'id'            => 'tutannet-home-top-sidebar',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -105,8 +105,8 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-   	    'name'          => __( 'Home middle sidebar', 'accesspress-mag' ),
-    	'id'            => 'accesspress-mag-home-middle-sidebar',
+   	    'name'          => __( 'Home middle sidebar', 'tutannet' ),
+    	'id'            => 'tutannet-home-middle-sidebar',
     	'description'   => '',
     	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
     	'after_widget'  => '</aside>',
@@ -115,8 +115,8 @@ function accesspress_mag_widgets_init() {
     ) );
     
     register_sidebar( array(
-   	    'name'          => __( 'Home bottom sidebar', 'accesspress-mag' ),
-    	'id'            => 'accesspress-mag-home-bottom-sidebar',
+   	    'name'          => __( 'Home bottom sidebar', 'tutannet' ),
+    	'id'            => 'tutannet-home-bottom-sidebar',
     	'description'   => '',
     	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
     	'after_widget'  => '</aside>',
@@ -125,8 +125,8 @@ function accesspress_mag_widgets_init() {
     ) );
     
     register_sidebar( array(
-		'name'          => __( 'Footer 1', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-footer-1',
+		'name'          => __( 'Footer 1', 'tutannet' ),
+		'id'            => 'tutannet-footer-1',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -135,8 +135,8 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Footer 2', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-footer-2',
+		'name'          => __( 'Footer 2', 'tutannet' ),
+		'id'            => 'tutannet-footer-2',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -145,8 +145,8 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Footer 3', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-footer-3',
+		'name'          => __( 'Footer 3', 'tutannet' ),
+		'id'            => 'tutannet-footer-3',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -155,8 +155,8 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Footer 4', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-footer-4',
+		'name'          => __( 'Footer 4', 'tutannet' ),
+		'id'            => 'tutannet-footer-4',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -165,8 +165,8 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Left Sidebar', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-sidebar-left',
+		'name'          => __( 'Left Sidebar', 'tutannet' ),
+		'id'            => 'tutannet-sidebar-left',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -175,8 +175,8 @@ function accesspress_mag_widgets_init() {
 	) );
 	
     register_sidebar( array(
-		'name'          => __( 'Right Sidebar', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-sidebar-right',
+		'name'          => __( 'Right Sidebar', 'tutannet' ),
+		'id'            => 'tutannet-sidebar-right',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -185,7 +185,7 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Shop', 'accesspress-mag' ),
+		'name'          => __( 'Shop', 'tutannet' ),
 		'id'            => 'shop',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -195,8 +195,8 @@ function accesspress_mag_widgets_init() {
 	) );
     
     register_sidebar( array(
-		'name'          => __( 'Header Ad ', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-header-ad',
+		'name'          => __( 'Header Ad ', 'tutannet' ),
+		'id'            => 'tutannet-header-ad',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -205,8 +205,8 @@ function accesspress_mag_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Article Ad', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-article-ad',
+		'name'          => __( 'Article Ad', 'tutannet' ),
+		'id'            => 'tutannet-article-ad',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-ads">',
 		'after_widget'  => '</aside>',
@@ -215,8 +215,8 @@ function accesspress_mag_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Homepage Inline Ad', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-homepage-inline-ad',
+		'name'          => __( 'Homepage Inline Ad', 'tutannet' ),
+		'id'            => 'tutannet-homepage-inline-ad',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-ads">',
 		'after_widget'  => '</aside>',
@@ -225,8 +225,8 @@ function accesspress_mag_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Homepage Sidebar Top Ad', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-homepage-sidebar-top-ad',
+		'name'          => __( 'Homepage Sidebar Top Ad', 'tutannet' ),
+		'id'            => 'tutannet-homepage-sidebar-top-ad',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -235,8 +235,8 @@ function accesspress_mag_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Homepage Sidebar Middle Ad', 'accesspress-mag' ),
-		'id'            => 'accesspress-mag-homepage-sidebar-middle-ad',
+		'name'          => __( 'Homepage Sidebar Middle Ad', 'tutannet' ),
+		'id'            => 'tutannet-homepage-sidebar-middle-ad',
 		'description'   => '',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
@@ -257,18 +257,20 @@ function accesspress_mag_scripts() {
     $my_theme = wp_get_theme();
     $theme_version = $my_theme->get('Version'); 
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css');
-    wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($theme_version) );    
+    wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($theme_version) ); 
     wp_enqueue_style( 'fontawesome-font', get_template_directory_uri(). '/css/font-awesome.min.css' );	
     wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css');
-     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
+    wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
+    wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
     wp_enqueue_style( '3d-folding-panel-style', get_template_directory_uri() . '/js/codyhouse/3d-folding-panel-style.css' );
+    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css' );
 
     wp_enqueue_script( 'bxslider-js', get_template_directory_uri(). '/js/jquery.bxslider.min.js', array(), '4.1.2', true );
-    wp_enqueue_script( 'accesspress-mag-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-	wp_enqueue_script( 'accesspress-mag-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+    wp_enqueue_script( 'tutannet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/wow.min.js', array(), '1.0.1');
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/codyhouse/modernizr.js', array('jquery'), '2.8.3' );
-	wp_enqueue_script( 'accesspress-mag-custom-scripts', get_template_directory_uri() . '/js/custom-scripts.js', array('jquery'), '1.0.1' );
+	wp_enqueue_script( 'tutannet-custom-scripts', get_template_directory_uri() . '/js/custom-scripts.js', array('jquery'), '1.0.1' );
 	wp_enqueue_script( 'pace', get_template_directory_uri() . '/js/pace.min.js', array(), '1.0.0' );
 	wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/js/instant-article.js', array(), '1.0.0' );
     

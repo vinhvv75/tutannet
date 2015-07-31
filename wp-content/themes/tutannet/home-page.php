@@ -15,14 +15,15 @@ get_header();
 
 	
 	
-
+     
     <section class="slider-wrapper">
-        <div class="tutannet-container"> 
-            <!--<?php do_action('tutannet_slider');?>-->
-        </div>                  
-    </section>
+    	<div class="tutannet-container">
+       	<?php do_action('tutannet_slider');?>
+       	</div>
+   	</section>
+    
     <div class="container">
-	<div id="primary-second" class="content-area">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
               <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 	          	      <?php 
@@ -65,7 +66,7 @@ get_header();
 	          	                  <li id="news-<?php echo $b_counter;?>" class="cd-item">
 	          	                  	<div class="post-desc-wrapper">
 	          	                  	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
-	          	                  	    <h3 class="post-title"><a title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b1_small_image_path[0] );?>" ><?php the_title();?></a></h3>
+	          	                  	    <h3 class="post-title"><a post-title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b1_small_image_path[0] );?>" ><?php the_title();?></a></h3>
 	          	                  	    <div class="post-content"><?php the_excerpt() ?></div>
 	          	                  	</div>
 	          	                  	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>

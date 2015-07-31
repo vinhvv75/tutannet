@@ -1572,59 +1572,37 @@ body.boxed-layout {
 	  display: flex;
 	}
 	
-	.bx-wrapper {
-		width: 100%;
-		height: 100%;
-	}
-	
-	.fill { 
-	    min-height: 100%;
-	    height: 100%;
-	    background: red;
-	    display: table-cell;
-	}
-	
-	.slide-image {
-		min-height: 100%;
-		height: 100%;
-	}
-	
-	.slide-image img {
-		min-height: 100%;
-		height: 100%;
-	}
-	
 	.slider-wrapper {
 		margin-bottom: 55px;
 	}
-
+	
 	.slider-wrapper .bx-wrapper {
 		position: relative;
 	}
-
+	
 	.slider-wrapper .bx-wrapper .bx-controls-direction a.bx-prev, 
 	.slider-wrapper .bx-wrapper .bx-controls-direction a.bx-next {
-		background: none repeat scroll 0 0;
-		border: medium none;
-		color: transparent;
-		cursor: pointer;
-		float: left;
-		font: 0px/0 a;
-		margin-left: 10px;
-		margin-top: 0;
-		opacity: 1;
-		outline: medium none;
-		position: relative;
-		right: 0;
-		text-indent: 0;
+	  background: none repeat scroll 0 0;
+	  border: medium none;
+	  color: transparent;
+	  cursor: pointer;
+	  float: left;
+	  font: 0px/0 a;
+	  margin-left: 10px;
+	  margin-top: 0;
+	  opacity: 1;
+	  outline: medium none;
+	  position: relative;
+	  right: 0;
+	  text-indent: 0;
 	}
-
+	
 	.slider-wrapper .bx-wrapper .bx-controls-direction a.bx-next{
 		float: right;
 		margin-left: 0;
 		margin-right: 30px;
 	}
-
+	
 	.slider-wrapper .bx-prev:after{
 		position: absolute;
 		left: 0;
@@ -1634,7 +1612,7 @@ body.boxed-layout {
 		color: #ffffff;
 		font-size: 30px;
 	}
-
+	
 	.slider-wrapper .bx-next:after{
 		position: absolute;
 		left: 0;
@@ -1644,7 +1622,7 @@ body.boxed-layout {
 		color: #ffffff;
 		font-size: 30px;
 	}
-
+	
 	.slider-wrapper .bx-controls-direction {
 		position: absolute;
 		top: 50%;
@@ -1657,15 +1635,15 @@ body.boxed-layout {
 		transition: opacity 0.5s ease 0s;
 		height: 40px
 	}
-
+	
 	.slider-wrapper .bx-wrapper:hover .bx-controls-direction{
 		opacity: 1;
 	}
-
+	
 	.slider-wrapper .bx-pager-item{
 		display: inline-block;
 	}
-
+	
 	.slider-wrapper .bx-pager-item a {
 		background: none repeat scroll 0 0 #dc3522;
 		border-radius: 100%;
@@ -1680,23 +1658,23 @@ body.boxed-layout {
 		transition: opacity 0.5s ease 0s;
 		cursor: pointer;
 	}
-
+	
 	.slider-wrapper .bx-pager {
 		line-height: 10px;
 		text-align: center;
 	}
-
+	
 	.slider-wrapper .bx-pager-item a:hover,
 	.slider-wrapper .bx-pager-item a.active{
 		background: #808080;
 	}
-
+	
 	.big_slide {
 		float: left;
-		width: 768px;
+		width: 100%;
 		position: relative;
 	}
-
+	
 	.big_slide:after,
 	.small_slide:after {
 		content: "";
@@ -1704,13 +1682,13 @@ body.boxed-layout {
 		left: 0;
 		position: absolute;
 		top: 0;
-		width: 100%;
+		width: 765px;
 	}
-
+	
 	.small_slide:after{
 		width: 100%;
 	}
-
+	
 	.big-cat-box {
 		background: none repeat scroll 0 0 #3d3d3d;
 		color: #ffffff;
@@ -1722,51 +1700,28 @@ body.boxed-layout {
 		width: 115px;
 		z-index: 99;
 	}
-
+	
 	.big-cat-box span {
-		display: inline-block;
-		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-		margin-right: 6px;
-		position: relative;
+	  display: inline-block;
+	  font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	  margin-right: 6px;
+	  position: relative;
 	}
-
+	
 	.big-cat-box .cat-name {
 		font-size: 18px;
 		text-transform: uppercase;
 		margin-top: 0;
-		width: 100%
+	    width: 100%
 	}
-
+	
 	.big-cat-box .comment_count,
 	.big-cat-box .apmag-post-views{
 		font-size: 14px;
 		color: #e6e6e6;
 	}
-
-	.small-slider-wrapper a,
-	.slider  a{
-		display: block;
-	}
-
-	.small-slider-wrapper a .slide-image,
-	.slider a .slide-image{
-		/*overflow: hidden;*/
-	}
 	
-	.big_slide {
-		height: 200% !important;	
-	}
-
-
-	.small-slider-wrapper a  img,
-	.slider a  img{
-		transition:all 0.5s ease;
-		-webkit-transition:all 0.5s ease;
-		-moz-transition:all 0.5s ease;
-	}
-
-
-
+	
 	.mag-slider-caption {
 		bottom: 0;
 		color: #ffffff;
@@ -1775,13 +1730,13 @@ body.boxed-layout {
 		width: 92%;
 		z-index: 99;
 	}
-
+	
 	.big-cat-box i {
-		margin-right: 0;
-		text-align: center;
-		width: 22px;
+	  margin-right: 0;
+	  text-align: center;
+	  width: 22px;
 	}
-
+	
 	.mag-slider-caption .slide-title {
 		color: #ffffff;
 		font-size: 24px;
@@ -1791,7 +1746,7 @@ body.boxed-layout {
 		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 		text-transform: uppercase;
 	}
-
+	
 	.slide-excerpt {
 		background: none repeat scroll 0 0 rgba(250, 53, 34, 0.5);
 		font-size: 18px;
@@ -1799,17 +1754,17 @@ body.boxed-layout {
 		margin-bottom: 5px;
 		padding: 6px 10px;
 	}
-
+	
 	.slide-excerpt p{
 		margin-bottom: 0;
 	}
-
+	
 	.cnt-reading a {
 		color: #d9cb9e;
 		font-size: 14px;
 		position: relative;
 	}
-
+	
 	.cnt-reading a::after {
 		content: "\f061";
 		font-family: "FontAwesome";
@@ -1818,20 +1773,20 @@ body.boxed-layout {
 		right: -13px;
 		top: 3px;
 	}
-
+	
 	.small-slider-wrapper {
 		float: left;
-		width: 364px;
+		width: 100%;
 	}
-
+	
 	.small_slide {
 		margin-bottom: 2px;
 		position: relative;
 	}
-
+	
 	.mag-slider-caption .slide-title {
-		/*background: none repeat scroll 0 0 RGBA(241, 241, 241, 0.9);*/
-		color: #fff;
+		background: none repeat scroll 0 0 rgba(250, 53, 34, 0.5);
+		color: #ffffff;
 		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 		font-size: 24px;
 		font-weight: 300;
@@ -1840,11 +1795,8 @@ body.boxed-layout {
 		padding: 8px 10px;
 		text-transform: uppercase;
 		float: left;
-		margin-bottom: 3%;
-		margin-left: 5%;
-		animation: fadeInLeft 1s ease-in-out 1s;
 	}
-
+	
 	.mag-small-slider-caption .slide-title {
 		background: none repeat scroll 0 0 rgba(250, 53, 34, 0.8);
 		font-size: 16px;
@@ -1852,37 +1804,37 @@ body.boxed-layout {
 		padding: 8px 10px;
 		font-weight: 300;
 		float: left;
-		color: #ffffff;
+	    color: #ffffff;
 	}
-
+	
 	.mag-small-slider-caption .home-posted{
 		background: none repeat scroll 0 0 rgba(250, 53, 34, 0.5);
 		margin-bottom: 5px;
 		padding: 2px 10px;
 	}
-
+	
 	.mag-small-slider-caption .slide-title a{
 		color: #ffffff;
 	}
-
+	
 	.mag-small-slider-caption .home-posted{
 		text-align: center;
 	}
-
+	
 	.mag-small-slider-caption .posted-on:before {
-		display: none;
+	  	display: none;
 	}
-
+	
 	.mag-small-slider-caption .posted-on a {
 		color: #ffffff;
 		font-size: 12px;
 		font-style: normal;
 	}
-
+	
 	.mag-small-slider-caption .posted-on{
 		float: left;
 	}
-
+	
 	.mag-small-slider-caption .home-posted .comment_count,
 	.mag-small-slider-caption .home-posted .apmag-post-views{
 		font-size: 14px;
@@ -1891,21 +1843,21 @@ body.boxed-layout {
 		float: left;
 		margin-left: 30px;
 	}
-
-
+	
+	
 	.mag-small-slider-caption .home-posted .apmag-post-views{
 		padding-left: 20px;
 	}
-
+	
 	.home-posted .posted-on i {
 		display: none;
 	}
-
+	
 	.mag-small-slider-caption .home-posted .comment_count i,
 	.mag-small-slider-caption .apmag-post-views i {
 		margin-right: 10px;
 	}
-
+	
 	.mag-small-slider-caption {
 		bottom: 0;
 		left:0;
@@ -1913,7 +1865,7 @@ body.boxed-layout {
 		z-index: 99;
 		width: 89%;
 	}
-
+	
 	.small-slider-wrapper .cat-name {
 		background: none repeat scroll 0 0 #3d3d3d;
 		color: #ffffff;
@@ -1923,7 +1875,7 @@ body.boxed-layout {
 		right: 0;
 		text-transform: uppercase;
 		top: 5px;
-		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		font-family: 'Oswald', sans-serif;
 		z-index: 99;
 	}
 
@@ -1944,11 +1896,6 @@ body.boxed-layout {
 	}
 
 	#primary {
-		float: left;
-		width: 70%;
-	}
-	
-	#primary-second {
 		float: left;
 		width: 100%;
 	}
@@ -3075,55 +3022,6 @@ Galleries
 		margin-bottom: 15px;
 		float: left;
 		margin-right: 20px;
-	}
-
-
-/*--------------------------------------------------------------
-	Breadcrumb css 
-	--------------------------------------------------------------*/
-
-	#accesspres-mag-breadcrumbs {
-		background: none repeat scroll 0 0 #f1f1f1;
-		margin-bottom: 20px;
-		padding: 0;
-	}
-
-	.bread-you {
-		background: none repeat scroll 0 0 #dc3522;
-		color: #ffffff;
-		float: left;
-		padding: 5px 10px;
-		position: relative;
-	}
-
-	.bread-you:after{
-		position: absolute;
-		right: -4px;
-		top: 50%;
-		border-left: 5px solid #dc3522;
-		border-top: 5px solid transparent;
-		border-bottom: 5px solid transparent;
-		content: "";
-		margin-top: -3px;
-		width: 0;
-		height: 0;
-	}
-
-	#accesspres-mag-breadcrumbs .ak-container {
-		float: left;
-		padding: 5px 0 5px 20px ;
-	}
-
-	#accesspres-mag-breadcrumbs .ak-container > a {
-		color: #363636;
-	}
-
-	.bread_arrow {
-		margin: 0 5px;
-	}
-
-	#accesspres-mag-breadcrumbs .ak-container > .current{
-		color: #dc3522;
 	}
 
 /*--------------------------------------------------------------

@@ -6,13 +6,8 @@
  */
 
 get_header(); ?>
-<div class="apmag-container">
-     <?php   
-        $tutannet_show_breadcrumbs = of_get_option('show_hide_breadcrumbs');
-        if ((function_exists('tutannet_breadcrumbs') && $tutannet_show_breadcrumbs == 1)) {
-			    tutannet_breadcrumbs();
-            }
-    ?>
+<div class="container">
+     
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 

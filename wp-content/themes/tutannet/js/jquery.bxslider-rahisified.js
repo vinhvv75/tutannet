@@ -7,6 +7,23 @@
  *
  * Released under the MIT license - http://opensource.org/licenses/MIT
  */
+ /* ===================================================================================== */
+ /**
+ * Custom modifications of one of my favourite responsive sliders.
+ * ---------------------------------------------------------------------------------------
+ * - Author: Rahisify
+ * - Url   : http://rahisify.com
+ * ---------------------------------------------------------------------------------------
+ * (1) Added data attributes support
+ * (2) Added break points support
+ * (3) Added automatic reload option
+ * (4) Added automatic slide width calculation 
+ * (4) Added self calling capability
+ * ---------------------------------------------------------------------------------------
+ * - Would not be possible without the awesome work of Steven Wanderski.
+ * - Released under same license - not for sale!
+ * ---------------------------------------------------------------------------------------
+ */
 
 ;(function($){
 
@@ -77,6 +94,7 @@
 		maxSlides: 1,
 		moveSlides: 0,
 		slideWidth: 0,
+    autoReload: false,
 
 		// CALLBACKS
 		onSliderLoad: function() {},
@@ -122,8 +140,150 @@
 		 * Initializes namespace settings to be used throughout plugin
 		 */
 		var init = function(){
-			// merge user-supplied options with the defaults
+    
+      // merge user-supplied options with the defaults
 			slider.settings = $.extend({}, defaults, options);
+      
+		 /** 
+     * ===================================================================================
+		 *  CUSTOM MODIFICATIONS (Delete this block if you disapprove!)
+		 * ===================================================================================
+		 */
+     
+      // set up carousel if initial options intended to do so
+      setupCarousel();
+      
+      // screen width we will be referring to
+      var currentWidth = $(window).width();
+      // force the slider to use this width(disable if you disapprove!)
+      windowWidth = currentWidth;
+      
+      /* DEFINE FUNCTIONS WE WILL USE
+      -----------------------------------------------------------------*/
+
+      // calculates slide width
+      function calcSlideWidth (fullW, numSlides, margin) {
+      
+        var calcWidth = (fullW-(margin*(numSlides-1))) / numSlides;
+        return Math.floor(calcWidth);
+        
+      }
+      
+      // sets break point options
+      function setBreakOptions(breakObj) {
+      
+        for(var key in breakObj) {
+          slider.settings[key] = breakObj[key];
+        }
+
+      }
+      
+      // sets up carousel from available options
+      function setupCarousel() {
+
+        if(slider.settings.slides) {
+          slider.settings.maxSlides = slider.settings.slides;
+          slider.settings.minSlides = slider.settings.slides;
+          slider.settings.slideWidth = calcSlideWidth (windowWidth, slider.settings.slides, slider.settings.slideMargin);
+        } 
+        
+      }
+      
+      // converts string into valid JSON format
+      function jsonify(str) {
+        
+        str = str.replace(/([a-zA-Z0-9]+?):/g, '"$1":');
+        str = str.replace(/'/g, '"');
+        var jsonArray = jQuery.parseJSON(str);
+        return jsonArray;
+      
+      }
+      
+      // (1) Grab data options if available
+      // ---------------------------------------------------------------------------------
+      
+      var dataOptions = $(el).attr('data-options');
+
+      if(dataOptions) {
+      
+        //add curly brackets if not there
+        var lastChar = dataOptions.charAt(dataOptions.length-1);
+        var firstChar = dataOptions.charAt(0);
+        
+        if(firstChar != "{" && lastChar != "}" ) {
+          dataOptions = "{" + dataOptions + "}";
+        }
+      
+        // exploit JSON parser to lessen work
+        var opts = jsonify(dataOptions);
+        
+        for (var key in opts) {
+          slider.settings[key] = opts[key];
+        }
+        // set up carousel if options intended to do so
+        setupCarousel();
+
+      }
+      
+      // (2) Grab breaks from data attributes if available
+      // ---------------------------------------------------------------------------------
+      
+      var dataBreaks = $(el).attr('data-breaks');
+      
+      
+      if(dataBreaks) {
+        // exploit JSON parser to lessen work
+        slider.settings.breaks = jsonify(dataBreaks);
+      }
+      
+      // (3) proceed to process(if available) the user supplied break points
+      // ---------------------------------------------------------------------------------
+      
+      if(slider.settings.breaks) {
+
+        // Sort in ascending order in case of mix up
+         slider.settings.breaks.sort(function(a, b) {
+          return a.screen - b.screen;
+         });
+        
+        // Process breaks
+        for(var i = 0; i < slider.settings.breaks.length; ++i) {
+          
+          var currentBreak =  slider.settings.breaks[i];
+          var nextBreak = {};
+          var min = currentBreak.screen;
+          var max;
+          
+          if(i < slider.settings.breaks.length - 1) { // next break exists
+          
+            nextBreak = slider.settings.breaks[i+1];
+            max = nextBreak.screen;
+            
+            if(currentWidth >= min && currentWidth < max) {
+              setBreakOptions(currentBreak);
+            }
+            
+          } else { // just use current break coz next one does not exist
+          
+            if(currentWidth >= min) {
+              setBreakOptions(currentBreak);
+            }
+          }
+
+        }
+        
+        // set up carousel if options intended to do so
+        setupCarousel();
+
+      }
+      
+
+		/**
+		 * ===================================================================================
+		 * = CUSTOM MODIFICATIONS /END
+		 * ===================================================================================
+		 */
+
 			// parse slideWidth setting
 			slider.settings.slideWidth = parseInt(slider.settings.slideWidth);
 			// store the original children
@@ -225,7 +385,7 @@
 				position: 'relative'
 			});
 			// apply the calculated width after the float is applied to prevent scrollbar interference
-			slider.children.css('width', getSlideWidth());
+			slider.children.css('width', calcSlideWidthidth());
 			// if slideMargin is supplied, add the css
 			if(slider.settings.mode == 'horizontal' && slider.settings.slideMargin > 0) slider.children.css('marginRight', slider.settings.slideMargin);
 			if(slider.settings.mode == 'vertical' && slider.settings.slideMargin > 0) slider.children.css('marginBottom', slider.settings.slideMargin);
@@ -288,6 +448,7 @@
 		 * Start the slider
 		 */
 		var start = function(){
+
 			// if infinite loop, prepare additional slides
 			if(slider.settings.infiniteLoop && slider.settings.mode != 'fade' && !slider.settings.ticker){
 				var slice = slider.settings.mode == 'vertical' ? slider.settings.minSlides : slider.settings.maxSlides;
@@ -398,7 +559,7 @@
 		/**
 		 * Returns the calculated width to be applied to each slide
 		 */
-		var getSlideWidth = function(){
+		var calcSlideWidthidth = function(){
 			// start with any user-supplied slide width
 			var newElWidth = slider.settings.slideWidth;
 			// get the current viewport width
@@ -1285,7 +1446,7 @@
 		 */
 		el.redrawSlider = function(){
 			// resize all children in ratio to new screen size
-			slider.children.add(el.find('.bx-clone')).width(getSlideWidth());
+			slider.children.add(el.find('.bx-clone')).width(calcSlideWidthidth());
 			// adjust the height
 			slider.viewport.css('height', getViewportHeight());
 			// update the slide position
@@ -1333,6 +1494,15 @@
 			el.destroySlider();
 			init();
 		}
+    
+		/**
+		 * auto reload functionality
+		 */
+    $(window).resize(function() {
+      if(slider.settings.autoReload) {
+        el.reloadSlider();
+      }
+    });
 
 		init();
 
@@ -1341,3 +1511,13 @@
 	}
 
 })(jQuery);
+
+ /**
+ * Self calling functionality
+ * --------------------------------------------------------------------------------------- */
+ 
+ $('[data-call="bxslider"]').each(function() {
+    $(this).bxSlider();
+ });
+ 
+ 

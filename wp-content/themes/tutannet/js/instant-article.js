@@ -15,7 +15,7 @@ jQuery(document).ready(function($){
 		page_start = new Date().getTime();
 	/* open folding content */
 	gallery.on('click', 'a', function(event){
-		console.log('Loading "' + $(this).attr('title') + '"');
+		console.log('Loading "' + $(this).attr('post-title') + '"');
 		article_start = new Date().getTime();
 		post_id = $(this).attr('rel');
 		post_url = $(this).attr('href');

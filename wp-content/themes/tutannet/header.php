@@ -71,22 +71,7 @@
                 
             </div>
         </div>
-
-		<nav id="site-navigation" class="main-navigation" role="navigation">
-			<div class="container">
-                <div class="nav-wrapper">
-                    <div class="nav-toggle hide">
-                        <span> </span>
-                        <span> </span>
-                        <span> </span>
-                    </div>
-        			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'container_class' => 'menu' ) ); ?>
-                </div>
-
-                <?php get_search_form(); ?> 
-            </div>
-		</nav><!-- #site-navigation -->
-        
+				        
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

@@ -255,19 +255,19 @@ function tutannet_scripts() {
     wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($theme_version) );    
     wp_enqueue_style( 'fontawesome-font', get_template_directory_uri(). '/css/font-awesome.min.css' );	
     wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css');
-    wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css');
     wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
-    wp_enqueue_style( '3d-folding-panel-style', get_template_directory_uri() . '/js/codyhouse/3d-folding-panel-style.css' );
-    wp_enqueue_style( 'jquery.bxslider', get_template_directory_uri() . '/css/jquery.bxslider.css' );
+    wp_enqueue_style( 'instant-article', get_template_directory_uri() . '/css/instant-article.css' );
+	
+	//bootstrap 3.3.5
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/bootstrap.min.css');
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/bootstrap.min.js', array('jquery'), '3.3.5' );
 
-    wp_enqueue_script( 'bxslider-js', get_template_directory_uri(). '/js/jquery.bxslider-rahisified.js', array('jquery'), '4.1.2', true );
     wp_enqueue_script( 'tutannet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/wow.min.js', array(), '1.0.1');
-	wp_enqueue_script( 'tutannet-custom-scripts', get_template_directory_uri() . '/js/custom-scripts.js', array('jquery'), '1.0.1' );
-	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/codyhouse/modernizr.js', array('jquery'), '2.8.3' );
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', array('jquery'), '3.3.5' );
+	wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0.1' );
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.js', array('jquery'), '2.8.3' );
 	wp_enqueue_script( 'pace', get_template_directory_uri() . '/js/pace.min.js', array(), '1.0.0' );
 	wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/js/instant-article.js', array(), '1.0.0' );
     

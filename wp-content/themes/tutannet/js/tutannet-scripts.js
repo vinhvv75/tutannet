@@ -1,5 +1,5 @@
 /**
-* Custom js for TuTanNet
+*  js for TuTanNet
 * 
 */
 
@@ -79,6 +79,14 @@ $(".first-block .rightposts-wrapper .blockposts-wrapper .post-title a").hover(fu
 		$('#first_block_imageHolder').removeClass('fadeInUp');
 		$('#first_block_imageHolder').addClass('fadeOutDown');
 }); 
+
+// site navigation
+$('#site-navigation a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  $(window).scrollTop($(this).tab().offset().top);
+})
+
 
 // remove tooltips
 window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }

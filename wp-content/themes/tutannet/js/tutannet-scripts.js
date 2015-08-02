@@ -80,22 +80,28 @@ $(".first-block .rightposts-wrapper .blockposts-wrapper .post-title a").hover(fu
 		$('#first_block_imageHolder').addClass('fadeOutDown');
 }); 
 
-// site navigation
-$('#site-navigation a').click(function (e) {
-  e.preventDefault();
-  $(this).tab('show');
-  $(window).scrollTop($(this).tab().offset().top);
+// tab toggle in navigation, toolbar
+//$('#section-navigation a').click(function (e) {
+//  e.preventDefault();
+//  $(this).tab('show');
+//})
+//$('#site-toolbar a').click(function (e) {
+//  e.preventDefault();
+//  $(this).tab('show');
+//})
+$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+  e.target; // newly activated tab
+  e.relatedTarget; // previous active tab
 })
 
+// initalize bootstrap tooltip
+$('[data-toggle="tooltip"]').tooltip();
+$('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
 
 // remove tooltips
 window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }
 
-
-
-
-
-
+// welcome screen on console
 function welcomeScreen() {
 console.log('                                    ................                              _______      __ //            ________   __                                            ');
 console.log('                                  .......................                        |  ___  \\    // \\             |        | |  |                                           ');

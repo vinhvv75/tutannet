@@ -88,9 +88,6 @@
             </div>
         </div>
 	</footer><!-- #colophon -->
-    <div id="back-top">
-        <a href="#top"><i class="fa fa-arrow-up"></i> <span> <?php echo esc_attr( $trans_top ) ;?> </span></a>
-    </div>   
 </div><!-- #page -->
 <?php wp_footer(); ?>
 </body>

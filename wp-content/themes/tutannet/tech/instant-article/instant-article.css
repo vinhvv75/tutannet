@@ -1,44 +1,10 @@
 /* -------------------------------- 
 
-Primary style
-
--------------------------------- */
-*, *::after, *::before {
-  box-sizing: border-box;
-}
-
-/* -------------------------------- 
-
 Patterns - reusable parts of our design
 
 -------------------------------- */
 .overflow-hidden {
   overflow: hidden;
-}
-
-/* -------------------------------- 
-
-Header
-
--------------------------------- */
-header {
-  height: 170px;
-  line-height: 170px;
-  text-align: center;
-  background: #ffffff;
-}
-header h1 {
-  font-size: 2.2rem;
-  color: #363558;
-}
-@media only screen and (min-width: 600px) {
-  header {
-    height: 200px;
-    line-height: 200px;
-  }
-  header h1 {
-    font-size: 3rem;
-  }
 }
 
 /* -------------------------------- 
@@ -135,7 +101,7 @@ folding panel
 -------------------------------- */
 .cd-folding-panel {
   position: fixed;
-  z-index: 1;
+  z-index: 99;
   top: 0;
   left: 0;
   height: 100vh;

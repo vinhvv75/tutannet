@@ -18,7 +18,7 @@ get_header();
      
     
     
-    <div class="container">
+    <div class="tutannet-container">
     <?php 
     	$block1_cat = of_get_option('featured_block_1');
     	if(!empty($block1_cat)):
@@ -37,15 +37,36 @@ get_header();
     	      $category_info_4 = get_category_by_slug($block4_cat);
     	endif;
     ?>
-    <!-- Nav tabs -->
-    <nav id="site-navigation" role="navigation">
-         <ul class="nav nav-tabs" role="tablist">
-    	    <li role="presentation" class="active"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><?php echo esc_attr($category_info_1->name);?></a></li>
-    	    <li role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><?php echo esc_attr($category_info_2->name);?></a></li>
-    	    <li role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><?php echo esc_attr($category_info_3->name);?></a></li>
-    	    <li role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><?php echo esc_attr($category_info_4->name);?></a></li>
-    	  </ul>
-    </nav><!-- #site-navigation -->
+    <section id="cd-intro">
+		<div id="cd-intro-tagline">
+			<h1 class="cd-headline rotate-1">
+				<!--<span>My favourite food is</span>-->
+				<span class="cd-words-wrapper">
+					<b class="is-visible">Kẻ thù lớn nhất của đời người là chính mình</b>
+					<b>Ngu dốt lớn nhất của đời người là dối trá</b>
+					<b>Thất bại lớn nhất của đời người là tự đại</b>
+				</span>
+			</h1>
+		</div> <!-- #site-intro-tagline -->
+		<div id="site-toolbar" class="">
+			<a href="#section2" class="cd-btn" data-toggle="tab" title="Tooltip on left"><i class="fa fa-bell-o"></i></a>
+			<a href="#" class="cd-btn" data-toggle="tab" title="Tìm kiếm"><i class="fa fa-search"></i></a>
+			<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo"><i class="fa fa-reorder"></i></a>
+		</div><!-- #cd-toolbar -->
+		<!-- Nav tabs -->
+		<div class="cd-secondary-nav">
+			<a href="#0" class="cd-secondary-nav-trigger">Menu<span></span></a>
+		    <nav id="section-navigation" role="navigation">
+		         <ul class="container" role="tablist">
+		    	    <li role="presentation" class="active"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_2->name);?></b><span></span></a></li>
+		    	    <li role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_3->name);?></b><span></span></a></li>
+		    	    <li role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_4->name);?></b><span></span></a></li>
+		    	  </ul>
+		    </nav><!-- #site-navigation -->
+		</div>
+    </section>
+    
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 			<div class="cd-folding-panel">
@@ -56,7 +77,7 @@ get_header();
 				</div>
 				<a class="cd-close" href="#0"></a>
 			</div>
-			<div class="tab-content">
+			<div class="tab-content container">
               	<div role="tabpanel" class="tab-pane fade in active" id="section1">
 	              <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 		          	      <?php 
@@ -146,7 +167,6 @@ get_header();
 	                                <div class="single_post clearfix <?php if($b_counter==1){echo 'first-post non-zoomin';}?>">
 	                                    <?php if(has_post_thumbnail()): ?>   
 	                                        <div class="post-image"><a href="<?php the_permalink();?>"><img src="<?php if($b_counter <=1){echo esc_url( $b2_big_image_path[0] );}else{ echo esc_url( $b2_small_image_path[0] ) ;}?>" alt="<?php echo esc_attr($b2_image_alt);?>" /></a>
-	                                            <?php if($b_counter==1):?> <a class="big-image-overlay" href="<?php the_permalink();?>"><i class="fa fa-external-link"></i></a><?php endif ;?>
 	                                        </div>                                
 	                                            
 	                                    <?php endif ; ?>
@@ -196,7 +216,6 @@ get_header();
 	                        <div class="single_post clearfix <?php if($b_counter <= 2){echo 'top-post non-zoomin';}?>">
 	                            <?php if(has_post_thumbnail()): ?>   
 	                                <div class="post-image"><a href="<?php the_permalink();?>"><img src="<?php if($b_counter <=2){echo esc_url( $b3_big_image_path[0] );}else{ echo esc_url( $b3_small_image_path[0] ) ;}?>" alt="<?php echo esc_attr($b3_image_alt);?>" /></a>
-	                                    <?php if($b_counter<=2):?> <a class="big-image-overlay" href="<?php the_permalink();?>"><i class="fa fa-external-link"></i></a><?php endif ;?>
 	                                </div>                               
 	                            <?php endif ; ?>
 	                                <div class="post-desc-wrapper">
@@ -248,7 +267,6 @@ get_header();
 	                                    <?php if(has_post_thumbnail()): ?>   
 	                                        <div class="post-image">
 	                                            <a href="<?php the_permalink();?>"><img src="<?php echo esc_url( $b4_big_image_path[0] );?>" alt="<?php echo esc_attr($b4_image_alt);?>" /></a>
-	                                            <a class="big-image-overlay" href="<?php the_permalink();?>"><i class="fa fa-external-link"></i></a>
 	                                        </div>                                
 	                                    <?php endif ; ?>
 	                                        <h3 class="post-title"><a href="<?php the_permalink();?>"><?php the_title();?></a></h3>
@@ -269,11 +287,6 @@ get_header();
 	</div><!-- #primary -->
 <?php 
 wp_reset_query();
-//$page_sidebar = get_post_meta( $post -> ID, 'tutannet_page_sidebar_layout', true);
-$page_sidebar = 'no-sidebar';
-    if($page_sidebar!='no-sidebar'){
-        get_sidebar('home');
-    } 
 ?>
 </div>
 <?php get_footer(); ?>

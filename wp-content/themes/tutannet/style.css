@@ -9,7 +9,7 @@ Version: 2015
 /*--------------------------------------------------------------
 Imports
 --------------------------------------------------------------*/
-@import url(http://fonts.googleapis.com/css?family=Playfair+Display);
+
 
 /*--------------------------------------------------------------
 Reset
@@ -1013,7 +1013,7 @@ body.boxed-layout {
 }
 
 .tutannet-container {
-	width:75%;
+	width:100%;
 	margin: 0 auto;
 }
 
@@ -1042,227 +1042,6 @@ body.boxed-layout {
 
 	.home #masthead{
 		margin-bottom: 30px;
-	}
-
-	.top-menu-wrapper {
-		background: #36403f;
-		padding: 10px 0;
-	}
-
-	#top-navigation {
-		float: left;
-	}
-
-	#top-right-navigation {
-		float: right;
-	}
-
-	#top-navigation .menu,
-	#top-right-navigation .menu {
-		margin: 0;
-		list-style: none;
-	}
-
-	#top-navigation .menu li,
-	#top-right-navigation .menu li{
-		float: left;
-		position: relative;
-	}
-
-	#top-navigation .menu li a,
-	#top-right-navigation .menu li a {
-		border-left: 1px solid #ffffff;
-		color: #ffffff;
-		display: block;
-		font-size: 14px;
-		line-height: 14px;
-		padding: 0 23px;
-	}
-
-	#top-navigation .menu li a:hover,
-	#top-right-navigation .menu li a:hover,
-	#top-right-navigation .menu li.current-menu-item a,
-	#top-right-navigation .menu li.current-menu-ancestor a,
-	#footer-navigation ul li a:hover,
-	#footer-navigation ul li.current-menu-ancestor a,
-	#footer-navigation ul li.current-menu-item a   {
-		color: #cccccc;
-	}
-
-	#top-navigation .menu > li:first-child > a,
-	#top-right-navigation .menu > li:first-child > a{
-		padding-left: 0;
-		border-left: none;
-	}
-
-	#top-right-navigation .menu > li:last-child > a{
-		padding-right: 0;
-	}
-
-	#top-navigation ul.sub-menu > li a,
-	#footer-navigation ul.sub-menu > li a{
-		border-left: none;
-		padding: 0;
-	}
-
-	#top-navigation .menu li a:hover,
-	#top-navigation .menu li.current-menu-item > a,
-	#top-navigation .menu li.current-menu-ancestor > a,
-	#footer-navigation ul li a:hover,
-	#footer-navigation ul li.current-menu-item > a,
-	#footer-navigation ul li.current-menu-ancestor > a,
-	#top-right-navigation .menu li a:hover,
-	#top-right-navigation .menu li.current-menu-item > a,
-	#top-right-navigation .menu li.current-menu-ancestor > a,  {
-		color: #cccccc;
-	}
-
-	#top-navigation ul.sub-menu,
-	#footer-navigation ul.sub-menu {
-		opacity: 0;
-		visibility: hidden;
-		position: absolute;
-		top: 30px;
-		left: 0;
-		-webkit-transition: all 0.5s ease;
-		-moz-transition: all 0.5s ease;
-		transition: all 0.5s ease;
-		background: rgba(54,64,63,0.85);
-		margin: 0;
-		list-style: none;
-		padding: 0 0 5px;
-		width: 120px;
-	}
-
-	#footer-navigation ul.sub-menu{
-		bottom: 35px;
-		left: 7px;
-		top: auto;
-	}
-
-	#top-navigation ul li:hover > ul.sub-menu,
-	#footer-navigation ul li:hover > ul.sub-menu{
-		opacity: 1;
-		visibility: visible;
-		top: 24px;
-		left: 0;
-	}
-
-	#footer-navigation ul li:hover > ul.sub-menu {
-		bottom: 28px;
-		left: 7px;
-		top: auto;
-	}
-
-	#top-navigation ul.sub-menu ul,
-	#footer-navigation ul.sub-menu ul{
-		left: 110%;
-		top: 0;
-	}
-
-	#footer-navigation ul.sub-menu ul{
-		bottom: -5px;
-		top: auto;
-		min-width: 140px;
-	}
-
-	#top-navigation ul.sub-menu > li:hover ul,
-	#footer-navigation ul.sub-menu > li:hover ul{
-		left: 100%;
-		top: 0;
-	}
-
-	#footer-navigation ul.sub-menu > li:hover ul{
-		bottom: -6px;
-		top: auto;	
-	}
-
-	#top-navigation ul.sub-menu li,
-	#footer-navigation ul.sub-menu li {
-		padding: 5px 10px;
-		width: 100%;
-		border-bottom: 1px solid #ffffff;
-	}
-
-	#top-navigation ul.sub-menu li:hover,
-	#top-navigation ul.sub-menu li.current-menu-item,
-	#top-navigation ul.sub-menu li.current-menu-ancestor,
-	#footer-navigation ul.sub-menu li:hover,
-	#footer-navigation ul.sub-menu li.current-menu-item,
-	#footer-navigation ul.sub-menu li.current-menu-ancestor {
-		border-bottom: 1px solid #dc3522;
-	}
-
-	.is-sticky{
-		z-index: 999999;
-	}
-
-	.is-sticky #site-navigation{
-		box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-		-webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-		-moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
-	}
-
-	/*For child page*/
-	#site-navigation .menu ul li,#top-right-navigation .menu li,#footer-navigation ul li {
-		position: relative;
-	}
-
-	#site-navigation .menu ul li ul.children,#top-right-navigation .menu li ul,
-	#footer-navigation ul li ul {
-		display: none;
-		position: absolute;
-		top: 100%;
-		left:0;
-		width: 200px;
-	}
-
-	#site-navigation .menu ul li:hover > ul.children,
-	#top-right-navigation .menu li:hover > ul,#footer-navigation ul li:hover > ul {
-		display: block;
-	}
-
-	#site-navigation .menu ul li ul li,#top-right-navigation .menu li ul li,
-	#footer-navigation ul li ul li{
-		padding: 5px 18px;
-		display: block;
-		float: none;
-		border-bottom: 1px solid #3d3d3d;
-	}
-
-	#site-navigation .menu ul li ul li a,#top-right-navigation .menu li ul li a,
-	#footer-navigation ul li ul li a{
-		display: block;
-	}
-
-	#top-right-navigation .menu li ul li a{
-		border-left: none;
-	}
-
-	#top-right-navigation .menu li ul,
-	#footer-navigation ul li ul{
-		background: rgba(0,0,0,0.5);
-		margin-left: 0;
-		width: 150px;
-		top: 24px;
-	}
-
-	#top-right-navigation .menu li ul li,
-	#footer-navigation ul li ul li{
-		padding: 5px 10px;
-	}
-
-	#top-right-navigation .menu li ul li a,
-	#footer-navigation ul li ul li a{
-		padding: 0;
-	}
-
-	#footer-navigation ul li ul{
-		top: -48px;
-	}
-
-	#footer-navigation ul li ul li a{
-		text-align: left;
 	}
 
 	.site-branding {
@@ -1299,11 +1078,13 @@ body.boxed-layout {
 /*--------------------------------------------------------------
 	NAV css 
 	--------------------------------------------------------------*/
-	#site-navigation {
+	#section-navigation {
 		text-align: center;
+		
 	}
 	
-	#site-navigation ul {
+	
+	#section-navigation ul {
 		list-style: none;
 		margin: 0;
 		padding: 0;
@@ -1312,113 +1093,40 @@ body.boxed-layout {
 		text-align: center;
 	}
 
-	#site-navigation ul li {
+	#section-navigation ul li {
 		padding: 12px 18px;
 		position: relative;
 		text-align: center;
 	}
-
-	#site-navigation ul li a{
-		font-size: 16px;
-		color: #3d3d3d;
-		text-transform: uppercase;
-		position: relative;
-	}
-
-	#site-navigation ul.menu > li:hover > a:after,
-	#site-navigation ul.menu > li.current-menu-item > a:after,
-	#site-navigation ul.menu > li.current-menu-ancestor > a:after {
-		border-bottom: 1px solid #dc3522;
-		bottom: -14px;
+	
+	#section-navigation ul li::before {
+		border-right-style: solid;
+		border-right-width: 1px;
+		border-right-color: #f1f1f1;
+		height: 50%;
 		content: "";
-		left: 0;
 		position: absolute;
-		width: 100%;
-	}
-
-	#site-navigation ul.menu > li:first-child{
-		padding-left: 0;
-	}
-
-	#site-navigation ul li:hover > a,
-	#site-navigation ul li.current-menu-item > a,
-	#site-navigation ul li.current-menu-ancestor > a{
-		color: #dc3522;
-	}
-
-	#site-navigation .nav-wrapper {
-		float: left;
-	}
-
-
-	#site-navigation ul.sub-menu {
-		opacity: 0;
-		position: absolute;
-		top: 60px;
-		visibility: hidden;
-		-webkit-transition: all 0.5s ease;
-		-moz-transition: all 0.5s ease;
-		transition: all 0.5s ease;
-		background: #ffffff;
-		padding: 0;
-		left: 0;
-		box-shadow: 0 0 6px #eeeeee;
-		width: 220px;
-	}
-
-	#site-navigation li:hover > ul.sub-menu {
-		opacity: 1;
-		visibility: visible;
-		top: 49px;
-		left: 0;
-		z-index: 9;
-	}
-
-	#site-navigation ul.sub-menu li {
-		border-bottom: 1px solid #3d3d3d;
-		padding: 6px 30px 6px 10px;
-		text-align: left;
-		width: 100%;
-	}
-
-	#site-navigation ul.sub-menu li a {
-		text-transform: none;
-	}
-
-	#site-navigation ul.sub-menu li:hover,
-	#site-navigation ul.sub-menu li.current-menu-item,
-	#site-navigation ul.sub-menu li.current-menu-ancestor {
-		border-bottom: 1px solid #dc3522;
-	}
-
-	#site-navigation ul.sub-menu ul{
-		top: 0;
-		left: 110%;
-	}
-
-	#site-navigation ul.sub-menu > li:hover  ul{
-		top: 0;
 		left: 100%;
+		top: 25%;
+	}
+	
+	#section-navigation ul li:last-child {
+		border: none;
 	}
 
-	.nav-toggle {
-		background: none repeat scroll 0 0 #DC3522;
-		height: 35px;
-		padding: 3px 0;
-		width: 35px;
+	#section-navigation ul li a {
+		position: relative;
+		letter-spacing: 1px;
+		text-decoration: none;
+	}
+		
+	#section-navigation ul li a b {
+		font: bold 14px Georgia, "Times New Roman", Times, serif;
+		color: #f1f1f1;
+		text-transform: uppercase;
+		padding-bottom: 10px;
 	}
 
-	.nav-toggle span {
-		background: none repeat scroll 0 0 #ffffff;
-		display: block;
-		height: 3px;
-		margin: 5px auto;
-		width: 77%;
-	}
-
-	.sub-toggle {
-		display: none;
-	}
 /*--------------------------------------------------------------
 	header search css 
 	--------------------------------------------------------------*/
@@ -1627,6 +1335,10 @@ body.boxed-layout {
 		float: none;
 	}
 	
+	.tab-content {
+		padding: 4em 0;
+	}
+	
 /*--------------------------------------------------------------
 	common section css 
 	--------------------------------------------------------------*/	
@@ -1719,7 +1431,7 @@ body.boxed-layout {
 	first block css 
 	--------------------------------------------------------------*/
 	.first-block {
-		background-color: #E5E5E5;
+
 	}
 	
 	.first-block .leftposts-wrapper {
@@ -2143,15 +1855,6 @@ body.boxed-layout {
 		text-align: center;
 	}
 
-	.post-image, 
-	.post-img {
-		position: relative;
-		overflow: hidden;
-		-moz-border-radius: 3px; 
-		-webkit-border-radius: 3px; 
-		border-radius: 3px;
-	}
-
 	
 	.post-image:hover .big-image-overlay, .post-image:hover .big-title-overlay{
 		background: rgba(255,223,67,0.5);
@@ -2160,18 +1863,6 @@ body.boxed-layout {
 	.home .post-image img,
 	.home .post-img img {
 		width: 100%;
-	}
-
-	.post-image img,
-	.post-img img{
-		-webkit-transition: all 0.3s ease;
-		-o-transition: all 0.3s ease;
-		transition: all 0.3s ease;
-		overflow: hidden;
-		backface-visibility:hidden;
-		-moz-border-radius: 3px; 
-		-webkit-border-radius: 3px; 
-		border-radius: 3px;
 	}
 
 	.post-image.non-zoomin:hover img,

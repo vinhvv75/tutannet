@@ -3,6 +3,273 @@
 Modules - reusable parts of our design
 
 -------------------------------- */
+#site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@media only screen and (min-width: 768px) {
+  #site-header {
+    background: transparent;
+    box-shadow: none;
+  }
+}
+@media only screen and (min-width: 1170px) {
+  #site-header {
+    -webkit-transition: background-color 0.3s;
+    -moz-transition: background-color 0.3s;
+    transition: background-color 0.3s;
+    /* Force Hardware Acceleration in WebKit */
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  #site-header.is-fixed {
+    /* when the user scrolls down, we hide the header right above the viewport */
+    position: fixed;
+    top: -80px;
+    background-color: rgba(2, 23, 37, 0.96);
+    -webkit-transition: -webkit-transform 0.3s;
+    -moz-transition: -moz-transform 0.3s;
+    transition: transform 0.3s;
+  }
+  #site-header.is-visible {
+    /* if the user changes the scrolling direction, we show the header */
+    -webkit-transform: translate3d(0, 100%, 0);
+    -moz-transform: translate3d(0, 100%, 0);
+    -ms-transform: translate3d(0, 100%, 0);
+    -o-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+  #site-header.menu-is-open {
+    /* add a background color to the header when the navigation is open */
+    background-color: rgba(2, 23, 37, 0.96);
+  }
+}
+
+/*#site-primary-nav-trigger {
+  position: absolute;
+  right: 20%;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  background-color: #03263d;
+}
+#site-primary-nav-trigger .cd-menu-text {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 700;
+  /* hide the text on small devices *!/
+  display: none;
+}
+#site-primary-nav-trigger .cd-menu-icon {
+  /* this span is the central line of the menu icon *!/
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 18px;
+  height: 2px;
+  background-color: white;
+  -webkit-transition: background-color 0.3s;
+  -moz-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  /* these are the upper and lower lines in the menu icon *!/
+}
+#site-primary-nav-trigger .cd-menu-icon::before, #site-primary-nav-trigger .cd-menu-icon:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: white;
+  right: 0;
+  -webkit-transition: -webkit-transform .3s, top .3s, background-color 0s;
+  -moz-transition: -moz-transform .3s, top .3s, background-color 0s;
+  transition: transform .3s, top .3s, background-color 0s;
+}
+#site-primary-nav-trigger .cd-menu-icon::before {
+  top: -5px;
+}
+#site-primary-nav-trigger .cd-menu-icon::after {
+  top: 5px;
+}
+#site-primary-nav-trigger .cd-menu-icon.is-clicked {
+  background-color: rgba(255, 255, 255, 0);
+}
+#site-primary-nav-trigger .cd-menu-icon.is-clicked::before, #site-primary-nav-trigger .cd-menu-icon.is-clicked::after {
+  background-color: white;
+}
+#site-primary-nav-trigger .cd-menu-icon.is-clicked::before {
+  top: 0;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+#site-primary-nav-trigger .cd-menu-icon.is-clicked::after {
+  top: 0;
+  -webkit-transform: rotate(225deg);
+  -moz-transform: rotate(225deg);
+  -ms-transform: rotate(225deg);
+  -o-transform: rotate(225deg);
+  transform: rotate(225deg);
+}
+@media only screen and (min-width: 768px) {
+  #site-primary-nav-trigger {
+    width: 100px;
+    padding-left: 1em;
+    background-color: transparent;
+    height: 30px;
+    line-height: 30px;
+    right: 2.2em;
+    top: 50%;
+    bottom: auto;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+  #site-primary-nav-trigger .cd-menu-text {
+    display: inline-block;
+  }
+  #site-primary-nav-trigger .cd-menu-icon {
+    left: auto;
+    right: 1em;
+    -webkit-transform: translateX(0) translateY(-50%);
+    -moz-transform: translateX(0) translateY(-50%);
+    -ms-transform: translateX(0) translateY(-50%);
+    -o-transform: translateX(0) translateY(-50%);
+    transform: translateX(0) translateY(-50%);
+  }
+}
+
+#site-primary-nav {
+  /* by default it's hidden - on top of the viewport *!/
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(2, 23, 37, 0.96);
+  z-index: 2;
+  text-align: center;
+  padding: 50px 0;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  overflow: auto;
+  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied *!/
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+  transform: translateY(-100%);
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+#site-primary-nav li {
+  font-size: 22px;
+  font-size: 1.375rem;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: .2em 0;
+  text-transform: capitalize;
+}
+#site-primary-nav a {
+  display: inline-block;
+  padding: .4em 1em;
+  border-radius: 0.25em;
+  -webkit-transition: background 0.2s;
+  -moz-transition: background 0.2s;
+  transition: background 0.2s;
+}
+.no-touch #site-primary-nav a:hover {
+  background-color: #e36767;
+}
+#site-primary-nav .cd-label {
+  color: #06446e;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  font-size: 0.875rem;
+  margin: 2.4em 0 .8em;
+}
+#site-primary-nav .cd-social {
+  display: inline-block;
+  margin: 0 .4em;
+}
+#site-primary-nav .cd-social a {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background-image: url("../img/cd-socials.svg");
+  background-repeat: no-repeat;
+  /* image replacement *!/
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+#site-primary-nav .cd-facebook a {
+  background-position: 0 0;
+}
+#site-primary-nav .cd-instagram a {
+  background-position: -44px 0;
+}
+#site-primary-nav .cd-dribbble a {
+  background-position: -88px 0;
+}
+#site-primary-nav .cd-twitter a {
+  background-position: -132px 0;
+}
+#site-primary-nav.is-visible {
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
+}
+@media only screen and (min-width: 768px) {
+  #site-primary-nav {
+    padding: 80px 0;
+  }
+}
+@media only screen and (min-width: 1170px) {
+  #site-primary-nav li {
+    font-size: 30px;
+    font-size: 1.875rem;
+  }
+  #site-primary-nav .cd-label {
+    font-size: 16px;
+    font-size: 1rem;
+  }
+}*/
+
+
+
+
+
 .cd-container {
   /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
   width: 90%;
@@ -16,7 +283,7 @@ Modules - reusable parts of our design
 }
 
 .has-top-margin {
-  /* this class is given - using jQuery - to the .cd-main-content following the .cd-secondary-nav when it becomes fixed */
+  /* this class is given - using jQuery - to the .cd-main-content following the #site-section-nav when it becomes fixed */
 }
 @media only screen and (min-width: 1170px) {
   .has-top-margin {
@@ -59,38 +326,22 @@ Modules - reusable parts of our design
 Navigation
 
 -------------------------------- */
-.cd-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  background-color: #030d18;
-  z-index: 3;
-}
-@media only screen and (min-width: 768px) {
-  .cd-header {
-    height: 70px;
-    background-color: transparent;
-    box-shadow: none;
-  }
-}
 
-#cd-logo {
+#site-logo {
   float: left;
   margin: 13px 0 0 5%;
+  background: url(img/cd-logo.svg) no-repeat center center;
 }
-#cd-logo img {
+#site-logo img {
   display: block;
 }
 @media only screen and (min-width: 768px) {
-  #cd-logo {
+  #site-logo {
     margin: 23px 0 0 5%;
   }
 }
 @media only screen and (min-width: 1170px) {
-  #cd-logo.is-hidden {
+  #site-logo.is-hidden {
     /* assign a position fixed and move outside the viewport (on the left) */
     opacity: 0;
     position: fixed;
@@ -100,41 +351,42 @@ Navigation
     -moz-transition: left 0.3s, opacity 0.3s;
     transition: left 0.3s, opacity 0.3s;
   }
-  #cd-logo.is-hidden.slide-in {
+  #site-logo.is-hidden.slide-in {
     /* slide in when the secondary navigation gets fixed */
     left: 5%;
     opacity: 1;
   }
 }
 
-.cd-primary-nav {
+#site-intro-nav {
   /* mobile first - navigation hidden by default, triggered by tap/click on navigation icon */
-  float: right;
-  margin-right: 5%;
+  float: none;
   width: 44px;
   height: 100%;
   background: url(img/cd-icon-menu.svg) no-repeat center center;
   background-size: 44px 44px;
 }
-.cd-primary-nav ul {
-  position: absolute;
+#site-intro-nav ul {
+  position: relative;
+  margin: auto;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 60%;
+  text-align: center;
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
   -ms-transform: translateY(-100%);
   -o-transform: translateY(-100%);
   transform: translateY(-100%);
 }
-.cd-primary-nav ul.is-visible {
+#site-intro-nav ul.is-visible {
   -webkit-transform: translateY(50px);
   -moz-transform: translateY(50px);
   -ms-transform: translateY(50px);
   -o-transform: translateY(50px);
   transform: translateY(50px);
 }
-.cd-primary-nav a {
+#site-intro-nav a {
   display: block;
   height: 50px;
   line-height: 50px;
@@ -143,16 +395,30 @@ Navigation
   border-top: 1px solid #051426;
   color: #f0eee1;
 }
+#site-intro-nav ul li:nth-child(2) {
+    -webkit-animation-delay:0.4s; 
+    -moz-animation-delay:0.4s; 
+    animation-delay: 0.4s;
+} 
+#site-intro-nav ul li:nth-child(3) {
+    -webkit-animation-delay:0.6s; 
+    -moz-animation-delay:0.6s; 
+    animation-delay: 0.6s;
+} 
+#site-intro-nav ul li:nth-child(4) {
+    -webkit-animation-delay:0.8s; 
+    -moz-animation-delay:0.8s; 
+    animation-delay: 0.8s;
+} 
 @media only screen and (min-width: 768px) {
-  .cd-primary-nav {
+  #site-intro-nav {
     /* reset navigation values */
     width: auto;
     height: auto;
     background: none;
   }
-  .cd-primary-nav ul {
+  #site-intro-nav ul {
     position: static;
-    width: auto;
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
@@ -160,18 +426,18 @@ Navigation
     transform: translateY(0);
     line-height: 70px;
   }
-  .cd-primary-nav ul.is-visible {
+  #site-intro-nav ul.is-visible {
     -webkit-transform: translateY(0);
     -moz-transform: translateY(0);
     -ms-transform: translateY(0);
     -o-transform: translateY(0);
     transform: translateY(0);
   }
-  .cd-primary-nav li {
+  #site-intro-nav li {
     display: inline-block;
     margin-left: 1em;
   }
-  .cd-primary-nav a {
+  #site-intro-nav a {
     display: inline-block;
     height: auto;
     line-height: normal;
@@ -190,9 +456,16 @@ Intro
 #cd-intro {
   position: relative;
   height: 300px;
-  background: url(img/intro-background.jpg) no-repeat center center;
+  /*background: url(img/intro-background.jpg) no-repeat center center;*/
   background-size: cover;
   z-index: 2;
+  overflow: hidden;
+}
+#cd-intro img {
+	z-index: 0;
+	position: absolute;
+	top: 0;
+	left: 0;	
 }
 #cd-intro #cd-intro-tagline {
   width: 90%;
@@ -203,10 +476,11 @@ Intro
 }
 #cd-intro h1 {
   font-size: 24px;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 300;
-  color: #030d18;
+  color: #EF5224;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
 }
 @media only screen and (min-width: 768px) {
   #cd-intro {
@@ -217,7 +491,7 @@ Intro
   }
   #cd-intro h1 {
     font-size: 32px;
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 @media only screen and (min-width: 1170px) {
@@ -232,11 +506,13 @@ Intro
 #site-toolbar {
 	display: inline-block;
 	z-index: 100;
-	position: fixed;
+	position: absolute;
 	top: 0.5em;
 	right: 5%;
+	-webkit-animation-delay:1s; 
+	-moz-animation-delay:1s; 
+	animation-delay: 1s;
 }
-
 .cd-btn {
   display: inline-block;
   background-color: #fff;
@@ -262,6 +538,12 @@ Intro
   background-color: rgb(250, 218, 94);
   color: #fff;
 }
+#site-toolbar a:active i {
+	color: rgb(250, 218, 94);
+}
+#site-toolbar a:focus i {
+	color: rgb(250, 218, 94);
+}
 @media only screen and (min-width: 1170px) {
   #site-toolbar.is-hidden {
     /* assign a position fixed and move outside the viewport (on the right) */
@@ -285,21 +567,21 @@ Intro
 Secondary Fixed Navigation
 
 -------------------------------- */
-.cd-secondary-nav {
+#site-section-nav {
   position: relative;
   z-index: 3;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.cd-secondary-nav ul {
-  /* mobile first - secondary navigation hidden by default, triggered by tap/click on .cd-secondary-nav-trigger*/
+#site-section-nav ul {
+  /* mobile first - secondary navigation hidden by default, triggered by tap/click on #site-section-nav-trigger*/
   position: fixed;
   width: 90%;
   max-width: 400px;
   right: 5%;
   bottom: 20px;
   border-radius: 0.25em;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(3, 13, 24, 0.96);
   visibility: hidden;
   z-index: 1;
   -webkit-backface-visibility: hidden;
@@ -318,7 +600,7 @@ Secondary Fixed Navigation
   -moz-transition: -moz-transform 0.3s, visibility 0s 0.3s;
   transition: transform 0.3s, visibility 0s 0.3s;
 }
-.cd-secondary-nav ul.is-visible {
+#site-section-nav ul.is-visible {
   visibility: visible;
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -329,16 +611,56 @@ Secondary Fixed Navigation
   -moz-transition: -moz-transform 0.3s, visibility 0s 0s;
   transition: transform 0.3s, visibility 0s 0s;
 }
-.cd-secondary-nav li a {
+#site-section-nav li a {
   display: block;
   padding: 1.6em;
   color: #f0eee1;
 }
-.cd-secondary-nav li:last-child a {
+#site-section-nav li:last-child a {
   border-bottom: none;
 }
+#section-navigation {
+	text-align: center;
+}
+#section-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+	float: none;
+	text-align: center;
+}
+#section-navigation ul li {
+	padding: 12px 18px;
+	position: relative;
+	text-align: center;
+}
+#section-navigation ul li::before {
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-right-color: #f1f1f1;
+	height: 50%;
+	content: "";
+	position: absolute;
+	left: 100%;
+	top: 25%;
+}
+#section-navigation ul li:last-child {
+	border: none;
+}
+#section-navigation ul li a {
+	position: relative;
+	letter-spacing: 1px;
+	text-decoration: none;
+}	
+#section-navigation ul li a b {
+	font: bold 14px Georgia, "Times New Roman", Times, serif;
+	color: #f1f1f1;
+	text-transform: uppercase;
+	padding-bottom: 10px;
+}
 @media only screen and (min-width: 1170px) {
-  .cd-secondary-nav {
+  #site-section-nav {
     z-index: 10;
     height: 100px;
     background: rgba(255, 255, 255, 0);
@@ -350,11 +672,11 @@ Secondary Fixed Navigation
     margin: 0;
     width: 100%;
   }
-  .cd-secondary-nav nav, .cd-secondary-nav ul, .cd-secondary-nav li, .cd-secondary-nav a {
+  #site-section-nav nav, #site-section-nav ul, #site-section-nav li, #site-section-nav a {
     height: 100%;
   }
  
-  .cd-secondary-nav ul {
+  #site-section-nav ul {
     /* reset navigation values */
     position: static;
     width: auto;
@@ -368,11 +690,11 @@ Secondary Fixed Navigation
     text-align: center;
     background-color: transparent;
   }
-  .cd-secondary-nav li {
+  #site-section-nav li {
     display: inline-block;
     margin-left: -4px;
   }
-  .cd-secondary-nav li a {
+  #site-section-nav li a {
     position: relative;
     text-align: center;
     display: block;
@@ -382,14 +704,14 @@ Secondary Fixed Navigation
     -moz-transition: padding 0.2s;
     transition: padding 0.2s;
   }
-  .cd-secondary-nav li a b {
+  #site-section-nav li a b {
     text-transform: uppercase;
     font-size: 13px;
     font-size: 0.8125rem;
     font-weight: 700;
     color: rgba(240, 238, 225, 0.3);
   }
-  .cd-secondary-nav li a span {
+  #site-section-nav li a span {
     position: absolute;
     display: inline-block;
     width: 40px;
@@ -408,29 +730,28 @@ Secondary Fixed Navigation
     -moz-transition: opacity 0.2s;
     transition: opacity 0.2s;
   }
-  .cd-secondary-nav li a span i {
+  #site-section-nav li a span i {
   	font-size: 30px;
   }
-  .cd-secondary-nav li a:hover b, .cd-secondary-nav li a.active b {
-    /*color: #f0eee1;*/
-    color: rgb(250, 218, 94);
+  #site-section-nav li a:hover b, #site-section-nav li a.active b {
+    color: rgb(250, 218, 94) !important;
   }
-  .cd-secondary-nav li:nth-child(1) a span {
+  #site-section-nav li:nth-child(1) a span {
     background-position: 0 0;
   }
-  .cd-secondary-nav li:nth-child(2) a span {
+  #site-section-nav li:nth-child(2) a span {
     background-position: -40px 0;
   }
-  .cd-secondary-nav li:nth-child(3) a span {
+  #site-section-nav li:nth-child(3) a span {
     background-position: -80px 0;
   }
-  .cd-secondary-nav li:nth-child(4) a span {
+  #site-section-nav li:nth-child(4) a span {
     background-position: -120px 0;
   }
-  .cd-secondary-nav li:nth-child(5) a span {
+  #site-section-nav li:nth-child(5) a span {
     background-position: -160px 0;
   }
-  .cd-secondary-nav.is-fixed {
+  #site-section-nav.is-fixed {
     /* on Firefox CSS transition/animation fails when parent element changes position attribute*/
     /* so we defined to diffent classes: .is-fixed to change the position value and .is-animated to change childrens' attributes (padding and opacity)*/
     position: fixed;
@@ -439,29 +760,30 @@ Secondary Fixed Navigation
     height: 70px;
     width: 100%;
   }
-  .cd-secondary-nav.repainted {
+  #site-section-nav.repainted {
     background: rgba(3, 13, 24, 0.96);
   }
-  .cd-secondary-nav.animate-children {
+  #site-section-nav.animate-children {
     /* on Firefox CSS transition/animation fails when parent element changes position attribute*/
     /* so we defined to diffent classes: .is-fixed to change the position value and .is-animated to change childrens' attributes (padding and opacity)*/
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
-  .cd-secondary-nav.animate-children li a {
+  #site-section-nav.animate-children li a {
     padding: 15px 30px 0 30px;
   }
-  .cd-secondary-nav.animate-children li a span {
+  #site-section-nav.animate-children li a span {
     opacity: 0;
   }
 }
 
-.cd-secondary-nav-trigger {
+#site-section-nav-trigger {
   position: fixed;
   bottom: 20px;
   right: 5%;
   width: 44px;
   height: 44px;
   background: rgba(3, 13, 24, 0.96);
+  box-shadow: 0px 0px 10px rgb(250, 218, 94, 0.4);
   border-radius: 0.25em;
   /* image replacement */
   overflow: hidden;
@@ -469,7 +791,7 @@ Secondary Fixed Navigation
   white-space: nowrap;
   z-index: 2;
 }
-.cd-secondary-nav-trigger span {
+#site-section-nav-trigger span {
   /* the span element is used to create the menu icon */
   position: absolute;
   display: block;
@@ -490,7 +812,7 @@ Secondary Fixed Navigation
   -moz-transition: background 0.3s;
   transition: background 0.3s;
 }
-.cd-secondary-nav-trigger span::before, .cd-secondary-nav-trigger span::after {
+#site-section-nav-trigger span::before, #site-section-nav-trigger span::after {
   content: '';
   position: absolute;
   background: inherit;
@@ -498,7 +820,7 @@ Secondary Fixed Navigation
   height: 100%;
   border-radius: 50%;
 }
-.cd-secondary-nav-trigger span::before {
+#site-section-nav-trigger span::before {
   right: -10px;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
@@ -506,7 +828,7 @@ Secondary Fixed Navigation
   -o-transform: rotate(0);
   transform: rotate(0);
 }
-.cd-secondary-nav-trigger span::after {
+#site-section-nav-trigger span::after {
   left: -10px;
   -webkit-transform: rotate(0);
   -moz-transform: rotate(0);
@@ -514,15 +836,15 @@ Secondary Fixed Navigation
   -o-transform: rotate(0);
   transform: rotate(0);
 }
-.cd-secondary-nav-trigger.menu-is-open {
+#site-section-nav-trigger.menu-is-open {
   background: transparent;
 }
-.cd-secondary-nav-trigger.menu-is-open span {
+#site-section-nav-trigger.menu-is-open span {
   background: rgba(240, 238, 225, 0);
   width: 20px;
   height: 2px;
 }
-.cd-secondary-nav-trigger.menu-is-open span::before, .cd-secondary-nav-trigger.menu-is-open span::after {
+#site-section-nav-trigger.menu-is-open span::before, #site-section-nav-trigger.menu-is-open span::after {
   background: #f0eee1;
   width: 100%;
   height: 100%;
@@ -530,14 +852,14 @@ Secondary Fixed Navigation
   top: 0;
   left: 0;
 }
-.cd-secondary-nav-trigger.menu-is-open span::before {
+#site-section-nav-trigger.menu-is-open span::before {
   -webkit-transform: rotate(135deg);
   -moz-transform: rotate(135deg);
   -ms-transform: rotate(135deg);
   -o-transform: rotate(135deg);
   transform: rotate(135deg);
 }
-.cd-secondary-nav-trigger.menu-is-open span::after {
+#site-section-nav-trigger.menu-is-open span::after {
   -webkit-transform: rotate(225deg);
   -moz-transform: rotate(225deg);
   -ms-transform: rotate(225deg);
@@ -545,7 +867,7 @@ Secondary Fixed Navigation
   transform: rotate(225deg);
 }
 @media only screen and (min-width: 1170px) {
-  .cd-secondary-nav-trigger {
+  #site-section-nav-trigger {
     display: none;
   }
 }

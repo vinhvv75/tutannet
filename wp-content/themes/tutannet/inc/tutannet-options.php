@@ -15,11 +15,23 @@ function optionsframework_options() {
 	// Pull all the categories into an array
 	$options_categories = array();
 	$options_categories_obj = get_categories();
-        $options_categories[]= __( 'Select category', 'tutannet' );
+    $options_categories[]= __( 'Chọn chuyên mục', 'tutannet' );
 	foreach ($options_categories_obj as $category) {
 		$options_categories[$category->slug] = $category->cat_name;
 	}
-
+	
+	// Pull all the post of slected category into an array	
+	function options_posts($cat_name) {
+		$options_posts_array = array();
+		$args = array( 'category_name' => $cat_name, 'posts_per_page' => -1, 'post_status'=>'publish' );
+		$options_posts_obj = get_posts( $args );
+		$options__posts_array[]= __( 'Chọn bài đăng', 'tutannet' );
+		foreach ($options_posts_obj as $post) {
+			$options_posts_array[$post->ID] = $post->post_title;
+		}
+		return $options_posts_array;
+	}
+	
 	//Slide options for homepage slider
     $options_slides = array();
     $options_slides[0] = __( 'Select no.of slides', 'tutannet' );
@@ -123,7 +135,7 @@ function optionsframework_options() {
 	        );    
     /*--------------Logo setting-------------------*/
     $options[] = array(
-            'name' => __( 'Logo Settings', 'tutannet' ),
+            'name' => __( 'Logo', 'tutannet' ),
             'id'   => 'logo',
             'type' => 'groupstart'
             );
@@ -159,6 +171,49 @@ function optionsframework_options() {
     $options[] = array(
             'type' => 'groupend'
             );
+    /*--------------Primary Nav setting-------------------*/
+    $options[] = array(
+            'name' => __( 'Mục Giới Thiệu', 'tutannet' ),
+            'id'   => 'primary_nav',
+            'type' => 'groupstart'
+            );
+    
+    $options[] = array(
+            'name' => __( 'Chọn Chuyên Mục', 'tutannet' ),
+            'desc' => __( 'Chọn chuyên mục cho "Mục Giới Thiệu"', 'tutannet' ),    
+            'id' => 'primary_nav_category',
+            'type' => 'select',
+            'options' => $options_categories,
+            );   
+    
+    $options[] = array(
+		    'name' => __('Bài Giới Thiệu Thứ Nhất', 'tutannet'),
+		    'desc' => __('Chọn bài giới thiệu đầu tiên đăng trên danh mục giới thiệu trên trang chủ', 'tutannet'),
+		    'id' => 'primay_nav_item1',
+		    'type' => 'select',
+		    'options' => options_posts(of_get_option('primary_nav_category')),
+		    );
+		    
+	$options[] = array(
+		    'name' => __('Bài Giới Thiệu Thứ Hai', 'tutannet'),
+		    'desc' => __('Chọn bài giới thiệu thứ hai đăng trên danh mục giới thiệu trên trang chủ', 'tutannet'),
+		    'id' => 'primay_nav_item2',
+		    'type' => 'select',
+		    'options' => options_posts(of_get_option('primary_nav_category')),
+		    );
+		    
+	$options[] = array(
+		    'name' => __('Bài Giới Thiệu Thứ Ba', 'tutannet'),
+		    'desc' => __('Chọn bài giới thiệu thứ ba đăng trên danh mục giới thiệu trên trang chủ', 'tutannet'),
+		    'id' => 'primay_nav_item3',
+		    'type' => 'select',
+		    'options' => options_posts(of_get_option('primary_nav_category')),
+		    );
+        
+    $options[] = array(
+            'type' => 'groupend'
+            );
+
 
 /*-----------------------Footer Setting------------------------*/
     $options[] = array(
@@ -227,71 +282,6 @@ function optionsframework_options() {
             'off' => __( 'No', 'tutannet'),
             'std' => '1',
             'type' => 'switch'
-            );
-    $options[] = array(
-            'type' => 'groupend'
-            );
-    
-/*-----------------------Ads Setting------------------------*/
-
-    $options[] = array(
-            'name' => __( 'ADS', 'tutannet' ),
-            'type' => 'heading'
-            ); 
-    
-    $options[] = array(
-            'name' => __( 'Heder ad', 'tutannet' ),
-            'id'   => 'header_ad',
-            'type' => 'groupstart'
-            );
-
-    $options[] = array(
-            'name' => __( 'Your Header Ad', 'tutannet' ),
-            'desc' => sprintf(__( 'Go to <a href="%s" target="_blank">Widget Page</a> to add Header Ads <br> Ads Size : 728x90px <br> Sidebar Name: Header Ad ', 'tutannet' ), esc_url(admin_url('/widgets.php'))),
-            'id' => 'value_header_ad',
-            'type' => 'info' 
-            );
-            
-    $options[] = array(
-            'type' => 'groupend'
-            );
-    
-    $options[] = array(
-            'name' => __( 'Article ad', 'tutannet' ),
-            'id'   => 'article_ad',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Your Article Ad', 'tutannet' ),
-            'desc' => sprintf(__( 'Go to <a href="%s" target="_blank">Widget Page</a> to add Article Ad <br> Ads Size : 728x90px <br> Sidebar Name: Article Ad ', 'tutannet' ), esc_url(admin_url('/widgets.php'))),
-            'id' => 'value_article_ad',
-            'type' => 'info' 
-            );            
-    $options[] = array(
-            'type' => 'groupend'
-            );
-    $options[] = array(
-            'name' => __( 'Homepage ad', 'tutannet' ),
-            'id'   => 'homepage_ad',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Your Homepage Inline Ad', 'tutannet' ),
-            'desc' => sprintf(__( 'Go to <a href="%s" target="_blank">Widget Page</a> to add Homepage Inline Ad <br> Ads Size : 728x90px <br> Sidebar Name: Homepage Inline Ad ', 'tutannet' ), esc_url(admin_url('/widgets.php'))),
-            'id' => 'value_homepage_inline_ad',
-            'type' => 'info' 
-            );
-    $options[] = array(
-            'name' => __( 'Your Homepage Sidebar Top Ad', 'tutannet' ),
-            'desc' => sprintf(__( 'Go to <a href="%s" target="_blank">Widget Page</a> to add Homepage Sidebar Top Ad <br> Ads Size : 300x250px <br> Sidebar Name: Homepage Sidebar Top Ad ', 'tutannet' ), esc_url(admin_url('/widgets.php'))),
-            'id' => 'value_sidebar_top_ad',
-            'type' => 'info' 
-            );
-    $options[] = array(
-            'name' => __( 'Your Homepage Sidebar Middle Ad', 'tutannet' ),
-            'desc' => sprintf(__( 'Go to <a href="%s" target="_blank">Widget Page</a> to add Homepage Sidebar Middle Ad <br> Ads Size : 300x250px <br> Sidebar Name: Homepage Sidebar Middle Ad ', 'tutannet' ), esc_url(admin_url('/widgets.php'))),
-            'id' => 'value_sidebar_middle_ad',
-            'type' => 'info' 
             );
     $options[] = array(
             'type' => 'groupend'

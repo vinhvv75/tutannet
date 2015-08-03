@@ -59,6 +59,77 @@ function my_remove_meta_boxes() {
 add_action( 'admin_menu', 'my_remove_meta_boxes' );
 endif;
 
+/*---------Create and Define Default Category---------------*/
+function define_default_category() {
+	// Main Category
+	wp_insert_term(
+		'Tin Tức Phật Sự',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'tin-tuc-phat-su'
+		)
+	);
+	wp_insert_term(
+		'Phật Giáo và Xã Hội',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'phat-giao-va-xa-hoi'
+		)
+	);
+	wp_insert_term(
+		'Phật Học',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'phat-hoc'
+		)
+	);
+	wp_insert_term(
+		'Hoạt Động Chùa Từ Tân',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'hoat-dong-chua-tu-tan'
+		)
+	);
+	wp_insert_term(
+		'Các Chùa Hệ Phái',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'cac-chua-he-phai'
+		)
+	);
+	
+	// functional category
+	wp_insert_term(
+		'Giới thiệu',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'gioi-thieu'
+		)
+	);
+	
+	wp_insert_term(
+		'Thông Báo',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'thong-bao'
+		)
+	);
+	
+	wp_update_term(1, 'category', array(
+	  'name' => 'Không chuyên mục',
+	  'slug' => 'khong-chuyen-muc'
+	));
+}
+add_action( 'after_setup_theme', 'define_default_category' );
+
+
 /*---------Enqueue custom admin panel JS---------------*/
 function tutannet_admin_scripts(){
     wp_enqueue_script('tutannet-custom-admin', get_template_directory_uri(). '/inc/option-framework/js/custom-admin.js', array( 'jquery'));    
@@ -307,6 +378,7 @@ function tutannet_required_plugins() {
             ),
                   
     );
+
 
     /**
      * Array of configuration settings. Amend each line as needed.

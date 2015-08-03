@@ -275,13 +275,16 @@ function tutannet_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/bootstrap.min.css');
 	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/bootstrap.min.js', array('jquery'), '3.3.5' );
 	
-	//font-awesome  4.4.0
+	// font-awesome  4.4.0
 	wp_enqueue_style( 'fontawesome-font', get_template_directory_uri(). '/lib/font-awesome-4.4.0/font-awesome.min.css' );
+	
+	// color-thief-2.0
+	wp_enqueue_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js', array(jquery), '2.0' );
 
-    wp_enqueue_script( 'tutannet-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/wow.min.js', array(), '1.0.1');
 	wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0.1' );
+	wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery'), '1.0.1' );
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.js', array('jquery'), '2.8.3' );
 	wp_enqueue_script( 'pace', get_template_directory_uri() . '/js/pace.min.js', array(), '1.0.0' );
 	

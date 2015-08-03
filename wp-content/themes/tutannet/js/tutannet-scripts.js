@@ -81,18 +81,16 @@ $(".first-block .rightposts-wrapper .blockposts-wrapper .post-title a").hover(fu
 }); 
 
 // tab toggle in navigation, toolbar
-//$('#section-navigation a').click(function (e) {
-//  e.preventDefault();
-//  $(this).tab('show');
-//})
-//$('#site-toolbar a').click(function (e) {
-//  e.preventDefault();
-//  $(this).tab('show');
-//})
 $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   e.target; // newly activated tab
   e.relatedTarget; // previous active tab
-})
+});
+$('a[data-toggle="tab"]').click(function() {
+	var top = $('.tab-content').offset().top - 30;
+	$('html,body').animate({
+	        scrollTop: top},
+	        'slow');
+});
 
 // initalize bootstrap tooltip
 $('[data-toggle="tooltip"]').tooltip();
@@ -100,6 +98,45 @@ $('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="toolti
 
 // remove tooltips
 window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }
+
+// Search Toggle
+$('#search_toggle').click(function() {
+	$('#site-section-nav, #cd-intro-tagline').addClass('fade out');
+	setTimeout(function(){ 
+		$('#site-section-nav, #cd-intro-tagline').addClass('is-disable'); 
+		$('#searchform').removeClass('is-disable');
+		$('#searchform').addClass('fade in');
+	}, 500 );
+	$('#section_search').tab('show');
+	$('html,body').animate({
+	        scrollTop: 0},
+	        'slow');
+});
+
+
+function extractUrl(input)
+{
+ // remove quotes and wrapping url()
+ return input.replace(/"/g,"").replace(/url\(|\)$/ig, "");
+}
+
+colorThief = new ColorThief();
+var rgb2 = colorThief.getPalette(document.getElementById('cd-intro-img'),5);
+
+var rgb = getAverageRGB(document.getElementById('cd-intro-img'));
+var text = document.getElementById('headline');
+    
+text.style.color = 'rgb('+rgb.r+','+rgb.b+','+rgb.g+')';
+//text.style.color = 'rgb('+rgb2[4][0]+','+rgb2[4][1]+','+rgb2[4][2]+')';
+
+console.log('Background Image Colors:');
+console.log(rgb2[0]);
+console.log(rgb2[1]);
+console.log(rgb2[2]);
+console.log(rgb2[3]);
+console.log(rgb2[4]);
+console.log('Selected Color:', rgb2[4][0], rgb2[4][1], rgb2[4][2]);
+console.log('Average Color:', rgb.r, rgb.g, rgb.b);
 
 // welcome screen on console
 function welcomeScreen() {

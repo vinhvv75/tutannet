@@ -38,8 +38,16 @@ get_header();
     	endif;
     ?>
     <section id="cd-intro">
+    	<img id="cd-intro-img" src="<?php echo get_template_directory_uri();?>/img/intro-background.jpg"/>
+    	<form method="get" id="searchform" class="is-disable" action="<?php bloginfo('home'); ?>/">
+    	<div><input type="text" size="18" value="<?php echo wp_specialchars($s, 1); ?>" name="s" id="s" />
+    	<button type="submit" id="search_button" class="btn btn-success">
+    		<i class="fa fa-search"></i>
+    	</button>
+    	</div>
+    	</form>
 		<div id="cd-intro-tagline">
-			<h1 class="cd-headline rotate-1">
+			<h1 id="headline" class="cd-headline rotate-1">
 				<!--<span>My favourite food is</span>-->
 				<span class="cd-words-wrapper">
 					<b class="is-visible">Kẻ thù lớn nhất của đời người là chính mình</b>
@@ -48,14 +56,9 @@ get_header();
 				</span>
 			</h1>
 		</div> <!-- #site-intro-tagline -->
-		<div id="site-toolbar" class="">
-			<a href="#section2" class="cd-btn" data-toggle="tab" title="Tooltip on left"><i class="fa fa-bell-o"></i></a>
-			<a href="#" class="cd-btn" data-toggle="tab" title="Tìm kiếm"><i class="fa fa-search"></i></a>
-			<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo"><i class="fa fa-reorder"></i></a>
-		</div><!-- #cd-toolbar -->
 		<!-- Nav tabs -->
-		<div class="cd-secondary-nav">
-			<a href="#0" class="cd-secondary-nav-trigger">Menu<span></span></a>
+		<div id="site-section-nav">
+			<a href="#0" id="site-section-nav-trigger">Menu<span></span></a>
 		    <nav id="section-navigation" role="navigation">
 		         <ul class="container" role="tablist">
 		    	    <li role="presentation" class="active"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
@@ -104,14 +107,14 @@ get_header();
 		          	      ?>	         
 		          	      			
 									<?php if($b_counter == 0){ 
-										echo '<div class="leftposts-wrapper col-xs-4 wow fadeInLeft">';
+										echo '<div class="leftposts-wrapper col-sm-5 col-md-4 col-lg-4 hidden-xs wow fadeInLeft">';
 											if(has_post_thumbnail()):  
 										    	echo '<div class="post-image easeOutCirc"><a href="' . get_the_permalink() . '">';
 										    	echo '<img src="' . esc_url( $b1_big_image_path[0] ) . '" alt="' . esc_attr($b1_image_alt) . '" />';
 										    	echo '</a></div>';
 										    endif;
 										echo '</div>';
-										echo '<div class="rightposts-wrapper col-xs-4 wow fadeInRight cd-main">
+										echo '<div class="rightposts-wrapper col-sx-12 col-sm-7 col-md-8 col-lg-4 wow fadeInRight cd-main">
 											<div id="instant-container-1" class="cd-gallery">'; 
 									  	echo '<div class="featuredposts-wrapper row">';} 
 									  	if ($b_counter > 0 && $b_counter == 1){ echo '<div class="blockposts-wrapper row">';} ?>	          	      			
@@ -134,7 +137,7 @@ get_header();
 		          	              echo '</div>';
 		          	              endif;
 		          	      	?>
-		          	<div class="postimages-wrapper col-xs-4"><div id="first_block_imageHolder" class="animated"></div></div>
+		          	<div class="postimages-wrapper col-lg-4 hidden-xs hidden-sm hidden-md"><div id="first_block_imageHolder" class="animated"></div></div>
 	              </section>
 	          </div>
               <div role="tabpanel" class="tab-pane fade in" id="section2">      
@@ -282,6 +285,12 @@ get_header();
 	                    ?>
 	              </section> 
 	        	</div> 
+	        	
+	        	<div role="tabpanel" class="tab-pane fade in" id="section_search">
+	        	    <section class="search_block clearfix wow fadeInUp container" data-wow-delay="0.5s">
+	        	    	
+	        	    </section> 
+	        		</div> 
         	</div><!-- tab content -->    			
 		</main><!-- #main -->
 	</div><!-- #primary -->

@@ -9,7 +9,6 @@
  *
  * @package TuTanNet
  */
-
 get_header();
 ?>
 
@@ -43,13 +42,18 @@ get_header();
     ?>
     <section id="cd-intro">
     	<img id="cd-intro-img" src="<?php echo get_template_directory_uri();?>/img/intro-background.jpg"/>
-    	<form method="get" id="searchform" class="is-disable" action="<?php bloginfo('home'); ?>/">
+    	
+    	
+    	<form method="get" id="searchform" class="is-disabled animated" action="<?php bloginfo('home'); ?>/">
     	<div><input type="text" size="18" value="<?php echo wp_specialchars($s, 1); ?>" name="s" id="s" />
     	<button type="submit" id="search_button" class="btn btn-success">
     		<i class="fa fa-search"></i>
     	</button>
     	</div>
-    	</form>
+    	</form><!-- Search Form -->
+    	
+    	<?php include('includes/login.php'); ?>
+    	
 		<div id="cd-intro-tagline">
 			<h1 id="headline" class="cd-headline rotate-1">
 				<!--<span>My favourite food is</span>-->
@@ -68,15 +72,23 @@ get_header();
 			</div>
 		    <nav id="section-navigation" role="navigation">
 		         <ul class="container" role="tablist">
+		    	    <?php 
+		    	    	if(is_user_logged_in()):
+		    	    		global $current_user;
+		    	    		get_currentuserinfo();
+		    	     ?>
+		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#goi-y-cho-ban" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Gợi ý cho bạn</b><span><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
+		    	    <?php endif; ?>
+		    	    
 		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
-		    	    <li class="site-section-nav-item" role="presentation"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b>Tin Tức Phật Sự</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
-		    	    <li class="site-section-nav-item" role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_2->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b>Phật Giáo và Xã Hội</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
-		    	    <li class="site-section-nav-item"  role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_3->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item"  role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b>Phật Học</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
-		    	    <li class="site-section-nav-item" role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_4->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b>Hoạt Động Chùa Từ Tân</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	  </ul>
 		    </nav><!-- #site-navigation -->
 		</div>
@@ -84,6 +96,7 @@ get_header();
     
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
+			
 			<div class="cd-folding-panel">
 				<div class="fold-left"></div> 
 				<div class="fold-right"></div> 
@@ -92,8 +105,76 @@ get_header();
 				</div>
 				<a class="cd-close" href="#0"></a>
 			</div>
+			
+			
+			  	
+			
 			<div class="tab-content container">
-              	<div role="tabpanel" class="tab-pane fade in active" id="tong-quan">
+              	<?php 
+              		if(is_user_logged_in()):				
+              	 ?>
+              	<div role="tabpanel" class="tab-pane animated fadeIn <?php if(is_user_logged_in()) {echo 'active';}?>" id="goi-y-cho-ban">
+              	  <section class="block-overview row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
+              	  		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+              	  			<?php 
+              	  				if(!empty($block1_cat)):
+              	      				$block1_args = array(
+              	              			                      'category_name'=>'tin-tuc-phat-su',
+              	              			                      'post_status'=>'publish',
+              	              			                      'posts_per_page'=>5,
+              	              			                      'order'=>'DESC'
+              	              			                      );
+              	              		echo '<h2 class="block-cat-name"><span>Gợi Ý Cho Bạn</span></h2>';
+              	              		$block1_query = new WP_Query($block1_args);
+              	              		          $b_counter = 0;
+              	              		          $total_posts_block1 = $block1_query->found_posts;
+              	              		          if($block1_query->have_posts()){
+              	              		              while($block1_query->have_posts()){
+              	              		                  $b_counter++;
+              	              		                  $block1_query->the_post();
+              	              		                  $b1_image_id = get_post_thumbnail_id();
+              	              		                  $b1_big_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-big-thumb',true);
+              	              		                  $b1_small_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-small-thumb',true);
+              	              		                  $b1_image_alt = get_post_meta($b1_image_id,'_wp_attachment_image_alt',true);
+              	              		  ?>	         
+              	      					<?php if($b_counter == 1){ 
+              	          							if(has_post_thumbnail()):  
+              	          						    	echo '<a href="' . get_the_permalink() . '">';
+              	          						    	echo '<img class="section-featured-image" src="' . esc_url( $b1_big_image_path[0] ) . '" alt="' . esc_attr($b1_image_alt) . '" />';
+              	          						    	echo '</a>';
+              	          						    endif;
+              	          						echo '<div class="posts-wrapper wow fadeInLeft cd-main">';
+              	          							echo '<h2> <span>'. esc_attr($category_info_1->name) .'</span></h2>';
+              	          							echo '<div class="cd-gallery">'; 
+              	      					  	}
+              	      					?>
+              	      		              <li class="cd-item">
+              	      		              	<div class="post-desc-wrapper">
+              	      		              	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
+              	      		              	    <h3 class="post-title"><a post-title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b_overview_small_image_path[0] );?>" ><?php the_title();?></a></h3>
+              	      		              	</div>
+              	      		              	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
+              	      		              </li>
+              	      		  			<?php  
+              	      		  				if($b_counter==$total_posts_block_overview){echo '</div>';} ?>
+              	      			      	<?php
+              	      			              	}
+              	      			              }
+              	      			              echo '</div>';
+              	      			        	endif;
+              	  			      	?>
+              	  			</div>
+              	  		<div class="col-lg-4">
+              	  			
+              	  		</div>
+              	  		<div class="col-lg-4">
+              	  			
+              	  		</div>
+              			</section>
+              		</div><!--#goi-y-cho-ban-->
+              		<?php endif; ?>
+              	
+              	<div role="tabpanel" class="tab-pane animated fadeIn <?php if(!is_user_logged_in()) {echo 'active';}?>" id="tong-quan">
 	              <section class="block-overview row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 	              		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 	              			<?php 
@@ -152,7 +233,7 @@ get_header();
 	              		</div>
               		</section>
               	</div><!--#tong-quan-->
-              	<div role="tabpanel" class="tab-pane fade in" id="section1">
+              	<div role="tabpanel" class="tab-pane animated fadeIn" id="section1">
 	              <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 		          	      <?php 
 		          	          if(!empty($block1_cat)):
@@ -211,7 +292,7 @@ get_header();
 		          	<div class="postimages-wrapper col-lg-4 hidden-xs hidden-sm hidden-md"><div id="first_block_imageHolder" class="animated"></div></div>
 	              </section>
 	          </div>
-              <div role="tabpanel" class="tab-pane fade in" id="section2">      
+              <div role="tabpanel" class="tab-pane animated fadeIn" id="section2">      
 	              <section class="second-block clearfix wow fadeInLeft" data-wow-delay="0.5s">
 	                    <?php 
 	                        if(!empty($block2_cat)):
@@ -260,7 +341,7 @@ get_header();
 	                    ?>
 	              </section>
 			  </div>
-			  <div role="tabpanel" class="tab-pane fade in" id="section3">
+			  <div role="tabpanel" class="tab-pane animated fadeIn" id="section3">
 	              <section class="third-block clearfix wow fadeInUp" data-wow-delay="0.5s">
 	                    <?php 
 	                        if(!empty($block3_cat)):
@@ -312,7 +393,7 @@ get_header();
 	                    ?>
 	              </section>
 	          </div>
-              <div role="tabpanel" class="tab-pane fade in" id="section4">
+              <div role="tabpanel" class="tab-pane animated fadeIn" id="section4">
 	              <section class="forth-block clearfix wow fadeInRight" data-wow-delay="0.5s">
 	                    <?php 
 	                        if(!empty($block4_cat)):

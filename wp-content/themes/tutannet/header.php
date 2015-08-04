@@ -47,7 +47,18 @@
         </nav><!-- site-intro-nav-->
         
         <div id="site-toolbar" class="animated fadeInRight">
-        	<a href="#" class="cd-btn" data-toggle="tab" title="Đăng nhập thành viên"><i class="fa fa-user"></i></a>
+        	<a id="login_toggle" href="#" class="cd-btn" title="<?php 
+        		if(is_user_logged_in()) {
+        			global $current_user;
+        			get_currentuserinfo();
+        		    echo 'Xin chào, ' . $current_user->user_login;		
+        		} else {
+        		    echo 'Đăng nhập thành viên';
+        		}
+        	
+        	
+        	?>"><i class="fa fa-user"></i></a>
+        	
         	<a id="search_toggle" href="#section_search" class="cd-btn" data-toggle="tab" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
         	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-reorder"></i></a>
         </div><!-- #site-toolbar -->				        

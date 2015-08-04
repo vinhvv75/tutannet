@@ -45,16 +45,28 @@ function getAverageRGB(imgEl) {
 
 
 
-function isDark(rgb) {
+function isDark(rgb,mode) {
 	var c = 'rgb('+rgb[0]+','+rgb[1]+','+rgb[2]+')';    
 	var o = Math.round(((parseInt(rgb[0]) * 299) + (parseInt(rgb[1]) * 587) + (parseInt(rgb[2]) * 114)) /1000);    
 	if(o > 125) {
-	    return false;
+	    if (mode)
+	    	{ return 'black' }
+	   else { return false; }
 	}else{ 
-	    return true;
+	   if (mode)
+	    	{ return 'white' }
+	   else {return true; }
 	}
 }
 
+
+function getContrastYIQ(hexcolor){
+	var r = parseInt(hexcolor.substr(0,2),16);
+	var g = parseInt(hexcolor.substr(2,2),16);
+	var b = parseInt(hexcolor.substr(4,2),16);
+	var yiq = ((r*299)+(g*587)+(b*114))/1000;
+	return (yiq >= 128) ? 'black' : 'white';
+}
 
 function isDay() {
 	var hr = (new Date()).getHours();

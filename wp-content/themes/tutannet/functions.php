@@ -281,9 +281,6 @@ function tutannet_scripts() {
 	// color-thief-2.0
 	wp_enqueue_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js', array(jquery), '2.0' );
 	
-	// semantic-ui-2.0
-	wp_enqueue_style( 'ui-image', get_template_directory_uri() . '/lib/semantic-ui-2.0/image.min.css' );
-	
 	// jetpack tiled-gallery
 	wp_enqueue_style( 'jetpack-tiled-gallery', get_template_directory_uri() . '/tech/tiled-gallery/tiled-gallery.css' );
 	wp_enqueue_script( 'jetpack-tiled-gallery', get_template_directory_uri() . '/tech/tiled-gallery/tiled-gallery.js', array(), '', true );

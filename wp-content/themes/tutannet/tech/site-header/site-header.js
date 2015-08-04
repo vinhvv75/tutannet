@@ -3,8 +3,10 @@ jQuery(document).ready(function($){
 	var secondaryNav = $('#site-section-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top,
 		taglineOffesetTop = $('#cd-intro-tagline').offset().top + $('#cd-intro-tagline').height() + parseInt($('#cd-intro-tagline').css('paddingTop').replace('px', '')),
-		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.block-cat-name')[block_index];
-		
+		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.block-cat-name')[block_index],
+		section_title = document.getElementById('section-title');
+
+	section_title.innerHTML = $(block_cat_name).find('span').html();
 	
 	$('a[data-toggle="tab"]').click(function() {
 		block_index = $('#section-navigation ul').find($(this).parent()).index();
@@ -20,6 +22,7 @@ jQuery(document).ready(function($){
 			//fix secondary navigation
 			secondaryNav.addClass('is-fixed');
 			secondaryNav.addClass('repainted');
+			
 			if ( $(window).scrollTop() >= $(block_cat_name).offset().top )
 			{
 				updateSectionNav(true);	

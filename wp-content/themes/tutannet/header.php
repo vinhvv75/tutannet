@@ -47,9 +47,9 @@
         </nav><!-- site-intro-nav-->
         
         <div id="site-toolbar" class="animated fadeInRight">
-        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-bell-o"></i></a>
+        	<a href="#" class="cd-btn" data-toggle="tab" title="Đăng nhập thành viên"><i class="fa fa-user"></i></a>
         	<a id="search_toggle" href="#section_search" class="cd-btn" data-toggle="tab" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
-        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông tin về chúng tôi"><i class="fa fa-reorder"></i></a>
+        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-reorder"></i></a>
         </div><!-- #site-toolbar -->				        
 	</header><!-- #masthead -->
 	

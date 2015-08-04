@@ -1,70 +1,35 @@
 jQuery(document).ready(function($){
-//	if you change this breakpoint in the style.css file (or _layout.scss if you use SASS), don't forget to update this value as well
-//		var MQL = 1170;
-//	
-//		primary navigation slide-in effect
-//		if($(window).width() > MQL) {
-//			var headerHeight = $('#site-header').height();
-//			$(window).on('scroll',
-//			{
-//		        previousTop: 0
-//		    }, 
-//		    function () {
-//			    var currentTop = $(window).scrollTop();
-//			    check if user is scrolling up
-//			    if (currentTop < this.previousTop ) {
-//			    	if scrolling up...
-//			    	if (currentTop > 0 && $('#site-header').hasClass('is-fixed')) {
-//			    		$('#site-header').addClass('is-visible');
-//			    	} else {
-//			    		$('#site-header').removeClass('is-visible is-fixed');
-//			    	}
-//			    } else {
-//			    	if scrolling down...
-//			    	$('#site-header').removeClass('is-visible');
-//			    	if( currentTop > headerHeight && !$('#site-header').hasClass('is-fixed')) $('#site-header').addClass('is-fixed');
-//			    }
-//			    this.previousTop = currentTop;
-//			});
-//		}
-//	
-//		open/close primary navigation
-//		$('#site-primary-nav-trigger').on('click', function(){
-//			$('.cd-menu-icon').toggleClass('is-clicked'); 
-//			$('#site-header').toggleClass('menu-is-open');
-//			
-//			in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
-//			if( $('#site-primary-nav').hasClass('is-visible') ) {
-//				$('#site-primary-nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
-//					$('body').removeClass('overflow-hidden');
-//				});
-//			} else {
-//				$('#site-primary-nav').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
-//					$('body').addClass('overflow-hidden');
-//				});	
-//			}
-//		});
-//	});
-	
 	
 	var secondaryNav = $('#site-section-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top,
 		taglineOffesetTop = $('#cd-intro-tagline').offset().top + $('#cd-intro-tagline').height() + parseInt($('#cd-intro-tagline').css('paddingTop').replace('px', '')),
-		contentSections = $('.cd-section');
+		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.block-cat-name')[block_index];
+		
 	
+	$('a[data-toggle="tab"]').click(function() {
+		block_index = $('#section-navigation ul').find($(this).parent()).index();
+		block_cat_name = $('.block-cat-name')[block_index];
+	});
+						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > taglineOffesetTop ) ? $('#site-logo, #site-toolbar').addClass('is-hidden') : $('#site-logo, #site-toolbar').removeClass('is-hidden');
-		
+		( $(window).scrollTop() > taglineOffesetTop ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');
+				
 		//on desktop - fix secondary navigation on scrolling
 		if($(window).scrollTop() > secondaryNavTopPosition ) {
 			//fix secondary navigation
 			secondaryNav.addClass('is-fixed');
 			secondaryNav.addClass('repainted');
+			if ( $(window).scrollTop() >= $(block_cat_name).offset().top )
+			{
+				updateSectionNav(true);	
+			}
+			else { updateSectionNav(false); }			
+								
 			
-			if (isDay()) {
-				secondaryNav.addClass('isDay');
-			} else { secondaryNav.addClass('isNight'); }
+//			if (isDay()) {
+//				secondaryNav.addClass('isDay');
+//			} else { secondaryNav.addClass('isNight'); }
 			//push the .cd-main-content giving it a top-margin
 			$('.cd-main-content').addClass('has-top-margin');	
 			//on Firefox CSS transition/animation fails when parent element changes position attribute
@@ -77,6 +42,8 @@ jQuery(document).ready(function($){
 		} else {
 			secondaryNav.removeClass('is-fixed');
 			secondaryNav.removeClass('repainted');
+			updateSectionNav(false);
+			
 			if (isDay()) {
 				secondaryNav.removeClass('isDay');
 			} else { secondaryNav.removeClass('isNight'); }
@@ -91,6 +58,32 @@ jQuery(document).ready(function($){
 		//on desktop - update the active link in the secondary fixed navigation
 		updateSecondaryNavigation();
 	});
+	
+	
+		secondaryNav
+		  .mouseenter(function() {
+		    if ( $('#section-navigation').hasClass('is-hidden') 
+		    	&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
+		    { setTimeout(function(){updateSectionNav(false);},100); }
+		  })
+		  .mouseleave(function() {
+		  	if ( $('#section-title').hasClass('is-hidden')
+		  		&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
+		  	{ setTimeout(function(){updateSectionNav(true);},400); }
+		  });
+	
+	
+	function updateSectionNav(status) {
+		if (status) {
+			$('#section-navigation').addClass('is-hidden');
+			$('#section-title').removeClass('is-hidden');
+			$('#section-title').addClass('fadeIn');
+		} else {
+			$('#section-navigation').removeClass('is-hidden');
+			$('#section-title').addClass('is-hidden');
+			$('#section-title').removeClass('fadeIn');
+		}
+	}
 
 	function updateSecondaryNavigation() {
 		contentSections.each(function(){

@@ -283,13 +283,20 @@ function tutannet_scripts() {
 	
 	// semantic-ui-2.0
 	wp_enqueue_style( 'ui-image', get_template_directory_uri() . '/lib/semantic-ui-2.0/image.min.css' );
+	
+	// jetpack tiled-gallery
+	wp_enqueue_style( 'jetpack-tiled-gallery', get_template_directory_uri() . '/tech/tiled-gallery/tiled-gallery.css' );
+	wp_enqueue_script( 'jetpack-tiled-gallery', get_template_directory_uri() . '/tech/tiled-gallery/tiled-gallery.js', array(), '', true );
+	
 
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	wp_enqueue_script( 'wow', get_template_directory_uri() . '/js/wow.min.js', array(), '1.0.1');
+	wp_enqueue_script( 'wow', get_template_directory_uri() . '/lib/wow.min.js', array(), '1.0.1');
 	wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0.1' );
 	wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery'), '1.0.1' );
-	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/js/modernizr.js', array('jquery'), '2.8.3' );
-	wp_enqueue_script( 'pace', get_template_directory_uri() . '/js/pace.min.js', array(), '1.0.0' );
+	
+	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/lib/modernizr.js', array('jquery'), '2.8.3' );
+	wp_enqueue_script( 'pace', get_template_directory_uri() . '/lib/pace.min.js', array(), '1.0.0' );
+	wp_enqueue_script( 'colors-js', get_template_directory_uri() . '/lib/colors.min.js', array('jquery'), '1.2.4' );
 	
     
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

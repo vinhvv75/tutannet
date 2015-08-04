@@ -90,6 +90,8 @@ $('a[data-toggle="tab"]').click(function() {
 	$('html,body').animate({
 	        scrollTop: top},
 	        'slow');
+	var section_title = document.getElementById('section-title')
+	section_title.innerHTML = ($(this).find('b').html());
 });
 
 // initalize bootstrap tooltip
@@ -121,22 +123,29 @@ function extractUrl(input)
 }
 
 colorThief = new ColorThief();
-var rgb2 = colorThief.getPalette(document.getElementById('cd-intro-img'),5);
-//
+var rgb = colorThief.getColor(document.getElementById('cd-intro-img'));
+var c = $c.complement(rgb).a;
+
 //var rgb = getAverageRGB(document.getElementById('cd-intro-img'));
 var text = document.getElementById('headline');
-var text2 = document.getElementsByClassName('site-section-nav-item');
+var text2 = document.getElementsByClassName('site-section-nav-item')
+var text2_c = $(text2).find('b');
+var text3 = document.getElementsByClassName('site-section-nav-item');
+var text3_c = $(text3).find('i');
     
 //text.style.color = 'rgb('+rgb.r+','+rgb.b+','+rgb.g+')';
 //text.style.color = 'rgb('+rgb2[4][0]+','+rgb2[4][1]+','+rgb2[4][2]+')';
 
 var textColor;
-if (isDark(rgb2)) { textColor = 'white'; } else { textColor = 'black';}
+if (isDark(rgb)) { textColor = 'white'; } else { textColor = 'black';}
 //
 //
-text.style.color = textColor;
-for (var i=0;i<text2.length; i++) {
-    text2[i].style.color = textColor;
+console.log(c);
+var primaryColor = 'rgb('+c[0]+','+c[1]+','+c[2]+')'; 
+text.style.color = primaryColor;
+for (var i=0;i<text2_c.length; i++) {
+    text2_c[i].style.color = primaryColor;
+    text3_c[i].style.color = primaryColor;
 }
 //
 //var classImg = [];

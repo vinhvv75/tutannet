@@ -63,8 +63,8 @@ function my_remove_meta_boxes() {
 add_action( 'admin_menu', 'my_remove_meta_boxes' );
 endif;
 
-/*---------Create and Define Default Category---------------*/
-function define_default_category() {
+/*---------Create and Define Default Categories---------------*/
+function define_default_categories() {
 	// Main Category
 	wp_insert_term(
 		'Tin Tức Phật Sự',
@@ -229,8 +229,29 @@ function define_default_category() {
 	  'slug' => 'khong-chuyen-muc'
 	));
 }
-add_action( 'after_setup_theme', 'define_default_category' );
+add_action( 'after_setup_theme', 'define_default_categories' );
 
+/*---------Create and Define Default Pages---------------*/
+function define_default_pages() {
+
+	$homepage = get_page_by_title( 'Trang Chủ' );   
+	if ( !$homepage ) {
+		wp_insert_post(
+			array(
+			  'post_title'    => 'Trang Chủ',
+			  'post_status'   => 'publish',
+			  'post_type'     => 'page',
+			  'page_template'  => 'home-page.php'
+			)
+		);
+	}    
+    if ( $homepage )
+    {
+        update_option( 'page_on_front', $homepage->ID );
+        update_option( 'show_on_front', 'page' );
+    }
+}
+add_action( 'after_setup_theme', 'define_default_pages' );
 
 /*---------Enqueue custom admin panel JS---------------*/
 function tutannet_admin_scripts(){

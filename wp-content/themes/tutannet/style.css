@@ -3,7 +3,7 @@ Theme Name: TuTanNet
 Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
-Version: 2015
+Version: 1.0 Nightly 20150804
 */
 
 /*--------------------------------------------------------------
@@ -723,6 +723,13 @@ Functions
 	display: none;
 }
 
+.disable-select {
+  -webkit-user-select: none;  
+  -moz-user-select: none;    
+  -ms-user-select: none;      
+  user-select: none;
+  cursor: default;
+}
 
 /*--------------------------------------------------------------
 Infinite scroll

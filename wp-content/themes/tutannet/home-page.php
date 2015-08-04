@@ -36,6 +36,10 @@ get_header();
     	if(!empty($block4_cat)):
     	      $category_info_4 = get_category_by_slug($block4_cat);
     	endif;
+    	$block5_cat = of_get_option('featured_block_5');
+    	if(!empty($block5_cat)):
+    	      $category_info_5 = get_category_by_slug($block5_cat);
+    	endif;
     ?>
     <section id="cd-intro">
     	<img id="cd-intro-img" src="<?php echo get_template_directory_uri();?>/img/intro-background.jpg"/>
@@ -59,13 +63,20 @@ get_header();
 		<!-- Nav tabs -->
 		<div id="site-section-nav">
 			<a href="#0" id="site-section-nav-trigger"><span></span></a>
+			<div id="section-title" class="is-hidden disable-select animated">
+				Tổng Quan <?php // Default ?>
+			</div>
 		    <nav id="section-navigation" role="navigation">
 		         <ul class="container" role="tablist">
-		    	    <li role="presentation" class="active site-section-nav-item"><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
-		    	    <li class="site-section-nav-item"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
-		    	    <li class="site-section-nav-item" role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_2->name);?></b><span></span></a></li>
-		    	    <li class="site-section-nav-item" role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_3->name);?></b><span></span></a></li>
-		    	    <li class="site-section-nav-item" role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_4->name);?></b><span></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_2->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    
+		    	    <li class="site-section-nav-item"  role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_3->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_4->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	  </ul>
 		    </nav><!-- #site-navigation -->
 		</div>
@@ -86,48 +97,51 @@ get_header();
 	              <section class="block-overview row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 	              		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
 	              			<?php 
-	              				$block_overview_args = array(
-			              			                      'category_name'=>'tin-tuc-phat-su',
-			              			                      'post_status'=>'publish',
-			              			                      'posts_per_page'=>5,
-			              			                      'order'=>'DESC'
-			              			                      );
-			              		$block_overview_query = new WP_Query($block_overview_args);
-			              		          $b_counter = 0;
-			              		          $total_posts_block_overview = $block_overview_query->found_posts;
-			              		          if($block_overview_query->have_posts()){
-			              		              while($block_overview_query->have_posts()){
-			              		                  $b_counter++;
-			              		                  $block_overview_query->the_post();
-			              		                  $b_overview_image_id = get_post_thumbnail_id();
-			              		                  $b_overview_big_image_path = wp_get_attachment_image_src($b_overview_image_id,'tutannet-block-big-thumb',true);
-			              		                  $b_overview_small_image_path = wp_get_attachment_image_src($b_overview_image_id,'tutannet-block-small-thumb',true);
-			              		                  $b_overview_image_alt = get_post_meta($b_overview_image_id,'_wp_attachment_image_alt',true);
-			              		  ?>	         
-	              					<?php if($b_counter == 1){ 
-		              							if(has_post_thumbnail()):  
-		              						    	echo '<a href="' . get_the_permalink() . '">';
-		              						    	echo '<img class="section-featured-image" src="' . esc_url( $b_overview_big_image_path[0] ) . '" alt="' . esc_attr($b_overview_image_alt) . '" />';
-		              						    	echo '</a>';
-		              						    endif;
-		              						echo '<div class="posts-wrapper wow fadeInLeft cd-main">';
-		              							echo '<h2> <span>'. esc_attr($category_info_1->name) .'</span></h2>';
-		              							echo '<div class="cd-gallery">'; 
-	              					  	}
-	              					?>
-	              		              <li class="cd-item">
-	              		              	<div class="post-desc-wrapper">
-	              		              	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
-	              		              	    <h3 class="post-title"><a post-title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b_overview_small_image_path[0] );?>" ><?php the_title();?></a></h3>
-	              		              	</div>
-	              		              	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
-	              		              </li>
-	              		  			<?php  
-	              		  				if($b_counter==$total_posts_block_overview){echo '</div>';} ?>
-	              			      	<?php
-	              			              	}
-	              			              }
-	              			              echo '</div>';
+	              				if(!empty($block1_cat)):
+		              				$block1_args = array(
+				              			                      'category_name'=>'tin-tuc-phat-su',
+				              			                      'post_status'=>'publish',
+				              			                      'posts_per_page'=>5,
+				              			                      'order'=>'DESC'
+				              			                      );
+				              		echo '<h2 class="block-cat-name"><span>Tổng Quan</span></h2>';
+				              		$block1_query = new WP_Query($block1_args);
+				              		          $b_counter = 0;
+				              		          $total_posts_block1 = $block1_query->found_posts;
+				              		          if($block1_query->have_posts()){
+				              		              while($block1_query->have_posts()){
+				              		                  $b_counter++;
+				              		                  $block1_query->the_post();
+				              		                  $b1_image_id = get_post_thumbnail_id();
+				              		                  $b1_big_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-big-thumb',true);
+				              		                  $b1_small_image_path = wp_get_attachment_image_src($b1_image_id,'tutannet-block-small-thumb',true);
+				              		                  $b1_image_alt = get_post_meta($b1_image_id,'_wp_attachment_image_alt',true);
+				              		  ?>	         
+		              					<?php if($b_counter == 1){ 
+			              							if(has_post_thumbnail()):  
+			              						    	echo '<a href="' . get_the_permalink() . '">';
+			              						    	echo '<img class="section-featured-image" src="' . esc_url( $b1_big_image_path[0] ) . '" alt="' . esc_attr($b1_image_alt) . '" />';
+			              						    	echo '</a>';
+			              						    endif;
+			              						echo '<div class="posts-wrapper wow fadeInLeft cd-main">';
+			              							echo '<h2> <span>'. esc_attr($category_info_1->name) .'</span></h2>';
+			              							echo '<div class="cd-gallery">'; 
+		              					  	}
+		              					?>
+		              		              <li class="cd-item">
+		              		              	<div class="post-desc-wrapper">
+		              		              	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
+		              		              	    <h3 class="post-title"><a post-title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b_overview_small_image_path[0] );?>" ><?php the_title();?></a></h3>
+		              		              	</div>
+		              		              	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
+		              		              </li>
+		              		  			<?php  
+		              		  				if($b_counter==$total_posts_block_overview){echo '</div>';} ?>
+		              			      	<?php
+		              			              	}
+		              			              }
+		              			              echo '</div>';
+		              			        	endif;
 	              			      	?>
 	              			</div>
 	              		<div class="col-lg-4">
@@ -149,7 +163,7 @@ get_header();
 		          	                                  'posts_per_page'=>$posts_for_block1,
 		          	                                  'order'=>'DESC'
 		          	                                  );
-	//	          	              echo '<h3 class="block-cat-name"> <span>'. esc_attr($category_info_1->name) .'</span></h3>';
+		          	              echo '<h2 class="block-cat-name"><span>'. esc_attr($category_info_1->name) .'</span></h2>';
 		          	              $block1_query = new WP_Query($block1_args);
 		          	              $b_counter = -1;
 		          	              $total_posts_block1 = $block1_query->found_posts;
@@ -203,7 +217,7 @@ get_header();
 	                        if(!empty($block2_cat)):
 	                            $posts_for_block2 = of_get_option('posts_for_block2');
 	                            echo '<div class="second-block-wrapper">';
-	                            echo '<h3 class="block-cat-name"> <span>'.esc_attr($category_info_2->name).' </span></h3>'; 
+	                            echo '<h3 class="block-cat-name"><span>'.esc_attr($category_info_2->name).' </span></h3>'; 
 	                            echo '<div class="block-post-wrapper clearfix">';                           
 	                            $block2_args = array(
 	                                                'category_name'=>$block2_cat,
@@ -252,7 +266,7 @@ get_header();
 	                        if(!empty($block3_cat)):
 	                                $posts_for_block3 = of_get_option('posts_for_block3');
 	                                echo '<div class="first-block-wrapper">';
-	                                echo '<h3 class="block-cat-name"><span>'.esc_attr($category_info_3->name).'</span></h3>';                            
+	                                echo '<h2 class="block-cat-name"><span>'.esc_attr($category_info_3->name).'</span></h2>';                            
 	                                echo '<div class="block-post-wrapper clearfix">';
 	                                $block3_args = array(
 	                                                    'category_name'=>$block3_cat,

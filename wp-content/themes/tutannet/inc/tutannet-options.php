@@ -367,15 +367,15 @@ function optionsframework_options() {
             'type' => 'groupstart'
             );
     $options[] = array(
-            'name' => __( 'Featured Block (First)', 'tutannet' ),
-            'desc' => __( 'Select a category for first block in homepage', 'tutannet' ),    
+            'name' => __( 'Mục Tin Tức Phật Sự', 'tutannet' ),
+            'desc' => __( 'Chọn chuyên mục', 'tutannet' ),    
             'id' => 'featured_block_1',
             'type' => 'select',
             'options' => $options_categories
             );
     $options[] = array(
-            'name' => __( 'Number of posts', 'tutannet' ),
-            'desc' => __( 'Choose number of posts for block (first)', 'tutannet' ),
+            'name' => __( 'Số bài đăng', 'tutannet' ),
+            'desc' => __( 'Chọn số bài đăng', 'tutannet' ),
             'id' => 'posts_for_block1', 
             'type' => 'select',
             'options' => $options_block_posts
@@ -528,86 +528,7 @@ function optionsframework_options() {
     $options[] = array(
             'type' => 'groupend'
             );
-      /*------------------------Default site post template------------------------*/ 
-    $options[] = array(
-            'name' => __( 'Post Layout', 'tutannet' ),
-            'id'   => 'post_template',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Default Post Template', 'tutannet' ),
-            'desc' => __( "Setting this option will make all post pages, that don't have a post template associated to them, to be displayed using this template. This option is OVERWRITTEN by the `Post template` option from the backend - post add / edit page.", 'tutannet' ),
-            'id' => 'global_post_template',
-            'class'=>'post_template_image',
-            'std' => 'default-template',
-            'type' => 'images',
-            'options' => $post_template
-            );
-    $options[] = array(
-            'name' => __( 'Default Post Sidebar', 'tutannet' ),
-            'desc' => __( "Setting this option will make all post pages, that don't have a post sidebar associated to them, to be displayed using this sidebar. This option is OVERWRITTEN by the `Post sidebar` option from the backend - post add / edit page.", 'tutannet' ),
-            'id' => 'global_post_sidebar',
-            'class'=>'post_sidebar_image',
-            'std' => 'right-sidebar',
-            'type' => 'images',
-            'options' => $post_sidebar
-            );
-    $options[] = array(
-            'type' => 'groupend'
-            );
-           /*------------------------Featured image settings------------------------*/ 
-    $options[] = array(
-            'name' => __( 'Featured images', 'tutannet' ),
-            'id'   => 'featured_image',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Show Featured Image', 'tutannet' ),                
-            'desc' => __( 'Show or hide featured image in post`s single page', 'tutannet' ),
-            'id' => 'featured_image',
-            'on' => __( 'Yes', 'tutannet'),
-            'off' => __( 'No', 'tutannet'),
-            'std' => '1',
-            'type' => 'switch'
-            );      
-    $options[] = array(
-            'type' => 'groupend'
-            );
-      
-/*------------------Archive Page Settings---------------------*/
-    $options[] = array(
-            'name' => __( 'Archive Settings', 'tutannet' ),
-            'type' => 'heading'
-            ); 
-            
-    $options[] = array(
-            'name' => __( 'Archive Style', 'tutannet' ),
-            'id'   => 'archive_style',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Archive page template', 'tutannet' ),
-            'desc' => __( "Define - Choose template for all archive pages", 'tutannet' ),
-            'id' => 'global_archive_template',
-            'class'=>'archive_post_template_image',
-            'std' => 'default-template',
-            'type' => 'images',
-            'options' => $post_template
-            );
-    $options[] = array(
-            'name' => __( 'Archive page sidebar', 'tutannet' ),
-            'desc' => __( "Define - Choose sidebar for all archive pages", 'tutannet' ),
-            'id' => 'global_archive_sidebar',
-            'class'=>'archive_page_sidebar_image',
-            'std' => 'right-sidebar',
-            'type' => 'images',
-            'options' => $post_sidebar
-            );    
-    $options[] = array(
-            'type' => 'groupend'
-            );
-
-            
+                  
 /*--------------------------MISC--------------------------*/        
     $options[] = array(
             'name' => __( 'MISC', 'tutannet' ),
@@ -651,35 +572,6 @@ function optionsframework_options() {
             'type' => 'text',
             'std' => 50, 
             );
-    $options[] = array(
-            'type' => 'groupend'
-            );
-
-/*------------------------Translations------------------------*/
-    $options[] = array(
-            'name' => __( 'Translations', 'tutannet' ),
-            'type' => 'heading'
-            );
-    $options[] = array(
-            'name' => __( 'Translations', 'tutannet' ),
-            'id'   => 'translations',
-            'type' => 'groupstart'
-            );
-    $options[] = array(
-            'name' => __( 'Translate Your Theme', 'tutannet' ),
-            'desc' => __( 'Translate your frontend easily without any external plugins. While you leave the box empty and the theme will load the default string', 'tutannet' ),
-            'id' => 'translate_notice',
-            'type' => 'info', 
-            );
-     for($i=0;$i<$trans_count;$i++)
-     {
-        $options[] = array(
-            'name' => $translation_name[$i],
-            'desc' => __( '', 'tutannet' ),
-            'id' => 'trans_'.$translation_id[$i],
-            'type' => 'text', 
-            );
-     }       
     $options[] = array(
             'type' => 'groupend'
             );

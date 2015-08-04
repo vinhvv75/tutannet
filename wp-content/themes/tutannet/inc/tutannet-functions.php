@@ -40,6 +40,10 @@ function tutannet_header_scripts(){
 
 add_action('wp_head', 'tutannet_header_scripts');
 
+
+/*---------Hide Admin Toolbar---------------*/
+add_filter('show_admin_bar', '__return_false');
+
 /*---------Hide meta boxes in Editor---------------*/
 if (is_admin()) :
 function my_remove_meta_boxes() {
@@ -87,11 +91,102 @@ function define_default_category() {
 		)
 	);
 	wp_insert_term(
+		'Pháp Âm',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'phap-am'
+		)
+	);
+	wp_insert_term(
 		'Hoạt Động Chùa Từ Tân',
 		'category',
 		array(
 		  'description'	=> '',
 		  'slug' 		=> 'hoat-dong-chua-tu-tan'
+		)
+	);
+	$hoat_dong_chua_tu_tan_term = get_term_by('slug','hoat-dong-chua-tu-tan','category');
+	$hoat_dong_chua_tu_tan = $hoat_dong_chua_tu_tan_term->term_id;
+	wp_insert_term(
+		'Gia Đình Phật Tử',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'gia-dinh-phat-tu',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Đạo Tràng Tu Thiền',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'dt-tu-thien',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Đạo Tràng Tu Bát Quan Trai',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'dt-tu-bat-quan-trai',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Ban Hộ Trì Tam Bảo',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'ban-ho-tri-tam-bao',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'BHN Gia Đình Lam',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'bhn-gia-dinh-lam',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Ban Hộ niệm Chùa',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'ban-ho-niem-chua',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'CLB Thiền - Khí Công',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'clb-thien-khi-cong',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'CLB Thanh Niên Phật Tử',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'clb-thanh-nien-phat-tu',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'CLB Từ Thiện Bến Thương',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'clb-tu-thien-ben-thuong',
+		  'parent'=> $hoat_dong_chua_tu_tan
 		)
 	);
 	wp_insert_term(
@@ -112,13 +207,20 @@ function define_default_category() {
 		  'slug' 		=> 'gioi-thieu'
 		)
 	);
-	
 	wp_insert_term(
 		'Thông Báo',
 		'category',
 		array(
 		  'description'	=> '',
 		  'slug' 		=> 'thong-bao'
+		)
+	);
+	wp_insert_term(
+		'Bài Chọn Lọc',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'bai-chon-loc'
 		)
 	);
 	

@@ -41,7 +41,28 @@ function getAverageRGB(imgEl) {
     rgb.b = ~~(rgb.b/count);
     
     return rgb;
-    
 }
 
+
+
+function isDark(rgb) {
+	var c = 'rgb('+rgb[0]+','+rgb[1]+','+rgb[2]+')';    
+	var o = Math.round(((parseInt(rgb[0]) * 299) + (parseInt(rgb[1]) * 587) + (parseInt(rgb[2]) * 114)) /1000);    
+	if(o > 125) {
+	    return false;
+	}else{ 
+	    return true;
+	}
+}
+
+
+function isDay() {
+	var hr = (new Date()).getHours();
+	if (hr >=6 && hr <= 18) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 

@@ -122,21 +122,66 @@ function extractUrl(input)
 
 colorThief = new ColorThief();
 var rgb2 = colorThief.getPalette(document.getElementById('cd-intro-img'),5);
-
-var rgb = getAverageRGB(document.getElementById('cd-intro-img'));
+//
+//var rgb = getAverageRGB(document.getElementById('cd-intro-img'));
 var text = document.getElementById('headline');
+var text2 = document.getElementsByClassName('site-section-nav-item');
     
-text.style.color = 'rgb('+rgb.r+','+rgb.b+','+rgb.g+')';
+//text.style.color = 'rgb('+rgb.r+','+rgb.b+','+rgb.g+')';
 //text.style.color = 'rgb('+rgb2[4][0]+','+rgb2[4][1]+','+rgb2[4][2]+')';
 
-console.log('Background Image Colors:');
-console.log(rgb2[0]);
-console.log(rgb2[1]);
-console.log(rgb2[2]);
-console.log(rgb2[3]);
-console.log(rgb2[4]);
-console.log('Selected Color:', rgb2[4][0], rgb2[4][1], rgb2[4][2]);
-console.log('Average Color:', rgb.r, rgb.g, rgb.b);
+var textColor;
+if (isDark(rgb2)) { textColor = 'white'; } else { textColor = 'black';}
+//
+//
+text.style.color = textColor;
+for (var i=0;i<text2.length; i++) {
+    text2[i].style.color = textColor;
+}
+//
+//var classImg = [];
+//classImg = document.getElementsByClassName('section-featured-image');
+//var rgb3 = colorThief.getColor(document.getElementsByClassName('section-featured-image'));
+//var block_overview = $('#block-overview');
+//var text3 = document.getElementsByTagName('h2');
+//
+//for (var i=0;i<classImg.length; i++) {
+//    var rgb3 = [];
+//    rgb3[i] = colorThief.getColor(classImg[i]);
+//}
+//
+//console.log(rgb3[0]);
+//console.log(rgb3[1]);
+//console.log(rgb3[2]);
+//
+//console.log(text3[0]);
+//console.log(text3[1]);
+//console.log(text3[2]);
+//
+//for (var i=0;i<text3.length; i++) {
+//    text3[i].style.color = 'rgb('+rgb3[i].r+','+rgb3.b[i]+','+rgb3[i].g+')';
+//}
+//
+//console.log(text2);
+//console.log(text2.length);
+//console.log(text2[0]);
+//console.log(text2[1]);
+//
+//
+//console.log('Background Image Colors:');
+//console.log(rgb2[0]);
+//console.log(rgb2[1]);
+//console.log(rgb2[2]);
+//console.log(rgb2[3]);
+//console.log(rgb2[4]);
+//console.log('Selected Color:', rgb2[4][0], rgb2[4][1], rgb2[4][2]);
+//console.log('Average Color:', rgb.r, rgb.g, rgb.b);
+
+
+
+// scale section-featured-image's height to equal with its width
+//var h = $('.section-featured-image').width();
+//$('.section-featured-image').css({'height':h+'px'});
 
 // welcome screen on console
 function welcomeScreen() {

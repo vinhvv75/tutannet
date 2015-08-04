@@ -1039,7 +1039,33 @@ body.boxed-layout {
 	
 	
 		
+/*--------------------------------------------------------------
+	Block Overview (1st) css 
+	--------------------------------------------------------------*/
+	.block-overview {
+
+	}
 	
+	
+	.block-overview .section-featured-image {
+		width: 300px !important;
+		height: 300px;
+		-webkit-border-radius: 500rem;
+		-moz-border-radius: 500rem;
+		border-radius: 500rem;
+		
+	}
+	
+	.block-overview h2 {
+		font: bold 30px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-transform: capitalize;
+	}
+	
+	.block-overview .posts-wrapper {
+		margin-top: -50px;
+	}
+	
+		
 	
 /*--------------------------------------------------------------
 	first block css 

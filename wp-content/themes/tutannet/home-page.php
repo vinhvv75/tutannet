@@ -58,13 +58,14 @@ get_header();
 		</div> <!-- #site-intro-tagline -->
 		<!-- Nav tabs -->
 		<div id="site-section-nav">
-			<a href="#0" id="site-section-nav-trigger">Menu<span></span></a>
+			<a href="#0" id="site-section-nav-trigger"><span></span></a>
 		    <nav id="section-navigation" role="navigation">
 		         <ul class="container" role="tablist">
-		    	    <li role="presentation" class="active"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
-		    	    <li role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_2->name);?></b><span></span></a></li>
-		    	    <li role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_3->name);?></b><span></span></a></li>
-		    	    <li role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b><?php echo esc_attr($category_info_4->name);?></b><span></span></a></li>
+		    	    <li role="presentation" class="active site-section-nav-item"><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_1->name);?></b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_2->name);?></b><span></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_3->name);?></b><span></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b class="site-section-nav-item"><?php echo esc_attr($category_info_4->name);?></b><span></span></a></li>
 		    	  </ul>
 		    </nav><!-- #site-navigation -->
 		</div>
@@ -81,7 +82,63 @@ get_header();
 				<a class="cd-close" href="#0"></a>
 			</div>
 			<div class="tab-content container">
-              	<div role="tabpanel" class="tab-pane fade in active" id="section1">
+              	<div role="tabpanel" class="tab-pane fade in active" id="tong-quan">
+	              <section class="block-overview row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
+	              		<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+	              			<?php 
+	              				$block_overview_args = array(
+			              			                      'category_name'=>'tin-tuc-phat-su',
+			              			                      'post_status'=>'publish',
+			              			                      'posts_per_page'=>5,
+			              			                      'order'=>'DESC'
+			              			                      );
+			              		$block_overview_query = new WP_Query($block_overview_args);
+			              		          $b_counter = 0;
+			              		          $total_posts_block_overview = $block_overview_query->found_posts;
+			              		          if($block_overview_query->have_posts()){
+			              		              while($block_overview_query->have_posts()){
+			              		                  $b_counter++;
+			              		                  $block_overview_query->the_post();
+			              		                  $b_overview_image_id = get_post_thumbnail_id();
+			              		                  $b_overview_big_image_path = wp_get_attachment_image_src($b_overview_image_id,'tutannet-block-big-thumb',true);
+			              		                  $b_overview_small_image_path = wp_get_attachment_image_src($b_overview_image_id,'tutannet-block-small-thumb',true);
+			              		                  $b_overview_image_alt = get_post_meta($b_overview_image_id,'_wp_attachment_image_alt',true);
+			              		  ?>	         
+	              					<?php if($b_counter == 1){ 
+		              							if(has_post_thumbnail()):  
+		              						    	echo '<a href="' . get_the_permalink() . '">';
+		              						    	echo '<img class="section-featured-image" src="' . esc_url( $b_overview_big_image_path[0] ) . '" alt="' . esc_attr($b_overview_image_alt) . '" />';
+		              						    	echo '</a>';
+		              						    endif;
+		              						echo '<div class="posts-wrapper wow fadeInLeft cd-main">';
+		              							echo '<h2> <span>'. esc_attr($category_info_1->name) .'</span></h2>';
+		              							echo '<div class="cd-gallery">'; 
+	              					  	}
+	              					?>
+	              		              <li class="cd-item">
+	              		              	<div class="post-desc-wrapper">
+	              		              	    <div class="block-poston"><?php do_action('tutannet_home_posted_on');?></div>
+	              		              	    <h3 class="post-title"><a post-title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b_overview_small_image_path[0] );?>" ><?php the_title();?></a></h3>
+	              		              	</div>
+	              		              	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
+	              		              </li>
+	              		  			<?php  
+	              		  				if($b_counter==$total_posts_block_overview){echo '</div>';} ?>
+	              			      	<?php
+	              			              	}
+	              			              }
+	              			              echo '</div>';
+	              			      	?>
+	              			</div>
+	              		<div class="col-lg-4">
+	              			
+	              		</div>
+	              		<div class="col-lg-4">
+	              			
+	              		</div>
+              		</section>
+              	</div><!--#tong-quan-->
+              	<div role="tabpanel" class="tab-pane fade in" id="section1">
 	              <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 		          	      <?php 
 		          	          if(!empty($block1_cat)):

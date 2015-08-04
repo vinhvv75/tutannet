@@ -479,7 +479,7 @@ Intro
   font-size: 2rem;
   font-weight: 300;
   color: #EF5224;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  /*text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);*/
   z-index: 10;
 }
 @media only screen and (min-width: 768px) {
@@ -658,6 +658,12 @@ Secondary Fixed Navigation
 	color: #f1f1f1;
 	text-transform: uppercase;
 	padding-bottom: 10px;
+}
+.isDay {
+	background-color: white !important;
+}
+.isNight {
+	background-color: black !important;
 }
 @media only screen and (min-width: 1170px) {
   #site-section-nav {

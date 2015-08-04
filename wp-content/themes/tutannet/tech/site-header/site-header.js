@@ -61,6 +61,10 @@ jQuery(document).ready(function($){
 			//fix secondary navigation
 			secondaryNav.addClass('is-fixed');
 			secondaryNav.addClass('repainted');
+			
+			if (isDay()) {
+				secondaryNav.addClass('isDay');
+			} else { secondaryNav.addClass('isNight'); }
 			//push the .cd-main-content giving it a top-margin
 			$('.cd-main-content').addClass('has-top-margin');	
 			//on Firefox CSS transition/animation fails when parent element changes position attribute
@@ -73,6 +77,9 @@ jQuery(document).ready(function($){
 		} else {
 			secondaryNav.removeClass('is-fixed');
 			secondaryNav.removeClass('repainted');
+			if (isDay()) {
+				secondaryNav.removeClass('isDay');
+			} else { secondaryNav.removeClass('isNight'); }
 			$('.cd-main-content').removeClass('has-top-margin');
 			setTimeout(function() {
 	            secondaryNav.removeClass('animate-children');

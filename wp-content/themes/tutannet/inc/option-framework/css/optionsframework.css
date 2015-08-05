@@ -289,71 +289,71 @@
 
 
 /* Added by Roshan Bajracharya */
-.apmag-themeoption .postbox, .apmag-themeoption .stuffbox{
+.tutannet-themeoption .postbox, .tutannet-themeoption .stuffbox{
 	margin-bottom: 0;
 }
-.apmag-themeoption .theme-header {
+.tutannet-themeoption .theme-header {
     background: #808080;
     border-left: none;
     border-right: none;
     padding: 20px;
 }
-.apmag-themeoption .tutannet-logo {
+.tutannet-themeoption .tutannet-logo {
 	float: left;
 }
-.apmag-themeoption .theme-name{	
+.tutannet-themeoption .theme-name{	
 	color: #EEE;
 }
-.apmag-themeoption .ak-socials {
+.tutannet-themeoption .ak-socials {
 	color: #EEE;
     float: right;
     text-align: right;
 }
-.apmag-themeoption .ak-socials p{
+.tutannet-themeoption .ak-socials p{
 	margin: 0.8em 0 1em;
 }
-.apmag-themeoption .ak-socials p, .apmag-themeoption .ak-socials a{
+.tutannet-themeoption .ak-socials p, .tutannet-themeoption .ak-socials a{
 	color: #EEE;
     text-decoration: none;
 }
 .ak-socials a:hover{
 	color: #54C1E8;
 }
-.wrap.apmag-themeoption {
+.wrap.tutannet-themeoption {
     width: auto;
     clear: both;
 }
-.apmag-themeoption #optionsframework{
+.tutannet-themeoption #optionsframework{
 	background: transparent;
 }
-.apmag-themeoption .notice, .apmag-themeoption div.error, .apmag-themeoption div.updated{
+.tutannet-themeoption .notice, .tutannet-themeoption div.error, .tutannet-themeoption div.updated{
 	margin-bottom: 20px;
 }
-.apmag-themeoption .heading-arrow {
+.tutannet-themeoption .heading-arrow {
     float: right;
     margin-right: 10px;
 }
-.apmag-themeoption h2{
+.tutannet-themeoption h2{
 	background-color: rgba(34, 34, 34, 0.3);
 	border-bottom: 2px solid #383838;
 	color: #fff;
 	padding: 20px;
 	width: 1095px;
 }
-.apmag-themeoption .nav-tab-wrapper{
+.tutannet-themeoption .nav-tab-wrapper{
 	float: left;
 	position: relative;
 	width: 18%;
 }
-.apmag-themeoption .metabox-holder {
+.tutannet-themeoption .metabox-holder {
 	background: none repeat scroll 0 0 #DEDEDE;
 	float: left;
 	min-height: 505px;
 	padding: 2.2% !important;
 	width: 61.6%;
 }
-.apmag-themeoption .static-layout-settings,
-.apmag-themeoption .static-misc{
+.tutannet-themeoption .static-layout-settings,
+.tutannet-themeoption .static-misc{
 	background: #0074A2;
 	border-bottom: 1px solid #ccc;
 	color: #FFF;
@@ -364,7 +364,7 @@
 	padding: 17px 23px;
 	text-transform: uppercase;
 }
-.apmag-themeoption .nav-tab-wrapper a{
+.tutannet-themeoption .nav-tab-wrapper a{
 	background-color: #555;
 	border-bottom: 1px solid #ccc;
 	border-left: none;
@@ -381,15 +381,15 @@
 	text-decoration: none;
 	text-transform: uppercase;
 }
-.apmag-themeoption .nav-tab-wrapper a:first-child{
+.tutannet-themeoption .nav-tab-wrapper a:first-child{
 	
 }
-.apmag-themeoption .nav-tab-wrapper a.nav-tab-active{
+.tutannet-themeoption .nav-tab-wrapper a.nav-tab-active{
 	border-right: none;
 	background: #DEDEDE;
 	color: #555;
 }
-.apmag-themeoption .group-heading{
+.tutannet-themeoption .group-heading{
 	color: #333333;
 	font-family: "Ubuntu",sans-serif;
 	font-size: 12px;
@@ -401,14 +401,14 @@
 	text-transform: uppercase;
 	top: -3px;
 }
-.apmag-themeoption #optionsframework .section{
+.tutannet-themeoption #optionsframework .section{
 	padding: 0;
 	margin-bottom: 20px;
 }
-.apmag-themeoption #optionsframework .section .section{
+.tutannet-themeoption #optionsframework .section .section{
 	padding: 0;
 }
-.apmag-themeoption .option .controls a{
+.tutannet-themeoption .option .controls a{
 	background-color: #555;
 	color: #ffffff;
 	display: inline-block;
@@ -417,37 +417,37 @@
 	padding: 9px 11px;
 	text-decoration: none;
 }
-.apmag-themeoption .option .controls a:hover{
+.tutannet-themeoption .option .controls a:hover{
 	background-color: #333;
 }
-.apmag-themeoption #optionsframework .group{
+.tutannet-themeoption #optionsframework .group{
 	padding-bottom: 0px;
 }
-.apmag-themeoption .section h4.heading{
+.tutannet-themeoption .section h4.heading{
 	float: left;
 	line-height: 28px;
 	margin: 0;
 	width: 180px;
 	padding-right: 20px;
 }
-.apmag-themeoption .group h3{
+.tutannet-themeoption .group h3{
 	display: none;
 }
-.apmag-themeoption .postbox{
+.tutannet-themeoption .postbox{
 	border: none;
 	box-shadow: none;
 }
-.apmag-themeoption .section .group-content{
+.tutannet-themeoption .section .group-content{
 	display: none;
 	background-color: white;
 	box-shadow: 0.5px 0.866px 1px 0 rgba(0, 0, 0, 0.1);
 	padding: 18px 15px;
 }
-.apmag-themeoption #optionsframework .group-content .section{
+.tutannet-themeoption #optionsframework .group-content .section{
 	padding: 0;
 	margin-bottom: 0px;
 }
-.apmag-themeoption .section h4.group-heading{
+.tutannet-themeoption .section h4.group-heading{
 	background-color: white;
 	box-shadow: 1px 0 1px 0 rgba(0, 0, 0, 0.1);
 	cursor: pointer;
@@ -455,35 +455,35 @@
 	padding: 10px 10px 10px 15px;
 	position: relative;
 }
-.apmag-themeoption .section .option{
+.tutannet-themeoption .section .option{
 	display: inline-block;
 	width: 595px;
 }
-.apmag-themeoption #optionsframework .controls select, .apmag-themeoption #optionsframework .controls textarea{
+.tutannet-themeoption #optionsframework .controls select, .tutannet-themeoption #optionsframework .controls textarea{
 	margin-bottom: 0;
 }
-.apmag-themeoption #optionsframework .section .explain{
+.tutannet-themeoption #optionsframework .section .explain{
 	clear: both;
 	padding-top: 7px;
 	margin-bottom: 10px;
 	max-width: 100%;
 }
-.apmag-themeoption #optionsframework .section .explain br{
+.tutannet-themeoption #optionsframework .section .explain br{
 	margin-bottom: 5px;
 }
-.apmag-themeoption #optionsframework .section .controls{
+.tutannet-themeoption #optionsframework .section .controls{
 	width: 100%;
 }
-.apmag-themeoption #optionsframework .controls input.upload{
+.tutannet-themeoption #optionsframework .controls input.upload{
 	width: 87%;
 }
 .sub-option .remove-file{
 	display: inline-block;
 }
-.apmag-themeoption #optionsframework .section #more_info_footer{
+.tutannet-themeoption #optionsframework .section #more_info_footer{
 	padding-bottom: 20px;
 }
-.apmag-themeoption #optionsframework-submit{
+.tutannet-themeoption #optionsframework-submit{
 	background-color: #fff;
     border-top: 1px solid #CCC;
     box-shadow: 1px 0 4px 0 rgba(0, 0, 0, 0.1);
@@ -505,8 +505,8 @@
 
 @media(max-width: 782px){
 
-	.apmag-themeoption .nav-tab-wrapper,
-	.apmag-themeoption .metabox-holder{
+	.tutannet-themeoption .nav-tab-wrapper,
+	.tutannet-themeoption .metabox-holder{
 		width: 100%;
 		box-sizing:border-box;
 		-webkit-box-sizing:border-box;

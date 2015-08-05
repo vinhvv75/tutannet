@@ -40,6 +40,10 @@ function tutannet_header_scripts(){
 
 add_action('wp_head', 'tutannet_header_scripts');
 
+
+/*---------Hide Admin Toolbar---------------*/
+add_filter('show_admin_bar', '__return_false');
+
 /*---------Hide meta boxes in Editor---------------*/
 if (is_admin()) :
 function my_remove_meta_boxes() {
@@ -59,6 +63,196 @@ function my_remove_meta_boxes() {
 add_action( 'admin_menu', 'my_remove_meta_boxes' );
 endif;
 
+/*---------Create and Define Default Categories---------------*/
+function define_default_categories() {
+	// Main Category
+	wp_insert_term(
+		'Tin Tức Phật Sự',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'tin-tuc-phat-su'
+		)
+	);
+	wp_insert_term(
+		'Phật Giáo và Xã Hội',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'phat-giao-va-xa-hoi'
+		)
+	);
+	wp_insert_term(
+		'Phật Học',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'phat-hoc'
+		)
+	);
+	wp_insert_term(
+		'Pháp Âm',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'phap-am'
+		)
+	);
+	wp_insert_term(
+		'Hoạt Động Chùa Từ Tân',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'hoat-dong-chua-tu-tan'
+		)
+	);
+	$hoat_dong_chua_tu_tan_term = get_term_by('slug','hoat-dong-chua-tu-tan','category');
+	$hoat_dong_chua_tu_tan = $hoat_dong_chua_tu_tan_term->term_id;
+	wp_insert_term(
+		'Gia Đình Phật Tử',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'gia-dinh-phat-tu',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Đạo Tràng Tu Thiền',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'dt-tu-thien',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Đạo Tràng Tu Bát Quan Trai',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'dt-tu-bat-quan-trai',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Ban Hộ Trì Tam Bảo',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'ban-ho-tri-tam-bao',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'BHN Gia Đình Lam',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'bhn-gia-dinh-lam',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Ban Hộ niệm Chùa',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'ban-ho-niem-chua',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'CLB Thiền - Khí Công',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'clb-thien-khi-cong',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'CLB Thanh Niên Phật Tử',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'clb-thanh-nien-phat-tu',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'CLB Từ Thiện Bến Thương',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'clb-tu-thien-ben-thuong',
+		  'parent'=> $hoat_dong_chua_tu_tan
+		)
+	);
+	wp_insert_term(
+		'Các Chùa Hệ Phái',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'cac-chua-he-phai'
+		)
+	);
+	
+	// functional category
+	wp_insert_term(
+		'Giới thiệu',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'gioi-thieu'
+		)
+	);
+	wp_insert_term(
+		'Thông Báo',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'thong-bao'
+		)
+	);
+	wp_insert_term(
+		'Bài Chọn Lọc',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'bai-chon-loc'
+		)
+	);
+	
+	wp_update_term(1, 'category', array(
+	  'name' => 'Không chuyên mục',
+	  'slug' => 'khong-chuyen-muc'
+	));
+}
+add_action( 'after_setup_theme', 'define_default_categories' );
+
+/*---------Create and Define Default Pages---------------*/
+function define_default_pages() {
+
+	$homepage = get_page_by_title( 'Trang Chủ' );   
+	if ( !$homepage ) {
+		wp_insert_post(
+			array(
+			  'post_title'    => 'Trang Chủ',
+			  'post_status'   => 'publish',
+			  'post_type'     => 'page',
+			  'page_template'  => 'home-page.php'
+			)
+		);
+	}    
+    if ( $homepage )
+    {
+        update_option( 'page_on_front', $homepage->ID );
+        update_option( 'show_on_front', 'page' );
+    }
+}
+add_action( 'after_setup_theme', 'define_default_pages' );
+
 /*---------Enqueue custom admin panel JS---------------*/
 function tutannet_admin_scripts(){
     wp_enqueue_script('tutannet-custom-admin', get_template_directory_uri(). '/inc/option-framework/js/custom-admin.js', array( 'jquery'));    
@@ -70,107 +264,6 @@ function tutannet_admin_css(){
     wp_enqueue_style('tutannet-admin', get_template_directory_uri(). '/inc/option-framework/css/tutannet-admin.css');    
 }
 add_action('admin_head','tutannet_admin_css');
-
-/*-----------------------Homepage slider--------------------------*/
-function tutannet_slider_cb(){
-        $slider_category = of_get_option( 'homepage_slider_category' );
-        if(empty($slider_category)){
-            $slider_category=''; }    
-        $slide_count = of_get_option( 'count_slides' );
-        $slide_info = of_get_option( 'slider_info' );
-        $posts_perpage_value = $slide_count*4;
-        $slider_args = array(
-                    'category_name'=>$slider_category,
-                    'post_type'=>'post',
-                    'post_status'=>'publish',
-                    'posts_per_page'=>$posts_perpage_value,
-                    'order'=>'DESC',
-                    'meta_query' => array(
-                                        array(
-                                            'key' => '_thumbnail_id',
-                                            'compare' => '!=',
-                                            'value' => null
-                                        )
-                                    )
-                        );
-        $slider_query = new WP_Query($slider_args);
-        $slide_counter = 0; 
-        if($slider_query->have_posts())
-        {
-            echo '<div id="homeslider">';
-            while($slider_query->have_posts())
-            {
-                $slide_counter++;                                                            
-                $slider_query->the_post();
-                $post_image_id = get_post_thumbnail_id();
-                $post_big_image_path = wp_get_attachment_image_src( $post_image_id, 'tutannet-slider-big-thumb', true );
-                $post_small_image_path = wp_get_attachment_image_src( $post_image_id, 'tutannet-slider-small-thumb', true );
-                $post_image_alt = get_post_meta( $post_image_id, '_wp_attachment_image_alt', true );
-                if($slide_counter%4==1):
-            ?>                        
-                    <div class="slider">
-            <?php 
-                endif ;
-                if($slide_counter%4==1):
-            ?>
-                        <a href="<?php echo the_permalink();?>">
-                        <div class="big_slide wow fadeInLeft row">
-                            <div class="big-cat-box">
-                                <span class="cat-name"><?php $cat_name = get_the_category(); echo esc_attr( $cat_name[0]->name ); ?></span>
-                                <?php do_action('tutannet_post_meta');?>
-                            </div>
-                            <div class="slide-image"><img src="<?php echo esc_url( $post_big_image_path[0] );?>" alt="<?php echo esc_attr($post_image_alt);?>" /></div>
-                            <?php if($slide_info==1):?>
-                            <div class="mag-slider-caption">
-                              <h3 class="slide-title"><?php the_title();?></h3>
-                            </div>
-                            <?php endif;?>
-                        </div>
-                        </a>
-            <?php else : if($slide_counter%4==2){echo '<div class="small-slider-wrapper wow fadeInRight row">';}?>                
-                       <a href="<?php echo the_permalink();?>">
-                        <div class="small_slide col-xs-4">
-                            <span class="cat-name"><?php $cat_name = get_the_category(); echo esc_attr( $cat_name[0]->name ); ?></span>
-                            <div class="slide-image"><img src="<?php echo esc_url( $post_small_image_path[0] );?>" alt="<?php echo esc_attr($post_image_alt);?>" /></div>
-                            <div class="mag-small-slider-caption">
-                              <?php if($slide_info==1):?><h3 class="slide-title"><?php the_title();?></h3><?php endif; ?>
-                            </div>                            
-                        </div>
-                       </a>
-            <?php 
-                 endif;
-                 if($slide_counter%4==0):
-            ?>
-                    </div>
-                    </div>
-            <?php endif;
-                
-                }
-            echo '</div>';
-            }
- }
-add_action( 'tutannet_slider', 'tutannet_slider_cb', 10 );
-
-
-function tutannet_slider_script(){
-    $slider_controls = ( of_get_option( 'slider_controls' ) == "1" ) ? "true" : "false";
-    $slider_auto_transaction = ( of_get_option( 'slider_auto_transition' ) == "1" ) ? "true" : "false";
-    $slider_pager = ( of_get_option( 'slider_pager' ) == "1" ) ? "true" : "false";
-    ?>
-    <script type="text/javascript">
-        jQuery(function($){
-            $("#homeslider").bxSlider({
-                controls:<?php echo esc_attr($slider_controls); ?>,
-                pager:<?php echo esc_attr($slider_pager);?>,
-                auto: false
-//                <?php echo esc_attr($slider_auto_transaction);?>
-                                        
-            });
-            });
-    </script>
-    <?php
-}
-add_action( 'wp_head', 'tutannet_slider_script' );
 
 /*--------------------- Post Views-------------------*/
 
@@ -408,6 +501,7 @@ function tutannet_required_plugins() {
             ),
                   
     );
+
 
     /**
      * Array of configuration settings. Amend each line as needed.

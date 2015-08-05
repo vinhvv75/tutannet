@@ -257,6 +257,12 @@ function tutannet_scripts() {
     wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
     
+    
+    /*** TuTanNet JS ***/
+    wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0' );
+    wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery'), '1.0' );
+    wp_enqueue_script( 'tutannet-login-scripts', get_template_directory_uri() . '/js/login.js', array('jquery'), '1.0' );
+    
     /*** Tech ***/
     // instant-article
     wp_enqueue_style( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.css' );
@@ -288,8 +294,7 @@ function tutannet_scripts() {
 
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'wow', get_template_directory_uri() . '/lib/wow.min.js', array(), '1.0.1');
-	wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0.1' );
-	wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery'), '1.0.1' );
+	
 	
 	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/lib/modernizr.js', array('jquery'), '2.8.3' );
 	wp_enqueue_script( 'pace', get_template_directory_uri() . '/lib/pace.min.js', array(), '1.0.0' );
@@ -352,5 +357,10 @@ require get_template_directory() . '/inc/tutannet-widgets.php';
  * Load Options Plugin Activation
  */
 require get_template_directory() . '/inc/tutannet-plugin-activation.php';
+
+/**
+ * Load AJAX Login
+ */
+require_once get_template_directory() . '/inc/ajax_login/custom-ajax-auth.php';
 
 define('OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri(). '/inc/option-framework/');

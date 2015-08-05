@@ -47,13 +47,13 @@
         </nav><!-- site-intro-nav-->
         
         <div id="site-toolbar" class="animated fadeInRight">
-        	<a id="login_toggle" href="#" class="cd-btn" title="<?php 
+        	<a id="login_toolbar" href="#" class="cd-btn" data-toggle="login_wrap" title="<?php 
         		if(is_user_logged_in()) {
         			global $current_user;
         			get_currentuserinfo();
         		    echo 'Xin chào, ' . $current_user->user_login;		
         		} else {
-        		    echo 'Đăng nhập thành viên';
+        		    echo 'Đăng nhập | Đăng ký';
         		}
         	
         	

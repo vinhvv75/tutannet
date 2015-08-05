@@ -4,7 +4,7 @@
 */
 
 jQuery(document).ready(function($){
-welcomeScreen();
+//welcomeScreen();
         
 $('.search-icon i.fa-search').click(function() {
     $('.search-icon .ak-search').toggleClass('active');
@@ -113,17 +113,7 @@ $('#search_toggle').click(function() {
 });
 
 
-// Login Toggle
-$('#login_toggle').click(function() {
-	$('#site-section-nav, #cd-intro-tagline').addClass('animated fadeOut');
-	setTimeout(function(){ 
-		$('#site-section-nav, #cd-intro-tagline').addClass('is-disabled'); 
-		$('#loginform').removeClass('is-disabled');
-		$('#loginform').addClass('fadeIn');
-	}, 500 );
-});
 
-//$('#login_toggle').popover(options);
 
 
 
@@ -250,4 +240,4 @@ console.log('    ‘‘‘---“““------------------------------------------
 }
 
    
-});
+}); // End

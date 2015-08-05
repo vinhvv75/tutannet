@@ -863,6 +863,13 @@ body.boxed-layout {
 		margin-bottom: 5px;
 	}
 	
+	#login_close {
+		position: absolute;
+		right: 5%;
+		top: 1em;
+		cursor: pointer;
+	}
+	
 
 /*--------------------------------------------------------------
 	Common css 

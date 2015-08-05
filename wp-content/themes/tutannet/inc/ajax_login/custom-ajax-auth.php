@@ -44,8 +44,7 @@ function ajax_register(){
     // Nonce is checked, get the POST data and sign user on
     $info = array();
   	$info['user_nicename'] = $info['nickname'] = $info['display_name'] = $info['first_name'] = $info['user_login'] = sanitize_user($_POST['username']);
-//  	$info['user_login'] = sanitize_user($_POST['username']);
-    $info['user_password'] = ($_POST['password']);
+    $info['user_pass'] = sanitize_text_field($_POST['password']);
 	$info['user_email'] = sanitize_email( $_POST['email']);
 		
 	// Register the user
@@ -53,18 +52,17 @@ function ajax_register(){
  	if ( is_wp_error($user_register) ){	
 		$error  = $user_register->get_error_codes()	;		
 		if(in_array('empty_user_login', $error)) {
-			echo json_encode(array('loggedin'=>false, 'message'=>__($user_register->get_error_message('empty_user_login'))));
+			echo json_encode(array('loggedin'=>false, 'message'=>__('Xin lỗi, thông tin đăng nhập không hợp lệ.')));
 		}
 		else if(in_array('existing_user_login',$error)) {
-			echo json_encode(array('loggedin'=>false, 'message'=>__($user_register->get_error_message('existing_user_login'))));
+			echo json_encode(array('loggedin'=>false, 'message'=>__('Xin lỗi, tên đăng nhập này đã tồn tại.')));
 		}
         else if(in_array('existing_user_email',$error)) {
-        	echo json_encode(array('loggedin'=>false, 'message'=>__($user_register->get_error_message('existing_user_email'))));
+        	echo json_encode(array('loggedin'=>false, 'message'=>__('Xin lỗi, thư điện tử này đã tồn tại.')));
         }
-        else echo json_encode(array('loggedin'=>false, 'message'=>__($user_register->get_error_messages($error))));
+//        else echo json_encode(array('loggedin'=>false, 'message'=>__($user_register->get_error_messages($error))));
     } else {
       wp_insert_user( $info );
-//      auth_user_login($info['user_login'], $info['user_password'], false, 'Đăng ký');
       echo json_encode(array('loggedin'=>true, 'message'=>__('Đăng ký thành công.')));
     }
 

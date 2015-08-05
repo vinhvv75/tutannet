@@ -28,6 +28,12 @@ if (isset($_GET['failed_login'])) {
 $blog_url = site_url();
 ?>
 <div id="login_wrapper" class="is-disabled animated">
+	<a id="login_close">
+		<span class="fa-stack fa-lg">
+			<i class="fa fa-circle fa-stack-2x"></i>
+			<i class="fa fa-close fa-stack-1x fa-inverse"></i>
+		</span>
+	</a>
 	<form name="loginform" id="loginform" class="is-disabled animated" action="login" method="post">
 		<p class="status"></p>
 		  <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>

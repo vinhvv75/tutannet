@@ -59,8 +59,20 @@ get_header();
 				<!--<span>My favourite food is</span>-->
 				<span class="cd-words-wrapper">
 					<b class="is-visible">Kẻ thù lớn nhất của đời người là chính mình</b>
-					<b>Ngu dốt lớn nhất của đời người là dối trá</b>
-					<b>Thất bại lớn nhất của đời người là tự đại</b>
+				    <b>Ngu dốt lớn nhất của đời người là dối trá</b>
+				    <b>Thất bại lớn nhất của đời người là tự đại</b>
+				    <b>Bi ai lớn nhất của đời người là ghen tị</b>
+				    <b>Sai lầm lớn nhất của đời người là đánh mất mình</b>
+				    <b>Tội lỗi lớn nhất của đời người là bất hiếu</b>
+				    <b>Đáng thương lớn nhất của đời người là tự ti</b>
+				    <b>Đáng khâm phục lớn nhất của đời người là vươn lên sau khi ngã</b>
+				    <b>Phá sản lớn nhất của đời người là tuyệt vọng</b>
+				    <b>Tài sản lớn nhất của đời người là sức khoẻ, trí tuệ</b>
+				    <b>Món nợ lớn nhất của đời người là tình cảm</b>
+				    <b>Lễ vật lớn nhất của đời người là khoan dung</b>
+				    <b>Khiếm khuyết lớn nhất của đời người là kém hiểu biết</b>
+				    <b>An ủi lớn nhất của đời người là bố thí.</b>
+					
 				</span>
 			</h1>
 		</div> <!-- #site-intro-tagline -->

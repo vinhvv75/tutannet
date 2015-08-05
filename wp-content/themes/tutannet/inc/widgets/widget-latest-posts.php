@@ -106,7 +106,6 @@ class tutannet_register_latest_posts extends WP_Widget {
      * @param	array	$new_instance	Values just sent to be saved.
      * @param	array	$old_instance	Previously saved values from database.
      *
-     * @uses	accesspress_pro_widgets_updated_field_value()		defined in widget-fields.php
      *
      * @return	array Updated safe values to be saved.
      */
@@ -134,7 +133,6 @@ class tutannet_register_latest_posts extends WP_Widget {
      *
      * @param	array $instance Previously saved values from database.
      *
-     * @uses	accesspress_pro_widgets_show_widget_field()		defined in widget-fields.php
      */
     public function form($instance) {
         $widget_fields = $this->widget_fields();

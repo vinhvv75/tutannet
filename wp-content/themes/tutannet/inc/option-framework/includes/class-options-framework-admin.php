@@ -84,18 +84,15 @@ class Options_Framework_Admin {
 
 		$menu = array(
 
-			// Modes: submenu, menu
-			'mode' => 'submenu',
-
             // Submenu default settings
-			'page_title' => __( 'Theme Options', 'tutannet' ),
-			'menu_title' => __( 'Theme Options', 'tutannet' ),
+			'page_title' => __( 'Tuỳ Chỉnh TuTanNet', 'tutannet' ),
+			'menu_title' => __( 'TuTanNet', 'tutannet' ),
 			'capability' => 'edit_theme_options',
-			'menu_slug' => 'ap-theme-options',
+			'menu_slug' => 'tutannet-theme-options',
 			'parent_slug' => 'themes.php',
 
             // Menu default settings
-			'icon_url' => 'dashicons-admin-generic',
+			'icon_url' => 'dashicons-admin-appearance',
 			'position' => '61'
 
 			);
@@ -104,7 +101,7 @@ class Options_Framework_Admin {
 	}
 
 	/**
-     * Add a subpage called "Theme Options" to the appearance menu.
+     * Add a subpage called "t" to the appearance menu.
      *
      * @since 1.7.0
      */
@@ -117,12 +114,14 @@ class Options_Framework_Admin {
 
 		// Code removed because it conflicts with .org theme check.
 
-		$this->options_screen = add_theme_page(
+		$this->options_screen = add_menu_page(
 			$menu['page_title'],
 			$menu['menu_title'],
 			$menu['capability'],
 			$menu['menu_slug'],
-			array( $this, 'options_page' )
+			array( $this, 'options_page' ),
+			$menu['icon_url'],
+			$menu['position']
 			);
 
 	}
@@ -139,7 +138,6 @@ class Options_Framework_Admin {
 			return;
 
 		wp_enqueue_style( 'optionsframework', OPTIONS_FRAMEWORK_DIRECTORY . 'css/optionsframework.css', array(),  Options_Framework::VERSION );
-        wp_enqueue_style( 'admin-fontawesome-font', OPTIONS_FRAMEWORK_DIRECTORY . 'css/font-awesome.min.css', array(),  Options_Framework::VERSION );
         wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -186,14 +184,14 @@ class Options_Framework_Admin {
 
 
 	<div class="clear"></div>
-	<div id="optionsframework-wrap" class="wrap apmag-themeoption">
+	<div id="optionsframework-wrap" class="wrap tutannet-themeoption">
     <div class="theme-header clearfix">
 		<div class="tutannet-logo">
     		<img src="<?php echo get_template_directory_uri();?>/images/logo.png" alt="<?php esc_attr_e('TuTanNet','tutannet'); ?>" />
     		<div class="theme-name">
                 <?php 
                 $theme = wp_get_theme();
-                echo $theme->get( 'Name' )." V". $theme->get( 'Version' ) . __( ' - Theme Option Panel', 'tutannet' ); ?>
+                echo $theme->get( 'Name' )." ". $theme->get( 'Version' ); ?>
             </div>
         </div>
                 

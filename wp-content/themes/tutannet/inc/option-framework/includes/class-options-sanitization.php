@@ -99,6 +99,31 @@ function of_sanitize_multicheck( $input, $option ) {
 add_filter( 'of_sanitize_multicheck', 'of_sanitize_multicheck', 10, 2 );
 
 /**
+ * Sanitization for multiselect
+ *
+ * @param array of select values
+ * @return array of sanitized values ('1' or false)
+ */function of_sanitize_multiselect( $input, $option ) {
+
+	$output = '';
+	if ( is_array( $input ) ) {
+		foreach( $option['options'] as $key => $value ) {
+			$output[$key] = '0';
+			foreach( $input as $selected_val ) {
+				if($key == $selected_val) {
+					$output[$key] = '1';
+				}
+			}
+		}
+	}
+
+	file_put_contents( 'debug' . time() . '.log', var_export( $output, true));
+	return $output;
+}
+
+add_filter( 'of_sanitize_multiselect', 'of_sanitize_multiselect', 10, 2 );
+
+/**
  * File upload sanitization.
  *
  * Returns a sanitized filepath if it has a valid extension.

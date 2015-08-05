@@ -75,7 +75,7 @@
                 <div class="ak-info">
                     <?php _e( 'Powered by ', 'tutannet' );  ?><a href="<?php echo esc_url( __( 'http://wordpress.org/', 'tutannet' ) ); ?>"><?php _e( 'WordPress', 'tutannet' ); ?> </a>
                     <?php _e( '| Theme: ' );?>
-                    <a title="AccessPress Themes" href="<?php echo esc_url( 'http://accesspressthemes.com', 'tutannet' ); ?>">TuTanNet</a>
+                    <a title="TuTanNet Themes" href="<?php echo esc_url( 'http://chuatutan.net', 'tutannet' ); ?>">TuTanNet</a>
                 </div>
              <?php if ( ( has_nav_menu( 'footer_menu' ) ) && ( $tutannet_sub_footer_switch == 1 ) ) { ?>      
                 <div class="subfooter-menu">
@@ -88,9 +88,6 @@
             </div>
         </div>
 	</footer><!-- #colophon -->
-    <div id="back-top">
-        <a href="#top"><i class="fa fa-arrow-up"></i> <span> <?php echo esc_attr( $trans_top ) ;?> </span></a>
-    </div>   
 </div><!-- #page -->
 <?php wp_footer(); ?>
 </body>

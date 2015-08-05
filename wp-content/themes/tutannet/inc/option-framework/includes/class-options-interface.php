@@ -224,6 +224,33 @@ class Options_Framework_Interface {
 					$output .= '<input id="' . esc_attr( $id ) . '" class="checkbox of-input" type="checkbox" name="' . esc_attr( $name ) . '" ' . $checked . ' /><label for="' . esc_attr( $id ) . '">' . esc_html( $label ) . '</label>';
 				}
 				break;
+				
+			// Multiselect
+			case "multiselect":
+			
+				$output .= '<select multiple="multiple" class="of-input" name="' . esc_attr( $option_name . '[' . $value['id'] . ']' ) . '[]" id="' . esc_attr( $value['id'] ) . '">';
+	
+				foreach ($value['options'] as $key => $option) {
+					$selected = '';
+					$label = $option;
+					$option = preg_replace('/[^a-zA-Z0-9._\-]/', '', strtolower($key));
+					$id = $option_name . '-' . $value['id'] . '-'. $option;
+					$name = $option_name . '[' . $value['id'] . '][' . $option .']';
+					
+					if ( isset($val) && is_array($val) ) {
+						if( array_key_exists( $key, $val)) {
+							if($val[$key]) {
+								$selected = ' selected="selected" ';
+							}
+						}
+					}
+	
+					$output .= '<option'. $selected .' value="' . esc_attr( $key ) . '">' . esc_html( $label ) . '</option>';
+					
+				}
+	
+				$output .= '</select>';
+				break;
 
 			// Color picker
 			case "color":

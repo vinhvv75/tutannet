@@ -261,7 +261,6 @@ function tutannet_scripts() {
     /*** TuTanNet JS ***/
     wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0' );
     wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery'), '1.0' );
-    wp_enqueue_script( 'tutannet-login-scripts', get_template_directory_uri() . '/js/login.js', array('jquery'), '1.0' );
     
     /*** Tech ***/
     // instant-article
@@ -275,6 +274,12 @@ function tutannet_scripts() {
 	// animated-headline
 	wp_enqueue_style( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.css' );
 	wp_enqueue_script( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.js', array('jquery'), '1.0.0' );
+	
+	// ajax-login
+	wp_enqueue_script( 'tutannet-login-scripts', get_template_directory_uri() . '/tech/ajax-login/login.js', array('jquery'), '1.0' );
+	
+	// ajax-search
+	wp_enqueue_script( 'tutannet-search-scripts', get_template_directory_uri() . '/tech/ajax-search/search.js', array('jquery'), '1.0' );
 	
 	/*** Lib ***/
 	// bootstrap 3.3.5
@@ -361,6 +366,6 @@ require get_template_directory() . '/inc/tutannet-plugin-activation.php';
 /**
  * Load AJAX Login
  */
-require_once get_template_directory() . '/inc/ajax_login/custom-ajax-auth.php';
+require_once get_template_directory() . '/tech/ajax-login/ajax-auth.php';
 
 define('OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri(). '/inc/option-framework/');

@@ -143,6 +143,7 @@ Navigation
   background: #000101;
   border-top: 1px solid #051426;
   color: #f0eee1;
+  text-transform: capitalize;
 }
 #site-intro-nav ul li:nth-child(2) {
     -webkit-animation-delay:0.4s; 
@@ -211,7 +212,6 @@ Intro
   height: 300px;
   /*background: url(img/intro-background.jpg) no-repeat center center;*/
   background-size: cover;
-  z-index: 2;
   overflow: hidden;
 }
 #cd-intro img {
@@ -258,7 +258,6 @@ Intro
 
 #site-toolbar {
 	display: inline-block;
-	z-index: 100;
 	position: absolute;
 	top: 0.5em;
 	right: 5%;
@@ -322,7 +321,7 @@ Secondary Fixed Navigation
 -------------------------------- */
 #site-section-nav {
   position: relative;
-  z-index: 3;
+  z-index: 2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -336,7 +335,6 @@ Secondary Fixed Navigation
   border-radius: 0.25em;
   background: rgba(3, 13, 24, 0.96);
   visibility: hidden;
-  z-index: 1;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transform: scale(0);
@@ -426,7 +424,7 @@ Secondary Fixed Navigation
 }
 @media only screen and (min-width: 1170px) {
   #site-section-nav {
-    z-index: 10;
+    z-index: 2;
     height: 100px;
     background: rgba(255, 255, 255, 0);
     -webkit-transition: height 0.3s;

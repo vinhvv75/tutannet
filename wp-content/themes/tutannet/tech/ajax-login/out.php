@@ -27,14 +27,10 @@ if (isset($_GET['failed_login'])) {
 
 $blog_url = site_url();
 ?>
-<div id="login_wrapper" class="is-disabled animated">
-	<a id="login_close">
-		<span class="fa-stack fa-lg">
-			<i class="fa fa-circle fa-stack-2x"></i>
-			<i class="fa fa-close fa-stack-1x fa-inverse"></i>
-		</span>
-	</a>
-	<form name="loginform" id="loginform" class="is-disabled animated" action="login" method="post">
+<div id="login_wrapper" class="row is-disabled animated">
+	<div class="col-xs-2 col-sm-2 col-md-4 col-lg-4"></div>
+	<form name="loginform" id="loginform" class="col-xs-8 col-sm-8 col-md-4 col-lg-4 is-disabled animated" action="login" method="post">
+		<h2>Đăng nhập</h2>
 		<p class="status"></p>
 		  <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
 		  <div class="input-group margin-bottom-sm login_field">
@@ -65,10 +61,18 @@ $blog_url = site_url();
 		</span>Đăng ký thành viên</a><span> | </span>
 		<a data-toggle="lostpass" href="#">Quên mật khẩu ?</a>
 		</div>
+		<div class="row login_tool">
+			<div class="btn-group" role="group" aria-label="...">
+			  <!--<button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>-->
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
 	</form><!-- Login Form -->
 	
-	<form name="registerform" id="registerform" class="is-disabled animated" action="register" method="post">
+	<form name="registerform" id="registerform" class="col-xs-8 col-sm-8 col-md-4 col-lg-4 is-disabled animated" action="register" method="post">
 		<p class="status"></p>
+		<h2>Đăng ký</h2>
 		<?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>
 		<div class="input-group margin-bottom-sm login_field">
 			<span class="input-group-addon"><i class="fa fa-pencil-square-o fa-fw"></i></span>
@@ -98,9 +102,19 @@ $blog_url = site_url();
 		</span>
 		<a data-toggle="lostpass" href="#">Quên mật khẩu ?</a>
 		</div>
+		<div class="row login_tool">
+			<div class="btn-group" role="group" aria-label="...">
+			  <!--<button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>-->
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
 	</form><!-- Register Form -->
 	
-	<form name="lostpasswordform" id="lostpasswordform" class="is-disabled animated" action="<?php echo $home; ?>/wp-login.php?action=lostpassword" method="post">
+	<form name="lostpasswordform" id="lostpasswordform" class="col-xs-8 col-sm-8 col-md-4 col-lg-4 is-disabled animated ajax-auth" action="forgot_password" method="post">
+		<h2>Khôi phục mật khẩu</h2>
+		<p class="status"></p>
+		<?php wp_nonce_field('ajax-forgot-nonce', 'forgotsecurity'); ?>
 		<div class="input-group margin-bottom-sm login_field">
 			<span class="input-group-addon"><i class="fa fa-unlock fa-fw"></i></span>
 			<input class="form-control" type="text" placeholder="Tên đăng nhập hoặc Thư điện tử" name="user_login" id='user_login' <?php echo $extra; ?> />
@@ -109,7 +123,7 @@ $blog_url = site_url();
 		<input type='hidden' name='redirect_to' value='<?php echo $redirect; ?>' />
 		<div class="submit"><input name="wp-submit" id="wp-submit" class="btn btn-success" value="Lấy mật khẩu mới" type="submit"/></div>
 		<br class="clear"/>
-		<p class="nav">
+		<div class="nav">
 		<a data-toggle="login" href="#" class="login_field">
 			<span class="fa-stack fa-lg">
 		  		<i class="fa fa-circle fa-stack-2x"></i>
@@ -123,8 +137,16 @@ $blog_url = site_url();
 		  		<i class="fa fa-flag fa-stack-1x fa-inverse"></i>
 			</span>Đăng ký thành viên
 		</a>
-		</p>
+		</div>
+		<div class="row login_tool">
+			<div class="btn-group" role="group" aria-label="...">
+			  <!--<button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>-->
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
 	</form><!-- Lost Password Form -->	
+	<div class="col-xs-2 col-sm-2 col-md-4 col-lg-4"></div>
 </div>
 
 

@@ -1,10 +1,10 @@
 <?php
 function ajax_auth_init(){	
 	
-	wp_register_script('validate-script', get_template_directory_uri() . '/inc/ajax_login/jquery.validate.js', array('jquery') ); 
+	wp_register_script('validate-script', get_template_directory_uri() . '/tech/ajax-login/jquery.validate.js', array('jquery') ); 
     wp_enqueue_script('validate-script');
 
-    wp_register_script('ajax-auth-script', get_template_directory_uri() . '/inc/ajax_login/ajax-auth-script.js', array('jquery') ); 
+    wp_register_script('ajax-auth-script', get_template_directory_uri() . '/tech/ajax-login/ajax-auth-script.js', array('jquery') ); 
     wp_enqueue_script('ajax-auth-script');
 
     wp_localize_script( 'ajax-auth-script', 'ajax_auth_object', array( 
@@ -17,6 +17,8 @@ function ajax_auth_init(){
     add_action( 'wp_ajax_nopriv_ajaxlogin', 'ajax_login' );
 	// Enable the user with no privileges to run ajax_register() in AJAX
 	add_action( 'wp_ajax_nopriv_ajaxregister', 'ajax_register' );
+	// Enable the user with no privileges to run ajax_forgotPassword() in AJAX
+	add_action( 'wp_ajax_nopriv_ajaxforgotpassword', 'ajax_forgotPassword' );
 }
 
 // Execute the action only if the user isn't logged in
@@ -84,6 +86,88 @@ function auth_user_login($user_login, $password, $remember, $login)
         echo json_encode(array('loggedin'=>true, 'message'=>__($login.' thành công.')));
     }
 	
+	die();
+}
+
+function ajax_forgotPassword(){
+	 
+	// First check the nonce, if it fails the function will break
+    check_ajax_referer( 'ajax-forgot-nonce', 'security' );
+	
+	global $wpdb;
+	
+	$account = $_POST['user_login'];
+	
+	if( empty( $account ) ) {
+		$error = 'Xin nhập tên đăng nhập hoặc thư điện tử.';
+	} else {
+		if(is_email( $account )) {
+			if( email_exists($account) ) 
+				$get_by = 'email';
+			else	
+				$error = 'Không có thành viên hợp với thư điện tử này.';			
+		}
+		else if (validate_username( $account )) {
+			if( username_exists($account) ) 
+				$get_by = 'login';
+			else	
+				$error = 'Không có thành viện hợp với tên đăng nhập này.';				
+		}
+		else
+			$error = 'Tên đăng nhập hoặc thư điện tử không hợp lệ.';		
+	}	
+	
+	if(empty ($error)) {
+		// lets generate our new password
+		//$random_password = wp_generate_password( 12, false );
+		$random_password = wp_generate_password();
+ 
+			
+		// Get user data by field and data, fields are id, slug, email and login
+		$user = get_user_by( $get_by, $account );
+			
+		$update_user = wp_update_user( array ( 'ID' => $user->ID, 'user_pass' => $random_password ) );
+			
+		// if  update user return true then lets send user an email containing the new password
+		if( $update_user ) {
+			
+			$from = 'WRITE SENDER EMAIL ADDRESS HERE'; // Set whatever you want like mail@yourdomain.com
+			
+			if(!(isset($from) && is_email($from))) {		
+				$sitename = strtolower( $_SERVER['SERVER_NAME'] );
+				if ( substr( $sitename, 0, 4 ) == 'www.' ) {
+					$sitename = substr( $sitename, 4 );					
+				}
+				$from = 'admin@'.$sitename; 
+			}
+			
+			$to = $user->user_email;
+			$subject = 'Mật khẩu mới';
+			$sender = 'Gửi từ: '.get_option('name').' <'.$from.'>' . "\r\n";
+			
+			$message = 'Mật khẩu mới của bạn là: '.$random_password;
+				
+			$headers[] = 'MIME-Version: 1.0' . "\r\n";
+			$headers[] = 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+			$headers[] = "X-Mailer: PHP \r\n";
+			$headers[] = $sender;
+				
+			$mail = wp_mail( $to, $subject, $message, $headers );
+			if( $mail ) 
+				$success = 'Thành công. Kiểm tra hộp thư điện tử của bạn để xem mật khẩu mới.';
+			else
+				$error = 'Hệ thống không thể gửi mật khẩu mới vào hộp thư điện tử của bạn.';						
+		} else {
+			$error = 'Có lỗi trong khi cập nhật mật khẩu mới.';
+		}
+	}
+	
+	if( ! empty( $error ) )
+		echo json_encode(array('loggedin'=>false, 'message'=>__($error)));
+			
+	if( ! empty( $success ) )
+		echo json_encode(array('loggedin'=>false, 'message'=>__($success)));
+				
 	die();
 }
 ?>

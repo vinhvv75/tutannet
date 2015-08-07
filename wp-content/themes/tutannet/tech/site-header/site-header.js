@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 	
 	var secondaryNav = $('#site-section-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top,
-		taglineOffesetTop = $('#cd-intro-tagline').offset().top + $('#cd-intro-tagline').height() + parseInt($('#cd-intro-tagline').css('paddingTop').replace('px', '')),
+		taglineOffesetTop = $('#site-section-nav').offset().top,
 		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.block-cat-name')[block_index],
 		section_title = document.getElementById('section-title');
 

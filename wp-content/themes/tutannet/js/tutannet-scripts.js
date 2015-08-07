@@ -96,21 +96,12 @@ $('a[data-toggle="tab"]').click(function() {
 
 // initalize bootstrap tooltip
 $('[data-toggle="tooltip"]').tooltip();
-$('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
+$('#site-toolbar a, #login_wrapper a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
 
 // remove tooltips
 window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }
 
-// Search Toggle
-$('#search_toggle').click(function() {
-	$('#site-section-nav, #cd-intro-tagline').addClass('animated fadeOut');
-	setTimeout(function(){ 
-		$('#site-section-nav, #cd-intro-tagline').addClass('is-disable'); 
-		$('#searchform').removeClass('is-disable');
-		$('#searchform').addClass('fade in');
-	}, 500 );
-	$('#section_search').tab('show');
-});
+
 
 
 
@@ -123,89 +114,8 @@ function extractUrl(input)
  return input.replace(/"/g,"").replace(/url\(|\)$/ig, "");
 }
 
-colorThief = new ColorThief();
-var rgb = colorThief.getColor(document.getElementById('cd-intro-img'));
-var c = $c.complement(rgb).a;
-var rgb2 = getAverageRGB(document.getElementById('cd-intro-img'));
-var c2 = $c.complement(rgb).a;
-
-var text = document.getElementById('headline');
-var text2 = document.getElementsByClassName('site-section-nav-item')
-var text2_c = $(text2).find('b');
-var text3 = document.getElementsByClassName('site-section-nav-item');
-var text3_c = $(text3).find('i');
-var text4 = document.getElementById('site-intro-nav');
-var text4_c = $(text4).find('a');
-//console.log(text3_c);
-    
-//text.style.color = 'rgb('+rgb.r+','+rgb.b+','+rgb.g+')';
-//text.style.color = 'rgb('+rgb2[4][0]+','+rgb2[4][1]+','+rgb2[4][2]+')';
-
-var textColor;
-//if (isDark(rgb2,false)) { textColor = 'white'; } else { textColor = 'black';}
-textColor = isDark(rgb2,true); 
-//
-console.log(textColor);
-console.log(rgb);
-console.log(c2)
-//var primaryColor = 'rgb('+rgb2.r+','+rgb2.g+','+rgb2.b+')'; 
-var primaryColor = 'rgb('+c2[0]+','+c2[1]+','+c2[2]+')'; 
-text.style.color = primaryColor;
-for (var i=0;i<text2_c.length; i++) {
-    text2_c[i].style.color = textColor;
-}
-
-for (var i=0;i<text3_c.length; i++) {
-    text3_c[i].style.color = textColor;
-}
-
-for (var i=0;i<text4_c.length; i++) {
-    text4_c[i].style.color = textColor;
-}
-//
-//var classImg = [];
-//classImg = document.getElementsByClassName('section-featured-image');
-//var rgb3 = colorThief.getColor(document.getElementsByClassName('section-featured-image'));
-//var block_overview = $('#block-overview');
-//var text3 = document.getElementsByTagName('h2');
-//
-//for (var i=0;i<classImg.length; i++) {
-//    var rgb3 = [];
-//    rgb3[i] = colorThief.getColor(classImg[i]);
-//}
-//
-//console.log(rgb3[0]);
-//console.log(rgb3[1]);
-//console.log(rgb3[2]);
-//
-//console.log(text3[0]);
-//console.log(text3[1]);
-//console.log(text3[2]);
-//
-//for (var i=0;i<text3.length; i++) {
-//    text3[i].style.color = 'rgb('+rgb3[i].r+','+rgb3.b[i]+','+rgb3[i].g+')';
-//}
-//
-//console.log(text2);
-//console.log(text2.length);
-//console.log(text2[0]);
-//console.log(text2[1]);
-//
-//
-//console.log('Background Image Colors:');
-//console.log(rgb2[0]);
-//console.log(rgb2[1]);
-//console.log(rgb2[2]);
-//console.log(rgb2[3]);
-//console.log(rgb2[4]);
-//console.log('Selected Color:', rgb2[4][0], rgb2[4][1], rgb2[4][2]);
-//console.log('Average Color:', rgb.r, rgb.g, rgb.b);
 
 
-
-// scale section-featured-image's height to equal with its width
-//var h = $('.section-featured-image').width();
-//$('.section-featured-image').css({'height':h+'px'});
 
 // welcome screen on console
 function welcomeScreen() {

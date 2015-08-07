@@ -83,16 +83,16 @@ get_header();
 		    	    		global $current_user;
 		    	    		get_currentuserinfo();
 		    	     ?>
-		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#goi-y-cho-ban" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b><span><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
+		    	    <li class="site-section-nav-item active" role="presentation"><a href="#goi-y-cho-ban" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b><span><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
 		    	    <?php endif; ?>
 		    	    
-		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item <?php if(!is_user_logged_in()) { echo 'active'; }?>" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
 		    	    <li class="site-section-nav-item" role="presentation"><a href="#section1" aria-controls="section1" role="tab" data-toggle="tab"><b>Tin Tức Phật Sự</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
 		    	    <li class="site-section-nav-item" role="presentation"><a href="#section2" aria-controls="section2" role="tab" data-toggle="tab"><b>Phật Giáo và Xã Hội</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
-		    	    <li class="site-section-nav-item"  role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b>Phật Học</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation"><a href="#section3" aria-controls="section3" role="tab" data-toggle="tab"><b>Phật Học</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	    
 		    	    <li class="site-section-nav-item" role="presentation"><a href="#section4" aria-controls="section4" role="tab" data-toggle="tab"><b>Hoạt Động Chùa Từ Tân</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 		    	  </ul>
@@ -240,7 +240,7 @@ get_header();
 	              		</div>
               		</section>
               	</div><!--#tong-quan-->
-              	<div role="tabpanel" class="tab-pane animated fadeIn" id="section1">
+              	<div role="tabpanel" class="tab-pane animated fadeIn <?php if(!is_user_logged_in()) {echo 'active';}?>" id="section1">
 	              <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 		          	      <?php 
 		          	          if(!empty($block1_cat)):
@@ -444,12 +444,7 @@ get_header();
 	                    ?>
 	              </section> 
 	        	</div> 
-	        	
-	        	<div role="tabpanel" class="tab-pane fade in" id="section_search">
-	        	    <section class="search_block clearfix wow fadeInUp container" data-wow-delay="0.5s">
-	        	    	
-	        	    </section> 
-	        		</div> 
+	      
         	</div><!-- tab content -->    			
 		</main><!-- #main -->
 	</div><!-- #primary -->

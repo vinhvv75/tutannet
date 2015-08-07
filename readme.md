@@ -4,18 +4,10 @@ TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
 Install Steps:
 --------------
 
-1. Activate the theme
-2. Go to the Theme Option page
-3. Setup theme options
-
-
-Activate Home Page
---------------------
-1. Make a new page and assign a Home Template to it.
-2. Go to Settings - Reading and Select static page for Front page display option.
-3. Select the created page with Home Template in the Front page dropdown.
-4. Set up the home page in Appearance - Theme Options
-
+1. Install Wordpress
+2. Activate the theme
+3. Go to the Theme Option page
+4. Setup theme options
 
 ------------------------------------------
 

@@ -3,7 +3,7 @@ Theme Name: TuTanNet
 Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
-Version: 1.0 Nightly 20150805
+Version: 1.0 Nightly 20150807
 */
 
 /*--------------------------------------------------------------
@@ -798,76 +798,143 @@ body.boxed-layout {
 	 Search css 
 	--------------------------------------------------------------*/
 	
-	search_block {
-		text-align: center;
-	}
-	
-	#searchform {
-		padding: 0 30%;
+	#searchform, #searchtagcloudform {
 		position: relative;
 		padding-top: 10em;
 	}
 	
+	#searchtagcloudform {
+		padding-top: 0;
+		overflow: hidden;
+	}
+	
 	#searchform input {
-		height: 45px;
 		padding: 0px 10px;
-		padding-bottom: 3px;
-		font-size: 18px;
-		background-color: rgba(0,0,0,0);
+		font-size: 14px;
 		color: #000;
 		border: none;
-		border-bottom: 1px solid #000;
+		border-radius: 0;
+		box-shadow: none;
 	}
 	
-	#search_button {
-	    position: absolute;
-	    top: 10em;
-	    right: 30%;
-	    padding: 10px;
-	    height: 37px;
-	    width: 37px;
-	    text-align: center;
-	    vertical-align: middle;
-	    display: inline-block;
-	    border-radius: 0;
-	    margin: 4px 4px;
+	#searchform input:focus {
+		box-shadow: none;
 	}
 	
-	#search_button i {
-		font-size: 22px;
+	#searchform	button {
+		border-radius: 0;
+		border: none;
+		padding: 7px 12px;
+	}
+	
+	#searchform .input-group {
+		border-bottom: 3px solid;
+	}
+	
+	#search_tag_cloud {
+		overflow: scroll;
+	}
+	
+	#search_tag_cloud h3 {
+		font: bold 15px Georgia, "Times New Roman", Times, serif;
+		text-transform: uppercase;
+		text-align: center;
+	}
+	#search_tag_cloud ul {
+		text-align: center;
+		margin: 0;
+	}
+	
+	#search_tag_cloud li {
+		list-style-type: none;
+	}
+	
+	#search_tag_cloud li a {
+		margin: 3px;
+		margin-top: 5px;
+		padding: 4px 8px;
+		border-radius: 5px;
+		border: 2px solid rgba(255,255,255,0.6);
+		font: 10px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-transform: uppercase;
+		position: relative;
 		display: inline-block;
-		padding: 10px;
-	}	
+	}
+	
+	#search_tag_cloud li a:hover {
+		text-decoration: none;
+	}
+	
+	#search_wrapper h2 {
+		text-transform: capitalize;
+		font: 24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-align: center;
+		letter-spacing: 1px;
+		margin-bottom: 10px;
+		margin-top: 0;
+	}
+	
+	#search_tool {
+		text-align: center;
+	}
+	
+	#search_tool button {
+		border: none;
+	}
+	
+	#search_tool  button span {
+		display: block;
+		font-size: 11px;
+	}
+	
+	#search_tool  button span i {
+		font-size: 14px;
+	}
 	
 	
 /*--------------------------------------------------------------
 	Login css 
 	--------------------------------------------------------------*/
 	#login_wrapper {
-		margin: auto;
-		position: absolute;
-		top: 0; left: 0; bottom: 0; right: 0;
-		background-color: #fff;
-		padding: 40px;
-		width: 400px;
-		height: 410px;
+		padding-top: 5em;
 	}
 	
-	#loginform, #registerform, #lostpasswordform {
+	#login_wrapper h2 {
+		text-transform: capitalize;
+		font: 24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-align: center;
+		letter-spacing: 1px;
+		margin-bottom: 30px;
+	}
+	
+	#loginform, #registerform, #lostpasswordform, #profileform {
 		position: relative;
-		width: 100%;
-		height: 100%;
+		background-color: #fff;
+		height: 80%;
+		padding: 40px;
+		padding-top: 10px;
 	}
 	
 	.login_field {
 		margin-bottom: 5px;
 	}
 	
-	#login_close {
-		position: absolute;
-		right: 5%;
-		top: 1em;
-		cursor: pointer;
+	.login_tool {
+		text-align: center;
+	}
+	
+	.login_tool button {
+		border: none;
+		display: block;
+	}
+	
+	.login_tool button span {
+		display: block;
+		font-size: 11px;
+	}
+	
+	.login_tool button span i {
+		font-size: 14px;
 	}
 	
 
@@ -1154,7 +1221,6 @@ body.boxed-layout {
 		margin: 0 auto;
 		text-align: center;
 		display: block;
-		z-index: 10;
 	}
 	
 	.third-block .single_post.top-post .post-desc-wrapper .post-title a {

@@ -43,21 +43,14 @@ get_header();
     <section id="cd-intro">
     	<img id="cd-intro-img" src="<?php echo get_template_directory_uri();?>/img/intro-background.jpg"/>
     	
+    	<?php include('tech/ajax-search/search.php'); ?>
+
+    	<?php include('tech/ajax-login/login.php'); ?>
     	
-    	<form method="get" id="searchform" class="is-disabled animated" action="<?php bloginfo('home'); ?>/">
-    	<div><input type="text" size="18" value="<?php echo wp_specialchars($s, 1); ?>" name="s" id="s" />
-    	<button type="submit" id="search_button" class="btn btn-success">
-    		<i class="fa fa-search"></i>
-    	</button>
-    	</div>
-    	</form><!-- Search Form -->
-    	
-    	<?php include('includes/login.php'); ?>
-    	
-		<div id="cd-intro-tagline">
-			<h1 id="headline" class="cd-headline rotate-1">
+		<!--<div id="cd-intro-tagline">
+			<h1 id="headline" class="cd-headline rotate-1">-->
 				<!--<span>My favourite food is</span>-->
-				<span class="cd-words-wrapper">
+				<!--<span class="cd-words-wrapper">
 					<b class="is-visible">Kẻ thù lớn nhất của đời người là chính mình</b>
 				    <b>Ngu dốt lớn nhất của đời người là dối trá</b>
 				    <b>Thất bại lớn nhất của đời người là tự đại</b>
@@ -72,10 +65,11 @@ get_header();
 				    <b>Lễ vật lớn nhất của đời người là khoan dung</b>
 				    <b>Khiếm khuyết lớn nhất của đời người là kém hiểu biết</b>
 				    <b>An ủi lớn nhất của đời người là bố thí.</b>
-					
-				</span>
-			</h1>
-		</div> <!-- #site-intro-tagline -->
+				</span>-->
+			<!--</h1>-->
+		<!--</div> -->
+		<!-- #site-intro-tagline -->
+		<div id="site-header-secondary" class="animated">
 		<!-- Nav tabs -->
 		<div id="site-section-nav">
 			<a href="#0" id="site-section-nav-trigger"><span></span></a>
@@ -89,7 +83,7 @@ get_header();
 		    	    		global $current_user;
 		    	    		get_currentuserinfo();
 		    	     ?>
-		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#goi-y-cho-ban" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Gợi ý cho bạn</b><span><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
+		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#goi-y-cho-ban" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b><span><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
 		    	    <?php endif; ?>
 		    	    
 		    	    <li class="site-section-nav-item" role="presentation" class="active"><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
@@ -104,6 +98,7 @@ get_header();
 		    	  </ul>
 		    </nav><!-- #site-navigation -->
 		</div>
+		</div><!-- #site-header-secondary -->
     </section>
     
 	<div id="primary" class="content-area">
@@ -136,7 +131,7 @@ get_header();
               	              			                      'posts_per_page'=>5,
               	              			                      'order'=>'DESC'
               	              			                      );
-              	              		echo '<h2 class="block-cat-name"><span>Gợi Ý Cho Bạn</span></h2>';
+              	              		echo '<h2 class="block-cat-name"><span>Thư Viện Cá Nhân</span></h2>';
               	              		$block1_query = new WP_Query($block1_args);
               	              		          $b_counter = 0;
               	              		          $total_posts_block1 = $block1_query->found_posts;

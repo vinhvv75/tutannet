@@ -40,9 +40,9 @@
         		$nav_item3 = get_post(of_get_option('primay_nav_item3'));
         	?>
         	<ul>
-        		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item1); ?>"><?php echo $nav_item1->post_title;?></a></li>
-        		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item2); ?>"><?php echo $nav_item2->post_title;?></a></li>
-        		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item3); ?>"><?php echo $nav_item3->post_title;?></a></li>
+        		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item1); ?>">Đôi nét về Chùa Từ Tân</a></li>
+        		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item2); ?>">Các Chùa Hệ Phái</a></li>
+        		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item3); ?>">Liên hệ</a></li>
         	</ul>
         </nav><!-- site-intro-nav-->
         
@@ -59,8 +59,8 @@
         	
         	?>"><i class="fa fa-user"></i></a>
         	
-        	<a id="search_toggle" href="#section_search" class="cd-btn" data-toggle="tab" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
-        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-reorder"></i></a>
+        	<a id="search_toolbar" href="#" class="cd-btn" data-toggle="search_wrap" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
+        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-sun-o"></i></a>
         </div><!-- #site-toolbar -->				        
 	</header><!-- #masthead -->
 	

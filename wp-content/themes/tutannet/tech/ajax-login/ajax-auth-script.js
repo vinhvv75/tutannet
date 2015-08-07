@@ -1,7 +1,7 @@
 jQuery(document).ready(function ($) {
 
 	// Perform AJAX login/register on form submit
-	$('form#loginform, form#registerform').on('submit', function (e) {
+	$('form#loginform, form#registerform, form#forgot_password').on('submit', function (e) {
         if (!$(this).valid()) return false;
         $('p.status', this).show().text(ajax_auth_object.loadingmessage);
 		if ($(this).attr('id') == 'loginform') {
@@ -20,6 +20,15 @@ jQuery(document).ready(function ($) {
         	remember = false;
         	security = $('form#registerform #signonsecurity').val();
 		}  
+		else if ($(this).attr('id') == 'lostpasswordform') {
+			action = 'ajaxforgotpassword';
+			username = $('form#lostpasswordform #user_login').val();
+			password = '';
+			email = '';
+			remember = '';
+			security = ('form#lostpasswordform #forgotsecurity').val();
+		
+		}
 		ctrl = $(this);
 		$.ajax({
             type: 'POST',
@@ -44,9 +53,14 @@ jQuery(document).ready(function ($) {
             }
         });
         e.preventDefault();
+        return false;
     });
-	
+	 
 	// Client side form validation
+    if(jQuery('#forgot_password').length) {
+		jQuery('#forgot_password').validate();
+	}
+	
     if (jQuery("#registerform").length) 
 		jQuery("#registerform").validate(
 		{ 
@@ -55,7 +69,8 @@ jQuery(document).ready(function ($) {
 			}	
 		}
 	});
-    else if (jQuery("#loginform").length)  {
+    
+    if (jQuery("#loginform").length)  {
 			jQuery("#loginform").validate();
 		}
 

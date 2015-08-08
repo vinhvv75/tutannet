@@ -69,7 +69,7 @@ get_header();
 			<!--</h1>-->
 		<!--</div> -->
 		<!-- #site-intro-tagline -->
-		<div id="site-header-secondary" class="animated">
+		<div id="site-header-secondary" class="animated fadeIn">
 		<!-- Nav tabs -->
 		<div id="site-section-nav">
 			<a href="#0" id="site-section-nav-trigger"><span></span></a>
@@ -126,7 +126,7 @@ get_header();
               	  			<?php 
               	  				if(!empty($block1_cat)):
               	      				$block1_args = array(
-              	              			                      'category_name'=>'tin-tuc-phat-su',
+              	              			                      'category_name'=>$block1_cat,
               	              			                      'post_status'=>'publish',
               	              			                      'posts_per_page'=>5,
               	              			                      'order'=>'DESC'
@@ -187,7 +187,7 @@ get_header();
 	              			<?php 
 	              				if(!empty($block1_cat)):
 		              				$block1_args = array(
-				              			                      'category_name'=>'tin-tuc-phat-su',
+				              			                      'category_name'=>$block1_cat,
 				              			                      'post_status'=>'publish',
 				              			                      'posts_per_page'=>5,
 				              			                      'order'=>'DESC'
@@ -240,7 +240,7 @@ get_header();
 	              		</div>
               		</section>
               	</div><!--#tong-quan-->
-              	<div role="tabpanel" class="tab-pane animated fadeIn <?php if(!is_user_logged_in()) {echo 'active';}?>" id="section1">
+              	<div role="tabpanel" class="tab-pane animated fadeIn" id="section1">
 	              <section class="first-block row row-eq-height wow fadeInUp clearfix" data-wow-delay="0.5s">
 		          	      <?php 
 		          	          if(!empty($block1_cat)):

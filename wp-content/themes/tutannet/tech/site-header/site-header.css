@@ -102,7 +102,7 @@ Navigation
   }
   #site-logo.is-hidden.slide-in {
     /* slide in when the secondary navigation gets fixed */
-    left: 5%;
+    left: 1%;
     opacity: 1;
   }
 }
@@ -210,7 +210,6 @@ Intro
 #cd-intro {
   position: relative;
   height: 300px;
-  /*background: url(img/intro-background.jpg) no-repeat center center;*/
   background-size: cover;
   overflow: hidden;
 }
@@ -218,7 +217,9 @@ Intro
 	z-index: 0;
 	position: absolute;
 	top: 0;
-	left: 0;	
+	left: 0;
+	min-width: 100%;
+	min-height: 100%;	
 }
 #cd-intro #cd-intro-tagline {
   width: 90%;
@@ -266,36 +267,52 @@ Intro
 	animation-delay: 1s;
 }
 .cd-btn {
-  display: inline-block;
-  background-color: #fff;
-  color: rgb(250, 218, 94);
-  margin-top: 1em;
-  margin-left: 1em;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  vertical-align: middle;
+	display: inline-block;
+	background-color: #fff;
+	margin-top: 1em;
+	margin-left: 1em;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-align: center;
+	vertical-align: middle;
 }
 .cd-btn i {
 	font-size: 20px;
 	display: inline-block;
 	padding: 10px;
+	color: rgb(250, 218, 94) !important;
 }
-.no-touch .cd-btn:hover {
-  background-color: rgb(250, 218, 94);
-  color: #fff;
+.cd-btn:hover {
+	background-color: rgb(250, 218, 94) !important;
 }
-#site-toolbar a:active i {
-	color: rgb(250, 218, 94);
+.cd-btn:hover i {
+  	color: #fff !important;
 }
-#site-toolbar a:focus i {
-	color: rgb(250, 218, 94);
+#site-toolbar-trigger {
+	margin-top: 7px;
 }
+#site-toolbar-trigger:hover, #site-toolbar-trigger:active {
+	color: #fff;
+}
+#site-toolbar-xs ul {
+	background: none;
+	box-shadow: none;
+	border: none;
+	list-style-type: none;
+}
+#site-toolbar-xs ul li a {
+	color: rgb(250, 218, 94) !important;
+	padding: 0;
+}
+#site-toolbar-xs ul li a:hover {
+	color: #fff;
+}
+
 @media only screen and (min-width: 1170px) {
   #site-toolbar.is-hidden {
     /* assign a position fixed and move outside the viewport (on the right) */
@@ -309,7 +326,7 @@ Intro
   }
   #site-toolbar.is-hidden.slide-in {
     /* slide in when the secondary nav gets fixed */
-    right: 5%;
+    right: 1%;
     opacity: 1;
   }
 }
@@ -386,7 +403,7 @@ Secondary Fixed Navigation
 	text-align: center;
 }
 #section-navigation ul li {
-	padding: 12px 18px;
+	padding: 12px 0px;
 	position: relative;
 	text-align: center;
 }
@@ -496,8 +513,8 @@ Secondary Fixed Navigation
   #site-section-nav li a span i {
   	font-size: 30px;
   }
-  #site-section-nav li a:hover b, #site-section-nav li a.active b {
-    color: rgb(250, 218, 94) !important;
+  #site-section-nav li a:hover b, #site-section-nav li a.active b, #site-section-nav li a:active b {
+    color: #fff;
   }
   #site-section-nav li:nth-child(1) a span {
     background-position: 0 0;
@@ -533,6 +550,9 @@ Secondary Fixed Navigation
   }
   #site-section-nav.animate-children li a {
     padding: 15px 30px 0 30px;
+  }
+  #site-section-nav.animate-children li a b {
+  	font-size: 11px;
   }
   #site-section-nav.animate-children li a span {
     opacity: 0;

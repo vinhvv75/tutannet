@@ -232,7 +232,7 @@ function define_default_categories() {
 add_action( 'after_setup_theme', 'define_default_categories' );
 
 /*---------Create and Define Default Pages---------------*/
-function define_default_pages() {
+function define_default_posts() {
 
 	$homepage = get_page_by_title( 'Trang Chủ' );   
 	if ( !$homepage ) {
@@ -250,8 +250,71 @@ function define_default_pages() {
         update_option( 'page_on_front', $homepage->ID );
         update_option( 'show_on_front', 'page' );
     }
+    
+    $instant_article = get_page_by_title( 'Bài Đọc' );   
+    if ( !$instant_article ) {
+    	wp_insert_post(
+    		array(
+    		  'post_title'    => 'Bài Đọc',
+    		  'post_status'   => 'publish',
+    		  'post_type'     => 'page',
+    		  'page_template'  => 'instant-article.php'
+    		)
+    	);
+    }    
+    
+    $about = get_page_by_title( 'Đôi Nét Về Chùa Từ Tân', OBJECT, 'post' );   
+    if ( !$about ) {
+    	$cat = get_category_by_slug('gioi-thieu'); 
+    	$id = $cat->term_id;
+    	wp_insert_post(
+    		array(
+    		  'post_title'    => 'Đôi Nét Về Chùa Từ Tân',
+    		  'post_status'   => 'publish',
+    		  'post_type'     => 'post',
+    		  'post_category' => array($id)
+    		)
+    	);
+    }    
+    
+    $monasteries = get_page_by_title( 'Các Chùa Hệ Phái', OBJECT, 'post' );   
+    if ( !$monasteries ) {
+    	$cat = get_category_by_slug('gioi-thieu'); 
+    	$id = $cat->term_id;
+    	wp_insert_post(
+    		array(
+    		  'post_title'    => 'Các Chùa Hệ Phái',
+    		  'post_status'   => 'publish',
+    		  'post_type'     => 'post',
+    		  'post_category' => array($id)
+    		)
+    	);
+    }    
+    
+    $contact = get_page_by_title( 'Liên Hệ', OBJECT, 'post' );   
+    if ( !$contact ) {
+    	$cat = get_category_by_slug('gioi-thieu'); 
+    	$id = $cat->term_id;
+    	wp_insert_post(
+    		array(
+    		  'post_title'    => 'Liên Hệ',
+    		  'post_status'   => 'publish',
+    		  'post_type'     => 'post',
+    		  'post_category' => array($id)
+    		)
+    	);
+    }    
+    
 }
-add_action( 'after_setup_theme', 'define_default_pages' );
+add_action( 'after_setup_theme', 'define_default_posts' );
+
+/*--------- Define Default Permalink Structure---------------*/
+function change_permalinks() {
+    global $wp_rewrite;
+    $wp_rewrite->set_permalink_structure('/%postname%/');
+    $wp_rewrite->flush_rules();
+}
+add_action('after_setup_theme', 'change_permalinks');
 
 /*---------Enqueue custom admin panel JS---------------*/
 function tutannet_admin_scripts(){

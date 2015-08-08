@@ -45,6 +45,7 @@ jQuery(document).ready(function ($) {
             success: function (data) {
 				$('p.status', ctrl).text(data.message);
 				if (data.loggedin == true) {
+					$('p.status', ctrl).addClass('success');
                 	document.location.href = ajax_auth_object.redirecturl;
                 }
                 if ($(this).attr('id') == 'registerform') {
@@ -54,6 +55,23 @@ jQuery(document).ready(function ($) {
         });
         e.preventDefault();
         return false;
+    });
+    
+    // override jquery validate plugin defaults
+    $.validator.setDefaults({
+        highlight: function(element) {
+            $(element).closest('.input-group').addClass('has-error');
+        },
+        unhighlight: function(element) {
+            $(element).closest('.input-group').removeClass('has-error');
+        },
+        success: function(element) {
+            $(element).closest('.input-group').removeClass('has-error');
+            $(element).closest('.input-group').addClass('has-success');
+        },
+         tooltip_options: {
+            highlight: {trigger:'focus'},        
+        }
     });
 	 
 	// Client side form validation
@@ -66,7 +84,7 @@ jQuery(document).ready(function ($) {
 		{ 
 			rules:{
 			password2:{ equalTo:'#signonpassword' 
-			}	
+			}
 		}
 	});
     

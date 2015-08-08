@@ -13,7 +13,7 @@ $('a[data-toggle="login_wrap"]').click(function() {
 });
 
 // Login Toggle
-$('a[data-toggle="login"]').click(function() {
+$('a[data-toggle="login"], button[data-toggle="login"]').click(function() {
 	$('#registerform, #lostpasswordform').addClass('fadeOut');
 	$('#registerform, #lostpasswordform').removeClass('fadeIn');
 	setTimeout(function(){ 
@@ -24,7 +24,7 @@ $('a[data-toggle="login"]').click(function() {
 });
 
 // Register Toggle
-$('a[data-toggle="register"]').click(function() {
+$('a[data-toggle="register"], button[data-toggle="register"]').click(function() {
 	$('#loginform, #lostpasswordform').addClass('fadeOut');
 	$('#loginform, #lostpasswordform').removeClass('fadeIn');
 	setTimeout(function(){ 
@@ -35,7 +35,7 @@ $('a[data-toggle="register"]').click(function() {
 });
 
 // Lost Password Toggle
-$('a[data-toggle="lostpass"]').click(function() {
+$('a[data-toggle="lostpass"], button[data-toggle="lostpass"]').click(function() {
 	$('#loginform, #registerform').addClass('fadeOut');
 	$('#loginform, #registerform').removeClass('fadeIn');
 	setTimeout(function(){ 
@@ -54,7 +54,7 @@ $('a[data-toggle="profile"]').click(function() {
 	}, 200 );
 });
 
-$('button[data-toggle="login_close"]').click(function(){
+$('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(function(){
 	$('#login_wrapper').removeClass('fadeInUp');
 	$('#login_wrapper').addClass('fadeOutDown');
 	$('#site-header-secondary').removeClass('is-disabled fadeOut');
@@ -62,7 +62,22 @@ $('button[data-toggle="login_close"]').click(function(){
 		$('#login_wrapper').addClass('is-disabled'); 
 		$('#profileform, #loginform, #registerform, #lostpasswordform').addClass('is-disabled fadeOut');
 		$('#site-header-secondary').addClass('fadeIn');
-	}, 200 );
+	}, 500 );
+});
+
+$('#loginform, #registerform, #lostpasswordform, #profileform').mouseenter(function(){
+	var login_close = $(this).find('.login_close')
+	$(login_close).removeClass('is-disabled');
+	$(login_close).addClass('fadeIn');
+	$(login_close).removeClass('fadeOut');
+}).mouseleave(function(){
+	var login_close = $(this).find('.login_close')
+	$(login_close).removeClass('fadeIn');
+	$(login_close).addClass('fadeOut');
+	setTimeout(function(){ $(login_close).addClass('is-disabled'); }, 200);
+	
+	
+	
 });
 
 

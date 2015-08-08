@@ -21,13 +21,20 @@
 		    echo "<br/><a class='wplb_link' href='".$profilelink."'>Truy Cập vào Trình Quản Trị</a><br/>";
 			echo "<a class='wplb_link' href='".$redto."'>Đăng xuất</a>";
 		?>
-	
+		
+		<div class="row login_tool">
+			<div class="btn-group" role="group" aria-label="...">
+			  <!--<button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>-->
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
+		<a class="login_close animated is-disabled hidden-xs hidden-sm" data-toggle="login_close" href="#">
+			<span class="fa-stack fa-sm">
+		  		<i class="fa fa-circle fa-stack-2x"></i>
+		  		<i class="fa fa-close fa-stack-1x fa-inverse"></i>
+			</span>
+		</a>
 	</div>
 	<div class="col-xs-2 col-md-4 col-lg-4"></div>
-	<a href="#" class="login_close" data-toggle="login_close">
-		<span class="fa-stack">
-		  <i class="fa fa-square-o fa-stack-2x"></i>
-		  <i class="fa fa-close fa-stack-1x"></i>
-		</span>
-	</a>
 </form>

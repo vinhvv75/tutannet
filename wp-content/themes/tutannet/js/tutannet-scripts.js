@@ -86,9 +86,8 @@ $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
   e.relatedTarget; // previous active tab
 });
 $('a[data-toggle="tab"]').click(function() {
-	var top = $('.tab-content').offset().top - 30;
 	$('html,body').animate({
-	        scrollTop: top},
+	        scrollTop: 0},
 	        'slow');
 	var section_title = document.getElementById('section-title');
 	section_title.innerHTML = ($(this).find('b').html());

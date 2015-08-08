@@ -47,21 +47,35 @@
         </nav><!-- site-intro-nav-->
         
         <div id="site-toolbar" class="animated fadeInRight">
-        	<a id="login_toolbar" href="#" class="cd-btn" data-toggle="login_wrap" title="<?php 
-        		if(is_user_logged_in()) {
-        			global $current_user;
-        			get_currentuserinfo();
-        		    echo 'Xin chào, ' . $current_user->user_login;		
-        		} else {
-        		    echo 'Đăng nhập | Đăng ký';
-        		}
-        	
-        	
-        	?>"><i class="fa fa-user"></i></a>
-        	
-        	<a id="search_toolbar" href="#" class="cd-btn" data-toggle="search_wrap" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
-        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-sun-o"></i></a>
-        </div><!-- #site-toolbar -->				        
+        	<div class="hidden-xs">
+	        	<a id="login_toolbar" href="#" class="cd-btn" data-toggle="login_wrap" title="<?php 
+	        		if(is_user_logged_in()) {
+	        			global $current_user;
+	        			get_currentuserinfo();
+	        		    echo 'Xin chào, ' . $current_user->user_login;		
+	        		} else {
+	        		    echo 'Đăng nhập | Đăng ký';
+	        		}
+	        	
+	        	
+	        	?>"><i class="fa fa-user"></i></a>
+	        	
+	        	<a id="search_toolbar" href="#" class="cd-btn" data-toggle="search_wrap" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
+	        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-sun-o"></i></a>
+        	</div>
+        	<div class="visible-xs">
+        		<div id="site-toolbar-xs" class="btn-group">
+        		  <a id="site-toolbar-trigger" class="cd-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
+        		    <i class="fa fa-reorder"></i></a>
+        		  <ul class="dropdown-menu">
+        		    <li><a class="cd-btn" data-toggle="login_wrap" href="#"><i class="fa fa-user"></i></a></li>
+        		    <li><a class="cd-btn" data-toggle="search_wrap" href="#"><i class="fa fa-search"></i></a></li>
+        		    <li><a class="cd-btn" data-toggle="notif_wrap" href="#"><i class="fa fa-sun-o"></i></a></li>
+        		  </ul>
+        		</div>
+        	</div>
+        </div><!-- #site-toolbar -->
+        				        
 	</header><!-- #masthead -->
 	
 

@@ -1,16 +1,23 @@
 <?php
 function ajax_auth_init(){	
 	
-	wp_register_script('validate-script', get_template_directory_uri() . '/tech/ajax-login/jquery.validate.js', array('jquery') ); 
+	wp_register_script('validate-script', get_template_directory_uri() . '/tech/ajax-login/jquery.validate.min.js', array('jquery') ); 
     wp_enqueue_script('validate-script');
-
+    
+    wp_register_script('validate-script-tooltip', get_template_directory_uri() . '/tech/ajax-login/jquery-validate.bootstrap-tooltip.min.js', array('jquery') );
+    wp_enqueue_script('validate-script-tooltip');
+    
+    wp_register_script('validate-script-vi', get_template_directory_uri() . '/tech/ajax-login/jquery-validate.bootstrap-tooltip.min.js', array('jquery') );
+    wp_enqueue_script('validate-script-vi');
+    
     wp_register_script('ajax-auth-script', get_template_directory_uri() . '/tech/ajax-login/ajax-auth-script.js', array('jquery') ); 
     wp_enqueue_script('ajax-auth-script');
+    
 
     wp_localize_script( 'ajax-auth-script', 'ajax_auth_object', array( 
         'ajaxurl' => admin_url( 'admin-ajax.php' ),
         'redirecturl' => site_url(),
-        'loadingmessage' => __('Đang gửi thông tin đăng ký, xin vui lòng chờ...')
+        'loadingmessage' => __('Đang gửi thông tin, xin vui lòng chờ...')
     ));
 
     // Enable the user with no privileges to run ajax_login() in AJAX
@@ -111,7 +118,7 @@ function ajax_forgotPassword(){
 			if( username_exists($account) ) 
 				$get_by = 'login';
 			else	
-				$error = 'Không có thành viện hợp với tên đăng nhập này.';				
+				$error = 'Không có thành viên hợp với tên đăng nhập này.';				
 		}
 		else
 			$error = 'Tên đăng nhập hoặc thư điện tử không hợp lệ.';		

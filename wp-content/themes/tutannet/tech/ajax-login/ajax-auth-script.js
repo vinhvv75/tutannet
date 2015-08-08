@@ -1,9 +1,9 @@
 jQuery(document).ready(function ($) {
 
 	// Perform AJAX login/register on form submit
-	$('form#loginform, form#registerform, form#forgot_password').on('submit', function (e) {
+	$('form#loginform, form#registerform, form#lostpasswordform').on('submit', function (e) {
         if (!$(this).valid()) return false;
-        $('p.status', this).show().text(ajax_auth_object.loadingmessage);
+//        $(this).find('.status').html('<span class="help-block">' + ajax_auth_object.loadingmessage + '</span>');
 		if ($(this).attr('id') == 'loginform') {
 			action = 'ajaxlogin';
 			username = 	$('form#loginform #user_login').val();
@@ -25,8 +25,8 @@ jQuery(document).ready(function ($) {
 			username = $('form#lostpasswordform #user_login').val();
 			password = '';
 			email = '';
-			remember = '';
-			security = ('form#lostpasswordform #forgotsecurity').val();
+			remember = false;
+			security = $('form#lostpasswordform #forgotsecurity').val();
 		
 		}
 		ctrl = $(this);
@@ -43,10 +43,12 @@ jQuery(document).ready(function ($) {
                 'security': security
             },
             success: function (data) {
-				$('p.status', ctrl).text(data.message);
+				$('p.status', ctrl).html('<span class="help-block">' + data.message + '</span>');
 				if (data.loggedin == true) {
-					$('p.status', ctrl).addClass('success');
                 	document.location.href = ajax_auth_object.redirecturl;
+                }
+                if (data.loggedin == false) {
+                	ctrl.find('.input-group').removeClass('has-success');
                 }
                 if ($(this).attr('id') == 'registerform') {
                 	$('a[data-toggle="login"]').click();		
@@ -57,39 +59,49 @@ jQuery(document).ready(function ($) {
         return false;
     });
     
+    
     // override jquery validate plugin defaults
     $.validator.setDefaults({
+    	rules: {
+    	  field: {
+    	    required: true
+    	  }
+    	},
         highlight: function(element) {
             $(element).closest('.input-group').addClass('has-error');
         },
         unhighlight: function(element) {
-            $(element).closest('.input-group').removeClass('has-error');
+            $(element).closest('.input-group').removeClass('has-error').addClass('has-success');
+            $('p.status').html('<span class="help-block">Hãy nhập đầy đủ thông tin.</span>');
         },
         success: function(element) {
-            $(element).closest('.input-group').removeClass('has-error');
-            $(element).closest('.input-group').addClass('has-success');
+            $(element).closest('.input-group').removeClass('has-error').addClass('has-success');
+            $('p.status').html('<span class="help-block">Thông tin vừa nhập đã hợp lệ.</span>');
         },
-         tooltip_options: {
-            highlight: {trigger:'focus'},        
-        }
+         errorElement: 'span',
+         errorClass: 'help-block',
+         errorPlacement: function(error, element) {
+         	$('p.status').html(error);    
+         }
     });
 	 
 	// Client side form validation
-    if(jQuery('#forgot_password').length) {
-		jQuery('#forgot_password').validate();
-	}
 	
     if (jQuery("#registerform").length) 
 		jQuery("#registerform").validate(
 		{ 
 			rules:{
-			password2:{ equalTo:'#signonpassword' 
-			}
+				signonpassword: { rangelength: [6, 12] },
+				password2: { equalTo:'#signonpassword' }
 		}
 	});
     
     if (jQuery("#loginform").length)  {
 			jQuery("#loginform").validate();
 		}
+	
+	if(jQuery('#lostpasswordform').length) {
+		jQuery('#lostpasswordform').validate();
+	}
 
 }); // End

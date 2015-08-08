@@ -22,7 +22,7 @@
 			echo "<a class='wplb_link' href='".$redto."'>Đăng xuất</a>";
 		?>
 		
-		<div class="row login_tool">
+		<div class="row login_tool hidden-md hidden-lg">
 			<div class="btn-group" role="group" aria-label="...">
 			  <!--<button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
 			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>-->

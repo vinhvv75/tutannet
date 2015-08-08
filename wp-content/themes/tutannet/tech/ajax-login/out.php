@@ -20,32 +20,27 @@ $redirect = $home;
 
 $rme = "0";
 
-$extra = "";
-if (isset($_GET['failed_login'])) {
-	$extra = "style = \"color: red;\"";
-}
-
 $blog_url = site_url();
 ?>
 <div id="login_wrapper" class="row is-disabled animated">
 	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 	<form name="loginform" id="loginform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="login" method="post">
 		<h2>Đăng nhập</h2>
-		<p class="status"></p>
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>		
 		  <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
 		  <div class="input-group margin-bottom-sm login_field">
 		  <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
-		  <input class="form-control required" type="text" placeholder="Tên đăng nhập" name="log" id="user_login" <?php echo $extra; ?> />
+		  <input class="form-control required" type="text" placeholder="Tên đăng nhập" name="log" id="user_login"  />
 		</div>
 		<div class="input-group login_field">
 		  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-		  <input class="form-control required" type="password" <?php echo $extra; ?> name="pwd" id="user_pass" placeholder="Mật khẩu" />
+		  <input class="form-control required" type="password"  name="pwd" id="user_pass" placeholder="Mật khẩu" />
 		</div>
 		
 		<div class="checkbox hidden-xs hidden-sm">
 			<label>
 				<input name='remember' type='checkbox' id='remember' value="forever" />
-				Tự đăng nhập lần sau 
+				Ghi nhớ thông tin cho lần đăng nhập sau
 		    </label>
 		</div>
 		<br class="clear hidden-xs hidden-sm"/>
@@ -79,16 +74,16 @@ $blog_url = site_url();
 	</form><!-- Login Form -->
 	
 	<form name="registerform" id="registerform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="register" method="post">
-		<p class="status"></p>
 		<h2>Đăng ký</h2>
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>
 		<?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>
 		<div class="input-group margin-bottom-sm login_field">
 			<span class="input-group-addon"><i class="fa fa-pencil-square-o fa-fw"></i></span>
-			<input class="form-control required" type="text" placeholder="Tên đăng nhập" name="user_login" id="user_login" <?php echo $extra; ?> />
+			<input class="form-control required" type="text" placeholder="Tên đăng nhập" name="user_login" id="user_login"  />
 		</div>
 		<div class="input-group login_field">
 			<span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-			<input class="form-control required" type="email" <?php echo $extra; ?> name="user_email" id='user_email' placeholder="Thư điện tử" />
+			<input class="form-control required" type="email"  name="user_email" id='user_email' placeholder="Thư điện tử" />
 		</div>
 		<div class="input-group login_field">
 			<span class="input-group-addon"><i class="fa fa-unlock-alt fa-fw"></i></span>
@@ -129,13 +124,13 @@ $blog_url = site_url();
 		</a>
 	</form><!-- Register Form -->
 	
-	<form name="lostpasswordform" id="lostpasswordform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated ajax-auth" action="forgot_password" method="post">
+	<form name="lostpasswordform" id="lostpasswordform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated ajax-auth" action="forgotpassword" method="post">
 		<h2>Khôi phục mật khẩu</h2>
-		<p class="status"></p>
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>
 		<?php wp_nonce_field('ajax-forgot-nonce', 'forgotsecurity'); ?>
 		<div class="input-group margin-bottom-sm login_field">
 			<span class="input-group-addon"><i class="fa fa-unlock fa-fw"></i></span>
-			<input class="form-control" type="text" placeholder="Tên đăng nhập hoặc Thư điện tử" name="user_login" id='user_login' <?php echo $extra; ?> />
+			<input class="form-control required" type="text" placeholder="Tên đăng nhập hoặc Thư điện tử" name="user_login" id='user_login'  />
 		</div>
 		<br class="clear hidden-xs hidden-sm">
 		<input type='hidden' name='redirect_to' value='<?php echo $redirect; ?>' />

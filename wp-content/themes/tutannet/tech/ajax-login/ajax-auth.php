@@ -3,11 +3,8 @@ function ajax_auth_init(){
 	
 	wp_register_script('validate-script', get_template_directory_uri() . '/tech/ajax-login/jquery.validate.min.js', array('jquery') ); 
     wp_enqueue_script('validate-script');
-    
-    wp_register_script('validate-script-tooltip', get_template_directory_uri() . '/tech/ajax-login/jquery-validate.bootstrap-tooltip.min.js', array('jquery') );
-    wp_enqueue_script('validate-script-tooltip');
-    
-    wp_register_script('validate-script-vi', get_template_directory_uri() . '/tech/ajax-login/jquery-validate.bootstrap-tooltip.min.js', array('jquery') );
+        
+    wp_register_script('validate-script-vi', get_template_directory_uri() . '/tech/ajax-login/messages_vi.js', array('jquery') );
     wp_enqueue_script('validate-script-vi');
     
     wp_register_script('ajax-auth-script', get_template_directory_uri() . '/tech/ajax-login/ajax-auth-script.js', array('jquery') ); 
@@ -161,7 +158,7 @@ function ajax_forgotPassword(){
 				
 			$mail = wp_mail( $to, $subject, $message, $headers );
 			if( $mail ) 
-				$success = 'Thành công. Kiểm tra hộp thư điện tử của bạn để xem mật khẩu mới.';
+				$success = 'Thành công. Hãy kiểm tra hộp thư điện tử của bạn để xem mật khẩu mới.';
 			else
 				$error = 'Hệ thống không thể gửi mật khẩu mới vào hộp thư điện tử của bạn.';						
 		} else {

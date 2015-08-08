@@ -5,9 +5,9 @@
 jQuery(document).ready(function ($) {
 
 $.extend($.validator.messages, {
-	required: "Hãy nhập.",
+	required: "Hãy nhập đầy đủ thông tin.",
 	remote: "Hãy sửa cho đúng.",
-	email: "Hãy nhập email.",
+	email: "Hãy nhập thư điện tử cho đúng.",
 	url: "Hãy nhập URL.",
 	date: "Hãy nhập ngày.",
 	dateISO: "Hãy nhập ngày (ISO).",

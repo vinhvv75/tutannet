@@ -1,7 +1,7 @@
-TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monaster
+TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
 
-Version: 1.0.0-alpha.1
-Build: 1.0 Nightly 20150808 
+Version: 1.0.0-alpha.2
+Build: 1.0 Nightly 20150809 
 
 Install Steps:
 --------------

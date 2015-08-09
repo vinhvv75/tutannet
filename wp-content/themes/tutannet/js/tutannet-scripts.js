@@ -80,23 +80,7 @@ $(".first-block .rightposts-wrapper .blockposts-wrapper .post-title a").hover(fu
 		$('#first_block_imageHolder').addClass('fadeOutDown');
 }); 
 
-// tab toggle in navigation, toolbar
-$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-  e.target; // newly activated tab
-  e.relatedTarget; // previous active tab
-});
-$('a[data-toggle="tab"]').click(function() {
-	var top = $('.tab-content').offset().top - 30;
-	$('html,body').animate({
-	        scrollTop: top},
-	        'slow');
-	var section_title = document.getElementById('section-title');
-	section_title.innerHTML = ($(this).find('b').html());
-});
 
-// initalize bootstrap tooltip
-$('[data-toggle="tooltip"]').tooltip();
-$('#site-toolbar a, #login_wrapper a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
 
 // remove tooltips
 window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }

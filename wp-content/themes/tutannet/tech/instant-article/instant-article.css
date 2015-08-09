@@ -1,8 +1,4 @@
-/* -------------------------------- 
 
-Patterns - reusable parts of our design
-
--------------------------------- */
 .overflow-hidden {
   overflow: hidden;
 }
@@ -74,7 +70,6 @@ Main content
   display: block;
   content: '';
   position: absolute;
-  z-index: 1;
   top: 0;
   left: 0;
   height: 100%;

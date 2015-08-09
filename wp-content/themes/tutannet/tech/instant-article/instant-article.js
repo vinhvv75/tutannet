@@ -125,7 +125,7 @@ function getBaseUrl() {
 }
 
 function getPostUrl(id) {
-	return getBaseUrl() + 'ajaxpost/?id=' + id;
+	return getBaseUrl() + 'bai-doc/?id=' + id;
 }
 
 function saveArticle(id) {

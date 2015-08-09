@@ -4,7 +4,6 @@ jQuery(document).ready(function($){
 // Search Toggle
 $('a[data-toggle="search_wrap"]').click(function() {
 	$('#site-header-secondary').addClass('fadeOut');
-	$('#site-header-secondary').removeClass('fadeIn');
 	$('#login_wrapper').removeClass('fadeInUp');
 	$('#login_wrapper').addClass('fadeOutDown');
 	setTimeout(function(){ 
@@ -23,8 +22,9 @@ $('button[data-toggle="search_close"]').click(function(){
 	setTimeout(function(){ 
 		$('#search_wrapper').addClass('is-disabled');
 		$('#site-header-secondary').addClass('fadeIn');
-	}, 200 );
+	}, 500 );
 });
+
 
 
 

@@ -44,6 +44,12 @@ add_action('wp_head', 'tutannet_header_scripts');
 /*---------Hide Admin Toolbar---------------*/
 add_filter('show_admin_bar', '__return_false');
 
+/*---------Define Language---------------*/
+add_action('after_setup_theme', 'theme_lang');
+function theme_lang(){
+    load_theme_textdomain('tutannet', get_template_directory() . '/lang');
+}
+
 /*---------Hide meta boxes in Editor---------------*/
 if (is_admin()) :
 function my_remove_meta_boxes() {
@@ -493,6 +499,48 @@ function tutannet_home_posted_on_cb(){
 }
 add_action( 'tutannet_home_posted_on', 'tutannet_home_posted_on_cb', 10 );
 
+function tutannet_posted_on(){
+    global $post;
+    
+	$time_string = '<time class="entry-date published updated" datetime="%1$s">%2$s</time>';
+	if ( get_the_time( 'U' ) !== get_the_modified_time( 'U' ) ) {
+		$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time><time class="updated" datetime="%3$s">%4$s</time>';
+	}
+	
+	$time_string = sprintf( $time_string,
+		esc_attr( get_the_date( 'c' ) ),
+		esc_html( get_the_date('d.m.Y') ),
+		esc_attr( get_the_modified_date( 'c' ) ),
+		esc_html( get_the_modified_date('d.m.Y') )
+	);
+	
+	$tagged_on = '';
+	$posttags = get_the_tags();
+	if ( $posttags ) 
+	    {
+	        $tag = current( $posttags );
+	        $tagged_on = sprintf(
+	            '<a href="%1$s">%2$s</a>',
+	            get_tag_link( $tag->term_id ),
+	            esc_html( $tag->name )
+	         );
+	    }
+    
+	$posted_on = sprintf(
+    		_x( '%s', 'post date', 'tutannet' ),
+    		$time_string
+ 	);	   
+ 	
+ 	if ( get_the_date('d.m.Y') == date('d.m.Y') ) {$post_date_status = 'today'; $posted_on = 'Hôm nay';} 
+ 	elseif ( strtotime($post->post_date) > strtotime('-7 days') ) {$post_date_status = 'new';}
+ 	else {$post_date_status = '';}
+ 	
+ 	$posted_on = '<span class="posted-on '. $post_date_status .'">' . $posted_on . '</span>';
+ 	$posted_on .= '<span class="tagged_on">' . $tagged_on . '</span>';
+	
+	return  $posted_on;	
+}
+
 function tutannet_attachment_image_on_cb(){
 	global $post;
 	
@@ -548,6 +596,42 @@ function tutannet_excerpt(){
     $excerpt_content = tutannet_word_count( $excerpt_content, 10 );
     echo '<p>'. $excerpt_content .'</p>';
 }
+
+function tutannet_gallery_post() {
+
+ 	global $post;
+
+ 	// Only do this on singular items
+ 	if( ! is_singular() )
+ 		return false;
+
+ 	// Retrieve the first gallery in the post
+ 	$gallery = get_post_gallery_images( $post );
+	
+	$image_list = '
+	<div class="col-sx-12 col-sm-12 col-md-4 col-lg-4 post-desc-wrapper">
+	    <div class="block-poston">'. tutannet_posted_on() .'</div>
+	    <h3 class="post-title"><a post-title="'. get_the_title().'" rel="'. get_the_ID() .'" href="'. get_the_permalink() .'" >'. get_the_title() .'</a></h3>
+	    <div class="post-content">'. get_the_excerpt() .'</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 gallery_post_img_wrapper">
+		<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_left_wrapper">
+			<div class="col-sm-12 col-lg-6 gallery_post_img">
+				<img src="'. $gallery[0] .'"/>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gallery_post_img">
+				<img src="'. $gallery[1] .'"/>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_right_wrapper">
+			<img src="'. $gallery[2] .'"/>
+		</div>
+	</div>';
+	
+	$content .= $image_list;
+
+ 	echo $content;
+ }
 
 /*--------------Install Required Plugins----------------------*/
 

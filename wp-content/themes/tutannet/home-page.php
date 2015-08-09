@@ -190,7 +190,7 @@ get_header();
               	</div><!--#tong-quan-->
               	
               	<div role="tabpanel" class="tab-pane animated fadeIn" id="tin-tuc-phat-su">
-	              <section class="block-news wow fadeInUp clearfix" data-wow-delay="0.5s">
+	              <section class="block-news clearfix">
 	              	<div class="row">
 	              		<h2 class="section-name"><span>Tin Tức Phật Sự</span></h2>
 	              	</div>
@@ -218,31 +218,46 @@ get_header();
 		          	          	        $b_news_big_image_path = wp_get_attachment_image_src($b_news_image_id,'tutannet-block-big-thumb',true);
 		          	          	        $b_news_small_image_path = wp_get_attachment_image_src($b_news_image_id,'tutannet-block-small-thumb',true);
 		          	          	        $b_news_image_alt = get_post_meta($_news_image_id,'_wp_attachment_image_alt',true);
+		          	          	        $post_format = get_post_format();
+		          	          	        $has_gallery = has_shortcode( $post->post_content, 'gallery' );
 		          	          	        
 		          	          	        if($b_counter == 1):
 		          	          	        	echo '
 		          	          	        		<div class="row">
-		          	          	        			<div class="col-sm-1 hidden-md hidden-lg"></div>
-		          	          	        		    <div class="featured-post single-post col-sm-5 col-md-6 col-lg-6">
+		          	          	        		    <div class="featured-post single-post col-xs-12 col-sm-12 col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="1s">
 		          	          	        	';
 		          	          	        ?>
 		          	          	        
 		          	          	        <?php endif; 
-		          	          	        	if($b_counter > 1 && $b_counter == 2) {echo '<div class="featured-post single-post col-sm-5 col-md-6 col-lg-6">';}
+		          	          	        	if($b_counter > 1 && $b_counter == 2) {echo '<div class="featured-post single-post col-xs-12 col-sm-12 col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="1s">';}
 		          	          	        	if ($b_counter > 2 && $b_counter == 3) {
 		          	          	        		echo '<div class="row">';
-		          	          	        		echo '<div class="single-post col-sm-12 col-lg-3">';
 		          	          	        	}
-		          	          	        	if ($b_counter > 3) {
-		          	          	        		if ($b_counter % 7 == 0) {echo '<div class="single-post col-sm-12 col-md-6 col-lg-6">';} 
-		          	          	        		else {echo '<div class="single-post col-lg-3">';} 
+		          	          	        	if ($b_counter >= 3) {
+		          	          	        		if ($b_counter % 7 == 0 && $post_format != 'gallery') {echo '<div class="single-post col-xs-12 col-sm-6 col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="1s>';}
+		          	          	        		else if ($post_format == 'gallery' && $has_gallery == true) {
+		          	          	        			if ($b_counter % 2 == 0) {
+		          	          	        				echo '<div class="single-post col-xs-12 col-sm-6 col-md-3 col-lg-3 hidden-md hidden-lg wow fadeInUp" data-wow-delay="1s">';
+		          	          	        					echo '<div class="post-desc-wrapper">
+		          	          	        							    <div class="block-poston">'. tutannet_posted_on() .'</div>
+		          	          	        							    <h3 class="post-title"><a post-title="'. get_the_title().'" rel="'. get_the_ID() .'" href="'. get_the_permalink() .'" >'. get_the_title() .'</a></h3>
+		          	          	        							    <div class="post-content">'. get_the_excerpt() .'</div>
+		          	          	        							</div>';
+		          	          	        				echo '</div>';
+		          	          	        			}		          	          	        			
+		          	          	        			echo '<div class="single-post col-xs-12 col-sm-12 col-md-9 col-lg-9 wow fadeInUp" data-wow-delay="1s>';
+		          	          	        		} 
+		          	          	        		else {echo '<div class="single-post col-xs-12 col-sm-6 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="1s">';} 
 		          	          	        	}
 		          	          	        ?>
 	          	          	        			<li id="news-<?php echo $b_counter;?>" class="cd-item">
 	          	          	        				<?php
+	          	          	        				if ($post_format == 'gallery' && $has_gallery == true) {
+          	          	        					 	tutannet_gallery_post();
+	          	          	        				} else {
+	          	          	        				
 	          	          	        				if(has_post_thumbnail()):  
 	          	          	        					   	echo '<div class="post-image easeOutCirc'; 
-	          	          	        					   	if ($b_counter > 2) {echo 'hidden-xs hidden-sm';}
 	          	          	        					   	echo '"><a post-title="'. get_the_title().'" rel="'. get_the_ID().'" href="'. get_the_permalink().'">';
 	          	          	        					   	echo '<img src="' . esc_url( $b_news_big_image_path[0] ) . '" alt="' . esc_attr($b_news_image_alt) . '" />';
 	          	          	        					   	echo '</a></div>';
@@ -253,15 +268,27 @@ get_header();
 	          	          	        			  	    <h3 class="post-title"><a post-title="<?php the_title();?>"; rel="<?php the_ID();?>" href="<?php the_permalink();?>" src="<?php echo esc_url( $b_news_small_image_path[0] );?>" ><?php the_title();?></a></h3>
 	          	          	        			  	    <div class="post-content"><?php the_excerpt() ?></div>
 	          	          	        			  	</div>
+	          	          	        			  	<?php } ?>
 	          	          	        			  	<div id="instant-article-<?php the_ID();?>" rel="<?php the_ID();?>"></div>
 	          	          	        			</li>
-	          	          	        	<?php if($b_counter == 1) {echo '</div>';}
-	          	          	        		  if($b_counter == 2) {
+	          	          	        	<?php if ($b_counter == 1) {echo '</div>';}
+	          	          	        		  if ($b_counter == 2) {
 	          	          	        		  	echo '</div>';
 	          	          	        		  	echo '</div>'; // row
 	          	          	        		  }	 
-	          	          	        		  if($b_counter >= 3) {echo '</div>';} // col-lg-3
-	          	          	        		  if($b_counter > 3 && $b_counter == $total_posts_block_news) {echo '</div>';} // row
+	          	          	        		  if ($b_counter >= 3) {echo '</div>';} // col
+	          	          	        		  if ($post_format == 'gallery' && $has_gallery == true) {
+		          	          	        		  if ($b_counter >=3 && $b_counter % 2 != 0) {
+		          	          	        		  			echo '<div class="single-post col-xs-12 col-sm-6 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="1s">';
+		          	          	        		  				echo '<div class="post-desc-wrapper">
+		          	          	        		  				    <div class="block-poston">'. tutannet_posted_on() .'</div>
+		          	          	        		  				    <h3 class="post-title"><a post-title="'. get_the_title().'" rel="'. get_the_ID() .'" href="'. get_the_permalink() .'" >'. get_the_title() .'</a></h3>
+		          	          	        		  				    <div class="post-content">'. get_the_excerpt() .'</div>
+		          	          	        		  				</div>';
+		          	          	        		  			echo '</div>';
+		          	          	        		  }
+		          	          	        	}
+	          	          	        		  if ($b_counter > 3 && $b_counter == $total_posts_block_news) {echo '</div>';} // row
 	          	          	        		  
 	          	          	        	?>
 		          	          	        	
@@ -270,7 +297,6 @@ get_header();
 		          	          	        
 		          	          	} // while
 		          	          } // if
-		          	          		echo '<div class="col-sm-1 hidden-md hidden-lg"></div>';
 		          	          	echo '</div>'; // row
 		          	          echo '</div>'; // row		          	          
 		          	         ?>

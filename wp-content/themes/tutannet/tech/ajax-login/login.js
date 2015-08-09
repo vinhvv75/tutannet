@@ -44,6 +44,10 @@ $('a[data-toggle="profile"]').click(function() {
 	}, 200 );
 });
 
+$('button[data-toggle="admin"]').click(function(){
+	window.location = getBaseUrl() + "/wp-admin";
+});
+
 $('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(function(){
 	$('#login_wrapper').removeClass('fadeInUp').addClass('fadeOutDown');
 	$('#site-header-secondary').removeClass('is-disabled fadeOut');
@@ -60,11 +64,13 @@ $('#loginform, #registerform, #lostpasswordform, #profileform').mouseenter(funct
 }).mouseleave(function(){
 	var login_close = $(this).find('.login_close')
 	$(login_close).removeClass('fadeIn').addClass('fadeOut');
-	setTimeout(function(){ $(login_close).addClass('is-disabled'); }, 200);
-	
-	
-	
+	setTimeout(function(){ $(login_close).addClass('is-disabled'); }, 200);	
 });
+
+function getBaseUrl() {
+    var re = new RegExp(/^.*\//);
+    return re.exec(window.location.href);
+}
 
 
 }); // End

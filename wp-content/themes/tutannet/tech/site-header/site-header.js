@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 	
 	var secondaryNav = $('#site-section-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top,
-		taglineOffesetTop = $('#site-section-nav').offset().top,
+		OffesetTop = $('#site-section-nav').offset().top,
 		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.section-name')[block_index],
 		section_title = document.getElementById('section-title');
 
@@ -29,7 +29,7 @@ jQuery(document).ready(function($){
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > taglineOffesetTop ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');
+		( $(window).scrollTop() > OffesetTop ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');
 				
 		//on desktop - fix secondary navigation on scrolling
 		if($(window).scrollTop() > secondaryNavTopPosition ) {

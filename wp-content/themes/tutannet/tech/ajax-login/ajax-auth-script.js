@@ -78,7 +78,6 @@ jQuery(document).ready(function ($) {
         },
         success: function(element) {
             $(element).closest('.input-group').removeClass('has-error').addClass('has-success');
-            $('p.status').html('<span class="help-block">Thông tin vừa nhập đã hợp lệ.</span>');
         },
          errorElement: 'span',
          errorClass: 'help-block',

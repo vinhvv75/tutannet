@@ -212,6 +212,7 @@ Intro
   height: 300px;
   background-size: cover;
   overflow: hidden;
+  z-index: -1;
 }
 #cd-intro img {
 	z-index: 0;
@@ -338,7 +339,7 @@ Secondary Fixed Navigation
 -------------------------------- */
 #site-section-nav {
   position: relative;
-  z-index: 2;
+  z-index: 10;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -381,7 +382,7 @@ Secondary Fixed Navigation
 }
 #site-section-nav li a {
   display: block;
-  padding: 1.6em;
+  padding: 1.2em;
   color: #f0eee1;
 }
 #section-navigation {
@@ -426,7 +427,7 @@ Secondary Fixed Navigation
 	text-decoration: none;
 }	
 #section-navigation ul li a b {
-	font: bold 14px Georgia, "Times New Roman", Times, serif;
+	font: bold 12px Georgia, "Times New Roman", Times, serif;
 	color: #f1f1f1;
 	text-transform: uppercase;
 	padding-bottom: 10px;
@@ -441,14 +442,14 @@ Secondary Fixed Navigation
 }
 @media only screen and (min-width: 1170px) {
   #site-section-nav {
-    z-index: 2;
+    z-index: 10;
     height: 100px;
     background: rgba(255, 255, 255, 0);
     -webkit-transition: height 0.3s;
     -moz-transition: height 0.3s;
     transition: height 0.3s;
     position: absolute;
-    bottom: 1em;
+    top: 35em;
     margin: 0;
     width: 100%;
   }
@@ -478,7 +479,7 @@ Secondary Fixed Navigation
     position: relative;
     text-align: center;
     display: block;
-    padding: 58px 40px 0 40px;
+    padding: 58px 30px 0 30px;
     border-bottom: none;
     -webkit-transition: padding 0.2s;
     -moz-transition: padding 0.2s;
@@ -512,6 +513,9 @@ Secondary Fixed Navigation
   }
   #site-section-nav li a span i {
   	font-size: 30px;
+  }
+  .site-section-nav-avatar img {
+  	border-radius: 500px;
   }
   #site-section-nav li a:hover b, #site-section-nav li a.active b, #site-section-nav li a:active b {
     color: #fff;
@@ -572,7 +576,7 @@ Secondary Fixed Navigation
   overflow: hidden;
   text-indent: 100%;
   white-space: nowrap;
-  z-index: 2;
+  z-index: 10;
 }
 #site-section-nav-trigger span {
   /* the span element is used to create the menu icon */

@@ -1,5 +1,9 @@
 TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
+<<<<<<< HEAD
 
+
+Version: 1.0.0-alpha.2
+Build: 1.0 Nightly 20150809 
 
 Install Steps:
 --------------
@@ -7,13 +11,11 @@ Install Steps:
 1. Install Wordpress
 2. Activate the theme
 3. Go to the Theme Option page
-3. Setup theme options
+4. Setup theme options
 
 ------------------------------------------
 
 JS Files 
-    bxSlider: WTFPL and MIT license
-    https://github.com/stevenwanderski/bxslider-4
     
     WOW Min JS: MIT license
     https://github.com/matthieua/WOW

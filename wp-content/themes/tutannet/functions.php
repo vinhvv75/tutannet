@@ -28,6 +28,8 @@ function tutannet_setup() {
 	 * If you're building a theme based on TuTanNet, use a find and replace
 	 * to change 'tutannet' to the name of your theme in all the template files
 	 */
+	 
+	 load_theme_textdomain( 'tutannet', get_template_directory() . '/lang' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );

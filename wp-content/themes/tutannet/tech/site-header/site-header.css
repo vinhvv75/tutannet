@@ -212,7 +212,7 @@ Intro
   height: 300px;
   background-size: cover;
   overflow: hidden;
-  z-index: -1;
+  z-index: 0;
 }
 #cd-intro img {
 	z-index: 0;
@@ -337,6 +337,11 @@ Intro
 Secondary Fixed Navigation
 
 -------------------------------- */
+#site-header-secondary {
+	position: relative;
+	z-index: 10;
+}
+
 #site-section-nav {
   position: relative;
   z-index: 10;

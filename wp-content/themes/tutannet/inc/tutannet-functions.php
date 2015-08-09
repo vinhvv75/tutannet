@@ -55,13 +55,18 @@ function my_remove_meta_boxes() {
   remove_meta_box('postcustom', 'post', 'normal');
   remove_meta_box('commentstatusdiv', 'post', 'normal');
   remove_meta_box('commentsdiv', 'post', 'normal');
-  remove_meta_box('formatdiv', 'post', 'normal');
   remove_meta_box('authordiv', 'post', 'normal');
   remove_meta_box('sqpt-meta-tags', 'post', 'normal');
  }
 }
 add_action( 'admin_menu', 'my_remove_meta_boxes' );
 endif;
+
+/*---------Define formats---------------*/
+add_action( 'after_setup_theme', 'childtheme_formats', 11 );
+function childtheme_formats(){
+     add_theme_support( 'post-formats', array( 'standard', 'gallery' ) );
+}
 
 /*---------Create and Define Default Categories---------------*/
 function define_default_categories() {

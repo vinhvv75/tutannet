@@ -15,7 +15,7 @@ $('a[data-toggle="login"], button[data-toggle="login"]').click(function() {
 	setTimeout(function(){ 
 		$('#site-header-secondary, #registerform, #lostpasswordform').addClass('is-disabled'); 
 		$('#loginform').removeClass('is-disabled fadeOut').addClass('fadeIn');
-	}, 500 );
+	}, 400 );
 });
 
 // Register Toggle
@@ -51,7 +51,7 @@ $('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(funct
 		$('#login_wrapper').addClass('is-disabled'); 
 		$('#profileform, #loginform, #registerform, #lostpasswordform').addClass('is-disabled fadeOut');
 		$('#site-header-secondary').addClass('fadeIn');
-	}, 500 );
+	}, 400 );
 });
 
 $('#loginform, #registerform, #lostpasswordform, #profileform').mouseenter(function(){

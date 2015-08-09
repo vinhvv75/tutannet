@@ -448,7 +448,7 @@ Secondary Fixed Navigation
     -moz-transition: height 0.3s;
     transition: height 0.3s;
     position: absolute;
-    bottom: 2em;
+    bottom: 1em;
     margin: 0;
     width: 100%;
   }
@@ -541,7 +541,7 @@ Secondary Fixed Navigation
     width: 100%;
   }
   #site-section-nav.repainted {
-    background: rgba(3, 13, 24, 0.96);
+    background: rgba(51, 41, 36, 0.96);
   }
   #site-section-nav.animate-children {
     /* on Firefox CSS transition/animation fails when parent element changes position attribute*/

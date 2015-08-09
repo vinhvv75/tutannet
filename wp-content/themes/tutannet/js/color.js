@@ -41,11 +41,11 @@ var bgFull1 = colorThief.getColor(document.getElementById('cd-intro-img')),
 
 
 for (var i=0;i<textSectionItem.length; i++) {
-    textSectionItem[i].style.color = colorBgBottom;
+    textSectionItem[i].style.color = primaryColor;
 }
 
 for (var i=0;i<iconSectionItem.length; i++) {
-    iconSectionItem[i].style.color = colorBgBottom;
+    iconSectionItem[i].style.color = primaryColor;
 }
 
 for (var i=0;i<textIntroNav.length; i++) {

@@ -4,7 +4,7 @@ Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
 Version: 1.0.0-alpha.1
-Build: 1.0 Nightly 20150808
+Build: 1.0 Nightly 20150809
 GitHub Theme URI: https://github.com/vxvinh/tutannet
 GitHub Branch: master
 */
@@ -690,6 +690,10 @@ Media
 	margin: 10px 0;
 }
 
+.site-main {
+	background-color: #fff;
+}
+
 .site-main .gallery {
 	margin-bottom: 1.5em;
 }
@@ -1094,15 +1098,15 @@ body.boxed-layout {
 		padding: 4em 0;
 	}
 	
-	
-	.block-cat-name {
-		font: normal normal 18px "Times New Roman", Times, serif;
-		line-height: 16px;
-		text-transform: uppercase;
-		color: #D2B55B;
+	.section-name {
+		text-transform: capitalize;
+		font: 56px Georgia, "Times New Roman", Times, serif;
+		text-align: center;
 		letter-spacing: 2px;
 		margin: 0;
-		margin-bottom: 10px;
+		margin-bottom: 60px;
+		color: rgb(250, 218, 94);
+		z-index: 0;
 	}
 	
 	.post-image .big-image-overlay, .post-image .big-title-overlay{
@@ -1125,7 +1129,7 @@ body.boxed-layout {
 	}
 	
 	.post-title {
-		font: normal normal 15px Georgia, "Times New Roman", Times, serif;
+		font: normal normal 20px Georgia, "Times New Roman", Times, serif;
 		letter-spacing: 1px;
 		margin: 0;
 	}
@@ -1203,13 +1207,51 @@ body.boxed-layout {
 		margin-top: -50px;
 	}
 	
+	
+	
+	
+/*--------------------------------------------------------------
+	Block News css 
+	--------------------------------------------------------------*/	
+	.block-news {
+		
+	}	
+	
+	.block-news li {
+		list-style-type: none;
+	}
+	
+	.block-news .single-post:hover {
+		
+	}
+	
+	.block-news .featured-post {
+		padding: 0;
+		text-align: center;
+	}
+	
+	.block-news img {
+		min-width: 100%;
+	}
+	
+	.block-news .post-desc-wrapper {
+		margin-top: 30px;
+	}
+	
+	.block-news .featured-post .post-desc-wrapper {
+		text-align: center;
+		width: 100%;
+		padding: 0 10% 10%;
+	}
+	
+		
 		
 	
 /*--------------------------------------------------------------
 	first block css 
 	--------------------------------------------------------------*/
 	.first-block {
-
+		
 	}
 	
 	.first-block .leftposts-wrapper {

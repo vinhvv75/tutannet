@@ -2,8 +2,10 @@ jQuery(document).ready(function ($) {
 
 	// Perform AJAX login/register on form submit
 	$('form#loginform, form#registerform, form#lostpasswordform').on('submit', function (e) {
-        if (!$(this).valid()) return false;
-//        $(this).find('.status').html('<span class="help-block">' + ajax_auth_object.loadingmessage + '</span>');
+        if (!$(this).valid()) { return false } else { 
+        	$(this).find($('p.status')).html('<span class="help-block">Thông tin hoàn toàn hợp lệ.</span>');
+        }
+        $(this).find($('p.status')).html('<span class="help-block">' + ajax_auth_object.loadingmessage + '</span>');
 		if ($(this).attr('id') == 'loginform') {
 			action = 'ajaxlogin';
 			username = 	$('form#loginform #user_login').val();

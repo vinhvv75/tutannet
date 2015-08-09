@@ -3,15 +3,29 @@ jQuery(document).ready(function($){
 	var secondaryNav = $('#site-section-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top,
 		taglineOffesetTop = $('#site-section-nav').offset().top,
-		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.block-cat-name')[block_index],
+		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.section-name')[block_index],
 		section_title = document.getElementById('section-title');
 
 	section_title.innerHTML = $(block_cat_name).find('span').html();
 	
-	$('a[data-toggle="tab"]').click(function() {
-		block_index = $('#section-navigation ul').find($(this).parent()).index();
-		block_cat_name = $('.block-cat-name')[block_index];
+	// tab toggle in navigation, toolbar
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+	  e.target; // newly activated tab
+	  e.relatedTarget; // previous active tab
 	});
+	$('a[data-toggle="tab"]').click(function() {
+		$('html,body').animate({
+		        scrollTop: 0},
+		        'slow');
+		var section_title = document.getElementById('section-title');
+		section_title.innerHTML = ($(this).find('b').html());
+		block_index = $('#section-navigation ul').find($(this).parent()).index();
+		block_cat_name = $('.section-name')[block_index];
+	});
+	
+	// initalize bootstrap tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+	$('#site-toolbar a, #login_wrapper a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
@@ -30,9 +44,9 @@ jQuery(document).ready(function($){
 			else { updateSectionNav(false); }			
 								
 			
-//			if (isDay()) {
-//				secondaryNav.addClass('isDay');
-//			} else { secondaryNav.addClass('isNight'); }
+			if (isDay()) {
+				secondaryNav.addClass('isDay');
+			} else { secondaryNav.addClass('isNight'); }
 			//push the .cd-main-content giving it a top-margin
 			$('.cd-main-content').addClass('has-top-margin');	
 			//on Firefox CSS transition/animation fails when parent element changes position attribute

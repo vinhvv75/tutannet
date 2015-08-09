@@ -1,5 +1,4 @@
 TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
-<<<<<<< HEAD
 
 
 Version: 1.0.0-alpha.2

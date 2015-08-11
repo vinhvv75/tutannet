@@ -255,7 +255,6 @@ function tutannet_scripts() {
     $theme_version = $my_theme->get('Version'); 
     wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css');
     wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($theme_version) );    
-    wp_enqueue_style( 'responsive', get_template_directory_uri() . '/css/responsive.css');
     wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
     
@@ -285,8 +284,8 @@ function tutannet_scripts() {
 	
 	/*** Lib ***/
 	// bootstrap 3.3.5
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/bootstrap.min.css');
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/bootstrap.min.js', array('jquery'), '3.3.5' );
+	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/css/bootstrap.min.css');
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5' );
 	
 	// font-awesome  4.4.0
 	wp_enqueue_style( 'fontawesome-font', get_template_directory_uri() . '/lib/font-awesome-4.4.0/font-awesome.min.css' );

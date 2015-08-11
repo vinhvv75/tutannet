@@ -1,4 +1,4 @@
-TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
+TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monaster
 
 
 Install Steps:

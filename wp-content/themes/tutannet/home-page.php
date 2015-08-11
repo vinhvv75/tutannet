@@ -245,7 +245,7 @@ get_header();
 		          	          	        							</div>';
 		          	          	        				echo '</div>';
 		          	          	        			}		          	          	        			
-		          	          	        			echo '<div class="single-post col-xs-12 col-sm-12 col-md-9 col-lg-9 wow fadeInUp" data-wow-delay="1s>';
+		          	          	        			echo '<div class="single-post gallery-post col-xs-12 col-sm-12 col-md-9 col-lg-9 wow fadeInUp" data-wow-delay="1s">';
 		          	          	        		} 
 		          	          	        		else {echo '<div class="single-post col-xs-12 col-sm-6 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="1s">';} 
 		          	          	        	}

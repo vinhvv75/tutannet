@@ -1,7 +1,4 @@
-﻿
-
 <form id="login_wrapper" class="row is-disabled animated" action='<?php echo $home; ?>/wp-login.php' method="post">
-
 	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 	<div id="profileform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated">
 		<?php wp_nonce_field( 'ajax-logout-nonce', 'logoutsecurity' ); ?>	
@@ -20,8 +17,19 @@
 			if ($user_role == 'administrator') {$user_role_name = 'Quản lý';}
 			else if ($user_role == 'editor') {$user_role_name = 'Biên tập viên';}
 			else if ($user_role == 'contributor') {$user_role_name = 'Cộng tác viên';}
-			else if ($user_role == 'Subscriber') {$user_role_name = 'Thành viên';}  
-			echo $user_role_name;?></div>
+			else if ($user_role == 'subscriber') {$user_role_name = 'Thành viên';}  
+			echo $user_role_name;?>
+		</div>
+		<?php if ($user_role != 'subscriber'): ?>
+		<div class="user_posts">
+		<?php 
+			$user_post_count = count_user_posts( $current_user->ID , 'post');
+			echo '<span>Bạn đã đăng <b>'.$user_post_count.'</b> bài.</span><br/>';
+			echo '<span>Xin chân thành cảm ơn sự đóng góp của bạn.</span>';
+		?>
+		</div>
+		<?php endif; ?>
+			
 		<?php
 		$home = site_url();
 		$profilelink = $home."/wp-admin";

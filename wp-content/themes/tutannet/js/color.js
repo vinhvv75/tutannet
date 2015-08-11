@@ -6,10 +6,10 @@
 jQuery(document).ready(function($){
 
 colorThief = new ColorThief();
-var bgFull1 = colorThief.getColor(document.getElementById('cd-intro-img')),
-	bgFull2 = getAverageRGB(document.getElementById('cd-intro-img'),0,-1,-1),
-	bgTop = getAverageRGB(document.getElementById('cd-intro-img'),70,-1,70),
-	bgBottom = getAverageRGB(document.getElementById('cd-intro-img'),-100,-1,100),
+var bgFull1 = colorThief.getColor(document.getElementById('site-intro-img')),
+	bgFull2 = getAverageRGB(document.getElementById('site-intro-img'),0,-1,-1),
+	bgTop = getAverageRGB(document.getElementById('site-intro-img'),70,-1,70),
+	bgBottom = getAverageRGB(document.getElementById('site-intro-img'),-100,-1,100),
 	colorBgFull1 = $c.complement(bgFull1).a,
 	colorBgFull2 = getContrastRGB(bgFull1),
 	colorBgFull3 = getContrastRGB(bgFull2),
@@ -31,7 +31,7 @@ var bgFull1 = colorThief.getColor(document.getElementById('cd-intro-img')),
 	textSearchTagCloud = $(searchTagCloud).find('a'),
 	
 	searchForm = document.getElementById('searchform'),
-	inputGroupSearchForm = $('#searchform .input-group'),
+	inputGroupSearchForm = $(searchForm).find('.input-group'),
 	iconSearchForm = document.getElementById('iconSearchForm'),
 	buttonSearchForm = document.getElementById('buttonSearchForm')
 	;

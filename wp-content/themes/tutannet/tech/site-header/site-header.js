@@ -4,7 +4,9 @@ jQuery(document).ready(function($){
 		secondaryNavTopPosition = secondaryNav.offset().top,
 		OffesetTop = $('#site-section-nav').offset().top,
 		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.section-name')[block_index],
-		section_title = document.getElementById('section-title');
+		section_title = document.getElementById('section-title'),
+		scroll = $(document).scrollTop(),
+		headerHeight = $('#site-header').outerHeight();
 
 	section_title.innerHTML = $(block_cat_name).find('span').html();
 	
@@ -29,10 +31,13 @@ jQuery(document).ready(function($){
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > OffesetTop ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');
-				
+		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');
+						
+		//on mobile - fix primary navigation on scrolling
+//		( $(window).width() < 992 ) ? $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden');				
+		
 		//on desktop - fix secondary navigation on scrolling
-		if($(window).scrollTop() > secondaryNavTopPosition ) {
+		if($(window).scrollTop() > secondaryNavTopPosition && $(window).width() >= 992  ) {
 			//fix secondary navigation
 			secondaryNav.addClass('is-fixed');
 			secondaryNav.addClass('repainted');
@@ -71,9 +76,30 @@ jQuery(document).ready(function($){
 				$('#site-toolbar').removeClass('slide-in');
 	        }, 50);
 		}
+		
+		   var scrolled = $(document).scrollTop();
+	      if ($(window).width() < 992) {
+		      if (scrolled > headerHeight){
+		        $('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').addClass('off-canvas');
+		      } else {
+		        $('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').removeClass('off-canvas');
+		      }
+		
+		      if (scrolled > scroll){
+		      	$('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').removeClass('fixed').addClass('off-canvas');
+		      } else {
+		      	$('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').addClass('fixed').removeClass('off-canvas');
+		      }     
+		      
+		      if (scrolled <= headerHeight) {
+		      	$('#site-header').addClass('top');
+		      } else { 
+		      	$('#site-header').removeClass('top');
+		      }
+		      scroll = $(document).scrollTop(); 
+	      } 
+	
 
-		//on desktop - update the active link in the secondary fixed navigation
-		updateSecondaryNavigation();
 	});
 	
 	
@@ -102,26 +128,6 @@ jQuery(document).ready(function($){
 		}
 	}
 
-	function updateSecondaryNavigation() {
-		contentSections.each(function(){
-			var actual = $(this),
-				actualHeight = actual.height() + parseInt(actual.css('paddingTop').replace('px', '')) + parseInt(actual.css('paddingBottom').replace('px', '')),
-				actualAnchor = secondaryNav.find('a[href="#'+actual.attr('id')+'"]');
-			if ( ( actual.offset().top - secondaryNav.height() <= $(window).scrollTop() ) && ( actual.offset().top +  actualHeight - secondaryNav.height() > $(window).scrollTop() ) ) {
-				actualAnchor.addClass('active');
-			}else {
-				actualAnchor.removeClass('active');
-			}
-		});
-	}
-
-	//on mobile - open/close secondary navigation clicking/tapping the site-section-nav-trigger
-	$('#site-section-nav-trigger').on('click', function(event){
-		event.preventDefault();
-		$(this).toggleClass('menu-is-open');
-		secondaryNav.find('ul').toggleClass('is-visible');
-	});
-
 	//smooth scrolling when clicking on the secondary navigation items
 	secondaryNav.find('ul a').on('click', function(event){
         event.preventDefault();
@@ -130,14 +136,28 @@ jQuery(document).ready(function($){
         	'scrollTop': target.offset().top - secondaryNav.height() + 1
         	}, 400
         ); 
-        //on mobile - close secondary navigation
-        $('#site-section-nav-trigger').removeClass('menu-is-open');
-        secondaryNav.find('ul').removeClass('is-visible');
     });
 
     //on mobile - open/close primary navigation clicking/tapping the menu icon
 	$('#site-intro-nav').on('click', function(event){
 		if($(event.target).is('#site-intro-nav')) $(this).children('ul').toggleClass('is-visible');
+	});
+	
+	//open/close primary navigation
+	$('#site-primary-nav-trigger').on('click', function(){
+		$('.cd-menu-icon').toggleClass('is-clicked'); 
+		$('.cd-header').toggleClass('menu-is-open');
+		
+		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
+		if( $('#site-primary-nav').hasClass('is-visible') ) {
+			$('#site-primary-nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
+				$('body').removeClass('overflow-hidden');
+			});
+		} else {
+			$('#site-primary-nav').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
+				$('body').addClass('overflow-hidden');
+			});	
+		}
 	});
 	
 	

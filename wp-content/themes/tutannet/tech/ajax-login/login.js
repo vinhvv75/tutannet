@@ -2,7 +2,7 @@ jQuery(document).ready(function($){
 
 // Login Toggle
 $('a[data-toggle="login_wrap"]').click(function() {
-	$('#login_wrapper').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
+	$('#login_wrapper').removeClass('is-disabled fadeOut').addClass('fadeIn');
 	$('#site-header-secondary, #search_wrapper').addClass('is-disabled fadeOut');
 	var login = $('#login_wrapper').find('#loginform');
 	if(login.length != 0) { $('a[data-toggle="login"]').click(); } 
@@ -11,36 +11,37 @@ $('a[data-toggle="login_wrap"]').click(function() {
 
 // Login Toggle
 $('a[data-toggle="login"], button[data-toggle="login"]').click(function() {
-	$('#registerform, #lostpasswordform').addClass('fadeOut').removeClass('fadeIn');
+	backTop();
+	$('#registerform, #lostpasswordform').addClass('fadeOutDown').removeClass('fadeInUp');
 	setTimeout(function(){ 
-		$('#site-header-secondary, #registerform, #lostpasswordform').addClass('is-disabled'); 
-		$('#loginform').removeClass('is-disabled fadeOut').addClass('fadeIn');
+		$('#registerform, #lostpasswordform').addClass('is-disabled'); 
+		$('#loginform').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
 	}, 400 );
 });
 
 // Register Toggle
 $('a[data-toggle="register"], button[data-toggle="register"]').click(function() {
-	$('#loginform, #lostpasswordform').addClass('fadeOut').removeClass('fadeIn');
+	$('#loginform, #lostpasswordform').addClass('fadeOutDown').removeClass('fadeInUp');
 	setTimeout(function(){ 
 		$('#loginform, #lostpasswordform').addClass('is-disabled'); 
-		$('#registerform').removeClass('is-disabled fadeOut').addClass('fadeIn');
+		$('#registerform').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
 	}, 200 );
 });
 
 // Lost Password Toggle
 $('a[data-toggle="lostpass"], button[data-toggle="lostpass"]').click(function() {
-	$('#loginform, #registerform').addClass('fadeOut').removeClass('fadeIn');
+	$('#loginform, #registerform').addClass('fadeOutDown').removeClass('fadeInUp');
 	setTimeout(function(){ 
-		$('#site-header-secondary, #loginform, #registerform').addClass('is-disabled'); 
-		$('#lostpasswordform').removeClass('is-disabled fadeOut').addClass('fadeIn');
+		$('#loginform, #registerform').addClass('is-disabled'); 
+		$('#lostpasswordform').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
 	}, 200 );
 });
 
-//
+// Profile Toggle
 $('a[data-toggle="profile"]').click(function() {
-	$('#site-header-secondary').addClass('fadeOut');
+	backTop();
 	setTimeout(function(){ 
-		$('#profileform').removeClass('is-disabled fadeOut').addClass('fadeIn');
+		$('#profileform').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
 	}, 200 );
 });
 
@@ -49,11 +50,11 @@ $('button[data-toggle="admin"]').click(function(){
 });
 
 $('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(function(){
-	$('#login_wrapper').removeClass('fadeInUp').addClass('fadeOutDown');
+	$('#profileform, #loginform, #registerform, #lostpasswordform').addClass('fadeOutDown');
+	$('#login_wrapper').removeClass('fadeIn').addClass('fadeOut');
 	$('#site-header-secondary').removeClass('is-disabled fadeOut');
 	setTimeout(function(){ 
-		$('#login_wrapper').addClass('is-disabled'); 
-		$('#profileform, #loginform, #registerform, #lostpasswordform').addClass('is-disabled fadeOut');
+		$('#login_wrapper, #profileform, #loginform, #registerform, #lostpasswordform').addClass('is-disabled');
 		$('#site-header-secondary').addClass('fadeIn');
 	}, 400 );
 });
@@ -70,6 +71,12 @@ $('#loginform, #registerform, #lostpasswordform, #profileform').mouseenter(funct
 function getBaseUrl() {
     var re = new RegExp(/^.*\//);
     return re.exec(window.location.href);
+}
+
+function backTop() {
+	$('body,html').animate({
+	    scrollTop: 0
+	}, 800);
 }
 
 

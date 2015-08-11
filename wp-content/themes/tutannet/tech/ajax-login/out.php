@@ -26,7 +26,7 @@ $blog_url = site_url();
 	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 	<form name="loginform" id="loginform" class="wrapper-is-open col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="login" method="post">
 		<h2>Đăng nhập</h2>
-		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>		
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin.</span></p>		
 		  <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
 		  <div class="input-group margin-bottom-sm login_field">
 		  <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>

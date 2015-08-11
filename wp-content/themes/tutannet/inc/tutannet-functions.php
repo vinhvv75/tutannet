@@ -42,15 +42,11 @@ add_action('wp_head', 'tutannet_header_scripts');
 
 
 /*---------Hide Admin Toolbar---------------*/
+
 add_filter('show_admin_bar', '__return_false');
 
-/*---------Define Language---------------*/
-add_action('after_setup_theme', 'theme_lang');
-function theme_lang(){
-    load_theme_textdomain('tutannet', get_template_directory() . '/lang');
-}
-
 /*---------Hide meta boxes in Editor---------------*/
+
 if (is_admin()) :
 function my_remove_meta_boxes() {
  if( !current_user_can('manage_options') ) {
@@ -69,12 +65,14 @@ add_action( 'admin_menu', 'my_remove_meta_boxes' );
 endif;
 
 /*---------Define formats---------------*/
+
 add_action( 'after_setup_theme', 'childtheme_formats', 11 );
 function childtheme_formats(){
      add_theme_support( 'post-formats', array( 'standard', 'gallery' ) );
 }
 
 /*---------Create and Define Default Categories---------------*/
+
 function define_default_categories() {
 	// Main Category
 	wp_insert_term(
@@ -243,6 +241,7 @@ function define_default_categories() {
 add_action( 'after_setup_theme', 'define_default_categories' );
 
 /*---------Create and Define Default Pages---------------*/
+
 function define_default_posts() {
 
 	$homepage = get_page_by_title( 'Trang Chủ' );   
@@ -328,12 +327,14 @@ function change_permalinks() {
 add_action('after_setup_theme', 'change_permalinks');
 
 /*---------Enqueue custom admin panel JS---------------*/
+
 function tutannet_admin_scripts(){
     wp_enqueue_script('tutannet-custom-admin', get_template_directory_uri(). '/inc/option-framework/js/custom-admin.js', array( 'jquery'));    
  }
 add_action('admin_enqueue_scripts','tutannet_admin_scripts');
 
 /*---------Enqueue admin css---------------*/
+
 function tutannet_admin_css(){
     wp_enqueue_style('tutannet-admin', get_template_directory_uri(). '/inc/option-framework/css/tutannet-admin.css');    
 }
@@ -369,6 +370,7 @@ function tutannet_setPostViews($postID) {
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0); 
 
 /*--------------Sidebar layout for post & pages----------------------*/
+
 function tutannet_sidebar_layout_class($classes){
     global $post;
     	if( is_404()){
@@ -444,6 +446,7 @@ function tutannet_website_layout_class( $classes ){
 add_filter( 'body_class', 'tutannet_website_layout_class' );
 
 /*----------------------Meta post on -----------------------------------*/
+
 function tutannet_post_meta_cb(){
     global $post;
     $show_post_views = of_get_option('show_post_views');
@@ -597,6 +600,8 @@ function tutannet_excerpt(){
     echo '<p>'. $excerpt_content .'</p>';
 }
 
+/*---------------Gallery Post-------------------*/
+
 function tutannet_gallery_post() {
 
  	global $post;
@@ -632,6 +637,25 @@ function tutannet_gallery_post() {
 
  	echo $content;
  }
+ 
+ /*---------------Ask For Membership Post-------------------*/
+ 
+ function tutannet_askmembership_post() { 
+  	$count_posts = wp_count_posts();
+  	$published_posts = $count_posts->publish;
+  	
+  	$count_users = count_users();
+  	
+  	$content = '<h4>Mời bạn gia nhập<br/>Vườn Hoa Phật Pháp ChuaTuTan.net</h4>';
+  	if ($count_users >= 100) {
+  		$content .= '<p>Hãy đồng hành với <b>'. $count_users['total_users'] .'</b> Phật tử. Cùng trải nghiệm sâu sắc với <b>'. $published_posts .'</b> bài phát hành. Và theo dõi các bài đăng sắp tới.</p>';
+  	} else {
+  	
+  	}
+ 	 
+  	echo $content;
+  }
+ 
 
 /*--------------Install Required Plugins----------------------*/
 

@@ -28,13 +28,16 @@ jQuery(document).ready(function($){
 	// initalize bootstrap tooltip
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#site-toolbar a, #login_wrapper a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
+	
+	if ($(window).width() < 992 && scroll <= headerHeight) {
+		$('#site-header, #site-logo').addClass('top').removeClass('fixed');
+		$('#site-header').removeClass('is-open');
+		$('#site-toolbar').addClass('is-disabled');
+	}
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');
-						
-		//on mobile - fix primary navigation on scrolling
-//		( $(window).width() < 992 ) ? $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden');				
+		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');				
 		
 		//on desktop - fix secondary navigation on scrolling
 		if($(window).scrollTop() > secondaryNavTopPosition && $(window).width() >= 992  ) {
@@ -77,24 +80,33 @@ jQuery(document).ready(function($){
 	        }, 50);
 		}
 		
-		   var scrolled = $(document).scrollTop();
+		  var scrolled = $(document).scrollTop();
 	      if ($(window).width() < 992) {
 		      if (scrolled > headerHeight){
-		        $('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').addClass('off-canvas');
+		      	$('#site-toolbar').removeClass('is-disabled');
+		        $('#site-header, #site-logo, #site-toolbar').removeClass('fixed').addClass('off-canvas');
+		        $('#site-header').removeClass('is-open');
 		      } else {
-		        $('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').removeClass('off-canvas');
+		        $('#site-header, #site-logo, #site-toolbar').addClass('fixed').removeClass('off-canvas');
 		      }
 		
 		      if (scrolled > scroll){
-		      	$('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').removeClass('fixed').addClass('off-canvas');
+		      	$('#site-toolbar').removeClass('is-disabled');
+		      	$('#site-header, #site-logo, #site-toolbar').removeClass('fixed').addClass('off-canvas');
+		      	$('#site-header').removeClass('is-open');
 		      } else {
-		      	$('#site-header, #site-logo, #site-toolbar, #site-primary-nav-trigger').addClass('fixed').removeClass('off-canvas');
+		      	$('#site-header, #site-logo, #site-toolbar').addClass('fixed').removeClass('off-canvas');
 		      }     
 		      
 		      if (scrolled <= headerHeight) {
-		      	$('#site-header').addClass('top');
+		      	$('#site-header, #site-logo').addClass('top');
+		      	$('#site-header').removeClass('is-open');
+		      	if( $('#site-primary-nav').hasClass('is-visible') ) {
+		      		$('#site-toolbar').addClass('is-disabled'); 
+		      	} else { $('#site-toolbar').removeClass('is-disabled'); }
 		      } else { 
-		      	$('#site-header').removeClass('top');
+		      	$('#site-header, #site-logo').removeClass('top');
+		      	$('#site-primary-nav').removeClass('is-visible');
 		      }
 		      scroll = $(document).scrollTop(); 
 	      } 
@@ -144,21 +156,30 @@ jQuery(document).ready(function($){
 	});
 	
 	//open/close primary navigation
-	$('#site-primary-nav-trigger').on('click', function(){
-		$('.cd-menu-icon').toggleClass('is-clicked'); 
-		$('.cd-header').toggleClass('menu-is-open');
+	$('#site-logo').on('click', function(){
+		if (scroll > headerHeight) { 
+			$('#site-logo').toggleClass('top'); 
+			$('#site-header').toggleClass('is-open'); 
+		}
+		$('.logo-menu-icon').toggleClass('is-clicked');		
 		
 		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
 		if( $('#site-primary-nav').hasClass('is-visible') ) {
+			$('#site-toolbar').removeClass('is-disabled');
 			$('#site-primary-nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
-				$('body').removeClass('overflow-hidden');
 			});
+			
 		} else {
+			$('#site-toolbar').addClass('is-disabled');
 			$('#site-primary-nav').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
-				$('body').addClass('overflow-hidden');
 			});	
 		}
 	});
 	
+	//open/close toolbar wrapper
+	$('#toolbar-trigger').on('click', function(){
+		$('.toolbar-menu-icon').toggleClass('is-clicked');
+	});
 	
-});
+	
+}); // End

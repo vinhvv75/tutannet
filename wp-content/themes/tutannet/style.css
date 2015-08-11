@@ -4,7 +4,7 @@ Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
 Version: 1.0.0-alpha.3
-Build: 1.0 Nightly 20150810
+Build: 1.0 Nightly 20150811
 GitHub Theme URI: https://github.com/vxvinh/tutannet
 GitHub Branch: master
 */
@@ -742,9 +742,10 @@ body.boxed-layout {
 		border-radius: 500px;
 		width: 36px;
 		height: 36px;
-		background: #fff;
-		color: rgb(250, 218, 94);
+		background: transparent;
+		color: #30BA8F;
 		margin-bottom: 7px;
+		border: 1px solid #30BA8F;
 	}
 	
 	#login_wrapper .login_tool button, 
@@ -752,13 +753,13 @@ body.boxed-layout {
 		border: none;
 		display: block;
 		background-color: transparent;
-		color: #fff;
+		color: #30BA8F;
 		width: 90px;
 	}
 		
 	#login_wrapper .login_tool button:hover, 
 	#login_wrapper .login_tool .logout_btn:hover {
-		color: #fff;
+		color: #30BA8F;
 		background-color: transparent;
 	}
 	
@@ -816,6 +817,7 @@ body.boxed-layout {
 		border-bottom: 1px solid #fff;
 		border-top: 1px solid #fff;
 		color: #fff;
+		font-size: 12px;
 	}
 	
 	@media only screen and (min-width: 768px) {
@@ -835,21 +837,17 @@ body.boxed-layout {
 			border: none;
 			display: block;
 			background-color: transparent;
-			color: #FADB43;
 		}
 		.login_tool .btn-group span i {
 			padding: 10px;
 			border-radius: 500px;
 			width: 36px;
 			height: 36px;
-			background: #FADB43;
-			color: #fff;
 			margin-bottom: 7px;
 		}
 		#login_wrapper .login_tool button:hover, 
 		#login_wrapper .login_tool .logout_btn:hover {
-			color: #fff;
-			background-color: transparent;
+
 		}
 		#login_wrapper .login_tool button:active, 
 		#login_wrapper .login_tool button.active {
@@ -874,6 +872,7 @@ body.boxed-layout {
 		#profileform .user_posts {
 			border-color: #000;
 			color: #000;
+			font-size: 14px
 		}
 	}
 	

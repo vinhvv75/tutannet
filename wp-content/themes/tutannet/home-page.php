@@ -238,11 +238,9 @@ get_header();
 		          	          	        		else if ($post_format == 'gallery' && $has_gallery == true) {
 		          	          	        			if ($b_counter % 2 == 0) {
 		          	          	        				echo '<div class="single-post col-xs-12 col-sm-6 col-md-3 col-lg-3 hidden-md hidden-lg wow fadeInUp" data-wow-delay="1s">';
-		          	          	        					echo '<div class="post-desc-wrapper">
-		          	          	        							    <div class="block-poston">'. tutannet_posted_on() .'</div>
-		          	          	        							    <h3 class="post-title"><a post-title="'. get_the_title().'" rel="'. get_the_ID() .'" href="'. get_the_permalink() .'" >'. get_the_title() .'</a></h3>
-		          	          	        							    <div class="post-content">'. get_the_excerpt() .'</div>
-		          	          	        							</div>';
+		          	          	        					echo '<div class="post-desc-wrapper">';
+		          	          	        						tutannet_askmembership_post();
+		          	          	        					echo '</div>';		   
 		          	          	        				echo '</div>';
 		          	          	        			}		          	          	        			
 		          	          	        			echo '<div class="single-post gallery-post col-xs-12 col-sm-12 col-md-9 col-lg-9 wow fadeInUp" data-wow-delay="1s">';

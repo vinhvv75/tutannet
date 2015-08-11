@@ -37,9 +37,33 @@
     </div>
 	
     <header id="site-header" role="banner" class="top">    
-        <div id="site-logo" class="animated fadeInLeft">
+        <a id="site-logo" class="animated fadeInLeft">
         	<!--<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/cd-logo.svg"/></a>-->
-        </div>
+        	<span class="logo-menu-icon"></span>
+        </a>
+        
+        <nav>
+        	<ul id="site-primary-nav" class="visible-xs visible-sm is-visible">
+        		<!--<li class="cd-label">Chuyên mục</li>-->
+        		<?php 
+        			if(is_user_logged_in()):
+        				global $current_user;
+        				get_currentuserinfo();
+        		 ?>
+        		<li class="active" role="presentation"><a href="#thu-vien-ca-nhan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b></a></li>
+        		<?php endif; ?>
+        		
+        		<li class="<?php if(!is_user_logged_in()) { echo 'active'; }?>" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b></a></li>
+        		
+        		<li role="presentation"><a href="#tin-tuc-phat-su" aria-controls="section1" role="tab" data-toggle="tab"><b>Tin Tức Phật Sự</b></a></li>
+        		
+        		<li role="presentation"><a href="#phat-giao-va-xa-hoi" aria-controls="section2" role="tab" data-toggle="tab"><b>Phật Giáo và Xã Hội</b></a></li>
+        		
+        		<li role="presentation"><a href="#phat-hoc" aria-controls="section3" role="tab" data-toggle="tab"><b>Phật Học</b></a></li>
+        		
+        		<li role="presentation"><a href="#hoat-dong-chua-tu-tan" aria-controls="section4" role="tab" data-toggle="tab"><b>Hoạt Động Chùa Từ Tân</b></a></li>
+        	</ul>
+        </nav><!-- site-primary-nav -->
                 
         <nav id="site-intro-nav" class="hidden-xs hidden-sm hidden-md">
         	<?php 
@@ -53,28 +77,24 @@
         		<li class="animated fadeInDown"><a href="<?php echo get_permalink($nav_item3); ?>">Liên hệ</a></li>
         	</ul>
         </nav><!-- site-intro-nav-->
-        
-        <a id="site-primary-nav-trigger" class="visible-xs visible-sm animated fadeInLeft" href="#0">
-        	<span class="cd-menu-text">Danh mục</span><span class="cd-menu-icon"></span>
-        </a> <!-- cd-primary-nav-trigger -->
+     
         
         <div id="site-toolbar" class="animated fadeInRight">
-        	<div class="hidden-xs">
-	        	<a id="login_toolbar" href="#" class="cd-btn" data-toggle="login_wrap" title="<?php 
-	        		if(is_user_logged_in()) {
-	        			global $current_user;
-	        			get_currentuserinfo();
-	        		    echo 'Xin chào, ' . $current_user->user_login;		
-	        		} else {
-	        		    echo 'Đăng nhập | Đăng ký';
-	        		}
-	        	
-	        	
-	        	?>"><i class="fa fa-user"></i></a>
-	        	
-	        	<a id="search_toolbar" href="#" class="cd-btn" data-toggle="search_wrap" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
-	        	<a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-sun-o"></i></a>
-        	</div>
+        	<a id="toolbar-trigger" href="#" class="visible-xs" data-toggle="toolbar_wrap"><span class="toolbar-menu-icon"></span></a>
+        	<a id="login_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="login_wrap" title="<?php 
+        		if(is_user_logged_in()) {
+        			global $current_user;
+        			get_currentuserinfo();
+        		    echo 'Xin chào, ' . $current_user->user_login;		
+        		} else {
+        		    echo 'Đăng nhập | Đăng ký';
+        		}
+        	
+        	
+        	?>"><i class="fa fa-user"></i></a>
+        	
+        	<a id="search_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="search_wrap" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a>
+        	<a href="#" class="cd-btn hidden-xs" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-sun-o"></i></a>
         </div><!-- #site-toolbar -->
         				        
 	</header><!-- #masthead -->
@@ -82,47 +102,6 @@
 
 	<div id="content" class="site-content">
 	
-	<nav>
-		<ul id="site-primary-nav" class="visible-xs visible-sm">
-			<li class="cd-label visible-xs">Tiện ích</li>
-			<li class="visible-xs"><a id="login_toolbar" href="#" class="cd-btn" data-toggle="login_wrap" title="<?php 
-				if(is_user_logged_in()) {
-					global $current_user;
-					get_currentuserinfo();
-				    echo 'Xin chào, ' . $current_user->user_login;		
-				} else {
-				    echo 'Đăng nhập | Đăng ký';
-				}
-			
-			
-			?>"><i class="fa fa-user"></i></a></li>
-			
-			<li class="visible-xs"><a id="search_toolbar" href="#" class="cd-btn" data-toggle="search_wrap" title="Tìm kiếm bài đọc"><i class="fa fa-search"></i></a></li>
-			<li class="visible-xs"><a href="#" class="cd-btn" data-toggle="tab" title="Thông báo và Sự kiện"><i class="fa fa-sun-o"></i></a></li>
-			
-			
-			<li class="cd-label">Chuyên mục</li>
-	 
-			<?php 
-				if(is_user_logged_in()):
-					global $current_user;
-					get_currentuserinfo();
-			 ?>
-			<li class="site-section-nav-item active" role="presentation"><a href="#thu-vien-ca-nhan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b><span class="site-section-nav-avatar"><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
-			<?php endif; ?>
-			
-			<li class="site-section-nav-item <?php if(!is_user_logged_in()) { echo 'active'; }?>" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
-			
-			<li class="site-section-nav-item" role="presentation"><a href="#tin-tuc-phat-su" aria-controls="section1" role="tab" data-toggle="tab"><b>Tin Tức Phật Sự</b><span ><i class="fa fa-newspaper-o"></i></span></a></li>
-			
-			<li class="site-section-nav-item" role="presentation"><a href="#phat-giao-va-xa-hoi" aria-controls="section2" role="tab" data-toggle="tab"><b>Phật Giáo và Xã Hội</b><span ><i class="fa fa-newspaper-o"></i></span></a></li>
-			
-			<li class="site-section-nav-item" role="presentation"><a href="#phat-hoc" aria-controls="section3" role="tab" data-toggle="tab"><b>Phật Học</b><span ><i class="fa fa-newspaper-o"></i></span></a></li>
-			
-			<li class="site-section-nav-item" role="presentation"><a href="#hoat-dong-chua-tu-tan" aria-controls="section4" role="tab" data-toggle="tab"><b>Hoạt Động Chùa Từ Tân</b><span ><i class="fa fa-newspaper-o"></i></span></a></li>
-			
-		</ul>
-	</nav><!-- site-primary-nav -->
 	<div id="login_open">
 		<?php include('tech/ajax-login/login.php'); ?>
 	</div>

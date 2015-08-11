@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 if (!function_exists('curPageURL')) {
 function curPageURL() {
     $pageURL = 'http';
@@ -24,13 +24,13 @@ $blog_url = site_url();
 ?>
 <div id="login_wrapper" class="row is-disabled animated">
 	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
-	<form name="loginform" id="loginform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="login" method="post">
+	<form name="loginform" id="loginform" class="wrapper-is-open col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="login" method="post">
 		<h2>Đăng nhập</h2>
 		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>		
 		  <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
 		  <div class="input-group margin-bottom-sm login_field">
 		  <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
-		  <input class="form-control required" type="text" placeholder="Tên đăng nhập" name="log" id="user_login"  />
+		  <input class="form-control required" type="text" placeholder="Tên đăng nhập" name="log" id="user_login" />
 		</div>
 		<div class="input-group login_field">
 		  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
@@ -40,10 +40,10 @@ $blog_url = site_url();
 		<div class="checkbox hidden-xs hidden-sm">
 			<label>
 				<input name='remember' type='checkbox' id='remember' value="forever" />
-				Ghi nhớ thông tin cho lần đăng nhập sau
+				Ghi nhớ thông tin đăng nhập
 		    </label>
 		</div>
-		<br class="clear hidden-xs hidden-sm"/>
+		<div class="hidden-xs hidden-sm"><br/></div>
 		<div class="submit">
 			<button type="submit" class="btn btn-success">Đăng nhập</button>
 		</div>
@@ -61,7 +61,7 @@ $blog_url = site_url();
 		<div class="row login_tool hidden-md hidden-lg">
 			<div class="btn-group" role="group" aria-label="...">
 			  <button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
-			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Mật khẩu?</span></button>
 			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
 			</div>
 		</div>
@@ -112,7 +112,7 @@ $blog_url = site_url();
 		<div class="row login_tool hidden-md hidden-lg">
 			<div class="btn-group" role="group" aria-label="...">
 			  <button type="button" class="btn btn-default" data-toggle="login"><span><i class="fa fa-coffee fa-fw"></i></span><span>Đăng nhập</span></button>
-			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Quên mật khẩu</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Mật khẩu?</span></button>
 			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
 			</div>
 		</div>

@@ -70,7 +70,7 @@
         $('.docopy-revirew-stars').click(function(){
             count++;
             $('.product_reivew_section').append('<div class="review_section_group">'+
-                                                '<span class="apmag_custom_label">Featured Name: </span>'+
+                                                '<span class="tutannet_custom_label">Featured Name: </span>'+
                                                 '<input style="width: 200px;" type="text" name="product_ratings['+count+'][feature_name]" value="" />'+
                                                 '<select name="product_ratings['+count+'][feature_star]">'+
                                                 '<option value="">Select rating</option>'+

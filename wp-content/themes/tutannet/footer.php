@@ -27,7 +27,7 @@
             if($tutannet_show_footer_switch!='0'){
             if ( is_active_sidebar( 'tutannet-footer-1' ) ||  is_active_sidebar( 'tutannet-footer-2' )  || is_active_sidebar( 'tutannet-footer-3' ) || is_active_sidebar( 'tutannet-footer-4' )  ) : ?>
 			<div class="top-footer footer-<?php echo esc_attr($tutannet_footer_layout); ?>">
-    			<div class="apmag-container">
+    			<div class="tutannet-container">
                     <div class="footer-block-wrapper clearfix">
         				<div class="footer-block-1 footer-block wow fadeInLeft" data-wow-delay="0.5s">
         					<?php if ( is_active_sidebar( 'tutannet-footer-1' ) ) : ?>
@@ -52,12 +52,12 @@
         					<?php endif; ?>	
         				</div>
                     </div> <!-- footer-block-wrapper -->
-                 </div><!--apmag-container-->
+                 </div><!--tutannet-container-->
             </div><!--top-footer-->
         <?php endif; } ?>
         	         
         <div class="bottom-footer clearfix">
-            <div class="apmag-container">
+            <div class="tutannet-container">
             <?php if( $tutannet_sub_footer_switch == 1 ){ ?>
         		<div class="site-info">
                     <?php if( $tutannet_copyright_symbol == 1 ){ ?>

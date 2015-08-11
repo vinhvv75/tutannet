@@ -71,6 +71,7 @@ jQuery(document).ready(function ($) {
     	},
         highlight: function(element) {
             $(element).closest('.input-group').addClass('has-error');
+            
         },
         unhighlight: function(element) {
             $(element).closest('.input-group').removeClass('has-error').addClass('has-success');

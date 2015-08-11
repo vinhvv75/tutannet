@@ -11,7 +11,7 @@
 		<main id="main" class="site-main" role="main">
 
 			<section class="error-404 not-found">
-				<div class="apmag-container">
+				<div class="tut-container">
 					<div class="page-content">
 						<div class="page-404-wrap clearfix">
 							<span class="oops">Thông tin bạn tìm không tồn tại !</span>

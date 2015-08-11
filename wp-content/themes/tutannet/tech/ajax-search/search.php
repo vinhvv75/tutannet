@@ -1,11 +1,3 @@
-<?php
-function search_init(){	
-	
-	
-}
-add_action('init', 'search_init');
-
-?>
 <div id="search_wrapper" class="is-disabled animated">
 	<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/">
 		<div class="row visble-xs is-disabled"></div>
@@ -21,8 +13,8 @@ add_action('init', 'search_init');
 		  </div>
 		  <div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 		</div><!-- /.row -->
-	
 	</form><!-- Search Form -->
+	
 	<form id="searchtagcloudform">
 		<div class="row hidden-xs">
 			<div id="search_tag_cloud" class="row-fluid">

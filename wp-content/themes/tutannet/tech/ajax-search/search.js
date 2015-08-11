@@ -3,9 +3,12 @@ jQuery(document).ready(function($){
 
 // Search Toggle
 $('a[data-toggle="search_wrap"]').click(function() {
+	$('body,html').animate({
+	    scrollTop: 0
+	}, 800);
 	$('#site-header-secondary').addClass('fadeOut');
-	$('#login_wrapper').removeClass('fadeInUp');
-	$('#login_wrapper').addClass('fadeOutDown');
+	$('#login_wrapper').removeClass('fadeIn');
+	$('#login_wrapper').addClass('fadeOut');
 	setTimeout(function(){ 
 		$('#site-header-secondary, #login_wrapper').addClass('is-disabled'); 
 		$('#search_wrapper').removeClass('is-disabled');

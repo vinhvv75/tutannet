@@ -453,7 +453,7 @@ function tutannet_post_meta_cb(){
         echo '<span class="comment_count"><i class="fa fa-comments"></i>'.esc_attr( $post_comment_count ).'</span>';
     }
     if($show_post_views==1){
-        echo '<span class="apmag-post-views"><i class="fa fa-eye"></i>'.esc_html( tutannet_getPostViews(get_the_ID()) ).'</span>';
+        echo '<span class="tutannet-post-views"><i class="fa fa-eye"></i>'.esc_html( tutannet_getPostViews(get_the_ID()) ).'</span>';
     }
 }
 add_action( 'tutannet_post_meta', 'tutannet_post_meta_cb', 10 );

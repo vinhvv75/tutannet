@@ -1153,7 +1153,11 @@ body.boxed-layout {
 		float: left;
 		width: 100%;
 		position: relative;
+<<<<<<< HEAD
 		z-index: -1;
+=======
+		z-index: 1;
+>>>>>>> nightly
 	}
 	
 		

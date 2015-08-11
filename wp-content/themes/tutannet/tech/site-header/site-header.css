@@ -212,7 +212,11 @@ Intro
   height: 300px;
   background-size: cover;
   overflow: hidden;
+<<<<<<< HEAD
   z-index: -1;
+=======
+  z-index: 0;
+>>>>>>> nightly
 }
 #cd-intro img {
 	z-index: 0;
@@ -299,6 +303,7 @@ Intro
 }
 #site-toolbar-trigger:hover, #site-toolbar-trigger:active {
 	color: #fff;
+<<<<<<< HEAD
 }
 #site-toolbar-xs ul {
 	background: none;
@@ -310,6 +315,19 @@ Intro
 	color: rgb(250, 218, 94) !important;
 	padding: 0;
 }
+=======
+}
+#site-toolbar-xs ul {
+	background: none;
+	box-shadow: none;
+	border: none;
+	list-style-type: none;
+}
+#site-toolbar-xs ul li a {
+	color: rgb(250, 218, 94) !important;
+	padding: 0;
+}
+>>>>>>> nightly
 #site-toolbar-xs ul li a:hover {
 	color: #fff;
 }
@@ -337,6 +355,11 @@ Intro
 Secondary Fixed Navigation
 
 -------------------------------- */
+#site-header-secondary {
+	position: relative;
+	z-index: 10;
+}
+
 #site-section-nav {
   position: relative;
   z-index: 10;

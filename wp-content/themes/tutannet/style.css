@@ -4,7 +4,7 @@ Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
 Version: 1.0.0-alpha.3
-Build: 1.0 Nightly 20150811
+Build: 1.0 Nightly 20150813
 GitHub Theme URI: https://github.com/vxvinh/tutannet
 GitHub Branch: master
 */
@@ -340,10 +340,10 @@ Functions
   -o-filter: blur(1px);
   -ms-filter: blur(1px);
   filter: blur(1px);
-  opacity: 0.5;
-  -webkit-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
-  -moz-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
-  transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
+  opacity: 0.6;
+  -webkit-transition: all 0.9s ease-in-out;
+  -moz-transition: all 0.9s ease-in-out;
+  transition: all 0.9s ease-in-out;
 }
 
 /*--------------------------------------------------------------
@@ -517,9 +517,28 @@ body.boxed-layout {
 	 Search css 
 	--------------------------------------------------------------*/
 	
+	#search_wrapper {
+		position: absolute;
+		padding-top: 10em;
+		width: 100%;
+		height: 80%;
+		top: 0;
+		left: 0;
+		z-index: 90;
+	}
+	
+	#search_wrapper h2 {
+		text-transform: capitalize;
+		font: 24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		text-align: center;
+		letter-spacing: 1px;
+		margin-bottom: 10px;
+		margin-top: 0;
+	}
+	
 	#searchform {
-		position: relative;
-		padding-top: 5em;
+		position: absolute;
+		padding-top: 3em;
 	}
 	
 	#searchtagcloudform {
@@ -535,6 +554,8 @@ body.boxed-layout {
 		border: none;
 		border-radius: 0;
 		box-shadow: none;
+		height: 45px;
+		background-color: rgba(255,255,255,0.8);
 	}
 	
 	#searchform input:focus {
@@ -545,10 +566,13 @@ body.boxed-layout {
 		border-radius: 0;
 		border: none;
 		padding: 7px 12px;
+		margin: 0;
+		height: 45px;
+		background-color: rgba(255,255,255,0.8);
 	}
 	
 	#searchform .input-group {
-		border-bottom: 3px solid;
+
 	}
 	
 	#search_tag_cloud {
@@ -585,14 +609,6 @@ body.boxed-layout {
 		text-decoration: none;
 	}
 	
-	#search_wrapper h2 {
-		text-transform: capitalize;
-		font: 24px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-		text-align: center;
-		letter-spacing: 1px;
-		margin-bottom: 10px;
-		margin-top: 0;
-	}
 	
 	#search_tool {
 		text-align: center;
@@ -631,10 +647,9 @@ body.boxed-layout {
 	@media only screen and (min-width: 992px) {
 		#searchform {
 			position: relative;
-			padding-top: 10em;
+			padding-top: 5em;
 		}
 		#searchform	button {
-			background-color: #fff;
 			color: #000;
 		}
 		
@@ -669,7 +684,7 @@ body.boxed-layout {
 		position: fixed;
 		height: 100%;
 		width: 100%;
-		z-index: 97;
+		z-index: 90;
 		padding: 50px 0 0 0;
 		-webkit-backface-visibility: hidden;
 		backface-visibility: hidden;
@@ -688,6 +703,7 @@ body.boxed-layout {
 		letter-spacing: 1px;
 		margin-bottom: 10px;
 		margin-top: 0;
+		color: #fff;
 	}
 	
 	#login_wrapper span.help-block {
@@ -711,6 +727,24 @@ body.boxed-layout {
 	.login_field.has-success .form-control:focus,
 	.login_field.has-error .form-control:focus {
 		box-shadow: none;
+	}
+	
+	.login_field.has-success .form-control {
+		background: #DFF0D8 !important;
+		color: #3C763D !important;
+	}
+	
+	.login_field.has-success .input-group-addon {
+		background: #DFF0D8 !important;
+	}
+	
+	.login_field.has-error .form-control {
+		background: #F2DEDE !important;
+		color: #A94442 !important;
+	}
+	
+	.login_field.has-error .input-group-addon {
+		background: #F2DEDE !important;
 	}
 	
 	#login_wrapper button {
@@ -811,7 +845,7 @@ body.boxed-layout {
 		color: #fff;
 	}
 	
-	#profileform .user_posts {
+	#profileform #user_posts {
 		padding: 10px 0;
 		margin: 20px 0;
 		border-bottom: 1px solid #fff;
@@ -830,7 +864,6 @@ body.boxed-layout {
 			background-color: #fff;
 			height: auto;
 			padding: 10px 40px 40px 40px;
-			border: 1px solid #fff;
 		}
 		#login_wrapper .login_tool button, 
 		#login_wrapper .login_tool .logout_btn {
@@ -864,14 +897,14 @@ body.boxed-layout {
 			font-size: 17px;
 		}
 		#profileform h2 {
-			color: #000;
+			color: #fff;
 		}
 		#profileform .user_role {
-			color: #000;
+			color: #fff;
 		}
-		#profileform .user_posts {
-			border-color: #000;
-			color: #000;
+		#profileform #user_posts {
+			border-color: #fff;
+			color: #fff;
 			font-size: 14px
 		}
 	}
@@ -890,13 +923,14 @@ body.boxed-layout {
 			text-align: center;
 			letter-spacing: 1px;
 			margin-top: 20px;
+			color: #fff;
 		}
 		#login_wrapper span.help-block {
-			color:  #aaa;
+			color:  #fff;
 		}
 		#loginform, #registerform, #lostpasswordform, #profileform {
 			position: relative;
-			background-color: #fff;
+			background-color: transparent;
 			height: 80%;
 			padding: 10px 40px 40px 40px;
 		}
@@ -937,22 +971,27 @@ body.boxed-layout {
 			min-width: 96px !important;
 			min-height: 96px !important;
 		}
-		#profileform .nav a {
+		#login_wrapper .nav a {
 			display: inline-block;
 			padding: 20px 20px 10px 20px;
+			text-decoration: none;
+			color: #fff;
+			opacity: 0.75;
+			transition: opacity 1s;
 		}
-		#profileform .nav a span {
+		#login_wrapper .nav a:hover {
+			opacity: 1;
+			transition: opacity 1s;
+		}
+		#login_wrapper .nav a span {
 			display: block;
 			width: auto;
 		}
-		.login_close {
-			position: absolute;
-			right: 3%;
-			top: 3%;
-			color: #ddd;
+		#login_wrapper .nav a span i.fa-stack-1x {
+			color: #3A4256;
 		}
-		.login_close:hover {
-			color: #D7564C;
+		#login_wrapper .remember {
+			color: #fff;
 		}
 	}
 	
@@ -982,6 +1021,15 @@ body.boxed-layout {
 	
 	.tab-content {
 		padding: 4em 0;
+	}
+	
+	.section-sidebar {
+		padding: 20px 10px !important;
+		margin-top: 20px;
+	}
+	
+	.section-content {
+
 	}
 	
 	.section-name {
@@ -1065,6 +1113,7 @@ body.boxed-layout {
 		color: #4C4C4C;
 		margin-top: 10px;
 	}
+	
 	
 	
 	@media only screen and (min-width: 992px) {
@@ -1203,6 +1252,89 @@ body.boxed-layout {
 		-webkit-transition: all 2s;
 		-o-transition: all 2s;
 		transition: all 2s;
+	}
+	
+	@media only screen and (min-width: 768px) {
+		.block-news .featured-post .post-desc-wrapper {
+			position: absolute;
+			margin-bottom: 40px;
+			margin: 0;
+			padding: 0 0 0 20px;
+			bottom: 10px;
+			text-align: left;
+			width: 80%;
+		}
+		.block-news .featured-post .post-image {
+			border-radius: 5px;
+			background: -moz-linear-gradient(top,  rgba(164,210,216,1) 0%, rgba(137,207,240,0) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(164,210,216,1)), color-stop(100%,rgba(137,207,240,0)));
+			background: -webkit-linear-gradient(top,  rgba(164,210,216,1) 0%,rgba(137,207,240,0) 100%);
+			background: -o-linear-gradient(top,  rgba(164,210,216,1) 0%,rgba(137,207,240,0) 100%);
+			background: -ms-linear-gradient(top,  rgba(164,210,216,1) 0%,rgba(137,207,240,0) 100%);
+			background: linear-gradient(to bottom,  rgba(164,210,216,1) 0%,rgba(137,207,240,0) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4d2d8', endColorstr='#0089cff0',GradientType=0 );			
+			
+		}
+		.block-news .featured-post .post-image img {
+			border-radius: 5px;
+			mix-blend-mode: overlay;
+		}
+		.block-news .featured-post .post-title {
+			margin: 0;
+			font-size: 40px;
+			font-weight: bold;
+		}
+		.block-news .featured-post .post-title a {
+			color: rgba(255,255,255,0.9);
+		}
+		.post-title a:hover {
+			color: #EF5224;
+			text-decoration: none;
+		}
+		.block-poston {
+			margin-bottom: 5px;
+		}
+		.block-poston, 
+		.block-poston span {
+			color: #9B9B9B;
+			font: 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			font-style: normal;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+		}
+		.block-news .featured-post .block-poston {
+			font-weight: bold;
+		}
+		.posted-on.today {
+			color: #F38A6C;
+			font-weight: bold;
+		}
+		.posted-on.new {
+			color: #00AD83;
+		}
+		.tagged_on {
+			padding-left: 5px;
+		}		
+		.tagged_on a {
+			text-decoration: none;
+			color: #004080;
+		}
+		.block-news .featured-post .post-content {
+			color: #fff;
+			margin-top: 10px;
+			font-size: 15px;
+		}
+		.block-news .featured-post .big-image-overlay {
+			
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzdkYjllOCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iIzMyNGE1ZCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+			background: -moz-linear-gradient(top,  rgba(125,185,232,0) 0%, rgba(50,74,93,0) 60%, rgba(0,0,0,1) 100%);
+			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,185,232,0)), color-stop(60%,rgba(50,74,93,0)), color-stop(100%,rgba(0,0,0,1)));
+			background: -webkit-linear-gradient(top,  rgba(125,185,232,0) 0%,rgba(50,74,93,0) 60%,rgba(0,0,0,1) 100%);
+			background: -o-linear-gradient(top,  rgba(125,185,232,0) 0%,rgba(50,74,93,0) 60%,rgba(0,0,0,1) 100%);
+			background: -ms-linear-gradient(top,  rgba(125,185,232,0) 0%,rgba(50,74,93,0) 60%,rgba(0,0,0,1) 100%);
+			background: linear-gradient(to bottom,  rgba(125,185,232,0) 0%,rgba(50,74,93,0) 60%,rgba(0,0,0,1) 100%);
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#007db9e8', endColorstr='#000000',GradientType=0 );
+				}
 	}
 	
 	@media only screen and (min-width: 992px) { 

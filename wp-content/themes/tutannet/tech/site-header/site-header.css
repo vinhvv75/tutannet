@@ -8,26 +8,26 @@ Site Header
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 51px;
   z-index: 97;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: rgba(255, 255, 255, 0.97);
   border-bottom: 1px solid #cacaca;
-  -webkit-transition: 0.2s;
-  -moz-transition: 0.2s;
-  transition: 0.2s;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  transition: 0.6s;
 }
 #site-header.off-canvas { top: -89px; }
 #site-header.fixed { top: 0;}
 #site-header.top { top: 0; background: rgba(255, 255, 255, 0); border-bottom-color: rgba(255,255,255,0); }
-#site-header.is-open { height: 160px; }
+#site-header.is-open { height: 161px; }
 
 @media only screen and (min-width: 768px) {
 	#site-header {
-		height: 70px;
+		height: 71px;
 	}
-	#site-header.is-open { height: 205px; }
+	#site-header.is-open { height: 206px; }
 }
 
 @media only screen and (min-width: 992px) {
@@ -35,6 +35,7 @@ Site Header
   	position: absolute;
     background: transparent;
     box-shadow: none;
+    border: none;
   }
 }
 
@@ -102,6 +103,7 @@ Logo
   left: 15px;
   background: #FF8000;
   position: fixed;
+  z-index: 100;
   width: 80px;
   height: 80px;
   -webkit-transition: 0.6s;
@@ -181,8 +183,8 @@ Logo
 	height: 90px;
 	width: 90px;
   }
-  #site-logo.off-canvas { top: -99px; width: 50px; height: 50px; }
-  #site-logo.fixed { top: 10px; left: 10px; width: 50px; height: 50px;}
+  #site-logo.off-canvas { top: -99px; left: 20px; width: 50px; height: 50px; }
+  #site-logo.fixed { top: 10px; left: 20px; width: 50px; height: 50px;}
   #site-logo.top { top: 20px; left: 20px;  width: 90px; height: 90px;}
   #site-logo .logo-menu-icon {
     left: auto;
@@ -199,6 +201,9 @@ Logo
   	position: absolute;
   	top: 32px;
   	left: 32px;
+  	width: 200px;
+  	height: 200px;
+  	z-index: 100;
   }
   #site-logo.is-hidden {
     /* assign a position fixed and move outside the viewport (on the left) */
@@ -326,21 +331,26 @@ Intro
 Intro
 
 -------------------------------- */
+.header-container {
+	padding: 0 !important;
+	width: 100% !important;
+	margin: 0 !important;
+}
+
 #site-intro {
   position: relative;
-  height: 300px;
   background-size: cover;
   overflow: hidden;
   z-index: 0;
+  background-color: #000;
 }
-#site-intro img {
-	z-index: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	min-width: 100%;
-	min-height: 100%;	
+
+#site-intro-img {
+	-webkit-transition: all 0.9s;
+	-moz-transition: all 0.9s;
+	transition: all 0.9s;
 }
+
 #site-intro #site-intro-tagline {
   width: 90%;
   max-width: 992px;
@@ -358,7 +368,7 @@ Intro
 }
 @media only screen and (min-width: 768px) {
   #site-intro {
-    height: 400px;
+
   }
   #site-intro #site-intro-tagline {
     padding-top: 160px;
@@ -369,20 +379,62 @@ Intro
   }
 }
 @media only screen and (min-width: 992px) {
+  #site-menu {
+  	padding: 20px 10px !important;
+  	margin-top: 20px;
+  }
+  #site-menu > .section-navigation ul li a b {
+  	color: #333;
+  }
+  #site-menu > .section-navigation ul li::before {
+  	border-bottom: 1px solid #f1f1f1 !important;
+  	border-right: none !important;
+  	width: 50% !important;
+  	content: "";
+  	position: absolute;
+  	left: 25%;
+  }
+  #site-menu li a span {
+  	top: -20px !important;
+  }
+  #site-menu .site-section-nav-avatar {
+  	top: -30px !important;
+  }
   #site-intro {
-    height: 600px;
+  	padding-right: 0;
+  	height: 100vh;
+  	min-height: 780px;
   }
   #site-intro #site-intro-tagline {
-    padding-top: 250px;
+    
   }
+  #site-intro-main {
+  	height: 85%;
+  	overflow: hidden;
+  	margin-bottom: 0;
+  }
+  #site-intro-slides {
+  	height: 15%;
+  	overflow: hidden;
+  }
+  #site-intro-main img, #site-intro-slides img {
+  	max-width: 100%;
+  	height: auto;
+  }
+  
 }
 
+/* -------------------------------- 
+
+Toolbar
+
+-------------------------------- */
 .cd-btn {
 	display: inline-block;
 	background-color: transparent;
 	margin-top: 0;
 	margin-left: 0;
-	border-radius: 50%;
+	border-radius: 500px;
 	width: 40px;
 	height: 40px;
 	-webkit-backface-visibility: hidden;
@@ -405,9 +457,7 @@ Intro
   	color: #000 !important;
 }
 #site-toolbar {
-	display: inline-block;
-	position: fixed;
-	top: 0;
+	position: relative;
 	right: 5%;
 	-webkit-animation-delay: 0.5s; 
 	-moz-animation-delay: 0.5s; 
@@ -415,6 +465,7 @@ Intro
 	-webkit-transition: top 0.6s;
 	-moz-transition: top 0.6s;
 	transition: top 0.6s;
+	z-index: 95;
 }
 #site-toolbar.off-canvas { top: -89px; }
 #site-toolbar.fixed { top: 0; }
@@ -495,20 +546,25 @@ Intro
 		font-size: 20px;
 		display: inline-block;
 		padding: 7px;
-		color: rgb(250, 218, 94) !important;
+		color: #FFCE00 !important;
 	}
 	.cd-btn:hover {
-		background-color: rgb(250, 218, 94) !important;
+		background-color: #FFCE00 !important;
 	}
 	.cd-btn:hover i {
 	  	color: #fff !important;
 	}
-	#site-toolbar.fixed { top: -3px; }
+	#site-toolbar { right: 20px; }
+	#site-toolbar.fixed { top: -3px; right: 20px; }
+	#site-toolbar.top { top: -3px; right: 20px; }
 }
 @media only screen and (min-width: 992px) {
   #site-toolbar {
   	position: absolute;
-  	right: 32px;
+  	top: 32px;
+  	right: 5%;
+  	text-align: center;
+  	width: 200px;
   }
   #site-toolbar.is-hidden {
     /* assign a position fixed and move outside the viewport (on the right) */
@@ -527,18 +583,22 @@ Intro
   }
   .cd-btn {
   	display: inline-block;
-  	background-color: #fff;
-  	margin-top: 32px;
-  	margin-left: 1em;
-  	border-radius: 50%;
+  	margin: 0 3%;
+  	border-radius: 500px;
   	width: 40px;
   	height: 40px;
+  	background: #fff;
   	-webkit-backface-visibility: hidden;
   	backface-visibility: hidden;
   	-webkit-font-smoothing: antialiased;
   	-moz-osx-font-smoothing: grayscale;
   	text-align: center;
   	vertical-align: middle;
+  }
+  .cd-btn i {
+  	font-size: 20px;
+  	padding: 10px;
+  	color: #FFCE00;
   }
   #site-toolbar.is-hidden.slide-in .cd-btn {
   	margin-top: 10px;
@@ -596,14 +656,15 @@ Primary Fullscreen Navigation
   list-style-type: none;
 }
 #site-primary-nav a {
-  font-size: 12px;
+  font: normal normal 20px Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
   display: inline-block;
   padding: .2em 1em;
   border-radius: 0.25em;
   -webkit-transition: background 0.2s;
   -moz-transition: background 0.2s;
   transition: background 0.2s;
-  text-transform: uppercase;
+  text-transform: capitalize;
 }
 .no-touch #site-primary-nav a:hover {
 	text-decoration: none;
@@ -659,22 +720,22 @@ Secondary Fixed Navigation
 #site-section-nav ul.is-visible {
   visibility: visible;
 }
-#site-section-nav li a {
+#site-section-nav li a, #site-menu > .section-navigation li a {
   display: block;
   padding: 1.2em;
   color: #f0eee1;
 }
-#section-navigation {
+.section-navigation {
 	text-align: center;
 }
-#section-navigation.is-visible {
+.section-navigation.is-visible {
 	opacity: 1;
 }
-#section-navigation.is-hidden {
+.section-navigation.is-hidden {
 	opacity: 0;
 	display: none;
 }
-#section-navigation ul {
+.section-navigation ul {
 	list-style: none;
 	margin: 0;
 	padding: 0;
@@ -682,12 +743,12 @@ Secondary Fixed Navigation
 	float: none;
 	text-align: center;
 }
-#section-navigation ul li {
+.section-navigation ul li {
 	padding: 12px 0px;
 	position: relative;
 	text-align: center;
 }
-#section-navigation ul li::before {
+.section-navigation ul li::before {
 	border-right-style: solid;
 	border-right-width: 1px;
 	border-right-color: #f1f1f1;
@@ -697,15 +758,15 @@ Secondary Fixed Navigation
 	left: 100%;
 	top: 25%;
 }
-#section-navigation ul li:last-child::before {
+.section-navigation ul li:last-child::before {
 	border: none;
 }
-#section-navigation ul li a {
+.section-navigation ul li a {
 	position: relative;
 	letter-spacing: 1px;
 	text-decoration: none;
 }	
-#section-navigation ul li a b {
+.section-navigation ul li a b {
 	font: bold 12px Georgia, "Times New Roman", Times, serif;
 	color: #f1f1f1;
 	text-transform: uppercase;
@@ -736,12 +797,12 @@ Secondary Fixed Navigation
     height: 100%;
   }
  
-  #site-section-nav ul {
+  #site-section-nav ul{
     /* reset navigation values */
     position: static;
     width: auto;
     max-width: 100%;
-    visibility: visible;
+    visibility: hidden;
     -webkit-transform: scale(1);
     -moz-transform: scale(1);
     -ms-transform: scale(1);
@@ -754,7 +815,7 @@ Secondary Fixed Navigation
     display: inline-block;
     margin-left: -4px;
   }
-  #site-section-nav li a {
+  #site-section-nav li a, #site-menu li a {
     position: relative;
     text-align: center;
     display: block;
@@ -764,14 +825,13 @@ Secondary Fixed Navigation
     -moz-transition: padding 0.2s;
     transition: padding 0.2s;
   }
-  #site-section-nav li a b {
+  #site-section-nav li a b, #site-menu li a b {
     text-transform: uppercase;
-    font-size: 13px;
-    font-size: 0.8125rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: rgba(240, 238, 225, 0.3);
   }
-  #site-section-nav li a span {
+  #site-section-nav li a span, #site-menu li a span {
     position: absolute;
     display: inline-block;
     width: 40px;
@@ -789,7 +849,7 @@ Secondary Fixed Navigation
     -moz-transition: opacity 0.2s;
     transition: opacity 0.2s;
   }
-  #site-section-nav li a span i {
+  #site-section-nav li a span i, #site-menu li a span i {
   	font-size: 30px;
   }
   .site-section-nav-avatar img {
@@ -823,6 +883,9 @@ Secondary Fixed Navigation
     top: 0;
     height: 70px;
     width: 100%;
+  }
+  #site-section-nav.is-fixed > #site-section-nav ul {
+  	visibility: visible;
   }
   #site-section-nav.repainted {
     background: rgba(51, 41, 36, 0.96);

@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
 		        'slow');
 		var section_title = document.getElementById('section-title');
 		section_title.innerHTML = ($(this).find('b').html());
-		block_index = $('#section-navigation ul').find($(this).parent()).index();
+		block_index = $('.section-navigation ul').find($(this).parent()).index();
 		block_cat_name = $('.section-name')[block_index];
 	});
 	
@@ -37,7 +37,7 @@ jQuery(document).ready(function($){
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo, #site-toolbar, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-toolbar, #site-intro-nav').removeClass('is-hidden');				
+		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-intro-nav').removeClass('is-hidden');				
 		
 		//on desktop - fix secondary navigation on scrolling
 		if($(window).scrollTop() > secondaryNavTopPosition && $(window).width() >= 992  ) {
@@ -62,7 +62,6 @@ jQuery(document).ready(function($){
 			setTimeout(function() {
 	            secondaryNav.addClass('animate-children');
 	            $('#site-logo').addClass('slide-in');
-				$('#site-toolbar').addClass('slide-in');
 	        }, 50);
 		} else {
 			secondaryNav.removeClass('is-fixed');
@@ -76,7 +75,6 @@ jQuery(document).ready(function($){
 			setTimeout(function() {
 	            secondaryNav.removeClass('animate-children');
 	            $('#site-logo').removeClass('slide-in');
-				$('#site-toolbar').removeClass('slide-in');
 	        }, 50);
 		}
 		
@@ -99,13 +97,13 @@ jQuery(document).ready(function($){
 		      }     
 		      
 		      if (scrolled <= headerHeight) {
-		      	$('#site-header, #site-logo').addClass('top');
+		      	$('#site-header, #site-logo, #site-toolbar').addClass('top');
 		      	$('#site-header').removeClass('is-open');
 		      	if( $('#site-primary-nav').hasClass('is-visible') ) {
 		      		$('#site-toolbar').addClass('is-disabled'); 
 		      	} else { $('#site-toolbar').removeClass('is-disabled'); }
 		      } else { 
-		      	$('#site-header, #site-logo').removeClass('top');
+		      	$('#site-header, #site-logo, #site-toolbar').removeClass('top');
 		      	$('#site-primary-nav').removeClass('is-visible');
 		      }
 		      scroll = $(document).scrollTop(); 
@@ -117,7 +115,7 @@ jQuery(document).ready(function($){
 	
 		secondaryNav
 		  .mouseenter(function() {
-		    if ( $('#section-navigation').hasClass('is-hidden') 
+		    if ( $('.section-navigation').hasClass('is-hidden') 
 		    	&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
 		    { setTimeout(function(){updateSectionNav(false);},100); }
 		  })
@@ -130,11 +128,11 @@ jQuery(document).ready(function($){
 	
 	function updateSectionNav(status) {
 		if (status) {
-			$('#section-navigation').addClass('is-hidden');
+			$('.section-navigation').addClass('is-hidden');
 			$('#section-title').removeClass('is-hidden');
 			$('#section-title').addClass('fadeIn');
 		} else {
-			$('#section-navigation').removeClass('is-hidden');
+			$('.section-navigation').removeClass('is-hidden');
 			$('#section-title').addClass('is-hidden');
 			$('#section-title').removeClass('fadeIn');
 		}
@@ -161,7 +159,6 @@ jQuery(document).ready(function($){
 			$('#site-logo').toggleClass('top'); 
 			$('#site-header').toggleClass('is-open'); 
 		}
-		$('.logo-menu-icon').toggleClass('is-clicked');		
 		
 		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
 		if( $('#site-primary-nav').hasClass('is-visible') ) {
@@ -179,6 +176,12 @@ jQuery(document).ready(function($){
 	//open/close toolbar wrapper
 	$('#toolbar-trigger').on('click', function(){
 		$('.toolbar-menu-icon').toggleClass('is-clicked');
+	});
+	
+	$('a[data-toggle="test"]').on('click', function(){
+		console.log('true');
+		$('#site-menu').toggleClass('col-md-2 col-lg-2').toggleClass('col-md-4 col-lg-4');
+		$('#site-intro').toggleClass('col-md-10 col-lg-10').toggleClass('col-md-8 col-lg-8');
 	});
 	
 	

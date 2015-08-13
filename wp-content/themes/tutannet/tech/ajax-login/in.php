@@ -10,7 +10,7 @@
 		?>
 		<div class="profile_avatar"><?php echo get_avatar( $current_user->ID ); ?></div>
 		<h2><?php echo $current_user->user_login; ?></h2>
-		<div class="user_role">
+		<div class="user_role"><span>
 		<?php 
 			$user_role = $current_user->roles[0];
 			$user_role_name =''; 
@@ -19,9 +19,9 @@
 			else if ($user_role == 'contributor') {$user_role_name = 'Cộng tác viên';}
 			else if ($user_role == 'subscriber') {$user_role_name = 'Thành viên';}  
 			echo $user_role_name;?>
-		</div>
+		</span></div>
 		<?php if ($user_role != 'subscriber'): ?>
-		<div class="user_posts">
+		<div id="user_posts">
 		<?php 
 			$user_post_count = count_user_posts( $current_user->ID , 'post');
 			echo '<span>Bạn đã đăng <b>'.$user_post_count.'</b> bài.</span><br/>';
@@ -38,15 +38,23 @@
 		?>		
 		<div class="nav hidden-xs hidden-sm">
 			<a href="<?php echo $profilelink; ?>">
-			<span class="fa-stack fa-lg">
-			  <i class="fa fa-circle fa-stack-2x"></i>
-			  <i class="fa fa-briefcase fa-stack-1x fa-inverse"></i>
-			</span><span>Quản Trị</span></a>
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-briefcase fa-stack-1x"></i>
+				</span><span>Quản Trị</span>
+			</a>
 			<a href="<?php echo $redto; ?>">
-			<span class="fa-stack fa-lg">
-			  <i class="fa fa-circle fa-stack-2x"></i>
-			  <i class="fa fa-eject fa-stack-1x fa-inverse"></i>
-			</span><span>Đăng xuất</span></a>
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-eject fa-stack-1x"></i>
+				</span><span>Đăng xuất</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
 		</div>
 				
 		<div class="row login_tool hidden-md hidden-lg">
@@ -56,12 +64,6 @@
 			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
 			</div>
 		</div>
-		<a class="login_close animated is-disabled hidden-xs hidden-sm" data-toggle="login_close" href="#">
-			<span class="fa-stack fa-sm">
-		  		<i class="fa fa-circle fa-stack-2x"></i>
-		  		<i class="fa fa-close fa-stack-1x fa-inverse"></i>
-			</span>
-		</a>
 	</div>
 	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 </form>

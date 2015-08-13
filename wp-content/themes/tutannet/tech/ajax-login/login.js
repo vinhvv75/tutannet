@@ -2,7 +2,8 @@ jQuery(document).ready(function($){
 
 // Login Toggle
 $('a[data-toggle="login_wrap"]').click(function() {
-	$('#login_wrapper').removeClass('is-disabled fadeOut').addClass('fadeIn');
+	$('#site-intro-img').addClass('is-blurred');
+	$('#login_wrapper').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
 	$('#site-header-secondary, #search_wrapper').addClass('is-disabled fadeOut');
 	var login = $('#login_wrapper').find('#loginform');
 	if(login.length != 0) { $('a[data-toggle="login"]').click(); } 
@@ -50,8 +51,9 @@ $('button[data-toggle="admin"]').click(function(){
 });
 
 $('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(function(){
+	$('#site-intro-img').removeClass('is-blurred');
 	$('#profileform, #loginform, #registerform, #lostpasswordform').addClass('fadeOutDown');
-	$('#login_wrapper').removeClass('fadeIn').addClass('fadeOut');
+	$('#login_wrapper').removeClass('fadeInUp').addClass('fadeOutDown');
 	$('#site-header-secondary').removeClass('is-disabled fadeOut');
 	setTimeout(function(){ 
 		$('#login_wrapper, #profileform, #loginform, #registerform, #lostpasswordform').addClass('is-disabled');
@@ -59,14 +61,6 @@ $('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(funct
 	}, 400 );
 });
 
-$('#loginform, #registerform, #lostpasswordform, #profileform').mouseenter(function(){
-	var login_close = $(this).find('.login_close')
-	$(login_close).removeClass('is-disabled fadeOut').addClass('fadeIn');
-}).mouseleave(function(){
-	var login_close = $(this).find('.login_close')
-	$(login_close).removeClass('fadeIn').addClass('fadeOut');
-	setTimeout(function(){ $(login_close).addClass('is-disabled'); }, 200);	
-});
 
 function getBaseUrl() {
     var re = new RegExp(/^.*\//);

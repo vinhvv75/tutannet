@@ -261,7 +261,8 @@ function tutannet_scripts() {
     
     /*** TuTanNet JS ***/
     wp_enqueue_script( 'tutannet-scripts', get_template_directory_uri() . '/js/tutannet-scripts.js', array('jquery'), '1.0' );
-    wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery'), '1.0' );
+    wp_enqueue_script( 'tutannet-color-scripts', get_template_directory_uri() . '/js/color.js', array('jquery','tinycolor','color-thief'), '1.0' );
+    wp_enqueue_script( 'tutannet-time-scripts', get_template_directory_uri() . '/js/time.js', array('jquery','suncalc'), '1.0' );
     
     /*** Tech ***/
     // instant-article
@@ -291,7 +292,16 @@ function tutannet_scripts() {
 	wp_enqueue_style( 'fontawesome-font', get_template_directory_uri() . '/lib/font-awesome-4.4.0/font-awesome.min.css' );
 	
 	// color-thief-2.0
+	wp_register_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js' );
 	wp_enqueue_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js', array(jquery), '2.0' );
+	
+	// tinycolor 1.1.2
+	wp_register_script( 'tinycolor', get_template_directory_uri() . '/lib/tinycolor.js');
+	wp_enqueue_script( 'tinycolor', get_template_directory_uri() . '/lib/tinycolor.js', array('jquery'), '1.1.2');
+	
+	// suncalc
+	wp_register_script('suncalc', get_template_directory_uri() . '/lib/suncalc.js');
+	wp_enqueue_script( 'suncalc', get_template_directory_uri() . '/lib/suncalc.js', array('jquery'));
 	
 	// jetpack tiled-gallery
 	wp_enqueue_style( 'jetpack-tiled-gallery', get_template_directory_uri() . '/tech/tiled-gallery/tiled-gallery.css' );

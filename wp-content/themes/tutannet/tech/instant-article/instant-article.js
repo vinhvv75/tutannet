@@ -7,12 +7,10 @@ jQuery(document).ready(function($){
 	var gallery = $('.cd-gallery'),
 		foldingPanel = $('.cd-folding-panel'),
 		mainContent = $('.cd-main'),
-		article_start, article_time, page_start, page_time,
+		article_start, article_time,
 		post_id, post_url,
 		autosave_mode = 'all';	
 		
-		console.log('Loading Page ...');
-		page_start = new Date().getTime();
 	/* open folding content */
 	gallery.on('click', 'a', function(event){
 		console.log('Loading "' + $(this).attr('post-title') + '"');
@@ -104,18 +102,7 @@ jQuery(document).ready(function($){
 		return window.getComputedStyle(document.querySelector('.cd-main'), '::before').getPropertyValue('content').replace(/"/g, "").replace(/'/g, "");
 	}
 	
-	$(window).load(function($){
-		var page_end = new Date().getTime();
-		page_time = (page_end - page_start)/1000;
-		console.log('Time page loaded:', page_time, 'second(s)');
-		console.log('----------------------------------------');
-		
-		if (page_time < 60) {
-//			var articleList = queryArticles(section,autosave_mode);
-//			$.when(articleList).done(function(){autoSaveArticleList(articleList);});
-		}
-	});
-});
+}); // End
 
 
 

@@ -40,7 +40,7 @@ $blog_url = site_url();
 		<div class="checkbox hidden-xs hidden-sm">
 			<label>
 				<input name='remember' type='checkbox' id='remember' value="forever" />
-				Ghi nhớ thông tin đăng nhập
+				<span class="remember">Ghi nhớ thông tin đăng nhập</span>
 		    </label>
 		</div>
 		<div class="hidden-xs hidden-sm"><br/></div>
@@ -52,11 +52,24 @@ $blog_url = site_url();
 		<input type='hidden' name='redirect_to' value='<?php echo $redirect; ?>' />
 		<input type='hidden' name='testcookie' value='1' />
 		<div class="nav hidden-xs hidden-sm">
-		<a data-toggle="register" href="#"><span class="fa-stack fa-lg">
-		  <i class="fa fa-circle fa-stack-2x"></i>
-		  <i class="fa fa-flag fa-stack-1x fa-inverse"></i>
-		</span>Đăng ký thành viên</a><span> | </span>
-		<a data-toggle="lostpass" href="#">Quên mật khẩu ?</a>
+			<a data-toggle="register" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-flag fa-stack-1x"></i>
+				</span><span>Đăng ký</span>
+			</a>
+			<a data-toggle="lostpass" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-lock fa-stack-1x"></i>
+				</span><span>Mật khẩu?</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
 		</div>
 		<div class="row login_tool hidden-md hidden-lg">
 			<div class="btn-group" role="group" aria-label="...">
@@ -102,12 +115,24 @@ $blog_url = site_url();
 		</div>
 		<br class="clear"/>
 		<div class="nav hidden-xs hidden-sm">
-		<a data-toggle="login" href="#"><span class="fa-stack fa-lg">
-		  <i class="fa fa-circle fa-stack-2x"></i>
-		  <i class="fa fa-coffee fa-stack-1x fa-inverse"></i>
-		</span>Đăng nhập thành viên</a><span> |
-		</span>
-		<a data-toggle="lostpass" href="#">Quên mật khẩu ?</a>
+			<a data-toggle="login" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-coffee fa-stack-1x"></i>
+				</span><span>Đăng nhập</span>
+			</a>
+			<a data-toggle="lostpass" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-lock fa-stack-1x"></i>
+				</span><span>Mật khẩu?</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
 		</div>
 		<div class="row login_tool hidden-md hidden-lg">
 			<div class="btn-group" role="group" aria-label="...">
@@ -139,19 +164,24 @@ $blog_url = site_url();
 		</div>
 		<br class="clear"/>
 		<div class="nav hidden-xs hidden-sm">
-		<a data-toggle="login" href="#" class="login_field">
-			<span class="fa-stack fa-lg">
-		  		<i class="fa fa-circle fa-stack-2x"></i>
-		  		<i class="fa fa-coffee fa-stack-1x fa-inverse"></i>
-			</span>Đăng nhập thành viên
-		</a>
-		<br class="clear"/>
-		<a data-toggle="register" href="#">
-			<span class="fa-stack fa-lg">
-		  		<i class="fa fa-circle fa-stack-2x"></i>
-		  		<i class="fa fa-flag fa-stack-1x fa-inverse"></i>
-			</span>Đăng ký thành viên
-		</a>
+			<a data-toggle="login" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-coffee fa-stack-1x"></i>
+				</span><span>Đăng nhập</span>
+			</a>
+			<a data-toggle="register" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-flag fa-stack-1x"></i>
+				</span><span>Đăng ký</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
 		</div>
 		<div class="row login_tool hidden-md hidden-lg">
 			<div class="btn-group" role="group" aria-label="...">
@@ -160,12 +190,6 @@ $blog_url = site_url();
 			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
 			</div>
 		</div>
-		<a class="login_close animated is-disabled hidden-xs hidden-sm" data-toggle="login_close" href="#">
-			<span class="fa-stack fa-sm">
-		  		<i class="fa fa-circle fa-stack-2x"></i>
-		  		<i class="fa fa-close fa-stack-1x fa-inverse"></i>
-			</span>
-		</a>
 	</form><!-- Lost Password Form -->	
 	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 </div>

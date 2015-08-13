@@ -163,7 +163,7 @@ function define_default_categories() {
 		)
 	);
 	wp_insert_term(
-		'Ban Hộ niệm Chùa',
+		'Ban Hộ Niệm Chùa',
 		'category',
 		array(
 		  'description'	=> '',
@@ -646,9 +646,9 @@ function tutannet_gallery_post() {
   	
   	$count_users = count_users();
   	
-  	$content = '<h4>Mời bạn gia nhập<br/>Vườn Hoa Phật Pháp ChuaTuTan.net</h4>';
+  	$content = '<h4>Mời bạn gia nhập<br/>ChuaTuTan.net</h4>';
   	if ($count_users >= 100) {
-  		$content .= '<p>Hãy đồng hành với <b>'. $count_users['total_users'] .'</b> Phật tử. Cùng trải nghiệm sâu sắc với <b>'. $published_posts .'</b> bài phát hành. Và theo dõi các bài đăng sắp tới.</p>';
+  		$content .= '<p>Hãy đồng hành với <b>'. $count_users['total_users'] .'</b> thành viên. Cùng trải nghiệm sâu sắc với <b>'. $published_posts .'</b> bài phát hành. Và theo dõi các bài đăng sắp tới.</p>';
   	} else {
   	
   	}

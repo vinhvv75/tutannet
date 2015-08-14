@@ -340,11 +340,14 @@ Functions
   -o-filter: blur(1px);
   -ms-filter: blur(1px);
   filter: blur(1px);
-  opacity: 0.6;
+  opacity: 0.8;
   -webkit-transition: all 0.9s ease-in-out;
   -moz-transition: all 0.9s ease-in-out;
   transition: all 0.9s ease-in-out;
 }
+
+::-moz-selection { background: rgb(250, 218, 94); color: #000; }
+::selection { background: rgb(250, 218, 94); color: #000; }
 
 /*--------------------------------------------------------------
 Infinite scroll
@@ -556,10 +559,21 @@ body.boxed-layout {
 		box-shadow: none;
 		height: 45px;
 		background-color: rgba(255,255,255,0.8);
+		-webkit-transition: all 0.4s;
+		-moz-transition: all 0.4s;
+		transition: all 0.4s;
 	}
 	
 	#searchform input:focus {
 		box-shadow: none;
+		background-color: rgba(255,255,255,1);
+		-webkit-transition: all 0.4s;
+		-moz-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+	
+	#searchform input:focus .input-group .input-group-btn button {
+		background-color: #fff;
 	}
 	
 	#searchform	button {
@@ -569,6 +583,16 @@ body.boxed-layout {
 		margin: 0;
 		height: 45px;
 		background-color: rgba(255,255,255,0.8);
+		font-size: 20px;
+		-webkit-transition: all 0.4s;
+		-moz-transition: all 0.4s;
+		transition: all 0.4s;
+	}
+	
+	#searchform button:hover {
+		-webkit-transition: all 0.4s;
+		-moz-transition: all 0.4s;
+		transition: all 0.4s;
 	}
 	
 	#searchform .input-group {
@@ -594,26 +618,28 @@ body.boxed-layout {
 	}
 	
 	#search_tag_cloud li a {
-		margin: 3px;
-		margin-top: 5px;
+		margin: 5px 3px 5px;
 		padding: 4px 8px;
-		border-radius: 5px;
-		border: 2px solid rgba(255,255,255,0.6);
+		border-radius: 3px;
 		font: 10px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 		text-transform: uppercase;
 		position: relative;
 		display: inline-block;
+		transition: all 0.5s ease-in-out;
+		color: #000;
+		background: #FDF7F0;
 	}
 	
 	#search_tag_cloud li a:hover {
 		text-decoration: none;
+		transition: all 0.5s ease-in-out;
 	}
 	
 	
 	#search_tool {
 		text-align: center;
 		position: absolute;
-		bottom: 2%;
+		bottom: 1%;
 		width: 100%
 	}
 	
@@ -623,11 +649,6 @@ body.boxed-layout {
 		position: relative;
 		background-color: transparent;
 		color: #fff;
-	}
-	
-	#search_tool button:hover {
-		color: #fff;
-		background-color: transparent;
 	}
 	
 	#search_tool button span {
@@ -962,7 +983,7 @@ body.boxed-layout {
 			margin-top: 0;
 		}
 		#profileform .profile_avatar {
-			border-color: #cacaca;
+			border-color: #fff;
 			margin-top: 20px;
 		}
 		#profileform .profile_avatar .avatar {

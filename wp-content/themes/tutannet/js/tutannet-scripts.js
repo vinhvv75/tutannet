@@ -84,8 +84,12 @@ $(".first-block .rightposts-wrapper .blockposts-wrapper .post-title a").hover(fu
 
 
 
-// remove tooltips
-window.onload = function() { var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } }
+
+window.onload = function() { 
+	// remove tooltips
+	var alinks = document.getElementsByTagName("a"); for (var i = 0; i < alinks.length; i++) { alinks[i].removeAttribute("title"); } 	
+}
+
 
 
 

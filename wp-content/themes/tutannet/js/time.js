@@ -5,23 +5,21 @@
 
 jQuery(document).ready(function($){
 
-getLocation();
+var options = {
+  	enableHighAccuracy: true,
+  	timeout: 5000,
+  	maximumAge: 0
+};
+
+navigator.geolocation.getCurrentPosition(sunCalc, error, options);
 
 }); // End
 
 
-
-function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(sunCalc);
-    } else { 
-        console.log('Geolocation is not supported by this browser.');
-    }
-}
-
 function sunCalc(position) {
-	var times = SunCalc.getTimes(new Date(), position.coords.latitude, position.coords.longitude);
-		moon = SunCalc.getMoonIllumination(new Date()),
+	var today = new Date();
+		times = SunCalc.getTimes(today, position.coords.latitude, position.coords.longitude);
+		moon = SunCalc.getMoonIllumination(today),
 		moonPhase = '';
 	
 	if (moon['phase'] == 0) {
@@ -36,7 +34,7 @@ function sunCalc(position) {
 	else if (moon['phase'] > 0.25 && moon['phase'] < 0.5)  {
 		moonPhase = 'Waxing Gibbous';
 	}
-	else if (moon['phase'] == 0.5)  {
+	else if (moon['phase'] == 0.5 || moon['phase'] == 1)  {
 		moonPhase = 'Full Moon';
 	}
 	else if (moon['phase'] > 0.5 && moon['phase'] < 0.75)  {
@@ -51,14 +49,18 @@ function sunCalc(position) {
 	
 	
 	console.log('  /********************/\n /    Sun Analysis    /\n/********************/');
-	console.log('Now is ', new Date().toLocaleString());
 	console.log('You are at ' + position.coords.latitude + 'N ' + position.coords.longitude + 'E');
+	console.log('Now is ' + today.toLocaleString());
 	console.log('Sunrise starts at ' + times['sunrise'].getHours() +  ':' + times['sunrise'].getMinutes());
 	console.log('Sunset starts at ' + times['sunsetStart'].getHours() +  ':' + times['sunsetStart'].getMinutes());
 	console.log('Night starts at ' + times['night'].getHours() +  ':' + times['night'].getMinutes());
-	console.log('Tonight is ' + moonPhase);
+	console.log('Tonight Moon is ' + moonPhase);
 	console.log('\n');
 }
+
+function error(err) {
+  console.warn('ERROR(' + err.code + '): ' + err.message);
+};
 
 function isDay() {
 	var hr = (new Date()).getHours();

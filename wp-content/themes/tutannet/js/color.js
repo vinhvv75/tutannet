@@ -5,13 +5,16 @@
 
 jQuery(document).ready(function($){
 
-colorThief = new ColorThief();
+
 var 
 	//** Elements **//
+	
+	// site-intro
 	BGContainer = document.getElementById('site-intro'),
 	sectionItem = document.getElementsByClassName('site-section-nav-item'),
 	textSectionItem = $(sectionItem).find('b'),
 	iconSectionItem = $(sectionItem).find('i'),
+	IntroSlides = document.getElementById('site-intro-slides'),
 
 	introNav = document.getElementById('site-intro-nav'),
 	textIntroNav = $(introNav).find('a'),
@@ -28,33 +31,45 @@ var
 	textSearchTagCloud = $(searchTagCloud).find('a'),
 	searchForm = document.getElementById('searchform'),
 	inputGroupSearchForm = $(searchForm).find('.input-group'),
+	inputSearchForm = document.getElementById('inputSearchForm');
 	iconSearchForm = document.getElementById('iconSearchForm'),
 	buttonSearchForm = document.getElementById('buttonSearchForm'),
 
 
-
+	colorThief = new ColorThief(),
 	bgFull = colorThief.getColor(document.getElementById('site-intro-img')),
 	bgFulltoString = 'rgb(' + bgFull[0] + ',' + bgFull[1] + ',' + bgFull[2] + ')',
 	
 	//** Colors **//
 	primaryColor = tinycolor(bgFulltoString),
+	
+	lightenColor30 = primaryColor.lighten(30).toHexString(),
+	darkenColor30 = primaryColor.darken(30).toHexString(),
+	
 	tetrad = primaryColor.tetrad(),
 	tetradColors = tetrad.map(function(t) { return t.toHexString(); }),
 	
-	mostReadable = tinycolor.mostReadable(primaryColor, tetradColors,{includeFallbackColors:false,level:"AAA",size:"small"}).toHexString();
+	analogous = primaryColor.analogous(),
+	analogousColors = analogous.map(function(t) { return t.toHexString(); }),
 	
-	mostReadableFallback = tinycolor.mostReadable(primaryColor, tetradColors,{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString()
-		
+	mostReadable = tinycolor.mostReadable(primaryColor, tetradColors,{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString(),
+	mostReadableTetrad = tinycolor.mostReadable(primaryColor, tetradColors,{includeFallbackColors:false,level:"AAA",size:"small"}).toHexString(),	
+	mostReadableAnalogous = tinycolor.mostReadable(primaryColor, analogousColors,{includeFallbackColors:false,level:"AAA",size:"small"}).toHexString()
 	
 	
 	;
 	
 	
 	console.log('  /********************/\n /   Color Analysis   /\n/********************/');
-	console.log('Primary color:', primaryColor.toHexString());
-	console.log('Tetrad colors: ' + tetradColors[0] + ' ' + tetradColors[1] + ' ' + tetradColors[2] + ' ' + tetradColors[3]);
-	console.log('Most readable without fallback:', tinycolor.mostReadable(primaryColor, tetradColors,{includeFallbackColors:false,level:"AAA",size:"small"}).toHexString() );
-	console.log('Most readable with FALLBACK:', tinycolor.mostReadable(primaryColor, tetradColors,{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString() );
+	console.log('Primary Color: ' + primaryColor.toHexString());
+	console.log('Lighten Color (30): ' + lightenColor30);
+	console.log('Darken Color (30): ' + darkenColor30);
+	console.log('Tetrad Colors: ' + tetradColors[0] + ' ' + tetradColors[1] + ' ' + tetradColors[2] + ' ' + tetradColors[3]);
+	console.log('Analogous Colors: ' + analogousColors[0] + ' ' + analogousColors[1] + ' ' + analogousColors[2] + ' ' + analogousColors[3] + ' ' + analogousColors[4] + ' ' + analogousColors[5]);
+	
+	console.log('Most Readable with Fallback:', mostReadable);
+	console.log('Most Readable in Tetrad:', mostReadableTetrad);
+	console.log('Most Readable in Analogous:', mostReadableAnalogous);
 	console.log('\n');
 	
 
@@ -71,32 +86,35 @@ var
 //    textIntroNav[i].style.color = colorBgFull2;
 //}
 //
+
+// paint site intro
+IntroSlides.style.backgroundColor = lightenColor30;
+
 // paint search wrap
-//iconSearchForm.style.color = secondaryColor;  
-//$(buttonSearchForm).hover(function(){
-//	  iconSearchForm.style.color = textSecondaryColor;
-//      $(this).css({"background-color": secondaryColor});
-//      }, function(){
-//      iconSearchForm.style.color = secondaryColor;
-//      $(this).css({"background-color": "rgba(255,255,255,0.8"});
-//      
-//});
-//for (var i=0;i<textSearchTagCloud.length; i++) {
-//    textSearchTagCloud[i].style.color = colorBgFull2;
-//    textSearchTagCloud[i].style.borderColor = borderColor;    
-//}
-//$(textSearchTagCloud).hover(function(){
-//      $(this).css({"color": textSecondaryColor, "background-color": secondaryColor, "border-color": secondaryColor});
-//      }, function(){
-//      $(this).css({"color": colorBgFull2, "background-color": "transparent", "border-color": borderColor});
-//});
+var secondaryColor;
+(mostReadable == "#ffffff") ? secondaryColor = lightenColor30 : secondaryColor = mostReadableAnalogous;
+
+iconSearchForm.style.color = secondaryColor;
+$(textSearchTagCloud).hover(function(){
+      $(this).css({"color": mostReadable, "background-color": secondaryColor});
+      }, function(){
+      $(this).css({"color": "#000000", "background-color": "#FDF7F0"});
+});
+
+inputSearchForm.addEventListener("focus", function(){ 
+	$(buttonSearchForm).css({"background-color": "rgba(255,255,255,1"}); 
+});
+inputSearchForm.addEventListener("blur", function(){ 
+	$(buttonSearchForm).css({"background-color": "rgba(255,255,255,0.8"});
+});
 
 
 // paint login wrap
 for (var i=0;i<iconLoginWrap.length; i++) {
     iconLoginWrap[i].style.color = primaryColor;
 }
-BGContainer.style.backgroundColor = primaryColor;
+(mostReadable == "#000000") ? 
+BGContainer.style.backgroundColor = darkenColor30 : document.getElementById('site-intro-img').style.opacity = "1";
                 
       
 

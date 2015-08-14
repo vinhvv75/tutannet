@@ -5,6 +5,7 @@ $('a[data-toggle="login_wrap"]').click(function() {
 	$('#site-intro-img').addClass('is-blurred');
 	$('#login_wrapper').removeClass('is-disabled fadeOutDown').addClass('fadeInUp');
 	$('#site-header-secondary, #search_wrapper').addClass('is-disabled fadeOut');
+	$('#site-logo').addClass('small');
 	var login = $('#login_wrapper').find('#loginform');
 	if(login.length != 0) { $('a[data-toggle="login"]').click(); } 
 	else { $('a[data-toggle="profile"]').click(); }
@@ -58,7 +59,8 @@ $('button[data-toggle="login_close"], a[data-toggle="login_close"]').click(funct
 	setTimeout(function(){ 
 		$('#login_wrapper, #profileform, #loginform, #registerform, #lostpasswordform').addClass('is-disabled');
 		$('#site-header-secondary').addClass('fadeIn');
-	}, 400 );
+		$('#site-logo').removeClass('small');
+	}, 500 );
 });
 
 

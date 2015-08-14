@@ -106,6 +106,7 @@ Logo
   z-index: 100;
   width: 80px;
   height: 80px;
+  border-radius: 500px;
   -webkit-transition: 0.6s;
   -moz-transition: 0.6s;
   transition: 0.6s;
@@ -113,6 +114,7 @@ Logo
 #site-logo.off-canvas { top: -89px; left: 5px; width: 40px; height: 40px; }
 #site-logo.fixed { top: 5px; left: 5px; width: 40px; height: 40px;}
 #site-logo.top { top: 15px; left: 15px;  width: 80px; height: 80px;}
+#site-logo.small { width: 80px; height: 80px;}
 #site-logo img {
   display: block;
 }
@@ -342,7 +344,6 @@ Intro
   background-size: cover;
   overflow: hidden;
   z-index: 0;
-  background-color: #000;
 }
 
 #site-intro-img {
@@ -417,11 +418,19 @@ Intro
   	height: 15%;
   	overflow: hidden;
   }
-  #site-intro-main img, #site-intro-slides img {
+  #site-intro-slides img {
   	max-width: 100%;
   	height: auto;
   }
+  #site-intro-main img {
+	min-width: 100%;
+	height: auto;
+  }
   
+  .fullHeight {
+    height: 100%;
+  	min-height: 100% !important;
+  }
 }
 
 /* -------------------------------- 
@@ -443,6 +452,9 @@ Toolbar
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	vertical-align: middle;
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
 }
 .cd-btn i {
 	font-size: 20px;
@@ -452,6 +464,9 @@ Toolbar
 }
 .cd-btn:hover {
 	background-color: transparent !important;
+	-webkit-transition: all 0.4s;
+	-moz-transition: all 0.4s;
+	transition: all 0.4s;
 }
 .cd-btn:hover i {
   	color: #000 !important;
@@ -852,8 +867,10 @@ Secondary Fixed Navigation
   #site-section-nav li a span i, #site-menu li a span i {
   	font-size: 30px;
   }
+
   .site-section-nav-avatar img {
   	border-radius: 500px;
+  	border: 1px solid #FFCE00;
   	width: 100%;
   	height: 100%;
   }

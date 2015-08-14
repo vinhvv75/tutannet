@@ -155,7 +155,7 @@
 			    	   <?php 
 			    	   	if(is_user_logged_in()):
 			    	    ?>
-			    	   <li class="active" role="presentation"><a href="#thu-vien-ca-nhan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b><span class="site-section-nav-avatar"><?php echo get_avatar( $current_user->ID ); ?></span></a></li>
+			    	   <li class="active" role="presentation"><a href="#thu-vien-ca-nhan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Thư Viện Cá Nhân</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
 			    	   <?php endif; ?>
 			    	   
 			    	   <li class="<?php if(!is_user_logged_in()) { echo 'active'; }?>" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab"><b>Tổng Quan</b><span><i class="fa fa-newspaper-o"></i></span></a></li>
@@ -200,7 +200,7 @@
 		    	<?php include('tech/ajax-login/login.php'); ?>
 		    	<?php include('tech/ajax-search/search.php'); ?>
 		    	<div id="site-intro-slides" class="row">
-		    		<img src="<?php echo get_template_directory_uri();?>/img/intro-background.jpg"/>
+
 		    	</div>			
 		    </section>
 	    </div>

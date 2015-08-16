@@ -3,26 +3,44 @@ jQuery(document).ready(function($){
 	var secondaryNav = $('#site-section-nav'),
 		secondaryNavTopPosition = secondaryNav.offset().top,
 		OffesetTop = $('#site-section-nav').offset().top,
-		contentSections = $('.cd-section'), block_index = 0, block_cat_name = $('.section-name')[block_index],
+		contentSections = $('.cd-section'), 
+		block_cat_name = $('.section-name'),
 		section_title = document.getElementById('section-title'),
 		scroll = $(document).scrollTop(),
 		headerHeight = $('#site-header').outerHeight();
 
 	section_title.innerHTML = $(block_cat_name).find('span').html();
+
+//	$('#tabs a').click(function (e) {
+//		e.preventDefault();
+//	  
+//		var url = $(this).attr("data-url");
+//	  	var href = this.hash;
+//	  	var pane = $(this);
+//		
+//		// ajax load from data-url
+//		if (isEmpty($(href))) {
+//		    $(href).load(url,function(result){      
+//		        
+//		        $('html,body').animate({
+//		                scrollTop: 0},
+//		                'slow');
+//		        var section_title = document.getElementById('section-title');
+//		        section_title.innerHTML = ($(this).find('b').html());
+//		        block_cat_name = $('.section-name');
+//		    });
+//		}
+//		pane.tab('show');		
+//	});
 	
-	// tab toggle in navigation, toolbar
-	$('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-	  e.target; // newly activated tab
-	  e.relatedTarget; // previous active tab
-	});
-	$('a[data-toggle="tab"]').click(function() {
-		$('html,body').animate({
-		        scrollTop: 0},
-		        'slow');
-		var section_title = document.getElementById('section-title');
-		section_title.innerHTML = ($(this).find('b').html());
-		block_index = $('.section-navigation ul').find($(this).parent()).index();
-		block_cat_name = $('.section-name')[block_index];
+	function isEmpty( el ){
+		return !$.trim(el.html())
+	}
+	  
+	
+	// load first tab content
+	$('#tab').load($('.active a').attr("data-url"),function(result){
+	  $('.active a').tab('show');
 	});
 	
 	// initalize bootstrap tooltip
@@ -37,7 +55,7 @@ jQuery(document).ready(function($){
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo, #site-intro-nav').addClass('is-hidden') : $('#site-logo, #site-intro-nav').removeClass('is-hidden');				
+		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo').addClass('is-hidden') : $('#site-logo').removeClass('is-hidden');				
 		
 		//on desktop - fix secondary navigation on scrolling
 		if($(window).scrollTop() > secondaryNavTopPosition && $(window).width() >= 992  ) {
@@ -149,9 +167,9 @@ jQuery(document).ready(function($){
     });
 
     //on mobile - open/close primary navigation clicking/tapping the menu icon
-	$('#site-intro-nav').on('click', function(event){
-		if($(event.target).is('#site-intro-nav')) $(this).children('ul').toggleClass('is-visible');
-	});
+//	$('#site-intro-nav').on('click', function(event){
+//		if($(event.target).is('#site-intro-nav')) $(this).children('ul').toggleClass('is-visible');
+//	});
 	
 	//open/close primary navigation
 	$('#site-logo').on('click', function(){

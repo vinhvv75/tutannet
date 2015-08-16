@@ -17,10 +17,12 @@ navigator.geolocation.getCurrentPosition(sunCalc, error, options);
 
 
 function sunCalc(position) {
-	var today = new Date();
-		times = SunCalc.getTimes(today, position.coords.latitude, position.coords.longitude);
+	var today = new Date(),
+		todayLunar = getTodayString(),
+		times = SunCalc.getTimes(today, position.coords.latitude, position.coords.longitude),
 		moon = SunCalc.getMoonIllumination(today),
-		moonPhase = '';
+		moonPhase = ''
+		;
 	
 	if (moon['phase'] == 0) {
 		moonPhase = 'New Moon'; 
@@ -51,6 +53,7 @@ function sunCalc(position) {
 	console.log('  /********************/\n /    Sun Analysis    /\n/********************/');
 	console.log('You are at ' + position.coords.latitude + 'N ' + position.coords.longitude + 'E');
 	console.log('Now is ' + today.toLocaleString());
+	console.log('Today in Vietnamese is "' + todayLunar + '"');
 	console.log('Sunrise starts at ' + times['sunrise'].getHours() +  ':' + times['sunrise'].getMinutes());
 	console.log('Sunset starts at ' + times['sunsetStart'].getHours() +  ':' + times['sunsetStart'].getMinutes());
 	console.log('Night starts at ' + times['night'].getHours() +  ':' + times['night'].getMinutes());

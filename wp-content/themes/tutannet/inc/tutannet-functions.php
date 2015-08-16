@@ -600,43 +600,21 @@ function tutannet_excerpt(){
     echo '<p>'. $excerpt_content .'</p>';
 }
 
-/*---------------Gallery Post-------------------*/
+/*---------------Rest prepare post-------------------*/
 
-function tutannet_gallery_post() {
-
- 	global $post;
-
- 	// Only do this on singular items
- 	if( ! is_singular() )
- 		return false;
-
- 	// Retrieve the first gallery in the post
- 	$gallery = get_post_gallery_images( $post );
+function tutannet_rest_prepare_post( $data, $post, $request ) {
+	$_data = $data->data;
+	$thumbnail_id = get_post_thumbnail_id( $post->ID );
+	$thumbnail = wp_get_attachment_image_src( $thumbnail_id , 'tutannet-block-big-thumb' );
+	$gallery = get_post_gallery_images( $post );
 	
-	$image_list = '
-	<div class="col-sx-12 col-sm-12 col-md-4 col-lg-4 post-desc-wrapper">
-	    <div class="block-poston">'. tutannet_posted_on() .'</div>
-	    <h3 class="post-title"><a post-title="'. get_the_title().'" rel="'. get_the_ID() .'" href="'. get_the_permalink() .'" >'. get_the_title() .'</a></h3>
-	    <div class="post-content">'. get_the_excerpt() .'</div>
-	</div>
-	<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 gallery_post_img_wrapper">
-		<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_left_wrapper">
-			<div class="col-sm-12 col-lg-6 gallery_post_img">
-				<img src="'. $gallery[0] .'"/>
-			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gallery_post_img">
-				<img src="'. $gallery[1] .'"/>
-			</div>
-		</div>
-		<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_right_wrapper">
-			<img src="'. $gallery[2] .'"/>
-		</div>
-	</div>';
+	$_data['featured_image_thumbnail_url'] = $thumbnail[0];
+	$_data['gallery'] = $gallery;
 	
-	$content .= $image_list;
-
- 	echo $content;
- }
+	$data->data = $_data;
+	return $data;
+}
+add_filter( 'rest_prepare_post', 'tutannet_rest_prepare_post', 10, 3 );
  
  /*---------------Ask For Membership Post-------------------*/
  

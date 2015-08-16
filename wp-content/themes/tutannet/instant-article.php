@@ -6,7 +6,7 @@ Template Name: Instant-Article
 
 
 
-<?php
+<?php	
 	$post = get_post($_GET['id']);
 ?>
 <?php if ($post) : ?>

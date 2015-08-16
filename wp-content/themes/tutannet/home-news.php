@@ -1,3 +1,9 @@
+<?php
+/*
+Template Name: Home News
+*/
+?>
+
 <section class="block-news clearfix">
 	<div class="row">
 		<h2 class="section-name"><span>Tin Tức Phật Sự</span></h2>

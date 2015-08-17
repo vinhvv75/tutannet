@@ -506,6 +506,7 @@ body.boxed-layout {
 .tutannet-container {
 	width: 100%;
 	margin: 0 auto;
+	padding: 0;
 }
 
 .hide{
@@ -1040,6 +1041,10 @@ body.boxed-layout {
 	Common Section css 
 	--------------------------------------------------------------*/	
 	
+	.section-block {
+		
+	}
+	
 	.tab-content {
 		padding: 4em 0;
 	}
@@ -1050,10 +1055,10 @@ body.boxed-layout {
 	}
 	
 	.section-content {
-
+		padding: 0px 20px 0 0px;
 	}
 	
-	.section-name {
+	#section-name {
 		text-transform: capitalize;
 		font: 28px Georgia, "Times New Roman", Times, serif;
 		text-align: center;
@@ -1061,7 +1066,20 @@ body.boxed-layout {
 		margin: 0;
 		margin-bottom: 60px;
 		color: rgb(250, 218, 94);
-		z-index: 0;
+		z-index: 100;
+		height: 60px;
+		background-color: #fff;
+		width: 100%;
+	}
+	
+	#section-name.fixed {
+		width: 83.3333%;
+		position:fixed; 
+		top:0;
+	}
+	
+	#section-name span {
+		display: inline-block;
 	}
 	
 	.post-image .big-image-overlay, .post-image .big-title-overlay{
@@ -1185,7 +1203,7 @@ body.boxed-layout {
 	Block News css 
 	--------------------------------------------------------------*/	
 	.block-news {
-		
+		margin: 0;
 	}	
 	
 	.block-news li {

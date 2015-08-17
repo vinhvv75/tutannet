@@ -4,48 +4,60 @@ jQuery(document).ready(function($){
 		secondaryNavTopPosition = secondaryNav.offset().top,
 		OffesetTop = $('#site-section-nav').offset().top,
 		contentSections = $('.cd-section'), 
-		block_cat_name = $('.section-name'),
+		block_cat_name = $('#section-name'),
 		section_title = document.getElementById('section-title'),
 		scroll = $(document).scrollTop(),
 		headerHeight = $('#site-header').outerHeight();
 
 	section_title.innerHTML = $(block_cat_name).find('span').html();
 
-//	$('#tabs a').click(function (e) {
-//		e.preventDefault();
-//	  
-//		var url = $(this).attr("data-url");
-//	  	var href = this.hash;
-//	  	var pane = $(this);
-//		
-//		// ajax load from data-url
-//		if (isEmpty($(href))) {
-//		    $(href).load(url,function(result){      
-//		        
-//		        $('html,body').animate({
-//		                scrollTop: 0},
-//		                'slow');
-//		        var section_title = document.getElementById('section-title');
-//		        section_title.innerHTML = ($(this).find('b').html());
-//		        block_cat_name = $('.section-name');
-//		    });
-//		}
-//		pane.tab('show');		
-//	});
+	var introSection = $('#cd-intro-img'),
+			introSectionHeight = introSection.height(),
+			//change scaleSpeed if you want to change the speed of the scale effect
+			scaleSpeed = 0.3,
+			//change opacitySpeed if you want to change the speed of opacity reduction effect
+			opacitySpeed = 1; 
+		
+		//update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
+		var MQ = 1170;
 	
-	function isEmpty( el ){
-		return !$.trim(el.html())
-	}
-	  
+		triggerAnimation();
+		$(window).on('resize', function(){
+			triggerAnimation();
+		});
 	
-	// load first tab content
-	$('#tab').load($('.active a').attr("data-url"),function(result){
-	  $('.active a').tab('show');
-	});
+		//bind the scale event to window scroll if window width > $MQ (unbind it otherwise)
+		function triggerAnimation(){
+			if($(window).width()>= MQ) {
+				$(window).on('scroll', function(){
+					//The window.requestAnimationFrame() method tells the browser that you wish to perform an animation- the browser can optimize it so animations will be smoother
+					window.requestAnimationFrame(animateIntro);
+				});
+			} else {
+				$(window).off('scroll');
+			}
+		}
+		//assign a scale transformation to the introSection element and reduce its opacity
+		function animateIntro () {
+			var scrollPercentage = ($(window).scrollTop()/introSectionHeight).toFixed(5),
+				scaleValue = 1 - scrollPercentage*scaleSpeed;
+			//check if the introSection is still visible
+			if( $(window).scrollTop() < introSectionHeight) {
+				introSection.css({
+				    '-moz-transform': 'scale(' + scaleValue + ') translateZ(0)',
+				    '-webkit-transform': 'scale(' + scaleValue + ') translateZ(0)',
+					'-ms-transform': 'scale(' + scaleValue + ') translateZ(0)',
+					'-o-transform': 'scale(' + scaleValue + ') translateZ(0)',
+					'transform': 'scale(' + scaleValue + ') translateZ(0)',
+					'opacity': 1 - scrollPercentage*opacitySpeed
+				});
+			}
+		}
+	
 	
 	// initalize bootstrap tooltip
 	$('[data-toggle="tooltip"]').tooltip();
-	$('#site-toolbar a, #login_wrapper a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
+	$('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
 	
 	if ($(window).width() < 992 && scroll <= headerHeight) {
 		$('#site-header, #site-logo').addClass('top').removeClass('fixed');
@@ -55,15 +67,21 @@ jQuery(document).ready(function($){
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo').addClass('is-hidden') : $('#site-logo').removeClass('is-hidden');				
-		
+		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo').addClass('is-hidden') : $('#site-logo').removeClass('is-hidden');	
+						
+		if ($(this).scrollTop() > 780) {
+		         $('#section-name').addClass('fixed');
+		      } else {
+		          $('#section-name').removeClass('fixed');
+		      }			
+						
 		//on desktop - fix secondary navigation on scrolling
 		if($(window).scrollTop() > secondaryNavTopPosition && $(window).width() >= 992  ) {
 			//fix secondary navigation
 			secondaryNav.addClass('is-fixed');
 			secondaryNav.addClass('repainted');
 			
-			if ( $(window).scrollTop() >= $(block_cat_name).offset().top )
+			if ( $(window).scrollTop() >= block_cat_name.offsetTop )
 			{
 				updateSectionNav(true);	
 			}
@@ -131,17 +149,17 @@ jQuery(document).ready(function($){
 	});
 	
 	
-		secondaryNav
-		  .mouseenter(function() {
-		    if ( $('.section-navigation').hasClass('is-hidden') 
-		    	&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
-		    { setTimeout(function(){updateSectionNav(false);},100); }
-		  })
-		  .mouseleave(function() {
-		  	if ( $('#section-title').hasClass('is-hidden')
-		  		&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
-		  	{ setTimeout(function(){updateSectionNav(true);},400); }
-		  });
+//		secondaryNav
+//		  .mouseenter(function() {
+//		    if ( $('.section-navigation').hasClass('is-hidden') 
+//		    	&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
+//		    { setTimeout(function(){updateSectionNav(false);},100); }
+//		  })
+//		  .mouseleave(function() {
+//		  	if ( $('#section-title').hasClass('is-hidden')
+//		  		&& $(window).scrollTop() >= $(block_cat_name).offset().top ) 
+//		  	{ setTimeout(function(){updateSectionNav(true);},400); }
+//		  });
 	
 	
 	function updateSectionNav(status) {
@@ -175,8 +193,14 @@ jQuery(document).ready(function($){
 	$('#site-logo').on('click', function(){
 		if (scroll > headerHeight) { 
 			$('#site-logo').toggleClass('top'); 
-			$('#site-header').toggleClass('is-open'); 
+			$('#site-header').toggleClass('is-open');
 		}
+		
+		var Top = 780;
+		console.log($('#site-intro-slides')[0]);
+		$('body,html').animate({
+		    scrollTop: Top 
+		}, 800);
 		
 		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
 		if( $('#site-primary-nav').hasClass('is-visible') ) {

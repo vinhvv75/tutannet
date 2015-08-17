@@ -8,19 +8,8 @@
  */
 ?>
 
-	</div><!-- #content -->
-    
-	<?php
-        $tutannet_show_footer_switch = of_get_option( 'footer_switch', 1 );
-        $tutannet_footer_layout = of_get_option( 'footer_layout' );
-        $tutannet_sub_footer_switch = of_get_option( 'sub_footer_switch', 1 );
-        $tutannet_copyright_text = of_get_option( 'mag_footer_copyright' );
-        $tutannet_copyright_symbol = of_get_option( 'copyright_symbol' );
-        $trans_top = of_get_option( 'top_arrow' );
-        if( empty( $trans_top ) ){ $trans_top = __( 'Top', 'tutannet' ); }
-        $trans_copyright = of_get_option( 'trans_copyright' );
-        if( empty( $trans_copyright ) ){ $trans_copyright = __( 'Copyright', 'tutannet' ); }
-    ?>
+	
+
     <footer id="colophon" class="site-footer" role="contentinfo">
     
         <?php 

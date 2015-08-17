@@ -1,39 +1,33 @@
 <section class="block-news clearfix">
-	<div class="row">
-		<h2 class="section-name"><span>Tin Tức Phật Sự</span></h2>
-	</div>
-	<div class="row">
-		<div id="news-sidebar" class="section-sidebar col-md-2 col-lg-2">
-		
-		</div>
-		<div id="news-content" class="section-content col-md-10 col-lg-10">
-			<div class="row">
+	<h2 id="section-name"><span>Tin Tức Phật Sự</span></h2>
+		<div id="news-content" class="section-content">
+			<div class="tutannet-container" infinite-scroll="myPagingFunction()" infinite-scroll-distance="3">
 				
 				<div class="single-post col-xs-12 wow fadeInUp" ng-class="{'featured-post col-sm-12 col-md-6 col-lg-6' : $index < 2,  'gallery-post col-sm-12 col-md-9 col-lg-9' : $index >=2 && post.format == 'gallery', 'col-sm-6 col-md-3 col-lg-3' : $index >=2 && post.format != 'gallery'}" ng-repeat="post in posts">					
 					
 					<div class="post-image easeOutCirc" ng-if="post.format != 'gallery'">
-					 	<a post-title="{{post.title}}" rel="{{post.ID}}">
-					 	<img ng-src="{{post.featured_image_thumbnail_url}}" alt="" />
+					 	<a post-title="{{::post.title}}" rel="{{::post.id}}">
+					 	<img ng-src="{{::post.featured_image_thumbnail_url}}" alt="{{::post.title}}" />
 					 	</a>
 					</div><!-- post image -->
 					
 					<div class="post-desc-wrapper" ng-class="{'col-sx-12 col-sm-12 col-md-4 col-lg-4' : post.format == 'gallery'}">
 					    <div class="block-poston">{{post.date | date:'dd.MM.yyyy'}}</div>
-					    <h3 class="post-title"><a post-title="{{post.title}}"; rel="{{post.ID}}" href="{{post.slug}}" src="" >{{post.title.rendered}}</a></h3>
+					    <h3 class="post-title"><a post-title="{{::post.title}}"; rel="{{::post.id}}" href="{{::post.link}}" data-toggle="instant-article">{{post.title.rendered}}</a></h3>
 					    <div class="post-content" ng-bind-html="post.excerpt.rendered"></div>
 					</div><!-- post desc wrapper -->
 					
 					<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 gallery_post_img_wrapper" ng-if="post.format == 'gallery'">
 						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_left_wrapper">
 							<div class="col-sm-12 col-lg-6 gallery_post_img">
-								<img src="{{post.gallery[0]}}"/>
+								<img src="{{::post.gallery[0]}}"/>
 							</div>
 							<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gallery_post_img">
-								<img src="{{post.gallery[1]}}"/>
+								<img src="{{::post.gallery[1]}}"/>
 							</div>
 						</div>
 						<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_right_wrapper">
-							<img src="{{post.gallery[2]}}"/>
+							<img src="{{::post.gallery[2]}}"/>
 						</div>
 					</div><!-- gallery post img wrapper -->
 				
@@ -41,7 +35,5 @@
 				
 				
 			</div>
-		</div>
-	</div>
-	
+		</div>	
 </section><!--#section1-->

@@ -74,19 +74,6 @@ var
 	
 
 
-//for (var i=0;i<textSectionItem.length; i++) {
-//    textSectionItem[i].style.color = colorBgBottom;
-//}
-//
-//for (var i=0;i<iconSectionItem.length; i++) {
-//    iconSectionItem[i].style.color = colorBgBottom;
-//}
-//
-//for (var i=0;i<textIntroNav.length; i++) {
-//    textIntroNav[i].style.color = colorBgFull2;
-//}
-//
-
 // paint site intro
 IntroSlides.style.backgroundColor = lightenColor30;
 

@@ -104,7 +104,7 @@ Logo
   left: 15px;
   background: #FF8000;
   position: fixed;
-  z-index: 100;
+  z-index: 101;
   width: 80px;
   height: 80px;
   border-radius: 500px;
@@ -221,7 +221,7 @@ Logo
   #site-logo.is-hidden.slide-in {
     /* slide in when the secondary navigation gets fixed */
     top: 10px;
-    left: 1%;
+    left: 18%;
     opacity: 1;
     width: 40px;
     height: 40px;
@@ -236,6 +236,7 @@ Site Menu
 @media only screen and (min-width: 992px) {
   #site-menu {
   	padding: 20px 10px !important;
+  	position: fixed;
   }
   #site-menu > .section-navigation {
   	margin-top: 20px;
@@ -382,7 +383,6 @@ Intro
 	padding: 0 !important;
 	width: 100% !important;
 	margin: 0 !important;
-	border-bottom: 1px solid #cacaca;
 }
 
 #site-intro {
@@ -427,21 +427,32 @@ Intro
 }
 @media only screen and (min-width: 992px) {
   #site-intro {
-  	padding-right: 0;
-  	height: 100vh;
-  	min-height: 780px;
+  	padding: 0;
+  	margin-left: 16.6667%;
   }
   #site-intro #site-intro-tagline {
     
   }
   #site-intro-main {
-  	height: 85%;
+  	min-height: 780px;
   	overflow: hidden;
   	margin-bottom: 0;
+  	position: relative;
+  	margin: 0;
+  }
+  #site-intro-img {
+  	min-height: 100% !important;
+  	overflow: hidden;  	
+  	width: 100%;
+  	position: fixed;
+  	top: 0;
   }
   #site-intro-slides {
+  	width:  100%;
   	height: 15%;
   	overflow: hidden;
+  	position: fixed;
+  	bottom: 0;
   }
   #site-intro-slides img {
   	max-width: 100%;
@@ -451,11 +462,20 @@ Intro
 	min-width: 100%;
 	height: auto;
   }
+  #site-intro-content {
+  	background-color: #FFF;
+  	position: relative;
+  	padding: 0px;
+  	margin: 0px;
+  	min-height: 780px;
+  }
   
   .fullHeight {
     height: 100%;
   	min-height: 100% !important;
   }
+  
+  .fixed {position:fixed; top:0;}
 }
 
 /* -------------------------------- 
@@ -595,8 +615,8 @@ Toolbar
 	  	color: #fff !important;
 	}
 	#site-toolbar { right: 20px; }
-	#site-toolbar.fixed { top: -3px; right: 20px; }
-	#site-toolbar.top { top: -3px; right: 20px; }
+	#site-toolbar.fixed { top: 0px; right: 20px; }
+	#site-toolbar.top { top: 0px; right: 20px; }
 }
 @media only screen and (min-width: 992px) {
   #site-toolbar {
@@ -611,7 +631,7 @@ Toolbar
     opacity: 0;
     position: fixed;
     right: -20%;
-    top: 0;
+    top: -160px;
     -webkit-transition: right 0.3s, opacity 0.3s;
     -moz-transition: right 0.3s, opacity 0.3s;
     transition: right 0.3s, opacity 0.3s;

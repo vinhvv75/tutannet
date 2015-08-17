@@ -253,7 +253,11 @@ add_action( 'widgets_init', 'tutannet_widgets_init' );
 function tutannet_scripts() {
     $my_theme = wp_get_theme();
     $version = $my_theme->get('Version'); 
-    wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css');
+    
+//    wp_enqueue_style( 'animate', get_template_directory_uri() . '/css/animate.css');
+    wp_enqueue_style( 'animate', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css');
+    
+    
     wp_enqueue_style( 'tutannet-style', get_stylesheet_uri(), array(), esc_attr($version) );    
     wp_enqueue_style( 'easing', get_template_directory_uri() . '/css/easing.css');
     wp_enqueue_style( 'pace-theme', get_template_directory_uri() . '/css/pace-theme.css');
@@ -269,7 +273,7 @@ function tutannet_scripts() {
     wp_enqueue_script(
 		'tutannet-angular-scripts',
 		get_stylesheet_directory_uri() . '/js/tutannet-angular.js',
-		array( 'angularjs', 'angularjs-route', 'angularjs-resource', 'angularjs-sanitize' )
+		array( 'angularjs', 'angularjs-ui-router', 'angularjs-resource', 'angularjs-sanitize', 'angularjs-infinite-scroll' )
 	);
 	wp_localize_script(
 		'tutannet-angular-scripts',
@@ -279,7 +283,7 @@ function tutannet_scripts() {
     wp_enqueue_script( 
     	'tutannet-color-scripts', 
     	get_template_directory_uri() . '/js/color.js', 
-    	array('jquery','tinycolor','color-thief'), 
+    	array('jquery','tinycolor','color-thief', 'angularjs'), 
     	$version 
     );
     wp_enqueue_script( 
@@ -317,30 +321,36 @@ function tutannet_scripts() {
 	
 	/*** Lib ***/
 	// angular 1.4.4
-	wp_register_script( 'angularjs', get_template_directory_uri() . '/lib/angular-1.4.4/angular.min.js', '1.4.4' );
-	wp_enqueue_script( 'angularjs', get_template_directory_uri() . '/lib/angular-1.4.4/angular.min.js', '1.4.4' );
-	wp_register_script( 'angularjs-route', get_template_directory_uri() . '/lib/angular-1.4.4/angular-route.min.js', '1.4.4' );
-	wp_enqueue_script( 'angularjs-route', get_template_directory_uri() . '/lib/angular-1.4.4/angular-route.min.js', '1.4.4' );
-	wp_register_script( 'angularjs-resource', get_template_directory_uri() . '/lib/angular-1.4.4/angular-resource.min.js', '1.4.4' );
-	wp_enqueue_script( 'angularjs-resource', get_template_directory_uri() . '/lib/angular-1.4.4/angular-resource.min.js', '1.4.4' );
-	wp_register_script( 'angularjs-sanitize', get_template_directory_uri() . '/lib/angular-1.4.4/angular-sanitize.min.js', '1.4.4' );
-	wp_enqueue_script( 'angularjs-sanitize', get_template_directory_uri() . '/lib/angular-1.4.4/angular-sanitize.min.js', '1.4.4' );
+//	wp_register_script( 'angularjs', get_template_directory_uri() . '/lib/angular-1.4.4/angular.min.js', '1.4.4' );
+	wp_register_script( 'angularjs', 'https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js', '1.4.4' );
+//	wp_register_script( 'angularjs-resource', get_template_directory_uri() . '/lib/angular-1.4.4/angular-resource.min.js', '1.4.4' );
+	wp_register_script( 'angularjs-resource', 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-resource.min.js', '1.4.4' );
+//	wp_register_script( 'angularjs-sanitize', get_template_directory_uri() . '/lib/angular-1.4.4/angular-sanitize.min.js', '1.4.4' );
+	wp_register_script( 'angularjs-sanitize', 'https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular-sanitize.min.js', '1.4.4' );
+//	wp_register_script( 'angularjs-ui-router', get_template_directory_uri() . '/lib/angular-1.4.4/angular-ui-router.min.js', '1.4.4' );
+	wp_register_script( 'angularjs-ui-router', 'https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js', '1.4.4' );
+	wp_register_script( 'angularjs-infinite-scroll', get_template_directory_uri() . '/lib/angular-1.4.4/ng-infinite-scroll.min.js', '1.4.4' );
+	
+	
 	
 	
 	// bootstrap 3.3.5
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/css/bootstrap.min.css');
-	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5' );
+//	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/css/bootstrap.min.css');
+	wp_enqueue_style( 'bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css');
+//	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/lib/bootstrap-3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5' );
+	wp_enqueue_script( 'bootstrap-scripts', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js', array('jquery'), '3.3.5' );
 	
 	// font-awesome  4.4.0
-	wp_enqueue_style( 'fontawesome-font', get_template_directory_uri() . '/lib/font-awesome-4.4.0/font-awesome.min.css' );
+//	wp_enqueue_style( 'fontawesome-font', get_template_directory_uri() . '/lib/font-awesome-4.4.0/font-awesome.min.css' );
+	wp_enqueue_style( 'fontawesome-font', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' );
 	
 	// color-thief-2.0
-	wp_register_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js' );
-	wp_enqueue_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js', array(jquery), '2.0' );
+	wp_register_script( 'color-thief', get_template_directory_uri() . '/lib/color-thief-2.0/color-thief.min.js', array('jquery'), '2.0' );
 	
 	// tinycolor 1.1.2
-	wp_register_script( 'tinycolor', get_template_directory_uri() . '/lib/tinycolor.min.js');
-	wp_enqueue_script( 'tinycolor', get_template_directory_uri() . '/lib/tinycolor.min.js', array('jquery'), '1.1.2');
+//	wp_register_script( 'tinycolor', get_template_directory_uri() . '/lib/tinycolor.min.js', array('jquery'), '1.1.2');
+	wp_register_script( 'tinycolor', 'https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.1.2/tinycolor.min.js', array('jquery'), '1.1.2');
+	
 	
 	//vietnamese lunar calendar
 	wp_register_script( 'amlich-hnd', get_template_directory_uri() . '/lib/amlich-hnd.js');
@@ -352,11 +362,20 @@ function tutannet_scripts() {
 	
 
 	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	wp_enqueue_script( 'wow', get_template_directory_uri() . '/lib/wow.min.js', array(), '1.0.1');
 	
 	
-	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/lib/modernizr.js', array('jquery'), '2.8.3' );
-	wp_enqueue_script( 'pace', get_template_directory_uri() . '/lib/pace.min.js', array(), '1.0.0' );
+	// wow 1.1.2
+//	wp_enqueue_script( 'wow', get_template_directory_uri() . '/lib/wow.min.js', '1.0.1');
+	wp_enqueue_script( 'wow', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', '1.1.2');
+	
+	
+	
+//	wp_enqueue_script( 'modernizr', get_template_directory_uri() . '/lib/modernizr.js', array('jquery'), '2.8.3' );
+	wp_enqueue_script( 'modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array('jquery'), '2.8.3' );
+	
+//	wp_enqueue_script( 'pace', get_template_directory_uri() . '/lib/pace.min.js', '1.0.0' );
+	wp_enqueue_script( 'pace', 'https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js', '1.0.0' );
+	
 	
     
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

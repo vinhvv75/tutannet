@@ -12,11 +12,12 @@ jQuery(document).ready(function($){
 		autosave_mode = 'all';	
 		
 	/* open folding content */
-	gallery.on('click', 'a', function(event){
+	gallery.on('click', 'a[data-toggle="instant-article"]', function(event){
 		console.log('Loading "' + $(this).attr('post-title') + '"');
 		article_start = new Date().getTime();
 		post_id = $(this).attr('rel');
 		post_url = $(this).attr('href');
+		console.log(post_id + ' | '  + post_url);
 		event.preventDefault();
 		var url = getPostUrl(post_id);
 		openItemInfo(url);		

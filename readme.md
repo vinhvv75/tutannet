@@ -1,7 +1,7 @@
 TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
 
-Version: 1.0.0-alpha.2
-Build: 1.0 Nightly 20150811
+Version: 1.0.0-alpha.4
+Build: 1.0 Nightly 20150820
 
 Install Steps:
 --------------
@@ -13,12 +13,13 @@ Install Steps:
 
 ------------------------------------------
 
-JS Files 
+Libraries
     
     WOW Min JS: MIT license
     https://github.com/matthieua/WOW
   
 -------------------------------------------
+
 Fonts
 
     Font Awesome: MIT and GPL licenses
@@ -26,9 +27,4 @@ Fonts
 
 ----------------------------------------------------
 
-ScreenShot Images
-    
-
-
-----------------------------------------------------
 == Changelog ==

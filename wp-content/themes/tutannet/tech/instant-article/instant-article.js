@@ -17,7 +17,6 @@ jQuery(document).ready(function($){
 		article_start = new Date().getTime();
 		post_id = $(this).attr('rel');
 		post_url = $(this).attr('href');
-		console.log(post_id + ' | '  + post_url);
 		event.preventDefault();
 		var url = getPostUrl(post_id);
 		openItemInfo(url);		

@@ -23,8 +23,7 @@ $rme = "0";
 $blog_url = site_url();
 ?>
 <div id="login_wrapper" class="row is-disabled animated">
-	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
-	<form name="loginform" id="loginform" class="wrapper-is-open col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="login" method="post">
+	<form name="loginform" id="loginform" class="wrapper-is-open is-disabled animated" action="login" method="post">
 		<h2>Đăng nhập</h2>
 		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin.</span></p>		
 		  <?php wp_nonce_field('ajax-login-nonce', 'security'); ?>
@@ -86,7 +85,7 @@ $blog_url = site_url();
 		</a>
 	</form><!-- Login Form -->
 	
-	<form name="registerform" id="registerform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated" action="register" method="post">
+	<form name="registerform" id="registerform" class="is-disabled animated" action="register" method="post">
 		<h2>Đăng ký</h2>
 		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>
 		<?php wp_nonce_field('ajax-register-nonce', 'signonsecurity'); ?>
@@ -149,7 +148,7 @@ $blog_url = site_url();
 		</a>
 	</form><!-- Register Form -->
 	
-	<form name="lostpasswordform" id="lostpasswordform" class="col-xs-10 col-sm-6 col-md-4 col-lg-4 is-disabled animated ajax-auth" action="forgotpassword" method="post">
+	<form name="lostpasswordform" id="lostpasswordform" class="is-disabled animated ajax-auth" action="forgotpassword" method="post">
 		<h2>Khôi phục mật khẩu</h2>
 		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>
 		<?php wp_nonce_field('ajax-forgot-nonce', 'forgotsecurity'); ?>
@@ -191,7 +190,6 @@ $blog_url = site_url();
 			</div>
 		</div>
 	</form><!-- Lost Password Form -->	
-	<div class="col-xs-1 col-sm-3 col-md-4 col-lg-4"></div>
 </div>
 
 

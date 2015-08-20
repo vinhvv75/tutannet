@@ -1,15 +1,9 @@
 jQuery(document).ready(function($){
 	
-	var secondaryNav = $('#site-section-nav'),
-		secondaryNavTopPosition = secondaryNav.offset().top,
-		OffesetTop = $('#site-section-nav').offset().top,
-		contentSections = $('.cd-section'), 
-		block_cat_name = $('#section-name'),
+	var
 		section_title = document.getElementById('section-title'),
 		scroll = $(document).scrollTop(),
 		headerHeight = $('#site-header').outerHeight();
-
-	section_title.innerHTML = $(block_cat_name).find('span').html();
 
 	var introSection = $('#cd-intro-img'),
 			introSectionHeight = introSection.height(),
@@ -59,58 +53,61 @@ jQuery(document).ready(function($){
 	$('[data-toggle="tooltip"]').tooltip();
 	$('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
 	
+	$('#arrow-button').on('click', function(){
+		$('body,html').animate({
+		    scrollTop: 780
+		}, 500);
+		return false;
+	});
+	
+	$('#arrow-button').on('mouseenter', function(){
+		$('#arrow-text').removeClass('fadeOut fadeInDown').addClass('fadeIn');
+		$('#arrow-button').removeClass('fadeInUp').addClass('slideInUpSmall anim-infinite');
+	}).on('mouseleave', function(){
+		$('#arrow-text').removeClass('fadeIn').addClass('fadeOut');
+		$('#arrow-button').removeClass('slideInUpSmall anim-infinite');
+	});
+	
+	setTimeout(function(){$('#arrow-text').addClass('fadeOut');}, 2000);
+	
 	if ($(window).width() < 992 && scroll <= headerHeight) {
 		$('#site-header, #site-logo').addClass('top').removeClass('fixed');
 		$('#site-header').removeClass('is-open');
 		$('#site-toolbar').addClass('is-disabled');
-	}
+	}	
+	
+	
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
-		( $(window).scrollTop() > OffesetTop && $(window).width() >= 992  ) ? $('#site-logo').addClass('is-hidden') : $('#site-logo').removeClass('is-hidden');	
-						
-		if ($(this).scrollTop() > 780) {
-		         $('#section-name').addClass('fixed');
-		      } else {
-		          $('#section-name').removeClass('fixed');
-		      }			
+//		( $(window).scrollTop() > 550 && $(window).width() >= 992  ) ? $('#site-logo').addClass('is-hidden') : $('#site-logo').removeClass('is-hidden');	
+				
 						
 		//on desktop - fix secondary navigation on scrolling
-		if($(window).scrollTop() > secondaryNavTopPosition && $(window).width() >= 992  ) {
+		if($(window).scrollTop() > 980 && $(window).width() >= 992  ) {
 			//fix secondary navigation
-			secondaryNav.addClass('is-fixed');
-			secondaryNav.addClass('repainted');
+//			$('#section-intro').addClass('is-fixed');
 			
-			if ( $(window).scrollTop() >= block_cat_name.offsetTop )
-			{
-				updateSectionNav(true);	
-			}
-			else { updateSectionNav(false); }			
+//			if ( $(window).scrollTop() >= block_cat_name.offsetTop )
+//			{
+//				updateSectionNav(true);	
+//			}
+//			else { updateSectionNav(false); }			
 								
-			
-			if (isDay()) {
-				secondaryNav.addClass('isDay');
-			} else { secondaryNav.addClass('isNight'); }
-			//push the .cd-main-content giving it a top-margin
 			$('.cd-main-content').addClass('has-top-margin');	
 			//on Firefox CSS transition/animation fails when parent element changes position attribute
 			//so we to change secondary navigation childrens attributes after having changed its position value
 			setTimeout(function() {
-	            secondaryNav.addClass('animate-children');
-	            $('#site-logo').addClass('slide-in');
+//	            $('#site-logo').addClass('slide-in');
 	        }, 50);
 		} else {
-			secondaryNav.removeClass('is-fixed');
-			secondaryNav.removeClass('repainted');
+//			$('#section-intro').removeClass('is-fixed');
 			updateSectionNav(false);
 			
-			if (isDay()) {
-				secondaryNav.removeClass('isDay');
-			} else { secondaryNav.removeClass('isNight'); }
+			
 			$('.cd-main-content').removeClass('has-top-margin');
 			setTimeout(function() {
-	            secondaryNav.removeClass('animate-children');
-	            $('#site-logo').removeClass('slide-in');
+//	            $('#site-logo').removeClass('slide-in');
 	        }, 50);
 		}
 		
@@ -174,20 +171,34 @@ jQuery(document).ready(function($){
 		}
 	}
 
-	//smooth scrolling when clicking on the secondary navigation items
-	secondaryNav.find('ul a').on('click', function(event){
-        event.preventDefault();
-        var target= $(this.hash);
-        $('body,html').animate({
-        	'scrollTop': target.offset().top - secondaryNav.height() + 1
-        	}, 400
-        ); 
-    });
+	
 
     //on mobile - open/close primary navigation clicking/tapping the menu icon
 //	$('#site-intro-nav').on('click', function(event){
 //		if($(event.target).is('#site-intro-nav')) $(this).children('ul').toggleClass('is-visible');
 //	});
+	
+	var lastPos = null,
+	    timer = 0;
+	
+	function clear() {
+	    lastPos = null;
+	};
+	
+	window.onscroll = checkScrollSpeed;
+	
+	function checkScrollSpeed(){
+	    var newPos = window.scrollY;
+	    if ( lastPos != null ){ // && newPos < maxScroll 
+	        var delta = newPos -  lastPos;
+//	        console.log(delta); // this is the result
+	    }
+	    lastPos = newPos;
+	    timer && clearTimeout(timer);
+	    timer = setTimeout(clear, 30);
+	    
+	    if(delta >= 50 || delta <= -50) {console.log(true);}
+	};
 	
 	//open/close primary navigation
 	$('#site-logo').on('click', function(){
@@ -197,7 +208,6 @@ jQuery(document).ready(function($){
 		}
 		
 		var Top = 780;
-		console.log($('#site-intro-slides')[0]);
 		$('body,html').animate({
 		    scrollTop: Top 
 		}, 800);
@@ -222,8 +232,11 @@ jQuery(document).ready(function($){
 	
 	$('a[data-toggle="test"]').on('click', function(){
 		console.log('true');
-		$('#site-menu').toggleClass('col-md-2 col-lg-2').toggleClass('col-md-4 col-lg-4');
-		$('#site-intro').toggleClass('col-md-10 col-lg-10').toggleClass('col-md-8 col-lg-8');
+		$('#site-menu').toggleClass('on-notifi');
+		$('#site-intro').toggleClass('on-notifi');
+		$('#site-intro-main, #site-intro-content').toggleClass('overflow-hidden is-invisible');	
+		$('#site-intro-content, #site-intro-slides, #site-logo, #site-toolbar, #arrow-button').toggleClass('is-disabled');		
+		$('body').toggleClass('overflow-hidden');
 	});
 	
 	

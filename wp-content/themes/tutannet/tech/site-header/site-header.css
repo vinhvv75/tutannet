@@ -201,12 +201,12 @@ Logo
 }
 @media only screen and (min-width: 992px) {
   #site-logo {
-  	position: absolute;
+  	position: fixed;
   	top: 32px;
-  	left: 32px;
+  	left: 23%;
   	width: 200px;
   	height: 200px;
-  	z-index: 100;
+  	z-index: 99;
   }
   #site-logo.is-hidden {
     /* assign a position fixed and move outside the viewport (on the left) */
@@ -214,17 +214,18 @@ Logo
     position: fixed;
     left: -20%;
     margin-left: 0;
-    -webkit-transition: left 0.3s, opacity 0.3s;
-    -moz-transition: left 0.3s, opacity 0.3s;
-    transition: left 0.3s, opacity 0.3s;
+    -webkit-transition: left 0.5s, opacity 0.3s;
+    -moz-transition: left 0.5s, opacity 0.3s;
+    transition: left 0.5s, opacity 0.3s;
   }
-  #site-logo.is-hidden.slide-in {
+  #site-logo.slide-in {
     /* slide in when the secondary navigation gets fixed */
     top: 10px;
     left: 18%;
     opacity: 1;
     width: 40px;
     height: 40px;
+    z-index: 102;
   }
 }
 
@@ -235,23 +236,20 @@ Site Menu
 -------------------------------- */
 @media only screen and (min-width: 992px) {
   #site-menu {
-  	padding: 20px 10px !important;
+  	padding: 10px !important;
   	position: fixed;
+  	height: 100%;
+  	overflow: scroll;
+  	width: 20%;
+  	-webkit-transition: 0.6s;
+  	-moz-transition: 0.6s;
+  	transition: 0.6s;
   }
   #site-menu > .section-navigation {
-  	margin-top: 20px;
   	margin-bottom: 40px;
   }
   #site-menu > .section-navigation ul li a b {
   	color: #333;
-  }
-  #site-menu > .section-navigation ul li::before {
-  	border-bottom: 1px solid #f1f1f1 !important;
-  	border-right: none !important;
-  	width: 50% !important;
-  	content: "";
-  	position: absolute;
-  	left: 25%;
   }
   #site-menu li a span {
   	top: -20px !important;
@@ -259,11 +257,22 @@ Site Menu
   #site-menu .site-section-nav-avatar {
   	top: -30px !important;
   }
+  #site-menu > .section-navigation ul li.sub a {
+  	padding: 5px 0;
+  }
+  #site-menu > .section-navigation ul li.sub a b {
+  	color: #999;
+  	font-size: 10px;
+  }
   #site-menu-bg {
   	width: 100%;
-  	height: 250px;
+  	height: 50px;
   	background-color: #f1f1f1;
   	position: relative;
+  	cursor: pointer;
+  }
+  #site-menu.on-notifi {
+  	width: 25%;
   }
  }
 
@@ -390,6 +399,9 @@ Intro
   background-size: cover;
   overflow: hidden;
   z-index: 0;
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  transition: 0.6s;
 }
 
 #site-intro-img {
@@ -428,7 +440,10 @@ Intro
 @media only screen and (min-width: 992px) {
   #site-intro {
   	padding: 0;
-  	margin-left: 16.6667%;
+  	margin-left: 20%;
+  	border-left: 1px solid #cacaca;
+  	text-align: center;
+  	width: 80%;
   }
   #site-intro #site-intro-tagline {
     
@@ -453,6 +468,13 @@ Intro
   	overflow: hidden;
   	position: fixed;
   	bottom: 0;
+  	-webkit-transition: 0.6s;
+  	-moz-transition: 0.6s;
+  	transition: 0.6s;
+  }
+  #site-intro-slides.slow {
+  	animation-duration: 2s !important;
+  	animation-delay: 1s !important;
   }
   #site-intro-slides img {
   	max-width: 100%;
@@ -461,6 +483,7 @@ Intro
   #site-intro-main img {
 	min-width: 100%;
 	height: auto;
+	left: 20%;
   }
   #site-intro-content {
   	background-color: #FFF;
@@ -468,6 +491,7 @@ Intro
   	padding: 0px;
   	margin: 0px;
   	min-height: 780px;
+  	z-index: 100;
   }
   
   .fullHeight {
@@ -476,6 +500,20 @@ Intro
   }
   
   .fixed {position:fixed; top:0;}
+  
+   #site-intro.on-notifi {
+    margin-left: 25%;
+   	width: 75%;
+   }
+   #site-intro.on-notifi #site-intro-main img {
+   	left: 25%;
+   }
+   #site-intro.on-notifi #site-logo {
+   	left: 27%;
+   }
+   #site-intro.on-notifi #site-toolbar {
+   	right: 3%;
+   }
 }
 
 /* -------------------------------- 
@@ -522,9 +560,9 @@ Toolbar
 	-webkit-animation-delay: 0.5s; 
 	-moz-animation-delay: 0.5s; 
 	animation-delay: 0.5s;
-	-webkit-transition: top 0.6s;
-	-moz-transition: top 0.6s;
-	transition: top 0.6s;
+	-webkit-transition: right 0.6s;
+	-moz-transition: right 0.6s;
+	transition: right 0.6s; 
 	z-index: 95;
 }
 #site-toolbar.off-canvas { top: -89px; }
@@ -620,7 +658,7 @@ Toolbar
 }
 @media only screen and (min-width: 992px) {
   #site-toolbar {
-  	position: absolute;
+  	position: fixed;
   	top: 32px;
   	right: 5%;
   	text-align: center;
@@ -662,6 +700,29 @@ Toolbar
   }
   #site-toolbar.is-hidden.slide-in .cd-btn {
   	margin-top: 10px;
+  }
+  #arrow-button {
+  	position: fixed;
+  	margin-left: -25px;
+  	top: 77%;
+  	padding-top: 5px;
+  	display: inline-block;
+  	animation-delay: 0.5;
+  }
+  #arrow-text {
+  	position: fixed;
+  	margin-left: -35px;
+  	top: 74%;
+  	padding-top: 5px;
+  	display: inline-block;
+  	animation-delay: 0.5;
+  	color: #fff;
+  	font-size: 18px;
+  	font-weight: normal;
+  }
+  #arrow-button svg {
+  	width: 50px;
+  	height: 50px;
   }
 }
 
@@ -782,8 +843,8 @@ Secondary Fixed Navigation
 }
 #site-section-nav li a, #site-menu > .section-navigation li a {
   display: block;
-  padding: 1.2em;
-  color: #f0eee1;
+  padding: 1em 0;
+  color: #333;
 }
 .section-navigation {
 	text-align: center;
@@ -801,22 +862,11 @@ Secondary Fixed Navigation
 	padding: 0;
 	display: inline-block;
 	float: none;
-	text-align: center;
+	text-align: left;
 }
 .section-navigation ul li {
 	padding: 0;
 	position: relative;
-	text-align: center;
-}
-.section-navigation ul li::before {
-	border-right-style: solid;
-	border-right-width: 1px;
-	border-right-color: #f1f1f1;
-	height: 50%;
-	content: "";
-	position: absolute;
-	left: 100%;
-	top: 50%;
 }
 .section-navigation ul li:last-child::before {
 	border: none;
@@ -877,7 +927,7 @@ Secondary Fixed Navigation
   }
   #site-section-nav li a, #site-menu li a {
     position: relative;
-    text-align: center;
+    text-align: left;
     display: block;
     padding: 58px 30px 0 30px;
     border-bottom: none;
@@ -888,9 +938,9 @@ Secondary Fixed Navigation
   }
   #site-section-nav li a b, #site-menu li a b {
     text-transform: uppercase;
-    font-size: 1.1rem;
-    font-weight: 700;
+    font-size: 11px;
     color: rgba(240, 238, 225, 0.3);
+  	font-weight: bold;
   }
   #site-section-nav li a span, #site-menu li a span {
     position: absolute;
@@ -942,7 +992,6 @@ Secondary Fixed Navigation
     /* on Firefox CSS transition/animation fails when parent element changes position attribute*/
     /* so we defined to diffent classes: .is-fixed to change the position value and .is-animated to change childrens' attributes (padding and opacity)*/
     position: fixed;
-    left: 0;
     top: 0;
     height: 70px;
     width: 100%;
@@ -981,6 +1030,20 @@ Secondary Fixed Navigation
 #section-title.is-hidden {
 	opacity: 0;
 	display: none;
+}
+#section-intro {
+	width: 100%;
+	background-color: #f3f3f3;
+	z-index: 100;
+	margin-bottom: 60px;
+	height: 200px;
+}
+#section-intro.is-fixed {
+	width: 80%;
+	position: fixed; 
+	top: 0;	
+	height: 60px;
+	border-bottom: 1px solid #cacaca;		
 }
 /* -------------------------------- 
 

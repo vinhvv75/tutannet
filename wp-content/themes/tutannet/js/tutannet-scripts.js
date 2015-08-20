@@ -3,8 +3,6 @@
 * 
 */
 
-
-
 jQuery(document).ready(function($){
 //welcomeScreen();
 
@@ -97,9 +95,26 @@ window.onload = function() {
 
 
 
+$('a[data-toggle="tab"]').on('click', function(){
+	var tab = $(this).attr('href'),
+		tabID = document.getElementById(tab),
+		load_start = new Date().getTime(), load_time
+	$(tabID).load(getBaseUrl() + '/' + tab, function(){
+		console.log('Loaded ' + tab);
+		var load_end = new Date().getTime();
+		load_time = (load_end - load_start)/1000;
+		console.log('Loading Time:', load_time);
+		$('body,html').animate({
+		    scrollTop: 780
+		}, 500);
+		return false;
+	});
+});
 
-
-
+function getBaseUrl() {
+    var re = new RegExp(/^.*\//);
+    return re.exec(window.location.href);
+}
 
 
 function extractUrl(input)

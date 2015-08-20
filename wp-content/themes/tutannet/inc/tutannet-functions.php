@@ -45,6 +45,11 @@ add_action('wp_head', 'tutannet_header_scripts');
 
 add_filter('show_admin_bar', '__return_false');
 
+add_action( 'admin_bar_menu', 'remove_wp_logo', 999 );
+function remove_wp_logo( $wp_admin_bar ) {
+	$wp_admin_bar->remove_node( 'wp-logo' );
+}
+
 /*---------Hide meta boxes in Editor---------------*/
 
 if (is_admin()) :
@@ -75,6 +80,14 @@ function childtheme_formats(){
 
 function define_default_categories() {
 	// Main Category
+	wp_insert_term(
+		'Nổi Bật',
+		'category',
+		array(
+		  'description'	=> '',
+		  'slug' 		=> 'noi-bat'
+		)
+	);
 	wp_insert_term(
 		'Tin Tức Phật Sự',
 		'category',
@@ -600,18 +613,52 @@ function tutannet_excerpt(){
     echo '<p>'. $excerpt_content .'</p>';
 }
 
+function tutannet_gallery_post() {
+ 	global $post;
+ 	// Only do this on singular items
+ 	if( ! is_singular() )
+ 		return false;
+ 	// Retrieve the first gallery in the post
+ 	$gallery = get_post_gallery_images( $post );
+	
+	$image_list = '
+	<div class="gallery_post_img_wrapper">
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 gallery_post_img_left_wrapper">
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 gallery_post_img">
+				<img src="'. $gallery[0] .'"/>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 gallery_post_img">
+				<img src="'. $gallery[1] .'"/>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 gallery_post_img_right_wrapper">
+			<img src="'. $gallery[2] .'"/>
+		</div>
+	</div>
+	<div class="post-desc-wrapper">
+	    <div class="block-poston">'. tutannet_posted_on() .'</div>
+	    <h3 class="post-title"><a post-title="'. get_the_title().'" rel="'. get_the_ID() .'" href="'. get_the_permalink() .'" data-toggle="instant-article">'. get_the_title() .'</a></h3>
+	    <div class="post-content">'. get_the_excerpt() .'</div>
+	</div>';
+	
+	$content .= $image_list;
+ 	echo $content;
+ }
+
 /*---------------Rest prepare post-------------------*/
 
 function tutannet_rest_prepare_post( $data, $post, $request ) {
 	$_data = $data->data;
 	$thumbnail_id = get_post_thumbnail_id( $post->ID );
-	$thumbnail = wp_get_attachment_image_src( $thumbnail_id , 'tutannet-block-big-thumb' );
+	$thumbnail = wp_get_attachment_image_src( $thumbnail_id , 'tutannet-block-medium-thumb' );
 	$gallery = get_post_gallery_images( $post );
 	$categories = wp_get_post_categories( $post->ID );
+	$tags = get_the_tags();
 	
 	$_data['featured_image_thumbnail_url'] = $thumbnail[0];
 	$_data['gallery'] = $gallery;
 	$_data['categories'] = $categories;
+	$_data['tags'] = $tags;
 	
 	$data->data = $_data;
 	return $data;
@@ -626,12 +673,15 @@ add_filter( 'rest_prepare_post', 'tutannet_rest_prepare_post', 10, 3 );
   	
   	$count_users = count_users();
   	
-  	$content = '<h4>Mời bạn gia nhập<br/>ChuaTuTan.net</h4>';
+  	$content = '<div class="askmembership"><h1>Mời&nbsp;bạn gia&nbsp;nhập<br/>ChuaTuTan.net</h1>';
   	if ($count_users >= 100) {
-  		$content .= '<p>Hãy đồng hành với <b>'. $count_users['total_users'] .'</b> thành viên. Cùng trải nghiệm sâu sắc với <b>'. $published_posts .'</b> bài phát hành. Và theo dõi các bài đăng sắp tới.</p>';
+  		$content .= '<p><b>Bạn đã là thành&nbsp;viên chưa?</b><br/><br/>Để theo&nbsp;dõi các thông&nbsp;tin về hoạt&nbsp;động Phật&nbsp;sự của chùa&nbsp;Từ&nbsp;Tân và trải&nbsp;nghiệm sâu&nbsp;sắc những bài&nbsp;viết Phật&nbsp;học mà chúng&nbsp;tôi mang&nbsp;đến.</p>';
+  		$content .= '<p>Hiện đang có <b>'. $count_users['total_users'] .'</b> thành&nbsp;viên.<br/>và <b>'. $published_posts .'</b> bài đã phát&nbsp;hành.</p>';
+  		$content .= '<a href="#" data-toggle="register_wrap">Đăng&nbsp;ký</a>';
   	} else {
   	
   	}
+  	$content .= '</div>';
  	 
   	echo $content;
   }

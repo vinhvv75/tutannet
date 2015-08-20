@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="profile" href="http://gmpg.org/xfn/11" />
+	<link rel="pingback" href="http://localhost:8888/tutannet/xmlrpc.php" />
+	  
+	 <title>Chùa Từ Tân | Just another WordPress site</title>
+<meta name='robots' content='noindex,follow' />
+<link rel="alternate" type="application/rss+xml" title="Dòng thông tin Chùa Từ Tân &raquo;" href="http://localhost:8888/tutannet/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Dòng phản hồi Chùa Từ Tân &raquo;" href="http://localhost:8888/tutannet/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Chùa Từ Tân &raquo; Trang Chủ Dòng phản hồi" href="http://localhost:8888/tutannet/trang-chu/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/localhost:8888\/tutannet\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.3"}};
+			!function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='jfb-css'  href='http://localhost:8888/tutannet/wp-content/plugins/wp-fb-autoconnect/style.css?ver=4.1.1' type='text/css' media='all' />
+<link rel='stylesheet' id='vye_dynamic-css'  href='http://localhost:8888/tutannet/wp-content/plugins/youtube-embed/css/main.min.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='animate-css'  href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='tutannet-style-css'  href='http://localhost:8888/tutannet/wp-content/themes/tutannet/style.css?ver=1.0.0-alpha.3' type='text/css' media='all' />
+<link rel='stylesheet' id='easing-css'  href='http://localhost:8888/tutannet/wp-content/themes/tutannet/css/easing.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='pace-theme-css'  href='http://localhost:8888/tutannet/wp-content/themes/tutannet/css/pace-theme.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='instant-article-css'  href='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/instant-article/instant-article.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='site-header-css'  href='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/site-header/site-header.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='animated-headline-css'  href='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/animated-headline/animated-headline.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='bootstrap-css'  href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css?ver=4.3' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-font-css'  href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css?ver=4.3' type='text/css' media='all' />
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-includes/js/jquery/jquery.js?ver=1.11.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js?ver=4.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/ajax-login/messages_vi.js?ver=4.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var ajax_auth_object = {"ajaxurl":"http:\/\/localhost:8888\/tutannet\/wp-admin\/admin-ajax.php","redirecturl":"http:\/\/localhost:8888\/tutannet","loadingmessage":"\u0110ang g\u1eedi th\u00f4ng tin, xin vui l\u00f2ng ch\u1edd..."};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/ajax-login/ajax-auth-script.js?ver=4.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/js/tutannet-scripts.js?ver=1.0.0-alpha.3'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.1.2/tinycolor.min.js?ver=1.1.2'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/lib/color-thief-2.0/color-thief.min.js?ver=2.0'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/js/color.js?ver=1.0.0-alpha.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/lib/suncalc.min.js?ver=4.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/lib/amlich-hnd.js?ver=4.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/js/time.js?ver=1.0.0-alpha.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/instant-article/instant-article.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/site-header/site-header.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/animated-headline/animated-headline.js?ver=1.0.0'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/ajax-login/login.js?ver=1.0'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/tech/ajax-search/search.js?ver=1.0'></script>
+<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js?ver=3.3.5'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js?ver=4.3'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js?ver=2.8.3'></script>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js?ver=4.3'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:8888/tutannet/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost:8888/tutannet/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 4.3" />
+<link rel='canonical' href='http://localhost:8888/tutannet/' />
+<link rel='shortlink' href='http://localhost:8888/tutannet/' />
+<link rel='https://github.com/WP-API/WP-API' href='http://localhost:8888/tutannet/wp-json/' />
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+</head>
+
+<body>
+
+<div id="page" class="hfeed site">
+      
+    
+    <div class="cd-folding-panel">
+    	<div class="fold-left"></div> 
+    	<div class="fold-right"></div> 
+    	<div class="cd-fold-content">
+    		<div class="instant-article"></div>
+    	</div>
+    	<a class="cd-close" href="#0"></a>
+    </div>
+	
+    <header id="site-header" role="banner" class="hidden-md hidden-lg top">    
+            
+        <nav>
+        	<ul id="site-primary-nav" class="visible-xs visible-sm is-visible">
+        		<!--<li class="cd-label">Chuyên mục</li>-->
+        		
+        		<li class="active" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab">Tổng Quan</a></li>
+        		
+        		<li role="presentation"><a href="tin-tuc-phat-su" aria-controls="section1" role="tab" data-toggle="tab">Tin Tức Phật Sự</a></li>
+        		
+        		<li role="presentation"><a href="#phat-giao-va-xa-hoi" aria-controls="section2" role="tab" data-toggle="tab">Phật Giáo và Xã Hội</a></li>
+        		
+        		<li role="presentation"><a href="#phat-hoc" aria-controls="section3" role="tab" data-toggle="tab">Phật Học</a></li>
+        		
+        		<li role="presentation"><a href="#hoat-dong-chua-tu-tan" aria-controls="section4" role="tab" data-toggle="tab">Hoạt Động Chùa Từ Tân</a></li>
+        	</ul>
+        </nav><!-- site-primary-nav -->
+        				        
+	</header><!-- #masthead -->
+	
+
+	
+	    
+	
+
+<div id="content" class="site-content">
+    
+    <div class="header-container">
+	    <div id="site-menu" class="hidden-xs hidden-sm">
+	    	<a data-toggle="test"><div id="site-menu-bg">
+	    	
+	    	</div></a>
+	    	<nav id="tabs" class="section-navigation" role="navigation">
+		    	<ul role="tablist">		
+		           <h3 class="site-menu-label"><i class="fa fa-newspaper-o fa-lg"></i><span>Các&nbsp;chuyên&nbsp;mục<span></h3>
+		    		    	   
+		    	   <li><a href="#tong-quan"><b>Trang&nbsp;Chủ</b></a></li>
+		    	   
+		    	   <li><a href="#tin-tuc-phat-su" data-toggle="tab"><b>Tin&nbsp;Tức Phật&nbsp;Sự</b></a></li>
+		    	   
+		    	   <li><a href="#phat-giao-va-xa-hoi"><b>Phật&nbsp;Giáo và&nbsp;Xã&nbsp;Hội</b></a></li>
+		    	   
+		    	   <li><a href="#phat-hoc"><b>Phật&nbsp;Học</b></a></li>
+		    	   
+		    	   <li><a href="#hoat-dong-chua-tu-tan"><b>Hoạt&nbsp;Động Chùa&nbsp;Từ&nbsp;Tân</b></a></li>
+		    	   
+		    	   <li><a href="#phap-am"><b>Pháp&nbsp;Âm</b></a></li>
+		    	   
+		    	   <li><a href="#cac-chua-he-phai"><b>Các&nbsp;chùa hệ&nbsp;phái</b></a></li>
+		    	   
+		    	   <h3 class="site-menu-label"><i class="fa fa-newspaper-o fa-lg"></i><span>Phụ lục</span></h3>
+		    	   
+		    	   <li><a href="#doi-net-ve-chua-tu-tan"><b>Đôi&nbsp;nét về chùa&nbsp;Từ&nbsp;Tân</b></a></li>
+		    	   
+		    	   <li><a href="#thu-vien-anh"><b>Thư&nbsp;Viện&nbsp;Ảnh</b></a></li>
+		    	   
+		    	   <li><a href="#lien-he"><b>Liên&nbsp;hệ</b></a></li>
+		    	 </ul>
+	    	 </nav>
+	    	 
+	    </div>
+	    <section id="site-intro">
+	    	<div id="site-intro-main" class="anim row cd-main">
+	    		<a id="site-logo" class="animated fadeInLeft">
+	    			<!--<a href="#"><img src="http://localhost:8888/tutannet/wp-content/themes/tutannet/img/cd-logo.svg"/></a>-->
+	    		</a>
+		    	<div id="site-toolbar" class="animated fadeInRight">
+	    			<a id="toolbar-trigger" href="#" class="visible-xs" data-toggle="toolbar_wrap"><span class="toolbar-menu-icon"></span></a>
+	    			<a id="login_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="login_wrap" title="Đăng nhập"><i class="fa fa-user"></i></a>
+	    			
+	    			<a id="search_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="search_wrap" title="Tìm kiếm"><i class="fa fa-search"></i></a>
+	    			<a id="tv_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="tv_wrap" title="Trình diễn"><i class="fa fa-television"></i></a>
+				</div><!-- #site-toolbar -->
+		    		<img id="site-intro-img" class="easeOutCirc" src="http://localhost:8888/tutannet/wp-content/themes/tutannet/img/intro-background.jpg"/>
+		    		<span id="arrow-text" class="animated fadeInDown">Xem tiếp</span>
+		    		<div id="arrow-button" class="animated fadeInUp">
+			    		<svg style="cursor:pointer;" width="22" height="22" viewBox="0,0,22,22" data-reactid=".0.4.$/.0.0.6"><g stroke="none" stroke-width="1" fill="none" style="full-rule:evenodd;" data-reactid=".0.4.$/.0.0.6.0"><g fill="#FFFFFF" transform="rotate(0, 11, 11)" data-reactid=".0.4.$/.0.0.6.0.0"><g transform="translate(4.000000, 7.000000)" data-reactid=".0.4.$/.0.0.6.0.0.0"><rect transform="translate(4.242641, 4.092641) rotate(-45.000000) translate(-4.242641, -4.092641) " x="3.24264069" y="-0.757359313" width="2" height="9.7" data-reactid=".0.4.$/.0.0.6.0.0.0.0"></rect><rect transform="translate(9.727922, 4.070563) scale(-1, 1) rotate(-45.000000) translate(-9.727922, -4.070563)" x="8.72792206" y="-0.779437252" width="2" height="9.7" data-reactid=".0.4.$/.0.0.6.0.0.0.1"></rect></g></g></g></svg>
+		    		</div>
+		    		
+		    		<div id="login_wrapper" class="row is-disabled animated">
+	<form name="loginform" id="loginform" class="wrapper-is-open is-disabled animated" action="login" method="post">
+		<h2>Đăng nhập</h2>
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin.</span></p>		
+		  <input type="hidden" id="security" name="security" value="3dc962983a" /><input type="hidden" name="_wp_http_referer" value="/tutannet/" />		  <div class="input-group margin-bottom-sm login_field">
+		  <span class="input-group-addon"><i class="fa fa-street-view fa-fw"></i></span>
+		  <input class="form-control required" type="text" placeholder="Tên đăng nhập" name="log" id="user_login" />
+		</div>
+		<div class="input-group login_field">
+		  <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+		  <input class="form-control required" type="password"  name="pwd" id="user_pass" placeholder="Mật khẩu" />
+		</div>
+		
+		<div class="checkbox hidden-xs hidden-sm">
+			<label>
+				<input name='remember' type='checkbox' id='remember' value="forever" />
+				<span class="remember">Ghi nhớ thông tin đăng nhập</span>
+		    </label>
+		</div>
+		<div class="hidden-xs hidden-sm"><br/></div>
+		<div class="submit">
+			<button type="submit" class="btn btn-success">Đăng nhập</button>
+		</div>
+		<br class="clear"/>
+		<input type="hidden" name="curl" value="http://localhost:8888/tutannet/" />
+		<input type='hidden' name='redirect_to' value='http://localhost:8888/tutannet' />
+		<input type='hidden' name='testcookie' value='1' />
+		<div class="nav hidden-xs hidden-sm">
+			<a data-toggle="register" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-flag fa-stack-1x"></i>
+				</span><span>Đăng ký</span>
+			</a>
+			<a data-toggle="lostpass" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-lock fa-stack-1x"></i>
+				</span><span>Mật khẩu?</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
+		</div>
+		<div class="row login_tool hidden-md hidden-lg">
+			<div class="btn-group" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Mật khẩu?</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
+		<a class="login_close animated is-disabled hidden-xs hidden-sm" data-toggle="login_close" href="#">
+			<span class="fa-stack fa-sm">
+		  		<i class="fa fa-circle fa-stack-2x"></i>
+		  		<i class="fa fa-close fa-stack-1x fa-inverse"></i>
+			</span>
+		</a>
+	</form><!-- Login Form -->
+	
+	<form name="registerform" id="registerform" class="is-disabled animated" action="register" method="post">
+		<h2>Đăng ký</h2>
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>
+		<input type="hidden" id="signonsecurity" name="signonsecurity" value="57827a6138" /><input type="hidden" name="_wp_http_referer" value="/tutannet/" />		<div class="input-group margin-bottom-sm login_field">
+			<span class="input-group-addon"><i class="fa fa-pencil-square-o fa-fw"></i></span>
+			<input class="form-control required" type="text" placeholder="Tên đăng nhập" name="user_login" id="user_login"  />
+		</div>
+		<div class="input-group login_field">
+			<span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+			<input class="form-control required" type="email"  name="user_email" id='user_email' placeholder="Thư điện tử" />
+		</div>
+		<div class="input-group login_field">
+			<span class="input-group-addon"><i class="fa fa-unlock-alt fa-fw"></i></span>
+			<input id="signonpassword" type="password" class="form-control required" name="signonpassword" placeholder="Mật khẩu"/>
+		</div>
+		<div class="input-group login_field">
+			<span class="input-group-addon"><i class="fa fa-lock fa-fw"></i></span>
+			<input type="password" id="password2" class="form-control required" name="password2" placeholder="Xác nhận mật khẩu" />
+		</div>
+		<br class="clear hidden-xs hidden-sm"/>
+		<input type='hidden' name='redirect_to' value='http://localhost:8888/tutannet' />
+		<div class="submit">
+			<button type="submit" class="btn btn-success">
+				<i class="fa fa-paper-plane-o"></i> Đăng ký
+			</button>
+		</div>
+		<br class="clear"/>
+		<div class="nav hidden-xs hidden-sm">
+			<a data-toggle="login" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-coffee fa-stack-1x"></i>
+				</span><span>Đăng nhập</span>
+			</a>
+			<a data-toggle="lostpass" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-lock fa-stack-1x"></i>
+				</span><span>Mật khẩu?</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
+		</div>
+		<div class="row login_tool hidden-md hidden-lg">
+			<div class="btn-group" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default" data-toggle="login"><span><i class="fa fa-coffee fa-fw"></i></span><span>Đăng nhập</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="lostpass"><span><i class="fa fa-lock fa-fw"></i></span><span>Mật khẩu?</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
+		<a class="login_close animated is-disabled hidden-xs hidden-sm" data-toggle="login_close" href="#">
+			<span class="fa-stack fa-sm">
+		  		<i class="fa fa-circle fa-stack-2x"></i>
+		  		<i class="fa fa-close fa-stack-1x fa-inverse"></i>
+			</span>
+		</a>
+	</form><!-- Register Form -->
+	
+	<form name="lostpasswordform" id="lostpasswordform" class="is-disabled animated ajax-auth" action="forgotpassword" method="post">
+		<h2>Khôi phục mật khẩu</h2>
+		<p class="status"><span class="help-block">Hãy nhập đầy đủ thông tin</span></p>
+		<input type="hidden" id="forgotsecurity" name="forgotsecurity" value="677030af69" /><input type="hidden" name="_wp_http_referer" value="/tutannet/" />		<div class="input-group margin-bottom-sm login_field">
+			<span class="input-group-addon"><i class="fa fa-unlock fa-fw"></i></span>
+			<input class="form-control required" type="text" placeholder="Tên đăng nhập hoặc Thư điện tử" name="user_login" id='user_login'  />
+		</div>
+		<br class="clear hidden-xs hidden-sm">
+		<input type='hidden' name='redirect_to' value='http://localhost:8888/tutannet' />
+		<div class="submit">
+			<button type="submit" class="btn btn-success"> Lấy mật khẩu mới</button>
+		</div>
+		<br class="clear"/>
+		<div class="nav hidden-xs hidden-sm">
+			<a data-toggle="login" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-coffee fa-stack-1x"></i>
+				</span><span>Đăng nhập</span>
+			</a>
+			<a data-toggle="register" href="#">
+				<span class="fa-stack fa-lg">
+				  <i class="fa fa-circle fa-stack-2x"></i>
+				  <i class="fa fa-flag fa-stack-1x"></i>
+				</span><span>Đăng ký</span>
+			</a>
+			<a data-toggle="login_close" href="#">
+				<span class="fa-stack fa-lg">
+			  		<i class="fa fa-circle fa-stack-2x"></i>
+			  		<i class="fa fa-close fa-stack-1x"></i>
+				</span><span>Đóng lại</span>
+			</a>
+		</div>
+		<div class="row login_tool hidden-md hidden-lg">
+			<div class="btn-group" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default" data-toggle="login"><span><i class="fa fa-coffee fa-fw"></i></span><span>Đăng nhập</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="register"><span><i class="fa fa-flag fa-fw"></i></span><span>Đăng ký</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="login_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>
+	</form><!-- Lost Password Form -->	
+</div>
+
+
+    	
+    	
+    			    		<div id="search_wrapper" class="is-disabled animated">
+	<form method="get" id="searchform" action="http://localhost:8888/tutannet/">
+		<div class="row">
+		    <div class="input-group">
+		      <span class="input-group-btn">
+		        <button id="buttonSearchForm" class="btn btn-default" type="button"><i id="iconSearchForm" class="fa fa-search fa-fw"></i></button>
+		      </span>
+		      <input type="text" class="form-control" size="18" value="" placeholder="Tìm bài đọc trên ChuaTuTan.net" name="inputSearchForm" id="inputSearchForm" />
+		    </div><!-- /input-group -->
+		</div><!-- /.row -->	
+				<form id="searchtagcloudform" class="row hidden-xs">
+			<div id="search_tag_cloud" class="row-fluid">
+				<ul>
+					<li><a href='http://localhost:8888/tutannet/tag/noi-bat/' class='tag-link-60' title='1 chủ đề' style='font-size: 10pt;'>Nổi Bật</a>
+<a href='http://localhost:8888/tutannet/tag/vu-lan/' class='tag-link-62' title='1 chủ đề' style='font-size: 10pt;'>Vu Lan</a>
+<a href='http://localhost:8888/tutannet/tag/long-me/' class='tag-link-63' title='1 chủ đề' style='font-size: 10pt;'>Lòng Mẹ</a>
+<a href='http://localhost:8888/tutannet/tag/tu-tan/' class='tag-link-59' title='1 chủ đề' style='font-size: 10pt;'>Từ Tân</a>
+<a href='http://localhost:8888/tutannet/tag/phap-am/' class='tag-link-58' title='1 chủ đề' style='font-size: 10pt;'>Pháp Âm</a>
+<a href='http://localhost:8888/tutannet/tag/tin-tuc/' class='tag-link-56' title='1 chủ đề' style='font-size: 10pt;'>Tin Tức</a>
+<a href='http://localhost:8888/tutannet/tag/phat-hoc/' class='tag-link-57' title='1 chủ đề' style='font-size: 10pt;'>Phật Học</a>
+<a href='http://localhost:8888/tutannet/tag/bat-chanh-dao/' class='tag-link-54' title='2 chủ đề' style='font-size: 10pt;'>Bát Chánh Đạo</a>
+<a href='http://localhost:8888/tutannet/tag/tu-dieu-de/' class='tag-link-10' title='2 chủ đề' style='font-size: 10pt;'>Tứ Diệu Đế</a></li>
+				</ul>
+			</div>
+		</form><!-- Search Tag Cloud Form -->
+			
+		<div id="search_tool">
+			<div class="btn-group" role="group" aria-label="...">
+			  <button type="button" class="btn btn-default"><span><i class="fa fa-book fa-fw"></i></span><span>Đọc nhiều</span></button>
+			  <button type="button" class="btn btn-default"><span><i class="fa fa-bookmark fa-fw"></i></span><span>Nổi bật</span></button>
+			  <button type="button" class="btn btn-default" data-toggle="search_close"><span><i class="fa fa-close fa-fw"></i></span><span>Đóng lại</span></button>
+			</div>
+		</div>	
+	</form><!-- Search Form -->		
+	
+	
+</div><!-- #search_wrapper -->
+
+		    		<div id="site-intro-slides" class="slow animated slideInUp"></div>	
+		    		<!--<canvas id="star"></canvas>	    		-->
+		    		
+		    	</div><!-- #site-intro-main -->
+		    	<div id="site-intro-content" class="cd-gallery">		    		
+		    		 <div class="tab-content">
+		    		 	<section class="block-news clearfix">
+	<div id="section-intro">
+		<h2 class="section-name"><span>Tin Tức Phật Sự</span></h2>
+	</div>
+	      <div class="tutannet-container"><div id="news-content" class="section-content col-md-12 col-lg-12"><div class="featured-post col-xs-12 col-sm-12 col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="0.5s">	          	        
+	          	                  	        			<li id="news-1" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Vu Lan" rel="276"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/6793080-free-lotus-wallpaper.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on new"><time class="entry-date published" datetime="2015-08-18T06:30:12+00:00">18.08.2015</time><time class="updated" datetime="2015-08-18T06:32:11+00:00">18.08.2015</time></span><span class="tagged_on"><a href="http://localhost:8888/tutannet/tag/long-me/">Lòng Mẹ</a></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Vu Lan"; rel="276" href="http://localhost:8888/tutannet/276/" data-toggle="instant-article">Vu Lan</a></h3>
+          	        			  	    <div class="post-content"><p>Ngày lễ Vu Lan các Phật Tử hoan hỉ đến chùa Từ Tân trong lễ cài hoa hồng.</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-276" rel="276"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="featured-post col-xs-12 col-sm-12 col-md-6 col-lg-6 wow fadeInUp" data-wow-delay="0.5s">	          	        
+	          	                  	        			<li id="news-2" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Lục hòa" rel="261"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/Landscape_01.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-08-08T16:55:47+00:00">08.08.2015</time><time class="updated" datetime="2015-08-08T16:56:37+00:00">08.08.2015</time></span><span class="tagged_on"></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Lục hòa"; rel="261" href="http://localhost:8888/tutannet/luc-hoa/" data-toggle="instant-article">Lục hòa</a></h3>
+          	        			  	    <div class="post-content"><p>Lục hòa là sáu phương pháp cư xử với nhau cho hòa hợp từ vật chất đến tinh thần, từ lời nói đến việc làm. A. MỞ ĐỀ 1. Tai hại của sự bất hòa Trong sự sống chung đụng &#8230;</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-261" rel="261"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-3" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Đánh giá duyên khởi và tánh không" rel="259"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/intro-background.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published updated" datetime="2015-08-08T16:02:54+00:00">08.08.2015</time></span><span class="tagged_on"></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Đánh giá duyên khởi và tánh không"; rel="259" href="http://localhost:8888/tutannet/danh-gia-duyen-khoi-va-tanh-khong/" data-toggle="instant-article">Đánh giá duyên khởi và tánh không</a></h3>
+          	        			  	    <div class="post-content"><p>Tin tưởng nơi những hành động và kết quả của chúng Trong sự hiểu biết tính không của những hiện tượng Thật kỳ diệu hơn ngay cả sự kỳ diệu. Thật phi thường hơn ngay sự phi thường. -Luận Về &#8230;</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-259" rel="259"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-4" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Bửu Sơn Kỳ Hương Huyền Nghĩa" rel="257"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/intro-background-02.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-08-08T15:59:28+00:00">08.08.2015</time><time class="updated" datetime="2015-08-09T11:12:40+00:00">09.08.2015</time></span><span class="tagged_on"></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Bửu Sơn Kỳ Hương Huyền Nghĩa"; rel="257" href="http://localhost:8888/tutannet/buu-son-ky-huong-huyen-nghia/" data-toggle="instant-article">Bửu Sơn Kỳ Hương Huyền Nghĩa</a></h3>
+          	        			  	    <div class="post-content"><p>Tự Tánh Tự Độ &nbsp; Bửu Sơn Kỳ Hương đã có mặt trên đất nước Việt Nam hơn một thế kỷ, giáo lý ngày nay vẫn còn được lưu giữ trên giấy mực, trong lòng người, giữa núi rừng, đền &#8230;</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-257" rel="257"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s"><div class="askmembership"><h1>Mời&nbsp;bạn gia&nbsp;nhập<br/>ChuaTuTan.net</h1><p>Hãy đồng hành với <b>5</b> thành viên.<br/>Cùng trải nghiệm sâu sắc với <b>13</b> bài phát hành. Và theo dõi các bài đăng sắp tới.</p><a href="#" data-toggle="register_wrap">Đăng ký ngay bây giờ</a></div></div><div class="gallery-post row row-eq-height col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-5" class="cd-item">
+          	        				
+	<div class="col-sx-12 col-sm-12 col-md-6 col-lg-6 post-desc-wrapper">
+	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-07-31T13:04:45+00:00">31.07.2015</time><time class="updated" datetime="2015-08-09T11:11:32+00:00">09.08.2015</time></span><span class="tagged_on"><a href="http://localhost:8888/tutannet/tag/tu-dieu-de/">Tứ Diệu Đế</a></span></div>
+	    <h3 class="post-title"><a post-title="Phút giây định mệnh" rel="21" href="http://localhost:8888/tutannet/phut-giay-dinh-menh/" data-toggle="instant-article">Phút giây định mệnh</a></h3>
+	    <div class="post-content">GN &#8211; Tuệ tri hay thấy biết từng cảm thọ sẽ mang ta đến đạo lộ an lạc, giải thoát nhờ những quyết định sáng suốt. Chúng ta mỗi ngày quyết định không biết bao nhiêu việc và phần nhiều ...</div>
+	</div>
+	<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gallery_post_img_wrapper">
+		<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_left_wrapper">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gallery_post_img">
+				<img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/intro-background.jpg?w=209&#038;h=131&#038;crop=1"/>
+			</div>
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 gallery_post_img">
+				<img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/intro-background-03.jpg?w=209&#038;h=131&#038;crop=1"/>
+			</div>
+		</div>
+		<div class="col-xs-6 col-sm-6 col-md-12 col-lg-12 gallery_post_img_right_wrapper">
+			<img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/intro-background-02.jpg?w=210&#038;h=131&#038;crop=1"/>
+		</div>
+	</div>          	        			  	<div id="instant-article-21" rel="21"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-6" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Ba thân" rel="17"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/6793080-free-lotus-wallpaper.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-07-31T12:39:30+00:00">31.07.2015</time><time class="updated" datetime="2015-08-06T05:11:37+00:00">06.08.2015</time></span><span class="tagged_on"><a href="http://localhost:8888/tutannet/tag/bat-chanh-dao/">Bát Chánh Đạo</a></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Ba thân"; rel="17" href="http://localhost:8888/tutannet/ba-than/" data-toggle="instant-article">Ba thân</a></h3>
+          	        			  	    <div class="post-content"><p>PHÁP THÂN Dharmakāya (Pháp thân), thân tối thượng, tạo thành nền tảng của mọi phẩm hạnh của vị Phật, và nền tảng năng lực của các ngài để hoạt động. Bản tánh của Pháp thân thì thanh tịnh tự trạng thái &#8230;</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-17" rel="17"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-7" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Ảnh hưởng của tưởng trong năm uẩn" rel="13"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/6793080-free-lotus-wallpaper.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-07-31T12:16:27+00:00">31.07.2015</time><time class="updated" datetime="2015-08-03T13:58:36+00:00">03.08.2015</time></span><span class="tagged_on"></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Ảnh hưởng của tưởng trong năm uẩn"; rel="13" href="http://localhost:8888/tutannet/anh-huong-cua-tuong-trong-nam-uan/" data-toggle="instant-article">Ảnh hưởng của tưởng trong năm uẩn</a></h3>
+          	        			  	    <div class="post-content"><p>Tưởng uẩn chỉ là một uẩn trong năm uẩn kết hợp nên thân tâm mỗi con người. Sắc uẩn thuộc phần thân. Bốn uẩn còn lại thuộc phần tâm, trong đó có Tưởng uẩn. Chư Tổ định nghĩa Tưởng là &#8230;</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-13" rel="13"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-8" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="An cư kiết hạ" rel="10"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/6793080-free-lotus-wallpaper.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-07-31T12:14:37+00:00">31.07.2015</time><time class="updated" datetime="2015-08-06T04:50:53+00:00">06.08.2015</time></span><span class="tagged_on"><a href="http://localhost:8888/tutannet/tag/bat-chanh-dao/">Bát Chánh Đạo</a></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="An cư kiết hạ"; rel="10" href="http://localhost:8888/tutannet/an-cu-kiet-ha/" data-toggle="instant-article">An cư kiết hạ</a></h3>
+          	        			  	    <div class="post-content"><p>Thưở Đức Phật còn tại thế, Ngài có đặt ra một giới luật cho hàng Tăng ni là mỗi năm phải An cư Kiết hạ vào mùa mưa [1]. Vì mùa mưa ở Ấn Độ, các loại côn trùng sinh &#8230;</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-10" rel="10"></div>
+          	        			</li>
+          	        	</div>	          	        	
+	          	        
+	          	        <div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">          	        			<li id="news-9" class="cd-item">
+          	        				<div class="post-image easeOutCirc"><a post-title="Hello world!" rel="1"><img src="http://localhost:8888/tutannet/wp-content/uploads/2015/07/intro-background-03.jpg" alt="" /></a></div>          	        			  	<div class="post-desc-wrapper">
+          	        			  	    <div class="block-poston"><span class="posted-on "><time class="entry-date published" datetime="2015-07-31T11:47:55+00:00">31.07.2015</time><time class="updated" datetime="2015-08-08T16:53:18+00:00">08.08.2015</time></span><span class="tagged_on"></span></div>
+          	        			  	    <h3 class="post-title"><a post-title="Hello world!"; rel="1" href="http://localhost:8888/tutannet/hello-world/" data-toggle="instant-article">Hello world!</a></h3>
+          	        			  	    <div class="post-content"><p>Welcome to WordPress. This is your first post. Edit or delete it, then start blogging!</p>
+</div>
+          	        			  	</div>
+          	        			  	          	        			  	<div id="instant-article-1" rel="1"></div>
+          	        			</li>
+          	        	</div></div>	          	        	
+	          	        
+	          	        </div></section><!--#section1-->		    		 </div>	
+		    		
+	
+
+    <footer id="colophon" class="site-footer" role="contentinfo">
+    
+                	         
+        <div class="bottom-footer clearfix">
+            <div class="tutannet-container">
+                            <div class="ak-info">
+                    Powered by <a href="http://wordpress.org/">WordPress </a>
+                    | Theme:                     <a title="TuTanNet Themes" href="http://chuatutan.net">TuTanNet</a>
+                </div>
+                         </div>
+        </div>
+	</footer><!-- #colophon -->
+
+<link rel='stylesheet' id='jetpack-carousel-css'  href='http://localhost:8888/tutannet/wp-content/plugins/jetpack/modules/carousel/jetpack-carousel.css?ver=20120629' type='text/css' media='all' />
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='jetpack-carousel-ie8fix-css'  href='http://localhost:8888/tutannet/wp-content/plugins/jetpack/modules/carousel/jetpack-carousel-ie8fix.css?ver=20121024' type='text/css' media='all' />
+<![endif]-->
+<link rel='stylesheet' id='tiled-gallery-css'  href='http://localhost:8888/tutannet/wp-content/plugins/jetpack/modules/tiled-gallery/tiled-gallery/tiled-gallery.css?ver=2012-09-21' type='text/css' media='all' />
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/themes/tutannet/js/skip-link-focus-fix.js?ver=20130115'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-includes/js/comment-reply.min.js?ver=4.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/plugins/jetpack/_inc/spin.js?ver=1.3'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/plugins/jetpack/_inc/jquery.spin.js?ver=1.3'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var jetpackCarouselStrings = {"widths":[370,700,1000,1200,1400,2000],"is_logged_in":"","lang":"vi","ajaxurl":"http:\/\/localhost:8888\/tutannet\/wp-admin\/admin-ajax.php","nonce":"c0231fcbf0","display_exif":"0","display_geo":"1","background_color":"black","comment":"Ph\u1ea3n h\u1ed3i","post_comment":"G\u1eedi b\u00ecnh lu\u1eadn","write_comment":"Write a Comment...","loading_comments":"\u0110ang t\u1ea3i B\u00ecnh lu\u1eadn...","download_original":"View full size <span class=\"photo-size\">{0}<span class=\"photo-size-times\">\u00d7<\/span>{1}<\/span>","no_comment_text":"Please be sure to submit some text with your comment.","no_comment_email":"Please provide an email address to comment.","no_comment_author":"Please provide your name to comment.","comment_post_error":"Sorry, but there was an error posting your comment. Please try again later.","comment_approved":"Your comment was approved.","comment_unapproved":"Your comment is in moderation.","camera":"Camera","aperture":"Aperture","shutter_speed":"Shutter Speed","focal_length":"Focal Length","comment_registration":"0","require_name_email":"1","login_url":"http:\/\/localhost:8888\/tutannet\/wp-login.php?redirect_to=http%3A%2F%2Flocalhost%3A8888%2Ftutannet%2Fphut-giay-dinh-menh%2F","local_comments_commenting_as":"<fieldset><label for=\"email\">Th\u01b0 \u0111i\u1ec7n t\u1eed (Required)<\/label> <input type=\"text\" name=\"email\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-email-field\" \/><\/fieldset><fieldset><label for=\"author\">T\u00ean (Required)<\/label> <input type=\"text\" name=\"author\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-author-field\" \/><\/fieldset><fieldset><label for=\"url\">Trang web<\/label> <input type=\"text\" name=\"url\" class=\"jp-carousel-comment-form-field jp-carousel-comment-form-text-field\" id=\"jp-carousel-comment-form-url-field\" \/><\/fieldset>"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/plugins/jetpack/modules/carousel/jetpack-carousel.js?ver=20140505'></script>
+<script type='text/javascript' src='http://localhost:8888/tutannet/wp-content/plugins/jetpack/modules/tiled-gallery/tiled-gallery/tiled-gallery.js?ver=4.3'></script>
+		    	</div><!-- #site-intro-content -->			
+	    	</div><!-- #site-intro-main -->			
+	    </section>
+    </div><!-- #header-container -->
+
+</div><!-- #content -->
+
+</div><!-- #page -->
+</body>
+</html>
+
+
+
+<!-- Performance optimized by W3 Total Cache. Learn more: http://www.w3-edge.com/wordpress-plugins/
+
+Page Caching using disk: enhanced
+Object Caching 2732/2840 objects using disk
+Content Delivery Network via N/A
+Application Monitoring using New Relic
+
+ Served from: localhost @ 2015-08-19 13:00:48 by W3 Total Cache -->

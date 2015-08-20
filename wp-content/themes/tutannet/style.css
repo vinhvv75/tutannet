@@ -3,8 +3,8 @@ Theme Name: TuTanNet
 Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
-Version: 1.0.0-alpha.3
-Build: 1.0 Nightly 20150816
+Version: 1.0.0-alpha.4
+Build: 1.0 Nightly 20150820
 GitHub Theme URI: https://github.com/vxvinh/tutannet
 GitHub Branch: master
 */
@@ -322,6 +322,14 @@ Asides
 Functions
 --------------------------------------------------------------*/
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.is-invisible {
+  opacity: 0.1;
+}
+
 .is-disabled {
 	display: none !important;
 }
@@ -344,6 +352,38 @@ Functions
   -webkit-transition: all 0.9s ease-in-out;
   -moz-transition: all 0.9s ease-in-out;
   transition: all 0.9s ease-in-out;
+}
+
+.anim-infinite {
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-direction: alternate-reverse;
+	animation-direction: alternate-reverse;
+}
+
+.fast {
+  animation-duration: 0.5s;
+}
+
+.anim {
+  -webkit-transition: 0.6s;
+  -moz-transition: 0.6s;
+  transition: 0.6s;
+}
+
+@keyframes slideInUpSmall {
+  from {
+    transform: translate3d(0, 25%, 0);
+    visibility: visible;
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUpSmall {
+  animation-name: slideInUpSmall;
 }
 
 ::-moz-selection { background: rgb(250, 218, 94); color: #000; }
@@ -523,7 +563,7 @@ body.boxed-layout {
 	
 	#search_wrapper {
 		position: absolute;
-		padding-top: 10em;
+		padding-top: 5em;
 		width: 100%;
 		height: 80%;
 		top: 0;
@@ -601,7 +641,7 @@ body.boxed-layout {
 	}
 	
 	#search_tag_cloud {
-		overflow: scroll;
+		overflow: hidden;
 	}
 	
 	#search_tag_cloud h3 {
@@ -612,6 +652,7 @@ body.boxed-layout {
 	#search_tag_cloud ul {
 		text-align: center;
 		margin: 0;
+		padding: 0 !important;
 	}
 	
 	#search_tag_cloud li {
@@ -670,6 +711,8 @@ body.boxed-layout {
 		#searchform {
 			position: relative;
 			padding-top: 5em;
+			width: 50%;
+			display: inline-block;
 		}
 		#searchform	button {
 			color: #000;
@@ -785,7 +828,8 @@ body.boxed-layout {
 	}
 	
 	.login_field {
-		margin-bottom: 5px;
+		margin: 0 35%;
+		width: 30%;
 	}
 	
 	.login_tool {
@@ -853,6 +897,10 @@ body.boxed-layout {
 		min-height: 64px !important;
 		position: relative !important;
 		border-radius: 500px !important;
+	}
+	
+	#profileform .profile_avatar img {
+		left: 0 !important;
 	}
 	
 	#profileform h2 {
@@ -927,7 +975,10 @@ body.boxed-layout {
 		#profileform #user_posts {
 			border-color: #fff;
 			color: #fff;
-			font-size: 14px
+			font-size: 14px;
+			width: 35%;
+			position: relative;
+			display: inline-block;
 		}
 	}
 	
@@ -955,6 +1006,7 @@ body.boxed-layout {
 			background-color: transparent;
 			height: 80%;
 			padding: 10px 40px 40px 40px;
+			text-align: center;
 		}
 		#login_wrapper button {
 			width: auto;
@@ -1045,9 +1097,16 @@ body.boxed-layout {
 		
 	}
 	
+	
 	.tab-content {
-		padding: 4em 0;
+
 	}
+	
+	#section-intro {
+		
+	}
+	
+	
 	
 	.section-sidebar {
 		padding: 20px 10px !important;
@@ -1058,27 +1117,16 @@ body.boxed-layout {
 		padding: 0px 20px 0 0px;
 	}
 	
-	#section-name {
+	.section-name {
 		text-transform: capitalize;
-		font: 28px Georgia, "Times New Roman", Times, serif;
+		font: bold 24px Georgia, "Times New Roman", Times, serif;
 		text-align: center;
 		letter-spacing: 2px;
 		margin: 0;
-		margin-bottom: 60px;
 		color: rgb(250, 218, 94);
-		z-index: 100;
-		height: 60px;
-		background-color: #fff;
-		width: 100%;
 	}
-	
-	#section-name.fixed {
-		width: 83.3333%;
-		position:fixed; 
-		top:0;
-	}
-	
-	#section-name span {
+		
+	.section-name span {
 		display: inline-block;
 	}
 	
@@ -1123,15 +1171,13 @@ body.boxed-layout {
 	.block-poston, 
 	.block-poston span {
 		color: #9B9B9B;
-		font: 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-		font-style: normal;
+		font: bold 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 		text-transform: uppercase;
 		letter-spacing: 1px;
 	}
 	
 	.posted-on.today {
 		color: #F38A6C;
-		font-weight: bold;
 	}
 	
 	.posted-on.new {
@@ -1158,14 +1204,23 @@ body.boxed-layout {
 	@media only screen and (min-width: 992px) {
 		.section-name {
 			text-transform: capitalize;
-			font: 56px Georgia, "Times New Roman", Times, serif;
+			font: bold 24px Georgia, "Times New Roman", Times, serif;
 			text-align: center;
 			letter-spacing: 2px;
+			padding-top: 15px;
 			margin: 0;
 			margin-bottom: 60px;
-			color: rgb(250, 218, 94);
+			color: #333;
 			z-index: 0;
+		}
+		.section-name span {
+			padding-bottom: 7px;
+			border-bottom: 1px solid #333;
 		}	
+		#section-intro.is-fixed .section-name span {
+			padding-bottom: 0px;
+			border-bottom: none;
+		}
 	}
 		
 /*--------------------------------------------------------------
@@ -1204,15 +1259,18 @@ body.boxed-layout {
 	--------------------------------------------------------------*/	
 	.block-news {
 		margin: 0;
+		background-color: #fff;
 	}	
 	
 	.block-news li {
 		list-style-type: none;
 	}
 	
-	.block-news .single-post, .gallery_post_img_wrapper {
+	.block-news .single-post {
 		margin-bottom: 20px;
-		
+		margin-left: 20px;
+		padding: 0;
+		background-color: #fff;
 	}
 	
 	.block-news .featured-post {
@@ -1224,18 +1282,9 @@ body.boxed-layout {
 		width: 100%;
 	}
 	
-	.block-news .post-desc-wrapper {
-		margin-top: 30px;
-	}
-	
 	.block-news .featured-post .post-desc-wrapper, .block-news .single-post .post-desc-wrapper {
 		text-align: center;
 		padding: 0 10% 10%;
-	}
-	
-	.block-news .gallery-post .post-desc-wrapper {
-		padding: 0 10% 30px;
-		margin-bottom: 0;
 	}
 	
 	.gallery_post_img_wrapper {
@@ -1294,15 +1343,6 @@ body.boxed-layout {
 	}
 	
 	@media only screen and (min-width: 768px) {
-		.block-news .featured-post .post-desc-wrapper {
-			position: absolute;
-			margin-bottom: 40px;
-			margin: 0;
-			padding: 0 0 0 20px;
-			bottom: 10px;
-			text-align: left;
-			width: 80%;
-		}
 		.block-news .featured-post .post-image {
 			border-radius: 5px;
 			background: -moz-linear-gradient(top,  rgba(164,210,216,1) 0%, rgba(137,207,240,0) 100%);
@@ -1312,11 +1352,9 @@ body.boxed-layout {
 			background: -ms-linear-gradient(top,  rgba(164,210,216,1) 0%,rgba(137,207,240,0) 100%);
 			background: linear-gradient(to bottom,  rgba(164,210,216,1) 0%,rgba(137,207,240,0) 100%);
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a4d2d8', endColorstr='#0089cff0',GradientType=0 );			
-			
 		}
 		.block-news .featured-post .post-image img {
-			border-radius: 5px;
-			mix-blend-mode: overlay;
+			mix-blend-mode: darken;
 		}
 		.block-news .featured-post .post-title {
 			margin: 0;
@@ -1336,8 +1374,7 @@ body.boxed-layout {
 		.block-poston, 
 		.block-poston span {
 			color: #9B9B9B;
-			font: 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-			font-style: normal;
+			font: bold 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
 			text-transform: uppercase;
 			letter-spacing: 1px;
 		}
@@ -1350,6 +1387,7 @@ body.boxed-layout {
 		}
 		.posted-on.new {
 			color: #00AD83;
+			font-weight: bold;
 		}
 		.tagged_on {
 			padding-left: 5px;
@@ -1357,6 +1395,11 @@ body.boxed-layout {
 		.tagged_on a {
 			text-decoration: none;
 			color: #004080;
+			padding-bottom: 2px;
+		}
+		.tagged_on a:hover {
+			border-bottom: 1px solid #004080;
+			text-decoration: none;
 		}
 		.block-news .featured-post .post-content {
 			color: #fff;
@@ -1377,32 +1420,108 @@ body.boxed-layout {
 	}
 	
 	@media only screen and (min-width: 992px) { 
+		.block-news .single-post {
+			margin: 10px 0px 10px;
+			padding: 0px 10px;
+			background-color: #fff;
+		}
+		.block-news .single-post .post-image img {
+			min-height: 145px;
+			max-height: 154px;
+			border-radius: 2px;
+		}
 		.block-news .single-post .post-desc-wrapper {
-			margin: 30px 0 20px 0;
+			margin: 10px 0;
 			text-align: left;
-			padding: 0;
+			padding: 0 10px;
+			border-left: 1px solid #cacaca;
+			border-right: 1px solid #cacaca;
+			height: 200px;
+			overflow: hidden;
+		}
+		.block-news .featured-post {
+			margin: 10px 0px 10px;
+			padding: 0px 10px;
+			background-color: #fff;
+			position: relative;
+		}
+		.block-news .gallery-post {
+			margin: 10px 0px;
+			padding: 0px 10px;
+			background-color: #fff;
 		}
 		.gallery_post_img_wrapper {
 			padding-left: 10px !important;
 		}
-		.gallery_post_img_right_wrapper img {
-			width: 100%;
-			min-width: 100%;
-			height: auto;
+		.block-news .askmembership {
+			padding: 10px;
+			margin-bottom: 0;
+			height: 100%;
+			border-bottom: 1px solid #cacaca;
+			border-top: 1px solid #cacaca;
+			text-align: left;
 		}
-		.gallery_post_img_right_wrapper img {
-			-ms-transform: scale(1);
-			-webkit-transform: scale(1);
-			transform: scale(1); 
+		.block-news .askmembership h1 {
+			font: bold 30px Georgia, "Times New Roman", Times, serif;
+			color: #333;
+			letter-spacing: 1px;
+			margin-bottom: 20px;
 		}
-		.gallery_post_img_right_wrapper img:hover {
-			-ms-transform: scale(1.5);
-			-webkit-transform: scale(1.5);
-			transform: scale(1.5);
-			-webkit-transition: all 2s;
-			-o-transition: all 2s;
-			transition: all 2s;
+		.block-news .askmembership p, .block-news .askmembership a {
+			text-transform: uppercase;
+			font: 12px/18px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+			letter-spacing: 1px;
+			color: #999999;
+			text-align: left;
 		}
+		.block-news .askmembership a {
+			color: #3031A3;
+		}
+		.block-news .monthly {
+			padding: 0 10px;
+			margin: 10px 0;
+			height: 100%;
+			text-align: left;
+			height: 450px;
+		}
+		.block-news .monthly .monthly-info {
+			border: 7px solid #cacaca;
+			padding: 20px;
+		}
+		.block-news .monthly h1 {
+			font: 70px Georgia, "Times New Roman", Times, serif !important;
+			color: #333;
+			text-align: center;
+			display: block;
+			margin: 0;
+		}
+		.block-news .monthly h1 span {
+			font-size: 20px;
+			display: block;
+		}
+		.block-news .monthly h2 {
+			font: bold 17px Georgia, "Times New Roman", Times, serif !important;
+			color: #333;
+			text-align: center;
+			display: block;
+			padding-bottom: 3px;
+		}
+		.block-news .monthly ul {
+			text-align: center;
+			padding: 0;
+			margin: 0;
+		}
+		.block-news .monthly li {
+			text-transform: uppercase;
+			font: normal normal 14px Georgia, "Times New Roman", Times, serif;
+			padding: 5px;
+			letter-spacing: 2px;
+		}
+		.block-news .monthly a {
+			text-align: center;
+			color: #3031A3;
+		}
+		
 	}
 	
 		
@@ -2115,11 +2234,6 @@ Galleries
 		margin-top: 30px;
 	}
 
-	.top-footer {
-		background: none repeat scroll 0 0 #f1f1f1;
-		padding: 70px 0 50px;
-	}
-
 	#colophon .widget-title{
 		margin-bottom: 25px;
 	}
@@ -2128,18 +2242,6 @@ Galleries
 		background: none repeat scroll 0 0 #f1f1f1;
 		padding-right: 10px;
 	}
-
-	.top-footer.footer-column3 .footer-block {
-		float: left;
-		margin-left: 2%;
-		width: 31.33%;
-	}
-
-	.top-footer.footer-column4 .footer-block{
-		float: left;
-		margin-left: 1.5%;
-		width: 23.5%;
-	} 
 
 	.footer-column4 .block-poston .comment_count i, 
 	.footer-column4 .block-poston .tutannet-post-views i {
@@ -2173,31 +2275,44 @@ Galleries
 		width: 88%;
 	}
 
-	.top-footer .footer-block-wrapper{
-		margin-left: -2%;
-	}
-
-	.top-footer .widget{
-		margin-bottom: 0; 
-	}
-
 	.bottom-footer {
-		background: #374140;
-		color: #ffffff;
+		background: #EBEBEB;
+		color: #000;
 		text-align: center;
+		height: 200px;
+		padding: 20px 20px 0;
+		margin-top: 40px;
 	}
 
-	.bottom-footer .ak-info {
+	.bottom-footer .tutannet-info {
 		display: inline-block;
 		float: left;
-		margin-left: 5px;
+		text-align: left;
+		border-left: 1px solid #cacaca;
+		height: 150px;
+	}
+	
+	.bottom-footer .tutannet-info:first-child {
+		border: none;
 	}
 
-	.bottom-footer .ak-info a {
+	.bottom-footer .tutannet-info h1 {
+		text-transform: uppercase;
+		font: 12px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif !important;
+		color: #fff;
+	}
+	
+	.bottom-footer .tutannet-info p {
+		font: 11px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		color: #000;
+		letter-spacing: 1px;
+	}
+
+	.bottom-footer .tutannet-info a {
 		color: #ffffff;
 	}
 
-	.bottom-footer .ak-info a:hover{
+	.bottom-footer .tutannet-info a:hover{
 		color: #dc3522;
 	}
 
@@ -2242,12 +2357,6 @@ Galleries
 		float: left;
 		font-size: 14px;
 		display: inline-block;
-	}
-
-	.bottom-footer {
-		background: none repeat scroll 0 0 #374140;
-		color: #ffffff;
-		padding: 15px 0;
 	}
 
 	.footer-block-wrapper .aps-social-icon-wrapper {

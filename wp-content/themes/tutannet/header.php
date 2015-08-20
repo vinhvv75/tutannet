@@ -7,14 +7,13 @@
  * @package TuTanNet
  */
 ?><!DOCTYPE html>
-<html ng-app="tutannet" <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?>>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	  
-	 <base href="/tutannet/"></base>
 	 <?php wp_head(); ?>
 </head>
 
@@ -47,18 +46,10 @@
     </div>
 	
     <header id="site-header" role="banner" class="hidden-md hidden-lg top">    
-       
-        
+            
         <nav>
         	<ul id="site-primary-nav" class="visible-xs visible-sm is-visible">
         		<!--<li class="cd-label">Chuyên mục</li>-->
-        		<?php 
-        			if(is_user_logged_in()):
-        				global $current_user;
-        				get_currentuserinfo();
-        		 ?>
-        		<li class="active" role="presentation"><a href="#thu-vien-ca-nhan" aria-controls="tong-quan" role="tab" data-toggle="tab">Thư Viện Cá Nhân</a></li>
-        		<?php endif; ?>
         		
         		<li class="<?php if(!is_user_logged_in()) { echo 'active'; }?>" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab">Tổng Quan</a></li>
         		

@@ -1,6 +1,5 @@
 <div id="search_wrapper" class="is-disabled animated">
-	<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
-	<form method="get" id="searchform" class="col-xs-10 col-sm-6 col-md-6 col-lg-6" action="<?php bloginfo('home'); ?>/">
+	<form method="get" id="searchform" action="<?php bloginfo('home'); ?>/">
 		<div class="row">
 		    <div class="input-group">
 		      <span class="input-group-btn">
@@ -18,7 +17,7 @@
 			</div>
 		</form><!-- Search Tag Cloud Form -->
 		<?php endif; ?>	
-		<div id="search_tool" class="row">
+		<div id="search_tool">
 			<div class="btn-group" role="group" aria-label="...">
 			  <button type="button" class="btn btn-default"><span><i class="fa fa-book fa-fw"></i></span><span>Đọc nhiều</span></button>
 			  <button type="button" class="btn btn-default"><span><i class="fa fa-bookmark fa-fw"></i></span><span>Nổi bật</span></button>
@@ -26,7 +25,6 @@
 			</div>
 		</div>	
 	</form><!-- Search Form -->		
-	<div class="col-xs-1 col-sm-3 col-md-3 col-lg-3"></div>
 	
 	
 </div><!-- #search_wrapper -->

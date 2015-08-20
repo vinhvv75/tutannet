@@ -1,12 +1,11 @@
 <?php
 function ajax_auth_init(){	
 	
-//	wp_register_script('validate-script', get_template_directory_uri() . '/tech/ajax-login/jquery.validate.min.js', array('jquery') ); 
 	wp_register_script('validate-script', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js', array('jquery') ); 
         
-    wp_register_script('validate-script-vi', get_template_directory_uri() . '/tech/ajax-login/messages_vi.js', array('jquery') );
+    wp_register_script('validate-script-vi', get_template_directory_uri() . '/tech/ajax-login/messages_vi.js', array('jquery', 'validate-script') );
     
-    wp_register_script('ajax-auth-script', get_template_directory_uri() . '/tech/ajax-login/ajax-auth-script.js', array('jquery') ); 
+    wp_enqueue_script('ajax-auth-script', get_template_directory_uri() . '/tech/ajax-login/ajax-auth-script.js', array('jquery', 'validate-script', 'validate-script-vi') ); 
     
 
     wp_localize_script( 'ajax-auth-script', 'ajax_auth_object', array( 
@@ -64,10 +63,9 @@ function ajax_register(){
         else if(in_array('existing_user_email',$error)) {
         	echo json_encode(array('loggedin'=>false, 'message'=>__('Xin lỗi, thư điện tử này đã tồn tại.')));
         }
-//        else echo json_encode(array('loggedin'=>false, 'message'=>__($user_register->get_error_messages($error))));
     } else {
       wp_insert_user( $info );
-      echo json_encode(array('loggedin'=>true, 'message'=>__('Đăng ký thành công.')));
+      auth_user_login($_POST['username'], $_POST['password'], false, 'Đăng ký');
     }
 
     die();

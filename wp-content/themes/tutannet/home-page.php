@@ -33,7 +33,7 @@ get_header();
 		    		    	   
 		    	   <li><a href="#trang-chu"><b>Trang&nbsp;Chủ</b></a></li>
 		    	   
-		    	   <li><a href="tin-tuc-phat-su" data-toggle="tab"><b>Tin&nbsp;Tức Phật&nbsp;Sự</b></a></li>
+		    	   <li><a href="#tin-tuc-phat-su" data-toggle="tab"><b>Tin&nbsp;Tức Phật&nbsp;Sự</b></a></li>
 		    	   
 		    	   <li><a href="#phat-giao-va-xa-hoi"><b>Phật&nbsp;Giáo và&nbsp;Xã&nbsp;Hội</b></a></li>
 		    	   
@@ -87,12 +87,15 @@ get_header();
 		    		
 		    		<?php include('tech/ajax-login/login.php'); ?>
 		    		<?php include('tech/ajax-search/search.php'); ?>
-		    		<div id="site-intro-slides" class="slow animated slideInUp"></div>	
+		    		<div id="site-intro-slides" class="slow animated slideInUp">
+
+		    		</div>	
 		    		<!--<canvas id="star"></canvas>	    		-->
 		    		
 		    	</div><!-- #site-intro-main -->
 		    	<div id="site-intro-content" class="cd-gallery">		    		
 		    		 <div id="tin-tuc-phat-su" class="tab-content">
+		    		 <a data-toggle="load_news"><a>
 		    		 </div>	
 		    		<?php get_footer(); ?>
 		    	</div><!-- #site-intro-content -->			

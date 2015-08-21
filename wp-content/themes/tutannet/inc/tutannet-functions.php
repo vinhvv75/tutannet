@@ -654,11 +654,17 @@ function tutannet_rest_prepare_post( $data, $post, $request ) {
 	$gallery = get_post_gallery_images( $post );
 	$categories = wp_get_post_categories( $post->ID );
 	$tags = get_the_tags();
+	$is_featured = false;
+	if (in_category( 'noi-bat' )) {
+		$is_featured = true;
+	}
+	
 	
 	$_data['featured_image_thumbnail_url'] = $thumbnail[0];
 	$_data['gallery'] = $gallery;
 	$_data['categories'] = $categories;
 	$_data['tags'] = $tags;
+	$_data['is_featured'] = $is_featured;
 	
 	$data->data = $_data;
 	return $data;
@@ -685,6 +691,16 @@ add_filter( 'rest_prepare_post', 'tutannet_rest_prepare_post', 10, 3 );
  	 
   	echo $content;
   }
+  
+  /*---------------Load More Posts-------------------*/
+  
+  function tutannet_loadmore($section) { 
+   	if ($section == 'tin-tuc-phat-su') {
+   		$content = '<a href="#" data-toggle="load_news_posts" monthnum="'.date('m', strtotime('first day of last month')).'" yearnum="'.date('Y', strtotime('first day of last month')).'">Xem lại tin tức tháng trước</a>';
+   	}
+   	
+   	echo $content;
+   }
  
 
 /*--------------Install Required Plugins----------------------*/

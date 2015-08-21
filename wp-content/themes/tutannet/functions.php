@@ -293,15 +293,15 @@ function tutannet_scripts() {
     /*** Tech ***/
     // instant-article
     wp_enqueue_style( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.css' );
-    wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.js', array('jquery'), '1.0.0' );
+    wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.js', array('jquery'), '1.0' );
     
     // site-header
 	wp_enqueue_style( 'site-header', get_template_directory_uri() . '/tech/site-header/site-header.css' );
-	wp_enqueue_script( 'site-header', get_template_directory_uri() . '/tech/site-header/site-header.js', array('jquery'), '1.0.0' );
+	wp_enqueue_script( 'site-header', get_template_directory_uri() . '/tech/site-header/site-header.js', array('jquery'), '1.0' );
 	
 	// animated-headline
 	wp_enqueue_style( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.css' );
-	wp_enqueue_script( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.js', array('jquery'), '1.0.0' );
+	wp_enqueue_script( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.js', array('jquery'), '1.0' );
 	
 	// ajax-login
 	wp_enqueue_script( 'tutannet-login-scripts', get_template_directory_uri() . '/tech/ajax-login/login.js', array('jquery'), '1.0' );
@@ -413,5 +413,6 @@ require get_template_directory() . '/inc/tutannet-plugin-activation.php';
  * Load AJAX Login
  */
 require_once get_template_directory() . '/tech/ajax-login/ajax-auth.php';
+
 
 define('OPTIONS_FRAMEWORK_DIRECTORY', get_template_directory_uri(). '/inc/option-framework/');

@@ -1,5 +1,5 @@
 /*
-* Instant Article Script 1.0.0
+* Instant Article Script 1.0
 * Vo Xuan Vinh
 */
 

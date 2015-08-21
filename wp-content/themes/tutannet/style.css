@@ -1485,7 +1485,6 @@ body.boxed-layout {
 			height: 450px;
 		}
 		.block-news .monthly .monthly-info {
-			border: 7px solid #cacaca;
 			padding: 20px;
 		}
 		.block-news .monthly h1 {
@@ -1507,15 +1506,19 @@ body.boxed-layout {
 			padding-bottom: 3px;
 		}
 		.block-news .monthly ul {
-			text-align: center;
+			text-align: left;
 			padding: 0;
 			margin: 0;
 		}
 		.block-news .monthly li {
 			text-transform: uppercase;
-			font: normal normal 14px Georgia, "Times New Roman", Times, serif;
+			font: normal normal 12px Georgia, "Times New Roman", Times, serif;
 			padding: 5px;
 			letter-spacing: 2px;
+			border-top: 1px dotted #333;
+		}
+		.block-news .monthly li:last-child {
+			border-bottom: 1px dotted #333;
 		}
 		.block-news .monthly a {
 			text-align: center;

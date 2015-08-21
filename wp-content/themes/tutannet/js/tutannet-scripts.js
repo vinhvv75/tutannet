@@ -95,20 +95,16 @@ window.onload = function() {
 
 
 
-$('a[data-toggle="tab"]').on('click', function(){
-	var tab = $(this).attr('href'),
-		tabID = document.getElementById(tab),
-		load_start = new Date().getTime(), load_time
-	$(tabID).load(getBaseUrl() + '/' + tab, function(){
-		console.log('Loaded ' + tab);
-		var load_end = new Date().getTime();
-		load_time = (load_end - load_start)/1000;
-		console.log('Loading Time:', load_time);
-		$('body,html').animate({
-		    scrollTop: 780
-		}, 500);
-		return false;
-	});
+$('a[data-toggle="tab"]').on('click', function(e){
+	var tab = $(this).attr('href');
+	if (tab = '#tin-tuc-phat-su') {
+		$('a[data-toggle="load_news"]').click();
+	}
+	e.preventDefault()
+	$(this).tab('show');
+	$('body,html').animate({
+		scrollTop: 780
+	}, 500);
 });
 
 function getBaseUrl() {

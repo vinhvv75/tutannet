@@ -14,17 +14,20 @@ Template Name: Tin-Tuc-Phat-Su
 	          $month = date('m');
 	          $year = date('Y');
 	          
+	          $category = get_category(get_category_by_slug( 'tin-tuc-phat-su' ));
+	          $posts_count = $category->category_count;
+	          	          
 	          $block_news_args = array(
 	                                'category_name'=>'tin-tuc-phat-su',
 	                                'post_status'=>'publish',
 	                                'posts_per_page'=>-1,
 	                                'order'=>'DESC',
-//	                                'date_query' => array(
-//	                                		array(
-//	                                			'month'  => $month,
-//	                                			'year'	 => $year,
-//	                                		),
-//	                                	),
+	                                'date_query' => array(
+	                                		array(
+	                                			'month'  => $month,
+	                                			'year'	 => $year,
+	                                		),
+	                                	),
 	                                );
 	          
 	          $block_news_featured_query = new WP_Query($block_news_args);                      
@@ -94,12 +97,15 @@ Template Name: Tin-Tuc-Phat-Su
           	        					<ul>
           	        						'. $featured_news .'
           	        					</ul>
+          	        					'.tutannet_loadmore('tin-tuc-phat-su').'
           	        				</div>
           	        			</div>';	
           	        		  }
           	        		  if ($b_counter >= 1) {echo '</div>';} // col
-          	        		  if ($b_counter > 1 && $b_counter == $total_posts_block_news) {echo '</div>';} // news content          	        		  	          	        
+          	        		  if ($b_counter > 1 && $b_counter == $total_posts_block_news) {echo '</div>';} // news content     
+          	        		       	        		  	          	        
 	          	} // while
+	          	
 	          } // if
 	          	echo '</div>'; // tutannet-container
 	          	

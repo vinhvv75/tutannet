@@ -24,8 +24,14 @@
 <div id="page" class="hfeed site">
 	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'oblique' ); ?></a>
 
-
-	<div class="sidebar-toggle"><i class="fa fa-bars"></i></div>
+	<?php $menu_text = get_theme_mod('menu_text'); ?>
+	<div class="sidebar-toggle">
+	<?php if (!$menu_text) : ?>
+		<i class="fa fa-bars"></i>
+	<?php else : ?>
+		<?php echo esc_html($menu_text); ?>
+	<?php endif; ?>
+	</div>
 
 	<?php if ( has_nav_menu( 'social' ) ) : ?>
 		<nav class="social-navigation container clearfix">

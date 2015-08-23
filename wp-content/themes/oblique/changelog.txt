@@ -1,5 +1,14 @@
 Changelog
 
+16 August 2015 - 1.06
+--------------------------------------
+- small CSS changes;
+- added menu toggle text option;
+- enqueued Bootstrap separately for easier child theming;
+- script concatenate;
+- changed image size;
+- added social menu info.
+
 1 July 2015 - 1.05
 --------------------------------------
 - CSS improvements;

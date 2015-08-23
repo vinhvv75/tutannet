@@ -4,7 +4,7 @@ Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
 Version: 1.0.0-alpha.4
-Build: 1.0 Nightly 20150820
+Build: 1.0 Nightly 20150823
 GitHub Theme URI: https://github.com/vxvinh/tutannet
 GitHub Branch: master
 */
@@ -1144,9 +1144,7 @@ body.boxed-layout {
 	}
 	
 	.post-desc-wrapper {
-		margin-bottom: 40px;
 		width: 100%;
-		margin: 0 0 20px 0;
 	}
 	
 	.post-title {
@@ -1283,8 +1281,7 @@ body.boxed-layout {
 	}
 	
 	.block-news .featured-post .post-desc-wrapper, .block-news .single-post .post-desc-wrapper {
-		text-align: center;
-		padding: 0 10% 10%;
+		padding: 10px 10px 0px;
 	}
 	
 	.gallery_post_img_wrapper {
@@ -1357,12 +1354,16 @@ body.boxed-layout {
 			mix-blend-mode: darken;
 		}
 		.block-news .featured-post .post-title {
-			margin: 0;
-			font-size: 40px;
-			font-weight: bold;
+			margin: 0px;
+			font-size: 20px;
+			font-weight: normal;
+			width: 35%;
+			display: inline-block;
+			text-align: left;
+			vertical-align: top;
 		}
 		.block-news .featured-post .post-title a {
-			color: rgba(255,255,255,0.9);
+			color: #333;
 		}
 		.post-title a:hover {
 			color: #EF5224;
@@ -1380,6 +1381,7 @@ body.boxed-layout {
 		}
 		.block-news .featured-post .block-poston {
 			font-weight: bold;
+			text-align: left;
 		}
 		.posted-on.today {
 			color: #F38A6C;
@@ -1402,9 +1404,12 @@ body.boxed-layout {
 			text-decoration: none;
 		}
 		.block-news .featured-post .post-content {
-			color: #fff;
+			color: #333;
 			margin-top: 10px;
-			font-size: 15px;
+			font-size: 14px;
+			width: 65%;
+			display: inline-block;
+			text-align: left;
 		}
 		.block-news .featured-post .big-image-overlay {
 			
@@ -1420,10 +1425,14 @@ body.boxed-layout {
 	}
 	
 	@media only screen and (min-width: 992px) { 
+		#news-content {
+			padding: 0 10%;
+		}
 		.block-news .single-post {
 			margin: 10px 0px 10px;
-			padding: 0px 10px;
+			padding: 0px 2px;
 			background-color: #fff;
+			border-bottom: 1px dotted #cacaca;
 		}
 		.block-news .single-post .post-image img {
 			min-height: 145px;
@@ -1434,14 +1443,15 @@ body.boxed-layout {
 			margin: 10px 0;
 			text-align: left;
 			padding: 0 10px;
-			border-left: 1px solid #cacaca;
-			border-right: 1px solid #cacaca;
 			height: 200px;
 			overflow: hidden;
 		}
+		.block-news .featured {
+			padding: 0;
+		}
 		.block-news .featured-post {
 			margin: 10px 0px 10px;
-			padding: 0px 10px;
+			padding: 0px 2px;
 			background-color: #fff;
 			position: relative;
 		}
@@ -1482,7 +1492,31 @@ body.boxed-layout {
 			margin: 10px 0;
 			height: 100%;
 			text-align: left;
-			height: 450px;
+			height: auto;
+		}
+		.block-news .monthly-month {
+			margin-top: 100px;
+			margin-bottom: 40px;
+		}
+		.block-news .monthly-month h1 {
+			font: 50px Georgia, "Times New Roman", Times, serif !important;
+			margin: 0;
+			padding: 10px;
+			border: 3px solid #EF5224;
+			width: 150px;
+			display: inline-block;
+		}
+		.block-news .monthly-month h1 span {
+			font-weight: bold;
+			font-style: italic;
+			font-size: 15px;
+			margin-right: 5px;
+			display: block;
+		}
+		.block-news .monthly-month h1 span.year {
+			font-style: italic;
+			font: 20px Georgia, "Times New Roman", Times, serif;
+			margin: 10px;
 		}
 		.block-news .monthly .monthly-info {
 			padding: 20px;

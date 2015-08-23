@@ -100,11 +100,8 @@ $('a[data-toggle="tab"]').on('click', function(e){
 	if (tab = '#tin-tuc-phat-su') {
 		$('a[data-toggle="load_news"]').click();
 	}
-	e.preventDefault()
-	$(this).tab('show');
-	$('body,html').animate({
-		scrollTop: 780
-	}, 500);
+	e.preventDefault();
+	
 });
 
 function getBaseUrl() {

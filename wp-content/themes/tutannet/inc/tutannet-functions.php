@@ -50,6 +50,16 @@ function remove_wp_logo( $wp_admin_bar ) {
 	$wp_admin_bar->remove_node( 'wp-logo' );
 }
 
+add_action( 'admin_menu', 'gowp_admin_menu' );
+function gowp_admin_menu() {
+  global $menu;
+  foreach ( $menu as $key => $val ) {
+    if ( 'Bài viết' == $val[0] ) {
+      $menu[$key][6] = 'dashicons-editor-paragraph';
+    }
+  }
+}
+
 /*---------Hide meta boxes in Editor---------------*/
 
 if (is_admin()) :
@@ -73,7 +83,7 @@ endif;
 
 add_action( 'after_setup_theme', 'childtheme_formats', 11 );
 function childtheme_formats(){
-     add_theme_support( 'post-formats', array( 'standard', 'gallery' ) );
+     add_theme_support( 'post-formats', array( 'standard', 'gallery', 'quote' ) );
 }
 
 /*---------Create and Define Default Categories---------------*/
@@ -649,27 +659,33 @@ function tutannet_gallery_post() {
 
 function tutannet_rest_prepare_post( $data, $post, $request ) {
 	$_data = $data->data;
-	$thumbnail_id = get_post_thumbnail_id( $post->ID );
+	$thumbnail_id = get_post_thumbnail_id();
 	$thumbnail = wp_get_attachment_image_src( $thumbnail_id , 'tutannet-block-medium-thumb' );
 	$gallery = get_post_gallery_images( $post );
-	$categories = wp_get_post_categories( $post->ID );
 	$tags = get_the_tags();
 	$is_featured = false;
+	$events = get_the_terms( $post->ID, 'event' );	
+	
 	if (in_category( 'noi-bat' )) {
 		$is_featured = true;
+	}
+	
+	if( has_term( '', 'event' ) ) {
+	    $has_event = true;
 	}
 	
 	
 	$_data['featured_image_thumbnail_url'] = $thumbnail[0];
 	$_data['gallery'] = $gallery;
-	$_data['categories'] = $categories;
 	$_data['tags'] = $tags;
 	$_data['is_featured'] = $is_featured;
+	$_data['event_categories'] = $events;
 	
 	$data->data = $_data;
 	return $data;
 }
 add_filter( 'rest_prepare_post', 'tutannet_rest_prepare_post', 10, 3 );
+
  
  /*---------------Ask For Membership Post-------------------*/
  
@@ -711,16 +727,14 @@ function tutannet_required_plugins() {
      * If the source is NOT from the .org repo, then source is also required.
      */
     $plugins = array(
-
-        // This is an example of how to include a plugin pre-packaged with a theme.
         
-         array(
-            'name'      => __( 'Newsletter', 'tutannet' ), //The plugin name
-            'slug'      => 'newsletter',  // The plugin slug (typically the folder name)
-            'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
-            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-            ),
+//         array(
+//            'name'      => __( 'Newsletter', 'tutannet' ), //The plugin name
+//            'slug'      => 'newsletter',  // The plugin slug (typically the folder name)
+//            'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
+//            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+//            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+//            ),
                   
     );
 

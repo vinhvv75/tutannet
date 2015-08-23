@@ -59,6 +59,23 @@ function oblique_customize_register( $wp_customize ) {
             )
         )
     );
+    //Menu text
+    $wp_customize->add_setting(
+        'menu_text',
+        array(
+            'sanitize_callback' => 'oblique_sanitize_text',
+        )
+    );
+    $wp_customize->add_control(
+        'menu_text',
+        array(
+            'label'         => __( 'Menu toggle text', 'oblique' ),
+            'description'   => __( 'You can use this to replace the menu toggle button with some text', 'oblique' ),            
+            'section'       => 'oblique_general',
+            'type'          => 'text',
+            'priority'      => 11
+        )
+    );    
     //___Header___//
     $wp_customize->add_section(
         'oblique_header',
@@ -823,7 +840,29 @@ function oblique_customize_register( $wp_customize ) {
         'settings' => 'oblique_theme_ext',
         'priority' => 10
         ) )
-    );             
+    ); 
+
+    //___Social___//
+    $wp_customize->add_section(
+        'oblique_social',
+        array(
+            'title'         => __('Social', 'oblique'),
+            'priority'      => 21,
+            'description'   => __('To create a social profile like in the theme demo, do this:<br><ol><li>Go to Appearance > Menus;</li><li>Create a new menu and add links to your social networks by using the Custom Links tab;</li><li>Assign that newly created menu to the Social position.</li></ol>', 'oblique'),
+        )
+    );
+    $wp_customize->add_setting('oblique_theme_social', array(
+            'type'              => 'info_control',
+            'capability'        => 'edit_theme_options',
+            'sanitize_callback' => 'esc_attr',            
+        )
+    );
+    $wp_customize->add_control( new Oblique_Theme_Info( $wp_customize, 'social', array(
+        'section' => 'oblique_social',
+        'settings' => 'oblique_theme_social',
+        'priority' => 10
+        ) )
+    );                 
 
 }
 add_action( 'customize_register', 'oblique_customize_register' );

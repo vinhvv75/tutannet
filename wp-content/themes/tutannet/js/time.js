@@ -5,21 +5,24 @@
 
 jQuery(document).ready(function($){
 
-var options = {
-  	enableHighAccuracy: true,
-  	timeout: 5000,
-  	maximumAge: 0
-};
+var today = new Date(),
+	latitude = 10.7500, longitude = 106.6667,
+	times = SunCalc.getTimes(today, latitude, longitude);
+	sunrise = times['sunrise'];
+	night = times['night'];
 
-navigator.geolocation.getCurrentPosition(sunCalc, error, options);
+sunCalc(times, latitude, longitude);
+
+if (today > sunrise && today < night ) { $('#time_toolbar i').addClass('fa-sun-o'); } else { $('#time_toolbar i').addClass('fa-moon-o'); }
+
+
 
 }); // End
 
 
-function sunCalc(position) {
-	var today = new Date(),
+function sunCalc(times, latitude, longitude) {
+	var 
 		todayLunar = getTodayString(),
-		times = SunCalc.getTimes(today, position.coords.latitude, position.coords.longitude),
 		moon = SunCalc.getMoonIllumination(today),
 		moonPhase = ''
 		;
@@ -51,7 +54,7 @@ function sunCalc(position) {
 	
 	
 	console.log('  /********************/\n /    Sun Analysis    /\n/********************/');
-	console.log('You are at ' + position.coords.latitude + 'N ' + position.coords.longitude + 'E');
+	console.log('You are at ' + latitude + 'N ' + longitude + 'E');
 	console.log('Now is ' + today.toLocaleString());
 	console.log('Today in Vietnamese is "' + todayLunar + '"');
 	console.log('Sunrise starts at ' + times['sunrise'].getHours() +  ':' + times['sunrise'].getMinutes());

@@ -1,6 +1,7 @@
 jQuery(document).ready(function ($) {
 
-	var	siteContent = $('.cd-gallery'), newsPostsLeft;
+	var	siteContent = $('.cd-gallery'), 
+		newsPostsLeft, newsPostsDisplayed = 0, newsMonthDisplay = 0, autoAppend = true, monthnum, yearnum;
 	
 	$.ajax( {
 	  type: 'GET',
@@ -15,6 +16,7 @@ jQuery(document).ready(function ($) {
 	  } 
 	});
 		
+	// News Section	
 	siteContent.on('click', 'a[data-toggle="load_news"]', function(e) {
 		$(this).remove();
 		var date = new Date(), thisMonth = date.getMonth() + 1, thisYear = date.getFullYear();
@@ -34,9 +36,25 @@ jQuery(document).ready(function ($) {
 	});
         
 	siteContent.on('click', 'a[data-toggle="load_news_posts"]', function (e) {
-		var monthnum = $(this).attr('monthnum'), yearnum = $(this).attr('yearnum'), monthlyContent ='', finalContent = '';
+		monthnum = $(this).attr('monthnum'); 
+		yearnum = $(this).attr('yearnum');
+		var monthlyContent ='', firstFeaturedPost = '', featuredPosts = '', forfeatured = true, featured ='', quote = '', content= '', finalContent = '', monthColor;
 		$(this).remove();
 	    e.preventDefault();
+	    
+	    
+	    switch (parseInt(monthnum) ){
+	    	case 7:
+	    		monthColor = '#29AB87';
+	    		break;
+	    	case 8:
+	    		monthColor = '#C21E56';
+	    		break;
+	    	default:
+	    		monthColor = '#000000';
+	    		break;
+	    }
+	    
 	    $.ajax( {
 	      type: 'GET',
 	      dataType: 'json',
@@ -52,9 +70,9 @@ jQuery(document).ready(function ($) {
 	      success: function ( data ) {
 	      	if (data.length > 0) {
 	      		newsPostsLeft -= data.length;
-	      				      	
-		      	var featured ='', content= '';
-		      	
+	      		newsPostsDisplayed += data.length;
+	      		newsMonthDisplay++;
+	      				      			      	
 		        for (i=0; i<data.length;i++) {
 			        var post = data[i], date = new Date(post.date), dateString, tag = '#', tagString = '';
 			        
@@ -71,37 +89,36 @@ jQuery(document).ready(function ($) {
 			        
 			        if (post.is_featured) {
 			        	featured += '<li><a post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></li>';
-			        }    
-			        			      	
-			      	content += 
-			      	'<li id="news-'+ post.id +'" class="cd-item">' +			      	
-			        	'<div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">' + 
-			        		'<div class="post-image easeOutCirc">' +
-			        		'<a post-title="'+ post.title.rendered +'" rel="'+ post.id +'">' +
-			        		'<img src="' + post.featured_image_thumbnail_url + '" alt="' + post.title.rendered + '" />' +
-			        		'</a></div>' +
-			        		'<div class="post-desc-wrapper">' +
-			        			'<div class="block-poston">' +
-			        				'<span class="posted-on">' + dateString +'</span>' +
-			        				'<span class="tagged_on"><a href="'+ tag + '">' + tagString +'</a></span>' + 
-			        			'</div>' +
-			        			'<h3 class="post-title"><a post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>' +
-			        			'<div class="post-content">'+ post.excerpt.rendered +'</div>' +
-			        		'</div>' +
-			        		'<div id="instant-article-'+ post.id +' rel="'+ post.id +'"></div>' +
-			        	'</div>' + 
-			        '</li>'
-			        ;
+			        } 
+			        
+			        
+			        if (post.is_featured && forfeatured) {
+			        	firstFeaturedPost += render(true);
+			        	forfeatured = false;
+			        } 
+			        else if (post.is_featured && !forfeatured) {
+			        	featuredPosts += render(false);
+			        }
+			        else {
+			      		content += render(false);
+			    	}
+			    	
 		        } // end for
 		        
+		        var monthFeatured = 
+		        '<div class="monthly-month col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn">' +
+		        	'<h1><span>Tháng</span>'+ monthnum +'<span class="year">'+ yearnum +'</span></h1>' +
+		        '</div>' +
+		        	'<div class="featured col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.5s">';
+		        
 	        	monthlyContent +=
-	        	'<div class="monthly col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">' +
-	        		'<div class="monthly-info">' +
-	        			'<h1><span>Tháng</span>'+ monthnum +'<span>'+ yearnum +'</span></h1>';
+	        	'<div class="monthly col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.5s">' +
+	        		'<div class="monthly-month">'
+	        			;
 	        			
 	        	if (featured != '') {
 	        		monthlyContent +=
-	        		'<h2>Tin&nbsp;nổi&nbsp;bật</h2>' +
+	        		'<h3>Tin&nbsp;nổi&nbsp;bật</h3>' +
 	        		'<ul>' +
 	        			featured +
 	        		'</ul>';
@@ -112,34 +129,83 @@ jQuery(document).ready(function ($) {
 	        	'</div>';
 		        
 		        if (newsPostsLeft > 0) {
-			        var month = parseInt(monthnum) - 1;
-			        monthnum = '0' + month;
-			        if (month == 0) {
-			        	month = 12;
-			        	var year = parseInt(yearnum) - 1;
-			        	yearnum = year;
-			        }
+			        previousYear();
 					content +=
 						'<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.5s">' +
 						'<a href="#" data-toggle="load_news_posts" monthnum="'+monthnum+'" yearnum="'+yearnum+'">Xem lại tin tức tháng trước</a>' +
-						'</div>'
-					;
+						'</div>';
 				}
 			} // end if
 			else {
-				content +=
-					'<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.5s">' +
-					'<a href="#" >Xin hết</a>' +
-					'</div>'
-				;
-			}		
-			finalContent += monthlyContent;		
-			finalContent += content;
+				if (newsPostsLeft > 0) {
+				    previousYear();
+				    content =
+				    	'<a href="#" data-toggle="load_news_posts" monthnum="'+monthnum+'" yearnum="'+yearnum+'"></a>';
+				}
+			}
+			var theMonth = parseInt(monthnum) + 1;
+			if (theMonth % 2 == 0) {				
+				monthFeatured += firstFeaturedPost + monthlyContent;
+			} else { monthFeatured += monthlyContent + firstFeaturedPost; }
+			monthFeatured += '</div>';
+			
+			
+			finalContent += monthFeatured + featuredPosts + content;
+			
 			$('#news-content').append(finalContent);
+			if (data.length <= 5 && newsPostsLeft > 0 && autoAppend) {				
+				$('a[data-toggle="load_news_posts"]').click();
+				if (newsPostsDisplayed >= 10) {
+					autoAppend = false;
+				}
+			}
+			
+			function render(featured) {
+				var postrender = '<li id="news-'+ post.id +'" class="news-item">';
+				
+				if (featured) {
+					postrender += '<div class="featured-post col-xs-12 col-sm-6 col-md-8 col-lg-8 wow fadeIn" data-wow-delay="0.5s">';
+				} else {
+					postrender += '<div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.5s">';
+				}
+				
+				postrender += 
+							'<div class="post-image easeOutCirc">' +
+							'<a post-title="'+ post.title.rendered +'" rel="'+ post.id +'">' +
+							'<img src="' + post.featured_image_thumbnail_url + '" alt="' + post.title.rendered + '" />' +
+							'</a></div>' +
+							'<div class="post-desc-wrapper">' +
+								'<div class="block-poston">' +
+									'<span class="posted-on">' + dateString +'</span>' +
+									'<span class="tagged_on"><a href="'+ tag + '">' + tagString +'</a></span>' + 
+								'</div>' +
+								'<h3 class="post-title"><a style="color:'+ monthColor +';" post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>' +
+								'<div class="post-content">'+ post.excerpt.rendered +'</div>' +
+							'</div>' +
+							'<div id="instant-article-'+ post.id +' rel="'+ post.id +'"></div>' +
+						'</div>' + 
+					'</li>';
+				
+				return postrender;
+			} // end function render
 	      },	      
 	      cache: false
 	    });
-	  });    
+	  });
+	  // End News Section 
+	  
+	  
+	  
+	  
+	  function previousYear() {
+	  	var month = parseInt(monthnum) - 1;
+	  	monthnum = '0' + month;
+	  	if (month == 0) {
+	  		month = 12;
+	  		var year = parseInt(yearnum) - 1;
+	  		yearnum = year;
+	  	}
+	  }
 
 }); // End
 
@@ -149,3 +215,12 @@ function getBaseUrl() {
     var re = new RegExp(/^.*\//);
     return re.exec(window.location.href);
 }
+
+function backTop() {
+	$(this).tab('show');
+	$('body,html').animate({
+		scrollTop: 780
+	}, 800);
+}
+
+

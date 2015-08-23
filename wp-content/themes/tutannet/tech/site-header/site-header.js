@@ -234,9 +234,9 @@ jQuery(document).ready(function($){
 		console.log('true');
 		$('#site-menu').toggleClass('on-notifi');
 		$('#site-intro').toggleClass('on-notifi');
-		$('#site-intro-main, #site-intro-content').toggleClass('overflow-hidden is-invisible');	
-		$('#site-intro-content, #site-intro-slides, #site-logo, #site-toolbar, #arrow-button').toggleClass('is-disabled');		
-		$('body').toggleClass('overflow-hidden');
+//		$('#site-intro-main, #site-intro-content').toggleClass('overflow-hidden is-invisible');	
+//		$('#site-intro-content, #site-intro-slides, #site-logo, #site-toolbar, #arrow-button').toggleClass('is-disabled');		
+//		$('body').toggleClass('overflow-hidden');
 	});
 	
 	

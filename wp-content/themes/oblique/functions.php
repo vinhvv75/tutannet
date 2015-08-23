@@ -47,7 +47,7 @@ function oblique_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-	add_image_size('oblique-entry-thumb', 720);
+	add_image_size('oblique-entry-thumb', 370);
 	add_image_size('oblique-single-thumb', 1040);
 
 	// This theme uses wp_nav_menu() in one location.
@@ -102,8 +102,6 @@ add_action( 'widgets_init', 'oblique_widgets_init' );
  */
 function oblique_scripts() {
 
-	wp_enqueue_style( 'oblique-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );
-
 	if ( get_theme_mod('body_font_name') !='' ) {
 	    wp_enqueue_style( 'oblique-body-fonts', '//fonts.googleapis.com/css?family=' . esc_attr(get_theme_mod('body_font_name')) ); 
 	} else {
@@ -120,15 +118,11 @@ function oblique_scripts() {
 
 	wp_enqueue_style( 'oblique-font-awesome', get_template_directory_uri() . '/fonts/font-awesome.min.css' );	
 
-	wp_enqueue_script( 'oblique-slicknav', get_template_directory_uri() . '/js/jquery.slicknav.min.js', array('jquery'), true );	
+	wp_enqueue_script( 'oblique-imagesloaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array(), true );		
 
-	wp_enqueue_script( 'oblique-parallax', get_template_directory_uri() . '/js/parallax.min.js', array('jquery'), true );		
-
-	wp_enqueue_script( 'oblique-fitvids', get_template_directory_uri() . '/js/jquery.fitvids.min.js', array('jquery'), true );				
+	wp_enqueue_script( 'oblique-main', get_template_directory_uri() . '/js/main.js', array('jquery'), '', true );		
 
 	wp_enqueue_script( 'oblique-scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), true );	
-
-	wp_enqueue_script( 'oblique-imagesloaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array(), true );		
 
 	wp_enqueue_script( 'oblique-masonry-init', get_template_directory_uri() . '/js/masonry-init.js', array('jquery-masonry'), true );		
 
@@ -143,6 +137,13 @@ function oblique_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'oblique_scripts' );
 
+/**
+ * Enqueue Bootstrap
+ */
+function oblique_enqueue_bootstrap() {
+	wp_enqueue_style( 'oblique-bootstrap', get_template_directory_uri() . '/bootstrap/css/bootstrap.min.css', array(), true );
+}
+add_action( 'wp_enqueue_scripts', 'oblique_enqueue_bootstrap', 9 );
 
 /**
  * Change the excerpt length

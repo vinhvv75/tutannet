@@ -4,7 +4,7 @@ Theme URI: http://flyfreemedia.com/themes/oblique
 Author: FlyFreeMedia
 Author URI: http://flyfreemedia.com/
 Description: Oblique is a creative masonry theme that works great for fashion or general bloggers. Amongst the features you will find a a parallax header image, full color control with unlimited color variations, easy access to all Google Fonts, responsive design etc.
-Version: 1.05
+Version: 1.06
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: oblique
@@ -509,6 +509,7 @@ Posts nav
 	background-color: #17191B;
 	border: 0;
 	padding: 30px;
+	margin-top: -1px;
 }
 .page-header .page-title {
 	color: #fff;
@@ -865,6 +866,7 @@ svg {
 .single-post-svg {
 	fill: #fff !important;
 	position: relative;
+	margin-bottom: -1px;
 }
 .single-svg-bottom {
 	margin-top: -2px;
@@ -1069,11 +1071,17 @@ Responsive
 @media only screen and (max-width: 767px) {
 	.grid-layout .hentry {
 		width: 100%;
-		margin: 0 0 30px;
+		max-width: 370px;
+		margin: 0 auto 30px;
 	}
 	.grid-layout .hentry:nth-of-type(2) .post-svg {
 		margin-top: 0;
 	}	
+	.grid-layout {
+		width: 100%;
+		max-width: 370px;
+		margin: 0 auto;
+	}
 	.site-title {
 		font-size: 42px !important;
 	}

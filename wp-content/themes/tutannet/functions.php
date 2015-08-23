@@ -359,15 +359,38 @@ function tutannet_scripts() {
 add_action( 'wp_enqueue_scripts', 'tutannet_scripts' );
 
 
+
+
 /**
  * Framework path
  */
 require get_template_directory().'/inc/option-framework/options-framework.php';
 
 /**
+ * YouTube Embed path
+ */
+require get_template_directory().'/inc/youtube-embed/youtube-embed.php';
+
+/**
+ * WP-User-Avatar path
+ */
+//require get_template_directory().'/inc/wp-user-avatar/wp-user-avatar.php';
+
+/**
  * Custom functions that act independently of the theme templates.
  */
 require get_template_directory() . '/inc/tutannet-functions.php';
+
+/**
+ * Custom gallery functions that act independently of the theme templates.
+ */
+require get_template_directory() . '/inc/tutannet-gallery-functions.php';
+
+/**
+ * Custom event functions that act independently of the theme templates.
+ */
+require get_template_directory() . '/inc/tutannet-event-functions.php';
+
 
 /**
  * Implement the Custom Header feature.

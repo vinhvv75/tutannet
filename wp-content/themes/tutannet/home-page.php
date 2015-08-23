@@ -19,6 +19,8 @@ get_header();
 		get_currentuserinfo();
 		$login_text = 'Xin chào, ' . $current_user->user_login;
 	endif;
+	
+	date_default_timezone_set('Asia/Ho_Chi_Minh');
  ?>
 
 <div id="content" class="site-content">
@@ -59,6 +61,7 @@ get_header();
 	    		<a id="site-logo" class="animated fadeInLeft">
 	    			<!--<a href="#"><img src="<?php echo get_template_directory_uri(); ?>/img/cd-logo.svg"/></a>-->
 	    		</a>
+	    		
 		    	<div id="site-toolbar" class="animated fadeInRight">
 	    			<a id="toolbar-trigger" href="#" class="visible-xs" data-toggle="toolbar_wrap"><span class="toolbar-menu-icon"></span></a>
 	    			<a id="login_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="login_wrap" title="<?php 
@@ -77,8 +80,10 @@ get_header();
 	    			?></a>
 	    			
 	    			<a id="search_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="search_wrap" title="Tìm kiếm"><i class="fa fa-search"></i></a>
-	    			<a id="tv_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="tv_wrap" title="Trình diễn"><i class="fa fa-television"></i></a>
+	    			
+	    			<a id="time_toolbar" href="#" class="cd-btn hidden-xs" data-toggle="tv_wrap" title="Thời gian"><i class="fa"></i></a>
 				</div><!-- #site-toolbar -->
+				
 		    		<img id="site-intro-img" class="easeOutCirc" src="<?php echo get_template_directory_uri();?>/img/intro-background.jpg"/>
 		    		<span id="arrow-text" class="animated fadeInDown">xem tiếp</span>
 		    		<div id="arrow-button" class="animated fadeInUp">

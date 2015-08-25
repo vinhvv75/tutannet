@@ -33,19 +33,19 @@ get_header();
 	    	<nav id="tabs" class="section-navigation" role="navigation">
 		    	<ul role="tablist">		
 		    		    	   
-		    	   <li><a href="#trang-chu"><b>Trang&nbsp;Chủ</b></a></li>
+		    	   <li><a href="#trang-chu" data-toggle="tab" class="active"><b>Trang&nbsp;Chủ</b></a></li>
 		    	   
 		    	   <li><a href="#tin-tuc-phat-su" data-toggle="tab"><b>Tin&nbsp;Tức Phật&nbsp;Sự</b></a></li>
 		    	   
-		    	   <li><a href="#phat-giao-va-xa-hoi"><b>Phật&nbsp;Giáo và&nbsp;Xã&nbsp;Hội</b></a></li>
+		    	   <li><a href="#phat-giao-va-xa-hoi" data-toggle="tab"><b>Phật&nbsp;Giáo và&nbsp;Xã&nbsp;Hội</b></a></li>
 		    	   
-		    	   <li><a href="#phat-hoc"><b>Phật&nbsp;Học</b></a></li>
+		    	   <li><a href="#phat-hoc" data-toggle="tab"><b>Phật&nbsp;Học</b></a></li>
 		    	   
-		    	   <li><a href="#hoat-dong-chua-tu-tan"><b>Hoạt&nbsp;Động Chùa&nbsp;Từ&nbsp;Tân</b></a></li>
+		    	   <li><a href="#hoat-dong-chua-tu-tan" data-toggle="tab"><b>Hoạt&nbsp;Động Chùa&nbsp;Từ&nbsp;Tân</b></a></li>
 		    	   
-		    	   <li><a href="#phap-am"><b>Pháp&nbsp;Âm</b></a></li>
+		    	   <li><a href="#phap-am" data-toggle="tab"><b>Pháp&nbsp;Âm</b></a></li>
 		    	   
-		    	   <li><a href="#cac-chua-he-phai"><b>Các&nbsp;chùa hệ&nbsp;phái</b></a></li>
+		    	   <li><a href="#cac-chua-he-phai" data-toggle="tab"><b>Các&nbsp;chùa hệ&nbsp;phái</b></a></li>
 		    	   
 		    	   <li class="sub"><a href="#doi-net-ve-chua-tu-tan"><b>Đôi&nbsp;nét về chùa&nbsp;Từ&nbsp;Tân</b></a></li>
 		    	   
@@ -98,9 +98,12 @@ get_header();
 		    		<!--<canvas id="star"></canvas>	    		-->
 		    		
 		    	</div><!-- #site-intro-main -->
-		    	<div id="site-intro-content" class="cd-gallery">		    		
-		    		 <div id="tin-tuc-phat-su" class="tab-content">
-		    		 <a data-toggle="load_news"><a>
+		    	<div id="site-intro-content" class="cd-gallery tab-content">		    		
+		    		 <div id="tin-tuc-phat-su" class="tab-pane active animated fadeIn">
+		    		 	<a data-toggle="load_news"><a>
+		    		 </div>	
+		    		 <div id="phat-hoc" class="tab-pane animated fadeIn">
+		    		 	<a data-toggle="load_teaching"><a>
 		    		 </div>	
 		    		<?php get_footer(); ?>
 		    	</div><!-- #site-intro-content -->			

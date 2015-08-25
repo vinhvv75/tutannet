@@ -34,6 +34,8 @@ jQuery(document).ready(function ($) {
 		);
 		$('a[data-toggle="load_news_posts"]').click();
 	});
+    
+    
         
 	siteContent.on('click', 'a[data-toggle="load_news_posts"]', function (e) {
 		monthnum = $(this).attr('monthnum'); 
@@ -44,11 +46,41 @@ jQuery(document).ready(function ($) {
 	    
 	    
 	    switch (parseInt(monthnum) ){
-	    	case 7:
+	    	case 1:
+	    		monthColor = '#EFCC00';
+	    		break;
+	    	case 2:
 	    		monthColor = '#29AB87';
+	    		break;
+	    	case 3:
+	    		monthColor = '#1F75FE';
+	    		break;
+	    	case 4:
+	    		monthColor = '#DAA520';
+	    		break;
+	    	case 5:
+	    		monthColor = '#29AB87';
+	    		break;
+	    	case 6:
+	    		monthColor = '#EA2C06';
+	    		break;
+	    	case 7:
+	    		monthColor = '#27BB00';
 	    		break;
 	    	case 8:
 	    		monthColor = '#C21E56';
+	    		break;
+	    	case 9:
+	    		monthColor = '#D67B0D';
+	    		break;
+	    	case 10:
+	    		monthColor = '#E63E62';
+	    		break;
+	    	case 11:
+	    		monthColor = '#800080';
+	    		break;
+	    	case 12:
+	    		monthColor = '#EE9D00';
 	    		break;
 	    	default:
 	    		monthColor = '#000000';
@@ -109,10 +141,10 @@ jQuery(document).ready(function ($) {
 		        '<div class="monthly-month col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn">' +
 		        	'<h1><span>Tháng</span>'+ monthnum +'<span class="year">'+ yearnum +'</span></h1>' +
 		        '</div>' +
-		        	'<div class="featured col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.5s">';
+		        	'<div class="featured col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.2s">';
 		        
 	        	monthlyContent +=
-	        	'<div class="monthly col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.5s">' +
+	        	'<div class="monthly col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.2s">' +
 	        		'<div class="monthly-month">'
 	        			;
 	        			
@@ -128,17 +160,17 @@ jQuery(document).ready(function ($) {
 	        		'</div>' +
 	        	'</div>';
 		        
+		        previousYear();
 		        if (newsPostsLeft > 0) {
-			        previousYear();
 					content +=
-						'<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.5s">' +
+						'<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.2s">' +
 						'<a href="#" data-toggle="load_news_posts" monthnum="'+monthnum+'" yearnum="'+yearnum+'">Xem lại tin tức tháng trước</a>' +
 						'</div>';
 				}
 			} // end if
 			else {
+				previousYear();
 				if (newsPostsLeft > 0) {
-				    previousYear();
 				    content =
 				    	'<a href="#" data-toggle="load_news_posts" monthnum="'+monthnum+'" yearnum="'+yearnum+'"></a>';
 				}
@@ -153,6 +185,8 @@ jQuery(document).ready(function ($) {
 			finalContent += monthFeatured + featuredPosts + content;
 			
 			$('#news-content').append(finalContent);
+			
+			
 			if (data.length <= 5 && newsPostsLeft > 0 && autoAppend) {				
 				$('a[data-toggle="load_news_posts"]').click();
 				if (newsPostsDisplayed >= 10) {
@@ -164,9 +198,9 @@ jQuery(document).ready(function ($) {
 				var postrender = '<li id="news-'+ post.id +'" class="news-item">';
 				
 				if (featured) {
-					postrender += '<div class="featured-post col-xs-12 col-sm-6 col-md-8 col-lg-8 wow fadeIn" data-wow-delay="0.5s">';
+					postrender += '<div class="featured-post col-xs-12 col-sm-6 col-md-8 col-lg-8 wow fadeIn" data-wow-delay="0.2s">';
 				} else {
-					postrender += '<div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.5s">';
+					postrender += '<div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.2s">';
 				}
 				
 				postrender += 

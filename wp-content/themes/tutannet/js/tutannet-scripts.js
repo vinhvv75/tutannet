@@ -100,6 +100,10 @@ $('a[data-toggle="tab"]').on('click', function(e){
 	if (tab = '#tin-tuc-phat-su') {
 		$('a[data-toggle="load_news"]').click();
 	}
+	if (tab = '#phat-hoc') {
+		$('a[data-toggle="load_teaching"]').click();
+	}
+	 $(this).tab('show');
 	e.preventDefault();
 	
 });

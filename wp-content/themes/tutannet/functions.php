@@ -310,7 +310,8 @@ function tutannet_scripts() {
 	wp_enqueue_script( 'tutannet-search-scripts', get_template_directory_uri() . '/tech/ajax-search/search.js', array('jquery'), '1.0' );
 	
 	// ajax-load
-	wp_enqueue_script( 'tutannet-load-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'tutannet-load-news-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-news.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'tutannet-load-teaching-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-teaching.js', array('jquery' , 'color-thief' , 'tinycolor'), '1.0' );
 	
 	
 	/*** Lib ***/

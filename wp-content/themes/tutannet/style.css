@@ -1253,12 +1253,140 @@ body.boxed-layout {
 	}
 	
 /*--------------------------------------------------------------
+	Block Teaching css 
+	--------------------------------------------------------------*/
+	
+	.block-teaching {
+		
+	}
+	
+	.block-teaching .single-post, .block-teaching .featured-post {
+		margin-bottom: 20px;
+		margin-left: 20px;
+		padding: 0;
+		background-color: none;
+	}
+	
+	.block-teaching .first-featured-post {
+		
+	}
+	
+	.block-teaching .single-post::before,
+	.block-teaching .featured-post::before {
+		content: '';
+		width: 5%;
+		height: 100%;
+		border-left: 1px double #cacaca;
+		position: absolute;
+		left: 5px;
+		top: 0;
+		z-index: 100;
+	}
+	
+	.block-teaching .single-post .post-image {
+		overflow: hidden;
+		width: 210px;
+		height: 210px;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 2px;
+		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
+	}
+	
+	.block-teaching .featured-post .post-image {
+		overflow: hidden;
+		width: 210px;
+		height: 315px;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 2px;
+		border-bottom-left-radius: 7px;
+		border-bottom-right-radius: 2px;
+		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
+	}
+	
+	.block-teaching .first-featured-post .post-image {
+		overflow: hidden;
+		width: 420px;
+		height: 210px;
+		border-top-left-radius: 7px;
+		border-top-right-radius: 2px;
+		border-bottom-left-radius: 7px;
+		border-bottom-right-radius: 2px;
+		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
+	}
+	
+	
+	.block-teaching .single-post .post-image img,
+	.block-teaching .featured-post .post-image img,
+	.block-teaching .first-featured-post .post-image img {
+		min-height: 100%;
+		min-width: 100%;
+	}
+	
+	.block-teaching .single-post .post-desc-wrapper {
+		width: 210px;
+		height: 105px;
+		background: #eee;
+		padding: 10px;
+		padding-left: 15px;
+		border-bottom-left-radius: 7px;
+		border-bottom-right-radius: 2px;
+		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
+	}
+	
+	.block-teaching .featured-post .post-desc-wrapper {
+		width: 210px;
+		height: auto;
+		background: #eee;
+		padding: 10px;
+		padding-left: 15px;
+		position: absolute;
+		top: 0;
+		text-align: center;
+	}
+	
+	.block-teaching .first-featured-post .post-desc-wrapper {
+		width: 420px;
+		height: 420px;
+		background: #eee;
+		padding: 10px;
+		padding-left: 15px;
+		position: absolute;
+		top: 0;
+		text-align: center;
+	}
+	
+	.block-teaching .single-post .post-desc-wrapper h3 a {
+		font-size: 0.85em;
+	}
+	
+	.block-teaching .featured-post .post-desc-wrapper h3 a {
+		font-size: 1.5em;
+		text-transform: capitalize;
+	}
+	
+	.block-teaching .single-post .post-desc-wrapper .block-poston .tagged_on {
+		padding: 0;
+	}
+	
+	.block-teaching .single-post .post-desc-wrapper .block-poston .tagged_on a,
+	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a {
+		font: 0.8em Georgia, "Times New Roman", Times, serif;
+	}
+	
+	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a {
+		font: 1em;
+	}
+	
+	
+	
+	
+/*--------------------------------------------------------------
 	Block News css 
 	--------------------------------------------------------------*/	
 	.block-news {
 		margin: 0;
 		background-color: #fff;
-	}	
+	}
 	
 	.block-news li {
 		list-style-type: none;
@@ -1405,7 +1533,7 @@ body.boxed-layout {
 		}
 		.block-news .featured-post .post-content {
 			color: #333;
-			margin-top: 10px;
+			margin-top: 0px;
 			font-size: 14px;
 			width: 65%;
 			display: inline-block;

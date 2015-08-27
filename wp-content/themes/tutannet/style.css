@@ -3,8 +3,8 @@ Theme Name: TuTanNet
 Theme URI: http://chuatutan.net
 Author: Vo Xuan Vinh
 Author URI: vxvpastime@gmail.com
-Version: 1.0.0-alpha.4
-Build: 1.0 Nightly 20150823
+Version: 1.0.0-alpha.5
+Build: 1.0 Nightly 20150827
 GitHub Theme URI: https://github.com/vxvinh/tutannet
 GitHub Branch: master
 */
@@ -1260,21 +1260,29 @@ body.boxed-layout {
 		
 	}
 	
-	.block-teaching .single-post, .block-teaching .featured-post {
-		margin-bottom: 20px;
-		margin-left: 20px;
+	#teaching-content {
+		padding: 0 10%;
+	}
+	
+	.block-teaching .single-post, 
+	.block-teaching .featured-post,
+	.block-teaching .first-featured-post {
+		margin: 20px 10px;
 		padding: 0;
 		background-color: none;
+		width: 210px;
 	}
 	
 	.block-teaching .first-featured-post {
-		
+		margin: 20px;
+		width: 315px;
+		margin-left: 0;
 	}
 	
 	.block-teaching .single-post::before,
 	.block-teaching .featured-post::before {
 		content: '';
-		width: 5%;
+		width: 2%;
 		height: 100%;
 		border-left: 1px double #cacaca;
 		position: absolute;
@@ -1283,10 +1291,22 @@ body.boxed-layout {
 		z-index: 100;
 	}
 	
+	.block-teaching .first-featured-post::before {
+		content: '';
+		width: 2%;
+		height: 100%;
+		border-left: 1px double #cacaca;
+		position: absolute;
+		left: 7px;
+		top: 0;
+		z-index: 100;
+	}
+	
 	.block-teaching .single-post .post-image {
 		overflow: hidden;
 		width: 210px;
 		height: 210px;
+		background-color: #eee;
 		border-top-left-radius: 7px;
 		border-top-right-radius: 2px;
 		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
@@ -1296,6 +1316,7 @@ body.boxed-layout {
 		overflow: hidden;
 		width: 210px;
 		height: 315px;
+		background-color: #eee;
 		border-top-left-radius: 7px;
 		border-top-right-radius: 2px;
 		border-bottom-left-radius: 7px;
@@ -1305,12 +1326,11 @@ body.boxed-layout {
 	
 	.block-teaching .first-featured-post .post-image {
 		overflow: hidden;
-		width: 420px;
-		height: 210px;
-		border-top-left-radius: 7px;
-		border-top-right-radius: 2px;
-		border-bottom-left-radius: 7px;
-		border-bottom-right-radius: 2px;
+		width: 315px;
+		height: 195px;
+		background-color: #eee;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 5px;
 		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
 	}
 	
@@ -1338,6 +1358,7 @@ body.boxed-layout {
 		height: auto;
 		background: #eee;
 		padding: 10px;
+		padding-top: 15px;
 		padding-left: 15px;
 		position: absolute;
 		top: 0;
@@ -1345,14 +1366,17 @@ body.boxed-layout {
 	}
 	
 	.block-teaching .first-featured-post .post-desc-wrapper {
-		width: 420px;
-		height: 420px;
-		background: #eee;
+		width: 315px;
+		height: 277px;
+		background: #fff;
 		padding: 10px;
-		padding-left: 15px;
-		position: absolute;
-		top: 0;
-		text-align: center;
+		padding-left: 17px;
+		border-top-left-radius: 10px;
+		border-top-right-radius: 5px;
+		box-shadow: 3px 7px 9px rgba(0,0,0,0.3);
+		border-top: 1px solid #cacaca;
+		border-right: 1px solid #cacaca;
+		border-left: 1px solid #cacaca; 
 	}
 	
 	.block-teaching .single-post .post-desc-wrapper h3 a {
@@ -1362,6 +1386,25 @@ body.boxed-layout {
 	.block-teaching .featured-post .post-desc-wrapper h3 a {
 		font-size: 1.5em;
 		text-transform: capitalize;
+		position: relative;
+	}
+	
+	.block-teaching .featured-post .post-desc-wrapper .post-title {
+		position: relative;
+		display: inline-block;
+	}
+	
+	.block-teaching .first-featured-post .post-desc-wrapper h3 a {
+		font-size: 1.3em;
+		text-transform: capitalize;
+	}
+	
+	.block-teaching .first-featured-post .post-desc-wrapper h3 a:hover {
+		color: #000;
+	}
+	
+	.block-teaching .first-featured-post .post-desc-wrapper .post-title {
+		margin-top: 1em;
 	}
 	
 	.block-teaching .single-post .post-desc-wrapper .block-poston .tagged_on {
@@ -1369,15 +1412,35 @@ body.boxed-layout {
 	}
 	
 	.block-teaching .single-post .post-desc-wrapper .block-poston .tagged_on a,
-	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a {
+	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a,
+	.block-teaching .first-featured-post .post-desc-wrapper .block-poston .tagged_on a {
 		font: 0.8em Georgia, "Times New Roman", Times, serif;
 	}
 	
-	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a {
-		font: 1em;
+	.block-teaching .single-post .post-desc-wrapper .block-poston .tagged_on a:hover,
+	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a:hover,
+	.block-teaching .first-featured-post .post-desc-wrapper .block-poston .tagged_on a:hover {
+		text-decoration: none;
+		border: none;
 	}
 	
+	.block-teaching .featured-post .post-desc-wrapper .block-poston .tagged_on a {
+		font-size: 1em;
+	}
 	
+	.block-teaching .first-featured-post .post-desc-wrapper .block-poston .tagged_on a {
+		font-size: 1.1em;
+	}
+	
+	.block-teaching .first-featured-post .post-desc-wrapper .block-poston .tagged_on {
+		display: block;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+	
+	.block-teaching .first-featured-post .post-desc-wrapper .block-poston {
+		margin-top: 5em;
+	}
 	
 	
 /*--------------------------------------------------------------

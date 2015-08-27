@@ -1,4 +1,7 @@
 
+
+
+
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
@@ -10,4 +13,3 @@ RewriteRule . /tutannet/index.php [L]
 </IfModule>
 
 # END WordPress
-

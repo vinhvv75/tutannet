@@ -59,10 +59,10 @@ jQuery(document).ready(function ($) {
 	    		monthColor = '#DAA520';
 	    		break;
 	    	case 5:
-	    		monthColor = '#29AB87';
+	    		monthColor = '#EA2C06';
 	    		break;
 	    	case 6:
-	    		monthColor = '#EA2C06';
+	    		monthColor = '#E8236C';
 	    		break;
 	    	case 7:
 	    		monthColor = '#27BB00';
@@ -233,12 +233,12 @@ jQuery(document).ready(function ($) {
 	  
 	  function previousYear() {
 	  	var month = parseInt(monthnum) - 1;
-	  	monthnum = '0' + month;
 	  	if (month == 0) {
 	  		month = 12;
 	  		var year = parseInt(yearnum) - 1;
 	  		yearnum = year;
 	  	}
+	  	monthnum = '0' + month;
 	  }
 
 }); // End

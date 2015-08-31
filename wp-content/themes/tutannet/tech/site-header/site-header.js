@@ -51,7 +51,7 @@ jQuery(document).ready(function($){
 	
 	// initalize bootstrap tooltip
 	$('[data-toggle="tooltip"]').tooltip();
-	$('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner" style="white-space: nowrap;"></div></div>'});
+	$('#site-toolbar a').tooltip({placement: "bottom", template: '<div class="tooltip" role="tooltip"><div class="tooltip-inner" style="white-space: nowrap; background: transparent; text-shadow: 0px 1px 3px rgba(0,0,0,0.5);"></div></div>'});
 	
 	$('#arrow-button').on('click', function(){
 		$('body,html').animate({
@@ -76,11 +76,24 @@ jQuery(document).ready(function($){
 		$('#site-toolbar').addClass('is-disabled');
 	}	
 	
+	var parallax = $("#site-intro-img"),
+	    speed = 0.5;
+	      
+	
 	
 						
 	$(window).on('scroll', function(){
 		//on desktop - assign a position fixed to logo and action button and move them outside the viewport
 //		( $(window).scrollTop() > 550 && $(window).width() >= 992  ) ? $('#site-logo').addClass('is-hidden') : $('#site-logo').removeClass('is-hidden');	
+
+
+      var windowYOffset = window.pageYOffset,
+          elBackgrounPos = -(windowYOffset * speed)/2 + "px";
+          elBackgroundOpa = 1 - (windowYOffset * speed / 6)/100; 
+
+      $(parallax).css("transform", "translateY("+elBackgrounPos+")");
+      $(parallax).css("opacity", elBackgroundOpa);
+
 				
 						
 		//on desktop - fix secondary navigation on scrolling
@@ -132,12 +145,8 @@ jQuery(document).ready(function($){
 		      if (scrolled <= headerHeight) {
 		      	$('#site-header, #site-logo, #site-toolbar').addClass('top');
 		      	$('#site-header').removeClass('is-open');
-		      	if( $('#site-primary-nav').hasClass('is-visible') ) {
-		      		$('#site-toolbar').addClass('is-disabled'); 
-		      	} else { $('#site-toolbar').removeClass('is-disabled'); }
 		      } else { 
 		      	$('#site-header, #site-logo, #site-toolbar').removeClass('top');
-		      	$('#site-primary-nav').removeClass('is-visible');
 		      }
 		      scroll = $(document).scrollTop(); 
 	      } 
@@ -197,32 +206,13 @@ jQuery(document).ready(function($){
 	    timer && clearTimeout(timer);
 	    timer = setTimeout(clear, 30);
 	    
-	    if(delta >= 50 || delta <= -50) {console.log(true);}
+	    if(delta >= 50 || delta <= -50) {}
 	};
 	
 	//open/close primary navigation
 	$('#site-logo').on('click', function(){
-		if (scroll > headerHeight) { 
-			$('#site-logo').toggleClass('top'); 
-			$('#site-header').toggleClass('is-open');
-		}
 		
-		var Top = 780;
-		$('body,html').animate({
-		    scrollTop: Top 
-		}, 800);
 		
-		//in firefox transitions break when parent overflow is changed, so we need to wait for the end of the trasition to give the body an overflow hidden
-		if( $('#site-primary-nav').hasClass('is-visible') ) {
-			$('#site-toolbar').removeClass('is-disabled');
-			$('#site-primary-nav').removeClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
-			});
-			
-		} else {
-			$('#site-toolbar').addClass('is-disabled');
-			$('#site-primary-nav').addClass('is-visible').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',function(){
-			});	
-		}
 	});
 	
 	//open/close toolbar wrapper
@@ -230,13 +220,9 @@ jQuery(document).ready(function($){
 		$('.toolbar-menu-icon').toggleClass('is-clicked');
 	});
 	
-	$('a[data-toggle="test"]').on('click', function(){
-		console.log('true');
-		$('#site-menu').toggleClass('on-notifi');
-		$('#site-intro').toggleClass('on-notifi');
-//		$('#site-intro-main, #site-intro-content').toggleClass('overflow-hidden is-invisible');	
-//		$('#site-intro-content, #site-intro-slides, #site-logo, #site-toolbar, #arrow-button').toggleClass('is-disabled');		
-//		$('body').toggleClass('overflow-hidden');
+	$('a[data-toggle="menu"]').on('click', function(){
+		$('#site-menu').toggleClass('off-canvas');
+		$('#site-menu-trigger .site-menu-icon, #site-menu-trigger .site-menu-text').toggleClass('is-clicked');
 	});
 	
 	

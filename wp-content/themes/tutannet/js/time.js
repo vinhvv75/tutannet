@@ -24,31 +24,34 @@ function sunCalc(times, latitude, longitude) {
 	var 
 		todayLunar = getTodayString(),
 		moon = SunCalc.getMoonIllumination(today),
-		moonPhase = ''
+		moonPhase = '',
+		moon_phase = Math.round(moon['phase'] * 10) / 10
 		;
+		
+		
 	
-	if (moon['phase'] == 0) {
+	if (moon_phase == 0) {
 		moonPhase = 'New Moon'; 
 	}
-	else if (moon['phase'] > 0 && moon['phase'] < 0.25)  {
+	else if (moon_phase > 0 && moon_phase < 0.25)  {
 		moonPhase = 'Waxing Crescent';
 	}
-	else if (moon['phase'] == 0.25)  {
+	else if (moon_phase == 0.25)  {
 		moonPhase = 'First Quarter';
 	}
-	else if (moon['phase'] > 0.25 && moon['phase'] < 0.5)  {
+	else if (moon_phase > 0.25 && moon_phase < 0.5)  {
 		moonPhase = 'Waxing Gibbous';
 	}
-	else if (moon['phase'] == 0.5 || moon['phase'] == 1)  {
+	else if (moon_phase == 0.5 || moon_phase == 1)  {
 		moonPhase = 'Full Moon';
 	}
-	else if (moon['phase'] > 0.5 && moon['phase'] < 0.75)  {
+	else if (moon_phase > 0.5 && moon_phase < 0.75)  {
 		moonPhase = 'Waning Gibbous';
 	}
-	else if (moon['phase'] == 0.75)  {
+	else if (moon_phase == 0.75)  {
 		moonPhase = 'Last Quarter';
 	}
-	else if (moon['phase'] > 0.75 && moon['phase'] < 1)  {
+	else if (moon_phase > 0.75 && moon_phase < 1)  {
 		moonPhase = 'Waning Crescent';
 	}
 	
@@ -62,6 +65,17 @@ function sunCalc(times, latitude, longitude) {
 	console.log('Night starts at ' + times['night'].getHours() +  ':' + times['night'].getMinutes());
 	console.log('Tonight Moon is ' + moonPhase);
 	console.log('\n');
+
+	var lunarDate = getLunarDate(today.getDate(),(parseInt(today.getMonth())+1),today.getFullYear());
+	
+	var lunar = jQuery('#site-time-lunar');
+	lunar.append(
+		'<span>'+ lunarDate.day + ' / ' + lunarDate.month +'</span>'
+	);
+	
+	var site_moon = document.getElementById('site-time-moon');
+	
+	drawPlanetPhase(site_moon, moon['fraction'], true, {diameter:30, earthshine:0.1, blur:0, lightColour: '#FFCF00', shadowColour: '#191970'})
 }
 
 function error(err) {

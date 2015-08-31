@@ -1,4 +1,5 @@
-TuTanNet WordPress Theme, Copyright 2015 by Vo Xuan Vinh & Tu Tan Monastery
+TuTanNet, Copyright 2015 by Vo Xuan Vinh & Tu Tan Buddhist Community Pagoda
+Powered by Wordpress 4.3
 
 Version: 1.0.0-alpha.5
 Build: 1.0 Nightly 20150827

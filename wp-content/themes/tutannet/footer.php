@@ -43,9 +43,8 @@
 	                </div>
 	                <div class="tutannet-info col-md-3 col-lg-3">
 	                	<h1>Về ChuaTuTan.net</h1>
-	                	<p>&#169; copyright <?php echo date("Y"); ?> Tu Tan Monastery,  All rights reserved.</p>
+	                	<p>&#169; copyright <?php echo date("Y"); ?> Tu Tan Buddhist Community Pagoda,  All rights reserved.</p>
 	                	<p>&#174; Chùa Từ Tân giữ bản quyền nội dung trên website này.</p>
-	                	<a href="#"></a>
 	                </div>
                 </div>
             

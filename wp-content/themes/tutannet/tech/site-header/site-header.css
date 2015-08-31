@@ -206,6 +206,7 @@ Logo
   	left: 19%;
   	width: 200px;
   	height: 200px;
+  	margin: 0 40%;
   	z-index: 99;
   }
   #site-logo.is-hidden {
@@ -229,6 +230,7 @@ Logo
   }
 }
 
+
 /* -------------------------------- 
 
 Site Menu
@@ -236,14 +238,101 @@ Site Menu
 -------------------------------- */
 @media only screen and (min-width: 992px) {
   #site-menu {
-  	padding: 10px !important;
+  	padding: 80px 0 !important;
   	position: fixed;
   	height: 100%;
   	overflow: scroll;
-  	width: 16.6667%;
-  	-webkit-transition: 0.6s;
-  	-moz-transition: 0.6s;
-  	transition: 0.6s;
+  	width: 33.3333%;
+  	min-width: 300px;
+  	-webkit-transition: all 0.8s;
+  	-moz-transition: all 0.8s;
+  	transition: all 0.8s;
+  	background: #F9F8F6;
+  	left: 0;
+  	top: 0;
+  	z-index: 150;
+  	border-left: 1px solid #cacaca;
+  }
+  #site-menu-trigger {
+  	position: fixed;
+  	top: 32px;
+  	left: 5%;
+  	width: 200px;
+  	z-index: 150;
+  	cursor: pointer;
+  }
+  #site-menu-trigger .site-menu-icon, #site-menu-trigger .site-menu-text {
+    /* this span is the central line of the menu icon */
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -o-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    width: 18px;
+    height: 2px;
+    background-color: #fff;
+    -webkit-transition: background-color 0.8s;
+    -moz-transition: background-color 0.8s;
+    transition: background-color 0.8s;
+    /* these are the upper and lower lines in the menu icon */
+  }
+  #site-menu-trigger .site-menu-text {
+  	right: 5px;
+  	width: 100px;
+  	height: auto;
+  	background: none;
+  	color: #fff;
+  	font-weight: bold;
+  	font-size: 1em;
+  	text-transform: uppercase;
+  	-webkit-transition: color 0.8s;
+  	-moz-transition: color 0.8s;
+  	transition: color 0.8s;
+  }
+  #site-menu-trigger .site-menu-text.is-clicked {
+  	color: #333;
+  }
+  #site-menu-trigger .site-menu-icon::before, #site-menu-trigger .site-menu-icon:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+    right: 0;
+    -webkit-transition: -webkit-transform 1s, top 1s, background-color 1s;
+    -moz-transition: -moz-transform 1s, top 1s, background-color 1s;
+    transition: transform 1s, top 1s, background-color 1s;
+  }
+  #site-menu-trigger .site-menu-icon::before {
+    top: -5px;
+  }
+  #site-menu-trigger .site-menu-icon::after {
+    top: 5px;
+  }
+  #site-menu-trigger .site-menu-icon.is-clicked {
+    background-color: rgba(255, 255, 255, 0);
+  }
+  #site-menu-trigger .site-menu-icon.is-clicked::before, #site-menu-trigger .site-menu-icon.is-clicked::after {
+    background-color: #333;
+  }
+  #site-menu-trigger .site-menu-icon.is-clicked::before {
+    top: 0;
+    -webkit-transform: rotate(135deg);
+    -moz-transform: rotate(135deg);
+    -ms-transform: rotate(135deg);
+    -o-transform: rotate(135deg);
+    transform: rotate(135deg);
+  }
+  #site-menu-trigger .site-menu-icon.is-clicked::after {
+    top: 0;
+    -webkit-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -o-transform: rotate(225deg);
+    transform: rotate(225deg);
   }
   #site-menu > .section-navigation {
   	margin-bottom: 40px;
@@ -271,8 +360,8 @@ Site Menu
   	position: relative;
   	cursor: pointer;
   }
-  #site-menu.on-notifi {
-  	width: 25%;
+  #site-menu.off-canvas {
+  	left: -33.3333%;
   }
  }
 
@@ -440,10 +529,7 @@ Intro
 @media only screen and (min-width: 992px) {
   #site-intro {
   	padding: 0;
-  	margin-left: 16.6667%;
-  	border-left: 1px solid #cacaca;
   	text-align: center;
-  	width: 83.3333%;
   }
   #site-intro #site-intro-tagline {
     
@@ -483,7 +569,7 @@ Intro
   #site-intro-main img {
 	min-width: 100%;
 	height: auto;
-	left: 16.6667%;
+	left: 0%;
   }
   #site-intro-content {
   	background-color: #FFF;
@@ -501,19 +587,6 @@ Intro
   
   .fixed {position:fixed; top:0;}
   
-   #site-intro.on-notifi {
-    margin-left: 25%;
-   	width: 75%;
-   }
-   #site-intro.on-notifi #site-intro-main img {
-   	left: 25%;
-   }
-   #site-intro.on-notifi #site-logo {
-   	left: 27%;
-   }
-   #site-intro.on-notifi #site-toolbar {
-   	right: 3%;
-   }
 }
 
 
@@ -525,12 +598,11 @@ Datebar
 
 #site-datebar {
 	position: fixed;
-	top: 32px;
+	top: 150px;
 	right: 5%;
 	text-align: center;
 	width: 200px;
-	height: 64px;
-	/*background: black;*/
+	height: 75px;
 	-webkit-animation-delay: 0.5s; 
 	-moz-animation-delay: 0.5s; 
 	animation-delay: 0.5s;
@@ -538,6 +610,35 @@ Datebar
 	-moz-transition: right 0.6s;
 	transition: right 0.6s; 
 	z-index: 95;
+	border-radius: 4px;
+	border: 1px solid #FFCF00;
+}
+
+#site-datebar span {
+	color: #fff;
+	padding: 5px;
+	display: block;
+}
+
+#site-datebar span.today {
+	border-bottom: 1px solid #FFCF00;
+}
+
+#site-time-lunar {
+	width: 50%;
+}
+
+#site-time-lunar span {
+	font-size: 2em;
+	border-right: 1px solid rgb(255, 207, 0);
+	padding: 0;
+}
+
+#site-time-moon {
+    width: 30px;
+    position: absolute;
+    left: 133px;
+    top: 37px;
 }
 
 
@@ -729,7 +830,7 @@ Toolbar
   #arrow-button {
   	position: fixed;
   	margin-left: -25px;
-  	top: 77%;
+  	top: 92%;
   	padding-top: 5px;
   	display: inline-block;
   	animation-delay: 0.5;
@@ -737,7 +838,7 @@ Toolbar
   #arrow-text {
   	position: fixed;
   	margin-left: -35px;
-  	top: 74%;
+  	top: 89%;
   	padding-top: 5px;
   	display: inline-block;
   	animation-delay: 0.5;
@@ -748,6 +849,12 @@ Toolbar
   #arrow-button svg {
   	width: 50px;
   	height: 50px;
+  }
+  .tooltip > .tooltip-arrow {
+    border-bottom-color: none !important;
+  }
+  .transparent-tooltip + .tooltip > .tooltip-inner {
+   background-color: none !important;
   }
 }
 
@@ -868,7 +975,7 @@ Secondary Fixed Navigation
 }
 #site-section-nav li a, #site-menu > .section-navigation li a {
   display: block;
-  padding: 0.9em 0;
+  padding: 0.9em 20px;
   color: #333;
 }
 .section-navigation {
@@ -888,10 +995,16 @@ Secondary Fixed Navigation
 	display: inline-block;
 	float: none;
 	text-align: left;
+	width: 100%;
 }
 .section-navigation ul li {
 	padding: 0;
 	position: relative;
+	width: 100%;
+	border-top: 1px solid #cacaca;
+}
+.section-navigation ul li:last-child {
+	border-bottom: 1px solid #cacaca;
 }
 .section-navigation ul li:last-child::before {
 	border: none;
@@ -963,7 +1076,7 @@ Secondary Fixed Navigation
   }
   #site-section-nav li a b, #site-menu li a b {
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: 0.95em;
     color: rgba(240, 238, 225, 0.3);
   	font-weight: bold;
   }

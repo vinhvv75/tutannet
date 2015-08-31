@@ -42,26 +42,35 @@
     	<div class="cd-fold-content">
     		<div class="instant-article"></div>
     	</div>
-    	<a class="cd-close" href="#0"></a>
-    </div>
+    	<a class="cd-article-close" href="#0"></a>
+    </div> <!-- cd-folding-panel -->
+    
+    <div class="cd-quick-view">
+    	<div class="cd-slider-wrapper">
+    		<ul class="cd-slider">
+    			<li class="selected"><img src="" alt=""><a href="#" class="play"><i class="fa fa-play-circle-o"></i></a></li>
+    		</ul> <!-- cd-slider -->
+     
+    		<ul class="cd-slider-navigation">
+    			<!--<li><a class="cd-next" href="#0">Prev</a></li>-->
+    			<!--<li><a class="cd-prev" href="#0">Next</a></li>-->
+    		</ul> <!-- cd-slider-navigation -->
+    	</div> <!-- cd-slider-wrapper -->
+     
+    	<div class="cd-item-info">
+    		<h2>Cover Title</h2>
+    		<p>Lorem ipsum dolor sit amet, consectetur adipisicing...</p>
+     
+    		<ul class="cd-item-action">
+    			<li><button class="listen">Lắng nghe</button></li>					
+    			<li><a href="#0">Đọc thêm</a></li>	
+    		</ul> <!-- cd-item-action -->
+    	</div> <!-- cd-item-info -->
+    	<a href="#0" class="cd-close">Đóng</a>
+    </div> <!-- cd-quick-view -->
 	
     <header id="site-header" role="banner" class="hidden-md hidden-lg top">    
             
-        <nav>
-        	<ul id="site-primary-nav" class="visible-xs visible-sm is-visible">
-        		<!--<li class="cd-label">Chuyên mục</li>-->
-        		
-        		<li class="<?php if(!is_user_logged_in()) { echo 'active'; }?>" role="presentation" ><a href="#tong-quan" aria-controls="tong-quan" role="tab" data-toggle="tab">Tổng Quan</a></li>
-        		
-        		<li role="presentation"><a href="tin-tuc-phat-su" aria-controls="section1" role="tab" data-toggle="tab">Tin Tức Phật Sự</a></li>
-        		
-        		<li role="presentation"><a href="#phat-giao-va-xa-hoi" aria-controls="section2" role="tab" data-toggle="tab">Phật Giáo và Xã Hội</a></li>
-        		
-        		<li role="presentation"><a href="#phat-hoc" aria-controls="section3" role="tab" data-toggle="tab">Phật Học</a></li>
-        		
-        		<li role="presentation"><a href="#hoat-dong-chua-tu-tan" aria-controls="section4" role="tab" data-toggle="tab">Hoạt Động Chùa Từ Tân</a></li>
-        	</ul>
-        </nav><!-- site-primary-nav -->
         				        
 	</header><!-- #masthead -->
 	

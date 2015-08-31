@@ -97,7 +97,7 @@ class Options_Framework_Admin {
 
 			);
 
-		return apply_filters( 'optionsframework_menu', $menu );
+//		return apply_filters( 'optionsframework_menu', $menu );
 	}
 
 	/**

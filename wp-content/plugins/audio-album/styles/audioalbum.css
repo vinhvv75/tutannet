@@ -1,0 +1,210 @@
+/* Audio Album Title (Extra undocumented shortcode for additional album heading block)
+	[audioheading title="xxx" label="yyy" catalog="zzz"]
+
+---------------------------------------------------------------------------------------------------- */
+
+.audioheading {
+	background: #333;
+	color: #fff;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	line-height: 1;
+	margin: 0;
+}
+
+h1.audioheading {
+	color: #fff;
+	font-size: 24px;
+	font-size: 2.4rem;
+	font-weight: bold;
+	text-transform: uppercase;	padding: 20px 12px 0 28px;
+	padding: 2rem 1.2rem 0 2.8rem;
+}
+
+p.audioheading {
+	font-size: 14px;
+	font-size: 1.4rem;
+	margin-bottom: 20px;
+	margin-bottom: 2rem;
+	padding: 10px 12px 20px 28px;
+	padding: 1rem 1.2rem 2rem 2.8rem;
+}
+
+p.audioheading span {
+	float: right;
+}
+
+/* Audio Album (Mandatory shortcode for album title block)
+	[audioalbum title="xxx" detail="yyy" date="zzz"]
+---------------------------------------------------------------------------------------------------- */
+
+.audioalbum {
+	background: #777;
+	color: #fff;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+h2.audioalbum {
+	color: #fff;
+	counter-reset: track;
+	font-size: 18px;
+	font-size: 1.8rem;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1.4;
+	margin: 0;
+	padding: 6px 12px 0 28px;
+	padding: 0.6rem 1.2rem 0 2.8rem;
+}
+
+p.audioalbum {
+	font-size: 14px;
+	font-size: 1.4rem;
+	margin: 0;
+	margin-bottom: 1px;
+	margin-bottom: 0.1rem;
+	padding: 0 12px 6px 28px;
+	padding: 0 1.2rem 0.6rem 2.8rem;}
+
+p.audioalbum span {
+	float: right;
+}
+
+/* Audio Track (Mandatory shortcode for each album track)
+	[audiotrack title="xxx" songwriter="yyy" mp3="fullpathto.mp3"]
+---------------------------------------------------------------------------------------------------- */
+
+.track {
+	background: #333;
+	color: #fff;
+	display: block;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: normal;
+    font-size: 16px;
+	line-height: 1.5;
+	padding: 2px 0 0;
+	margin-bottom: 1px;
+	position: relative;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.track br {
+	display: none;
+}
+
+.track .songtitle:before {
+	content: counter(track);
+	counter-increment: track;
+	display: inline-block;
+	font-weight: bold;
+	padding-right: 6px;
+    text-align: right;
+	width: 22px;
+}
+
+.track .songtitle {
+	clear: right;
+	display: block;
+	line-height: 1.6;
+}
+
+.track .songwriter {
+	color: #999;
+	display: block;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 1.8;
+	padding-left: 28px;
+}
+
+.track .audiobutton {
+    display: inline-block;
+    float: right;
+	position: absolute;
+	top: 5px;
+	right: 6px;
+}
+
+.track .audiobutton a {
+	background: #999;
+	border-radius: 2px;
+	color: #fff;
+	text-decoration: none;
+	font-size: 11px;
+	line-height: 1;
+	text-transform: uppercase;
+	display: inline-block;
+	padding: 4px 6px;
+}
+
+.track .audiobutton a:hover {
+	background: #fff;
+	color: #333;
+	outline: none;
+}
+
+.track .audiobutton a:active,
+.track .audiobutton a:focus {
+	outline: none;
+}
+
+/* eliminate the yellow border around the play button during playback (in chrome) */
+.track .mejs-controls .mejs-button button:focus {
+	outline: none;
+}
+
+/* use a sprite file with flat transport icons */
+.track .mejs-controls .mejs-button button {
+    background-image: url('../images/flat-controls.svg');
+}
+
+/* Native WP Audio
+---------------------------------------------------------------------------------------------------- */
+
+.track .mejs-container .mejs-controls {
+	background: #222;
+}
+
+.track .mejs-controls .mejs-time-rail .mejs-time-total,
+.track .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-total {
+	background: #000;
+}
+
+.track .mejs-time-rail .mejs-time-total .mejs-time-loaded {
+	background: #333;
+}
+
+.track .mejs-time-rail .mejs-time-total .mejs-time-current,
+.track .mejs-controls .mejs-horizontal-volume-slider .mejs-horizontal-volume-current {
+	background: #ddd;
+}
+
+/* Popup Window
+---------------------------------------------------------------------------------------------------- */
+
+a.close-popup  {
+	background: #444;
+	color: #fff;
+	display: block;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 1;
+	padding: 0 5px;
+	position: fixed;
+	top: 8px;
+	right: 8px;
+	text-align: center;
+	border-radius: 30px;
+}
+
+a.close-popup span {
+	position: relative;
+	top: -2px;
+}
+
+a.close-popup:hover,
+a.close-popup:active {
+	background: #777;
+	color: #fff;
+}

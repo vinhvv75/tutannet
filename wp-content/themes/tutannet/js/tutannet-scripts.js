@@ -93,8 +93,6 @@ window.onload = function() {
 }
 
 
-
-
 $('a[data-toggle="tab"]').on('click', function(e){
 	var tab = $(this).attr('href');
 	if (tab = '#tin-tuc-phat-su') {
@@ -103,7 +101,11 @@ $('a[data-toggle="tab"]').on('click', function(e){
 	if (tab = '#phat-hoc') {
 		$('a[data-toggle="load_teaching"]').click();
 	}
-	 $(this).tab('show');
+	if (tab = '#phap-am') {
+		$('a[data-toggle="load_media"]').click();
+	}
+	$('a[data-toggle="menu"]').click();
+	$(this).tab('show');
 	e.preventDefault();
 	
 });

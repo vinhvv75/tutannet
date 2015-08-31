@@ -14,7 +14,6 @@ var
 	sectionItem = document.getElementsByClassName('site-section-nav-item'),
 	textSectionItem = $(sectionItem).find('b'),
 	iconSectionItem = $(sectionItem).find('i'),
-	IntroSlides = document.getElementById('site-intro-slides'),
 
 	introNav = document.getElementById('site-intro-nav'),
 	textIntroNav = $(introNav).find('a'),
@@ -60,22 +59,19 @@ var
 	;
 	
 	
-	console.log('  /********************/\n /   Color Analysis   /\n/********************/');
-	console.log('Primary Color: ' + primaryColor.toHexString());
-	console.log('Lighten Color (30): ' + lightenColor30);
-	console.log('Darken Color (30): ' + darkenColor30);
-	console.log('Tetrad Colors: ' + tetradColors[0] + ' ' + tetradColors[1] + ' ' + tetradColors[2] + ' ' + tetradColors[3]);
-	console.log('Analogous Colors: ' + analogousColors[0] + ' ' + analogousColors[1] + ' ' + analogousColors[2] + ' ' + analogousColors[3] + ' ' + analogousColors[4] + ' ' + analogousColors[5]);
-	
-	console.log('Most Readable with Fallback:', mostReadable);
-	console.log('Most Readable in Tetrad:', mostReadableTetrad);
-	console.log('Most Readable in Analogous:', mostReadableAnalogous);
-	console.log('\n');
+//	console.log('  /********************/\n /   Color Analysis   /\n/********************/');
+//	console.log('Primary Color: ' + primaryColor.toHexString());
+//	console.log('Lighten Color (30): ' + lightenColor30);
+//	console.log('Darken Color (30): ' + darkenColor30);
+//	console.log('Tetrad Colors: ' + tetradColors[0] + ' ' + tetradColors[1] + ' ' + tetradColors[2] + ' ' + tetradColors[3]);
+//	console.log('Analogous Colors: ' + analogousColors[0] + ' ' + analogousColors[1] + ' ' + analogousColors[2] + ' ' + analogousColors[3] + ' ' + analogousColors[4] + ' ' + analogousColors[5]);
+//	
+//	console.log('Most Readable with Fallback:', mostReadable);
+//	console.log('Most Readable in Tetrad:', mostReadableTetrad);
+//	console.log('Most Readable in Analogous:', mostReadableAnalogous);
+//	console.log('\n');
 	
 
-
-// paint site intro
-IntroSlides.style.backgroundColor = lightenColor30;
 
 // paint search wrap
 var secondaryColor;
@@ -101,9 +97,7 @@ for (var i=0;i<iconLoginWrap.length; i++) {
     iconLoginWrap[i].style.color = primaryColor;
 }
 (mostReadable == "#000000") ? 
-BGContainer.style.backgroundColor = darkenColor30 : document.getElementById('site-intro-img').style.opacity = "1";
-                
-      
+BGContainer.style.backgroundColor = darkenColor30 : document.getElementById('site-intro-img').style.opacity = "1";                
 
 
 

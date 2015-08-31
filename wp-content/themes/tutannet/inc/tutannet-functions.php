@@ -83,7 +83,7 @@ endif;
 
 add_action( 'after_setup_theme', 'childtheme_formats', 11 );
 function childtheme_formats(){
-     add_theme_support( 'post-formats', array( 'standard', 'gallery', 'quote' ) );
+     add_theme_support( 'post-formats', array( 'standard' ) );
 }
 
 /*---------Create and Define Default Categories---------------*/
@@ -354,14 +354,14 @@ add_action('after_setup_theme', 'change_permalinks');
 function tutannet_admin_scripts(){
     wp_enqueue_script('tutannet-custom-admin', get_template_directory_uri(). '/inc/option-framework/js/custom-admin.js', array( 'jquery'));    
  }
-add_action('admin_enqueue_scripts','tutannet_admin_scripts');
+//add_action('admin_enqueue_scripts','tutannet_admin_scripts');
 
 /*---------Enqueue admin css---------------*/
 
 function tutannet_admin_css(){
     wp_enqueue_style('tutannet-admin', get_template_directory_uri(). '/inc/option-framework/css/tutannet-admin.css');    
 }
-add_action('admin_head','tutannet_admin_css');
+//add_action('admin_head','tutannet_admin_css');
 
 /*--------------------- Post Views-------------------*/
 
@@ -707,16 +707,6 @@ add_filter( 'rest_prepare_post', 'tutannet_rest_prepare_post', 10, 3 );
  	 
   	echo $content;
   }
-  
-  /*---------------Load More Posts-------------------*/
-  
-  function tutannet_loadmore($section) { 
-   	if ($section == 'tin-tuc-phat-su') {
-   		$content = '<a href="#" data-toggle="load_news_posts" monthnum="'.date('m', strtotime('first day of last month')).'" yearnum="'.date('Y', strtotime('first day of last month')).'">Xem lại tin tức tháng trước</a>';
-   	}
-   	
-   	echo $content;
-   }
  
 
 /*--------------Install Required Plugins----------------------*/
@@ -728,13 +718,13 @@ function tutannet_required_plugins() {
      */
     $plugins = array(
         
-//         array(
-//            'name'      => __( 'Newsletter', 'tutannet' ), //The plugin name
-//            'slug'      => 'newsletter',  // The plugin slug (typically the folder name)
-//            'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
-//            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
-//            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
-//            ),
+         array(
+            'name'      => __( 'Newsletter', 'tutannet' ), //The plugin name
+            'slug'      => 'newsletter',  // The plugin slug (typically the folder name)
+            'required'  => false,  // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => false, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+            ),
                   
     );
 
@@ -777,4 +767,4 @@ function tutannet_required_plugins() {
     );
     tgmpa( $plugins, $config );
 }
-add_action( 'tgmpa_register', 'tutannet_required_plugins' );
+//add_action( 'tgmpa_register', 'tutannet_required_plugins' );

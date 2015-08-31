@@ -1,32 +1,22 @@
 jQuery(document).ready(function ($) {
 
 	var	siteContent = $('.cd-gallery'), 
-		teachingPostsLeft, teachingPostsDisplayed = 0, teachingMonthDisplay = 0, autoAppend = true, monthnum, yearnum, colorThief = new ColorThief(), n = 1;
-	
-	$.ajax( {
-	  type: 'GET',
-	  dataType: 'json',
-	  url: getBaseUrl() + '/wp-json/wp/v2/terms/category/?per_page=100',
-	  success: function ( data ) {
-	  	for (var i=0;i<data.length;i++) {
-	  		if (data[i].slug == 'phat-hoc') {
-	  			teachingPostsLeft = data[i].count;
-	  		}
-	  	}	  	
-	  } 
-	});
-	
+		teachingPostsDisplayed = 0, teachingMonthDisplay = 0, autoAppend = true, colorThief = new ColorThief(), n = 1;
+		
 	
 	// Teaching Section	
 	siteContent.on('click', 'a[data-toggle="load_teaching"]', function(e) {
 		$(this).remove();
 		$('#phat-hoc').append(
-			'<section class="block-teaching clearfix">' +
-				'<div id="section-intro">' +
-					'<h2 class="section-name"><span>Phật học</span></h2>' +
-				'</div>' +
+			'<section class="section-block block-teaching clearfix">' +
 				'<div class="tutannet-container">' +
-					'<div id="teaching-content" class="section-content col-md-12 col-lg-12">' +
+					'<div id="section-intro">' +
+						'<h2 class="section-name"><span>Phật học</span></h2>' +
+					'</div>' +
+					'<div id="news-sidebar" class="section-sidebar col-md-4 col-lg-4">' +
+					
+					'</div>' +
+					'<div id="teaching-content" class="section-content col-md-8 col-lg-8">' +
 						'<a data-toggle="load_teaching_posts"></a>' +
 					'</div>' +
 				'</div>' +
@@ -74,7 +64,7 @@ jQuery(document).ready(function ($) {
 			        	ONE_DAY = 1000 * 60 * 60 * 24,
 			        	postTime = (today - date)/ONE_DAY;
 			        
-			        if (postTime <= 30 && forfeatured) {
+			        if (postTime <= 60 && forfeatured) {
 			        	if (post.tags) {
 			        		if (post.tags[1] != null) {
 			        			var tag2 = getBaseUrl() + 'tag/' + post.tags[1].slug;
@@ -87,14 +77,13 @@ jQuery(document).ready(function ($) {
 			        	}
 			        	firstFeaturedPost += 
 			        		'<li id="teaching-'+ post.id +'" class="teaching-item" cover-color>' +
-			        		'<div class="first-featured-post col-xs-12 col-sm-6 col-md-8 col-lg-8 wow fadeIn" data-wow-delay="0.2s">' +
+			        		'<div class="first-featured-post col-xs-12 col-sm-6 col-md-8 col-lg-8 wow fadeIn" data-wow-delay="0.2s" cover>' +
 		        				'<div cover-desc class="first-featured-cover featured-cover post-desc-wrapper">' +
 		        					'<h3 class="post-title"><a style="color:'+ monthColor +';" post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>' +
-//			        					'<div class="post-content">'+ post.excerpt.rendered +'</div>' +
 									'<div class="block-poston">' +
-										'<span class="tagged_on"><a cover-tag featured-tag href="'+ tag + '">' + tagString +'</a></span>' +
-										'<span class="tagged_on"><a featured-tag href="'+ tag2 + '">' + tagString2 +'</a></span>' +
-										'<span class="tagged_on"><a featured-tag href="'+ tag3 + '">' + tagString3 +'</a></span>' + 
+										'<span class="tagged-on"><a cover-tag featured-tag href="'+ tag + '">' + tagString +'</a></span>' +
+										'<span class="tagged-on"><a featured-tag href="'+ tag2 + '">' + tagString2 +'</a></span>' +
+										'<span class="tagged-on"><a featured-tag href="'+ tag3 + '">' + tagString3 +'</a></span>' + 
 									'</div>' +
 		        				'</div>' +
 		        				'<div class="post-image easeOutCirc">' +
@@ -107,11 +96,13 @@ jQuery(document).ready(function ($) {
 			        		
 			        	;
 			        	
-			        	featured += '<div class="post-content">'+ post.excerpt.rendered +'</div>';
+			        	featured += '<div class="post-content">'+ post.excerpt.rendered +'</div>' +
+			        				'<a class="readmore" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">Đọc bài</a>'			
+			        	;
 			        	
 			        	forfeatured = false;
 			        } 
-			        else if (postTime <= 30 && !forfeatured) {
+			        else if (postTime <= 60 && !forfeatured) {
 			        	featuredPosts += render(true);
 			        }
 			        else {
@@ -133,10 +124,8 @@ jQuery(document).ready(function ($) {
 	        			
 	        	if (featured != '') {
 	        		monthlyContent +=
-	        		'<h3>Tin&nbsp;nổi&nbsp;bật</h3>' +
-	        		'<ul>' +
-	        			featured +
-	        		'</ul>';
+	        		'<h3>Tóm&nbsp;tắt</h3>' +
+	        			featured;
 	        	}
 	        	
 	        	monthlyContent +=
@@ -181,22 +170,21 @@ jQuery(document).ready(function ($) {
 				var postImg = getAllElementsWithAttribute('cover-image'),
 					postDesc = getAllElementsWithAttribute('cover-desc'),
 					postTitle = getAllElementsWithAttribute('cover-title'),
-					postTag = getAllElementsWithAttribute('cover-tag');
+					postTag = getAllElementsWithAttribute('cover-tag'),
+					postExcerpt = getAllElementsWithAttribute('cover-excerpt'),
+					postExcerptSpan = getAllElementsWithAttribute('excerpt'),
 					featuredTag = getAllElementsWithAttribute('featured-tag'); 
 				
 				if (postImg.length != 0 ) {
 					for (var i=0; i < postImg.length; i++) {						
 						var postColorThief = colorThief.getColor(postImg[i]),
-							postPaletteThief = colorThief.getPalette(postImg[i], 2),
 							postColor = 'rgb(' + postColorThief[0] + ',' + postColorThief[1] + ',' + postColorThief[2] + ')',
 							coverColor = tinycolor(postColor),
 							saturate = coverColor.saturate().toHexString(),
 							tetrad = coverColor.tetrad(),
 							tetradColors = tetrad.map(function(t) { return t.toHexString(); }),
 							monochromatic = coverColor.monochromatic(),
-							monochromaticColors = monochromatic.map(function(t) { return t.toHexString(); }),
-							analogous = coverColor.analogous(),
-							analogousColors = analogous.map(function(t) { return t.toHexString(); })
+							monochromaticColors = monochromatic.map(function(t) { return t.toHexString(); })
 							;
 							
 							if (coverColor.isDark()) {
@@ -207,8 +195,10 @@ jQuery(document).ready(function ($) {
 								mostReadable2 = tinycolor.mostReadable(saturate, tetradColors,{includeFallbackColors:true,level:"AAA",size:"small"}).toHexString();
 							}								
 														
-							if ($(postDesc[i]).hasClass('featured-cover')) {
+							if ($(postDesc[i]).hasClass('featured-cover') && !$(postDesc[i]).hasClass('first-featured-cover')) {
 								$(postDesc[i]).css("background-color", "transparent");
+							} else if ($(postDesc[i]).hasClass('first-featured-cover')) {
+								$(postDesc[i]).css("background-color", "white");	
 							} else {
 								$(postDesc[i]).css("background-color", saturate);
 							}
@@ -218,6 +208,12 @@ jQuery(document).ready(function ($) {
 									$(postImg[i]).css("transform", "translateX(-25%)");
 								}
 							}
+							
+							$(postExcerpt[i-1]).css("background", saturate);
+							$(postExcerptSpan[i-1]).css("border-color", mostReadable);
+							$(postExcerptSpan[i-1]).css("color", mostReadable2);
+							$(postExcerptSpan[i-1]).find('.readmore').css("border-color", mostReadable2);
+							$(postExcerptSpan[i-1]).find('.readmore').css("color", mostReadable2);
 														
 							
 							if ($(postTitle[i]).hasClass('featured-cover')) {
@@ -313,20 +309,20 @@ jQuery(document).ready(function ($) {
 					postrender += 
 					'<div class="post-desc-wrapper featured-cover" cover-desc>' +
 						'<div class="block-poston">' +
-							'<span class="tagged_on"><a cover-tag href="'+ tag + '">' + tagString +'</a></span>' + 
+							'<span class="tagged-on"><a cover-tag href="'+ tag + '">' + tagString +'</a></span>' + 
 						'</div>' +
 					'<h3 class="post-title"><a cover-title class="featured-cover" post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>';
 				} else {
 					postrender += 
 					'<div class="post-desc-wrapper" cover-desc>' +
 						'<div class="block-poston">' +
-							'<span class="tagged_on"><a cover-tag href="'+ tag + '">' + tagString +'</a></span>' + 
+							'<span class="tagged-on"><a cover-tag href="'+ tag + '">' + tagString +'</a></span>' + 
 						'</div>' +
 					'<h3 class="post-title"><a cover-title post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>';
 				}
 				postrender +=
-//									'<div class="post-content">'+ post.excerpt.rendered +'</div>' +
 							'</div>' +
+					'<div class="animated post-excerpt" cover-excerpt><span excerpt><h2>'+ post.title.rendered + '</h2>' + post.excerpt.rendered + '<a class="readmore" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">Đọc bài</a>' + '</span></div>' +
 							'<div id="instant-article-'+ post.id +' rel="'+ post.id +'"></div>' +
 						'</div>' + 
 					'</li>';

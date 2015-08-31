@@ -159,7 +159,7 @@ folding panel
 .cd-folding-panel .fold-left::after {
   background-color: #f9fafa;
 }
-.cd-folding-panel .cd-close {
+.cd-folding-panel .cd-article-close {
   /* 'X' close icon */
   position: absolute;
   z-index: 1;
@@ -177,7 +177,7 @@ folding panel
   -moz-transition: opacity 0.2s 0s;
   transition: opacity 0.2s 0s;
 }
-.cd-folding-panel .cd-close::after, .cd-folding-panel .cd-close::before {
+.cd-folding-panel .cd-article-close::after, .cd-folding-panel .cd-article-close::before {
   /* lines of 'X' icon */
   content: '';
   position: absolute;
@@ -192,14 +192,14 @@ folding panel
   -moz-transition: opacity 0.2s;
   transition: opacity 0.2s;
 }
-.cd-folding-panel .cd-close::after {
+.cd-folding-panel .cd-article-close::after {
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   -o-transform: translateX(-50%) translateY(-50%) rotate(45deg);
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
 }
-.cd-folding-panel .cd-close::before {
+.cd-folding-panel .cd-article-close::before {
   -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
   -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
   -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
@@ -226,7 +226,7 @@ folding panel
 .cd-folding-panel.is-open .fold-right::after {
   background-color: #f9fafa;
 }
-.cd-folding-panel.is-open .cd-close {
+.cd-folding-panel.is-open .cd-article-close {
   opacity: 1;
   -webkit-transition: opacity 0.2s 0.5s;
   -moz-transition: opacity 0.2s 0.5s;

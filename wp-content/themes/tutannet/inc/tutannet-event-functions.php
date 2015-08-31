@@ -168,9 +168,9 @@ function event_info() {
 	?>
 	<script>
 	jQuery(document).ready(function(){
-	jQuery('.event_date').datepicker({
-	dateFormat : 'dd/m - yy'
-	});
+		jQuery('.event_date').datepicker({
+			dateFormat : 'dd-m-yy'
+		});
 	});
 	</script>
 	<?php
@@ -238,9 +238,19 @@ function save_event_meta($post_id, $post) {
 		return;
 	}
 	
+	
+	
 	$location = sanitize_text_field($_POST['location']);
-	$date = sanitize_text_field($_POST['date']);
-	$end_date = sanitize_text_field($_POST['end_date']);
+	
+	$t_date = sanitize_text_field($_POST['date']);
+	$timestamp_UNIX = strtotime($t_date);
+	$date = gmdate("Y-m-d", $timestamp_UNIX);
+	
+	$t_end_date = sanitize_text_field($_POST['end_date']);
+	$timestamp_UNIX = strtotime($t_end_date);
+	$end_date = gmdate("Y-m-d", $timestamp_UNIX);
+	
+	
 	$hour = sanitize_text_field($_POST['hour']);
 	$end_hour = sanitize_text_field($_POST['end_hour']);
 	

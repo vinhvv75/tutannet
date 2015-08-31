@@ -1,34 +1,27 @@
 jQuery(document).ready(function ($) {
 
 	var	siteContent = $('.cd-gallery'), 
-		newsPostsLeft, newsPostsDisplayed = 0, newsMonthDisplay = 0, autoAppend = true, monthnum, yearnum;
+		newsPostsDisplayed = 0, autoAppend = true, monthnum, yearnum;
 	
-	$.ajax( {
-	  type: 'GET',
-	  dataType: 'json',
-	  url: getBaseUrl() + '/wp-json/wp/v2/terms/category/?per_page=100',
-	  success: function ( data ) {
-	  	for (var i=0;i<data.length;i++) {
-	  		if (data[i].slug == 'tin-tuc-phat-su') {
-	  			newsPostsLeft = data[i].count;
-	  		}
-	  	}	  	
-	  } 
-	});
-		
+	
 	// News Section	
 	siteContent.on('click', 'a[data-toggle="load_news"]', function(e) {
 		$(this).remove();
 		var date = new Date(), thisMonth = date.getMonth() + 1, thisYear = date.getFullYear();
 		$('#tin-tuc-phat-su').append(
-			'<section class="block-news clearfix">' +
-				'<div id="section-intro">' +
-					'<h2 class="section-name"><span>Tin Tức Phật Sự</span></h2>' +
-				'</div>' +
+			'<section class="section-block block-news clearfix">' +
 				'<div class="tutannet-container">' +
-					'<div id="news-content" class="section-content col-md-12 col-lg-12">' +
+					'<div id="section-intro">' +
+						'<h2 class="section-name"><span>Tin Tức Phật Sự</span></h2>' +
+					'</div>' +
+					'<div id="news-sidebar" class="section-sidebar col-md-4 col-lg-4">' +
+
+					'</div>' +
+					'<div id="news-content" class="section-content col-md-8 col-lg-8">' +
 						'<a data-toggle="load_news_posts" monthnum="0'+thisMonth+'" yearnum="'+thisYear+'"></a>' +
 					'</div>' +
+//					'<div id="news-sidebar" class="section-sidebar col-md-4 col-lg-4">' +
+//					'</div>' +
 				'</div>' +
 			'</section>'
 		);
@@ -40,7 +33,7 @@ jQuery(document).ready(function ($) {
 	siteContent.on('click', 'a[data-toggle="load_news_posts"]', function (e) {
 		monthnum = $(this).attr('monthnum'); 
 		yearnum = $(this).attr('yearnum');
-		var monthlyContent ='', firstFeaturedPost = '', featuredPosts = '', forfeatured = true, featured ='', quote = '', content= '', finalContent = '', monthColor;
+		var monthlyContent ='', firstFeaturedPost = '', featuredPosts = '', forfeatured = true, content= '', finalContent = '', monthColor, monthFeatured = '';
 		$(this).remove();
 	    e.preventDefault();
 	    
@@ -65,7 +58,7 @@ jQuery(document).ready(function ($) {
 	    		monthColor = '#E8236C';
 	    		break;
 	    	case 7:
-	    		monthColor = '#27BB00';
+	    		monthColor = '#009F6B';
 	    		break;
 	    	case 8:
 	    		monthColor = '#C21E56';
@@ -103,7 +96,6 @@ jQuery(document).ready(function ($) {
 	      	if (data.length > 0) {
 	      		newsPostsLeft -= data.length;
 	      		newsPostsDisplayed += data.length;
-	      		newsMonthDisplay++;
 	      				      			      	
 		        for (i=0; i<data.length;i++) {
 			        var post = data[i], date = new Date(post.date), dateString, tag = '#', tagString = '';
@@ -118,11 +110,7 @@ jQuery(document).ready(function ($) {
 			        	tag = getBaseUrl() + 'tag/' + post.tags[0].slug;
 			        	tagString = post.tags[0].name;
 			        }
-			        
-			        if (post.is_featured) {
-			        	featured += '<li><a post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></li>';
-			        } 
-			        
+			        			        
 			        
 			        if (post.is_featured && forfeatured) {
 			        	firstFeaturedPost += render(true);
@@ -137,33 +125,16 @@ jQuery(document).ready(function ($) {
 			    	
 		        } // end for
 		        
-		        var monthFeatured = 
+		        monthFeatured = 
 		        '<div class="monthly-month col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn">' +
-		        	'<h1><span>Tháng</span>'+ monthnum +'<span class="year">'+ yearnum +'</span></h1>' +
+		        	'<h1 style="color:'+ monthColor +';"><span style="color:'+ monthColor +';">Tháng</span>'+ monthnum +'<span class="year" style="color:'+ monthColor +';">'+ yearnum +'</span></h1>' +
 		        '</div>' +
 		        	'<div class="featured col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.2s">';
-		        
-	        	monthlyContent +=
-	        	'<div class="monthly col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.2s">' +
-	        		'<div class="monthly-month">'
-	        			;
-	        			
-	        	if (featured != '') {
-	        		monthlyContent +=
-	        		'<h3>Tin&nbsp;nổi&nbsp;bật</h3>' +
-	        		'<ul>' +
-	        			featured +
-	        		'</ul>';
-	        	}
-	        	
-	        	monthlyContent +=
-	        		'</div>' +
-	        	'</div>';
 		        
 		        previousYear();
 		        if (newsPostsLeft > 0) {
 					content +=
-						'<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.2s">' +
+						'<div class="loadmore col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.2s">' +
 						'<a href="#" data-toggle="load_news_posts" monthnum="'+monthnum+'" yearnum="'+yearnum+'">Xem lại tin tức tháng trước</a>' +
 						'</div>';
 				}
@@ -175,11 +146,7 @@ jQuery(document).ready(function ($) {
 				    	'<a href="#" data-toggle="load_news_posts" monthnum="'+monthnum+'" yearnum="'+yearnum+'"></a>';
 				}
 			}
-			var theMonth = parseInt(monthnum) + 1;
-			if (theMonth % 2 == 0) {				
-				monthFeatured += firstFeaturedPost + monthlyContent;
-			} else { monthFeatured += monthlyContent + firstFeaturedPost; }
-			monthFeatured += '</div>';
+			monthFeatured += firstFeaturedPost + '</div>';
 			
 			
 			finalContent += monthFeatured + featuredPosts + content;
@@ -198,7 +165,7 @@ jQuery(document).ready(function ($) {
 				var postrender = '<li id="news-'+ post.id +'" class="news-item">';
 				
 				if (featured) {
-					postrender += '<div class="featured-post col-xs-12 col-sm-6 col-md-8 col-lg-8 wow fadeIn" data-wow-delay="0.2s">';
+					postrender += '<div class="featured-post col-xs-12 col-sm-12 col-md-12 col-lg-12 wow fadeIn" data-wow-delay="0.2s">';
 				} else {
 					postrender += '<div class="single-post col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.2s">';
 				}
@@ -207,24 +174,45 @@ jQuery(document).ready(function ($) {
 							'<div class="post-image easeOutCirc">' +
 							'<a post-title="'+ post.title.rendered +'" rel="'+ post.id +'">' +
 							'<img src="' + post.featured_image_thumbnail_url + '" alt="' + post.title.rendered + '" />' +
-							'</a></div>' +
-							'<div class="post-desc-wrapper">' +
-								'<div class="block-poston">' +
-									'<span class="posted-on">' + dateString +'</span>' +
-									'<span class="tagged_on"><a href="'+ tag + '">' + tagString +'</a></span>' + 
-								'</div>' +
-								'<h3 class="post-title"><a style="color:'+ monthColor +';" post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>' +
-								'<div class="post-content">'+ post.excerpt.rendered +'</div>' +
-							'</div>' +
-							'<div id="instant-article-'+ post.id +' rel="'+ post.id +'"></div>' +
-						'</div>' + 
-					'</li>';
+							'</a></div>'
+				;
+					
+				if (featured) {
+					postrender += 
+					'<div class="post-desc-wrapper">' +
+						'<h3 class="post-title"><a post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>' +
+						'<div class="block-poston">' +
+							'<span class="posted-on">' + dateString +'</span>' +
+							'<span class="tagged-on"><a href="'+ tag + '">' + tagString +'</a></span>' + 
+						'</div>' +
+					'</div>' +
+					'<div class="post-content" style="color:'+ monthColor +';">'+ post.excerpt.rendered +'</div>'
+					;
+				} else {
+					postrender += 
+					'<div class="post-desc-wrapper">' +
+						'<div class="block-poston">' +
+							'<span class="posted-on">' + dateString +'</span>' +
+							'<span class="tagged-on"><a href="'+ tag + '">' + tagString +'</a></span>' + 
+						'</div>' +
+						'<h3 class="post-title"><a style="color:'+ monthColor +';" post-title="'+ post.title.rendered +'" rel="'+ post.id +'" href="'+ post.link +'" data-toggle="instant-article">'+ post.title.rendered +'</a></h3>' +
+						'<div class="post-content">'+ post.excerpt.rendered +'</div>' +
+					'</div>'
+					;
+				}
+				
+				postrender += 
+				'<div id="instant-article-'+ post.id +' rel="'+ post.id +'"></div>' +
+					'</div>' + 
+				'</li>'
+				;
 				
 				return postrender;
 			} // end function render
 	      },	      
-	      cache: false
+	      cache: true
 	    });
+	    
 	  });
 	  // End News Section 
 	  

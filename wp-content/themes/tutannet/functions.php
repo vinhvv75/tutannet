@@ -90,163 +90,6 @@ function tutannet_setup() {
 endif; // tutannet_setup
 add_action( 'after_setup_theme', 'tutannet_setup' );
 
-/**
- * Register widget area.
- *
- * @link http://codex.wordpress.org/Function_Reference/register_sidebar
- */
-function tutannet_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Home top sidebar', 'tutannet' ),
-		'id'            => 'tutannet-home-top-sidebar',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-   	    'name'          => __( 'Home middle sidebar', 'tutannet' ),
-    	'id'            => 'tutannet-home-middle-sidebar',
-    	'description'   => '',
-    	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-    	'after_widget'  => '</aside>',
-    	'before_title'  => '<h1 class="widget-title"><span>',
-    	'after_title'   => '</span></h1>',
-    ) );
-    
-    register_sidebar( array(
-   	    'name'          => __( 'Home bottom sidebar', 'tutannet' ),
-    	'id'            => 'tutannet-home-bottom-sidebar',
-    	'description'   => '',
-    	'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-    	'after_widget'  => '</aside>',
-    	'before_title'  => '<h1 class="widget-title"><span>',
-    	'after_title'   => '</span></h1>',
-    ) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Footer 1', 'tutannet' ),
-		'id'            => 'tutannet-footer-1',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Footer 2', 'tutannet' ),
-		'id'            => 'tutannet-footer-2',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Footer 3', 'tutannet' ),
-		'id'            => 'tutannet-footer-3',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Footer 4', 'tutannet' ),
-		'id'            => 'tutannet-footer-4',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Left Sidebar', 'tutannet' ),
-		'id'            => 'tutannet-sidebar-left',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-	
-    register_sidebar( array(
-		'name'          => __( 'Right Sidebar', 'tutannet' ),
-		'id'            => 'tutannet-sidebar-right',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Shop', 'tutannet' ),
-		'id'            => 'shop',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-    
-    register_sidebar( array(
-		'name'          => __( 'Header Ad ', 'tutannet' ),
-		'id'            => 'tutannet-header-ad',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Article Ad', 'tutannet' ),
-		'id'            => 'tutannet-article-ad',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-ads">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Homepage Inline Ad', 'tutannet' ),
-		'id'            => 'tutannet-homepage-inline-ad',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s widget-ads">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Homepage Sidebar Top Ad', 'tutannet' ),
-		'id'            => 'tutannet-homepage-sidebar-top-ad',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Homepage Sidebar Middle Ad', 'tutannet' ),
-		'id'            => 'tutannet-homepage-sidebar-middle-ad',
-		'description'   => '',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h1 class="widget-title"><span>',
-		'after_title'   => '</span></h1>',
-	) );
-}
-add_action( 'widgets_init', 'tutannet_widgets_init' );
 
 /**
  * Enqueue scripts and styles.
@@ -271,7 +114,7 @@ function tutannet_scripts() {
     	array('jquery'), 
     	$version 
     );
-    wp_enqueue_script( 
+    wp_register_script( 
     	'tutannet-color-scripts', 
     	get_template_directory_uri() . '/js/color.js', 
     	array('jquery','tinycolor','color-thief'), 
@@ -280,7 +123,7 @@ function tutannet_scripts() {
     wp_enqueue_script( 
     	'tutannet-time-scripts', 
     	get_template_directory_uri() . '/js/time.js', 
-    	array('jquery','suncalc','amlich-hnd'), 
+    	array('jquery','suncalc','amlich-hnd','planet-phase'), 
     	$version 
     );
 //    wp_register_script( '
@@ -293,25 +136,32 @@ function tutannet_scripts() {
     /*** Tech ***/
     // instant-article
     wp_enqueue_style( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.css' );
-    wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.js', array('jquery'), '1.0' );
+    wp_enqueue_script( 'instant-article', get_template_directory_uri() . '/tech/instant-article/instant-article.js', array('jquery', 'modernizr'), $version );
     
     // site-header
 	wp_enqueue_style( 'site-header', get_template_directory_uri() . '/tech/site-header/site-header.css' );
-	wp_enqueue_script( 'site-header', get_template_directory_uri() . '/tech/site-header/site-header.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'site-header', get_template_directory_uri() . '/tech/site-header/site-header.js', array('jquery'), $version );
 	
 	// animated-headline
 	wp_enqueue_style( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.css' );
-	wp_enqueue_script( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'animated-headline', get_template_directory_uri() . '/tech/animated-headline/animated-headline.js', array('jquery'), $version );
 	
 	// ajax-login
-	wp_enqueue_script( 'tutannet-login-scripts', get_template_directory_uri() . '/tech/ajax-login/login.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'tutannet-login-scripts', get_template_directory_uri() . '/tech/ajax-login/login.js', array('jquery'), $version );
 	
 	// ajax-search
-	wp_enqueue_script( 'tutannet-search-scripts', get_template_directory_uri() . '/tech/ajax-search/search.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'tutannet-search-scripts', get_template_directory_uri() . '/tech/ajax-search/search.js', array('jquery'), $version );
 	
 	// ajax-load
-	wp_enqueue_script( 'tutannet-load-news-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-news.js', array('jquery'), '1.0' );
-	wp_enqueue_script( 'tutannet-load-teaching-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-teaching.js', array('jquery' , 'color-thief' , 'tinycolor'), '1.0' );
+	wp_register_script( 'tutannet-load', get_template_directory_uri() . '/tech/ajax-load/ajax-load.js', array('jquery'), $version );
+	wp_enqueue_script( 'tutannet-load-news-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-news.js', array('jquery', 'tutannet-load'), $version );
+	wp_enqueue_script( 'tutannet-load-teaching-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-teaching.js', array('jquery' , 'tutannet-load', 'color-thief' , 'tinycolor'), $version );
+	wp_register_script( 'tutannet-load-media-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-media.js', array('jquery' , 'tutannet-load'), $version );
+	
+	// vinyl-cover
+	wp_enqueue_style( 'vinyl-cover', get_template_directory_uri() . '/tech/vinyl-cover/vinyl-cover.css' );
+	wp_enqueue_script( 'vinyl-cover', get_template_directory_uri() . '/tech/vinyl-cover/vinyl-cover.js', array('jquery', 'velocity', 'tutannet-load-media-scripts'), $version );
+	
 	
 	
 	/*** Lib ***/
@@ -329,27 +179,26 @@ function tutannet_scripts() {
 	// tinycolor 1.1.2
 	wp_register_script( 'tinycolor', 'https://cdnjs.cloudflare.com/ajax/libs/tinycolor/1.1.2/tinycolor.min.js', array('jquery'), '1.1.2');
 	
-	
-	//vietnamese lunar calendar
+	// vietnamese lunar calendar
 	wp_register_script( 'amlich-hnd', get_template_directory_uri() . '/lib/amlich-hnd.js');
-	wp_enqueue_script( 'amlich-hnd', get_template_directory_uri() . '/lib/amlich-hnd.js');
+	
+	// planet phase
+	wp_register_script( 'planet-phase', get_template_directory_uri() . '/lib/planet-phase.js');
 	
 	// suncalc
-	wp_register_script('suncalc', get_template_directory_uri() . '/lib/suncalc.min.js');
-	wp_enqueue_script( 'suncalc', get_template_directory_uri() . '/lib/suncalc.min.js', array('jquery'));
-	
-
-	wp_enqueue_script( 'tutannet-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	
+	wp_register_script( 'suncalc', get_template_directory_uri() . '/lib/suncalc.min.js', array('jquery'));	
 	
 	// wow 1.1.2
 	wp_enqueue_script( 'wow', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', '1.1.2');
 	
+	// velocity 1.2.2
+	wp_register_script( 'velocity', 'https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.2/velocity.min.js', array('jquery'));
+		
+	// modernizr 2.8.3
+	wp_register_script( 'modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array('jquery'));
 	
-	
-	wp_enqueue_script( 'modernizr', 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array('jquery'), '2.8.3' );
-	
-	wp_enqueue_script( 'pace', 'https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js', '1.0.0' );
+	// pace 1.0.2
+	wp_enqueue_script( 'pace', 'https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js' );
 	
 	
     

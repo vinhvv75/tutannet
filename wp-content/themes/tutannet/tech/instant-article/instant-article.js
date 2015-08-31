@@ -13,7 +13,7 @@ jQuery(document).ready(function($){
 		
 	/* open folding content */
 	gallery.on('click', 'a[data-toggle="instant-article"]', function(event){
-		console.log('Loading "' + $(this).attr('post-title') + '"');
+//		console.log('Loading "' + $(this).attr('post-title') + '"');
 		article_start = new Date().getTime();
 		post_id = $(this).attr('rel');
 		post_url = $(this).attr('href');
@@ -26,7 +26,7 @@ jQuery(document).ready(function($){
 //		$.when(articleList).done(function(){autoSaveArticleList(articleList);});
 	});
 	/* close folding content */
-	foldingPanel.on('click', '.cd-close', function(event){
+	foldingPanel.on('click', '.cd-article-close', function(event){
 		event.preventDefault();
 		toggleContent('', false);
 	});
@@ -59,16 +59,16 @@ jQuery(document).ready(function($){
 	function toggleContent(url, bool) {
 		if( bool ) {
 			/* load and show new content */
-			if (isArticleSaved(post_id)) {
-					retrieveArticle(post_id,function(){actionContent();});
-			 } else {
-				console.log('Reading for the first time');
+//			if (isArticleSaved(post_id)) {
+//					retrieveArticle(post_id,function(){actionContent();});
+//			 } else {
+//				console.log('Reading for the first time');
 				var foldingContent = foldingPanel.find('.cd-fold-content');
 				foldingContent.load(url, function(event){
 					setTimeout(function(){actionContent()}, 100);
-					saveArticle(post_id);
+//					saveArticle(post_id);
 				});
-				}
+//				}
 					} else {
 			/* close the folding panel */
 			var articleContent = foldingPanel.find('.instant-article');
@@ -84,10 +84,10 @@ jQuery(document).ready(function($){
 			$('body').addClass('overflow-hidden');
 			foldingPanel.addClass('is-open');
 			mainContent.addClass('fold-is-open');
-			var article_end = new Date().getTime();
-			article_time = (article_end - article_start)/1000;
-			console.log('Time article', post_id, 'loaded:', article_time, 'second(s)');
-			console.log('----------------------------------------');
+//			var article_end = new Date().getTime();
+//			article_time = (article_end - article_start)/1000;
+//			console.log('Time article', post_id, 'loaded:', article_time, 'second(s)');
+//			console.log('----------------------------------------');
 	}
 
 	function viewportSize() {

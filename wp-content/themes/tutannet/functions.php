@@ -156,7 +156,8 @@ function tutannet_scripts() {
 	wp_register_script( 'tutannet-load', get_template_directory_uri() . '/tech/ajax-load/ajax-load.js', array('jquery'), $version );
 	wp_enqueue_script( 'tutannet-load-news-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-news.js', array('jquery', 'tutannet-load'), $version );
 	wp_enqueue_script( 'tutannet-load-teaching-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-teaching.js', array('jquery' , 'tutannet-load', 'color-thief' , 'tinycolor'), $version );
-	wp_register_script( 'tutannet-load-media-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-media.js', array('jquery' , 'tutannet-load'), $version );
+	wp_register_script( 'tutannet-load-media-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-media.js', array('jquery' , 'tutannet-load', 'color-thief' , 'tinycolor'), $version );
+	wp_enqueue_script( 'tutannet-load-activities-scripts', get_template_directory_uri() . '/tech/ajax-load/ajax-load-scripts-activities.js', array('jquery' , 'tutannet-load', 'color-thief' , 'tinycolor'), $version );
 	
 	// vinyl-cover
 	wp_enqueue_style( 'vinyl-cover', get_template_directory_uri() . '/tech/vinyl-cover/vinyl-cover.css' );

@@ -1,5 +1,5 @@
 jQuery(document).ready(function ($) {
-newsPostsLeft = 0, teachingPostsLeft = 0, mediaPostsLeft = 0;
+newsPostsLeft = 0, teachingPostsLeft = 0, mediaPostsLeft = 0, activitiesCLBTNPTPostsLeft = 0, activitiesCLBTTBTPostsLeft = 0, activitiesCLBTKCPostsLeft = 0, activitiesBQTPostsLeft = 0, activitiesKTTPostsLeft = 0;
 
 $.ajax( {
   type: 'GET',
@@ -15,6 +15,21 @@ $.ajax( {
   		}
   		if (data[i].slug == 'phap-am') {
   			mediaPostsLeft = data[i].count;
+  		}
+  		if (data[i].slug == 'clb-thanh-nien-phat-tu') {
+  			activitiesCLBTNPTPostsLeft = data[i].count;
+  		}
+  		if (data[i].slug == 'clb-tu-thien-ben-thuong') {
+  			activitiesCLBTTBTPostsLeft = data[i].count;
+  		}
+  		if (data[i].slug == 'clb-thien-khi-cong') {
+  			activitiesCLBTKCPostsLeft = data[i].count;
+  		}
+  		if (data[i].slug == 'dt-tu-bat-quan-trai') {
+  			activitiesBQTPostsLeft = data[i].count;
+  		}
+  		if (data[i].slug == 'dt-tu-thien') {
+  			activitiesKTTPostsLeft = data[i].count;
   		}
   	}	  	
   } 

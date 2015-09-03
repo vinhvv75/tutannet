@@ -104,6 +104,9 @@ $('a[data-toggle="tab"]').on('click', function(e){
 	if (tab = '#phap-am') {
 		$('a[data-toggle="load_media"]').click();
 	}
+	if (tab = '#hoat-dong-chua-tu-tan') {
+		$('a[data-toggle="load_activities"]').click();
+	}
 	$('a[data-toggle="menu"]').click();
 	$(this).tab('show');
 	e.preventDefault();

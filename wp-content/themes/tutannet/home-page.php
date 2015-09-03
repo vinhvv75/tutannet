@@ -105,6 +105,9 @@ get_header();
 					</div>
 					<div id="phap-am" class="tab-pane animated fadeIn">
 						<a data-toggle="load_media"><a>
+					</div>
+					<div id="hoat-dong-chua-tu-tan" class="tab-pane animated fadeIn">
+						<a data-toggle="load_activities"><a>
 					</div>	
 		    		<?php get_footer(); ?>
 		    	</div><!-- #site-intro-content -->			

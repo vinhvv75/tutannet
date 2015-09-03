@@ -1275,6 +1275,77 @@ body.boxed-layout {
 	}
 	
 /*--------------------------------------------------------------
+	Block Activities css 
+	--------------------------------------------------------------*/
+	
+	.block-activities {
+		
+	}
+	
+	#activities-content {
+		padding: 0 15px !important;
+		margin: 0 !important;
+	}
+	
+	.block-activities .single-post {
+		margin: 20px;
+		margin-bottom: 2em;
+		padding: 0px;
+		width: 200px;
+	}
+	
+	.block-activities .post-title {
+		position: relative;
+		padding: 20px 10px;
+		width: 100%;
+		text-align: left;
+		font: 14px "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		z-index: 1;
+	}
+	
+	.block-activities .post-title a {
+		color: rgb(0, 0, 0);
+	}
+	
+	.block-activities .monthly-month {
+		border: 1px solid #333;
+		padding: 20px;
+		height: 500px;
+	}
+	.block-activities .monthly-month h2 {
+		font-size: 20px;
+	}
+	
+	.block-activities .monthly-month .btn {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		-o-appearance: none;
+		appearance: none;
+		border-radius: 0.25em;
+		border: none;
+		padding: .6em 1.2em;
+		background-color: #f82f53;
+		color: #ffffff;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+		font-size: 16px;
+		font-size: 1.3rem;
+		cursor: pointer;
+	}
+	
+	.block-activities .monthly-month p {
+		text-align: justify;
+		font: 14px/22px Georgia, "Times New Roman", Times, serif;
+		color: #333;
+	}
+	
+	.block-activities .monthly-month ul {
+		text-align: left;
+	}
+	
+/*--------------------------------------------------------------
 	Block Media css 
 	--------------------------------------------------------------*/
 	

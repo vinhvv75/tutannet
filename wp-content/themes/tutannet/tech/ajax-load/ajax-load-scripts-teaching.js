@@ -103,7 +103,7 @@ jQuery(document).ready(function ($) {
 			        	forfeatured = false;
 			        } 
 			        else if (postTime <= 60 && !forfeatured) {
-			        	featuredPosts += render(true);
+			        	featuredPosts += render(false);
 			        }
 			        else {
 			      		content += render(false);
@@ -214,7 +214,11 @@ jQuery(document).ready(function ($) {
 							$(postExcerptSpan[i-1]).css("color", mostReadable2);
 							$(postExcerptSpan[i-1]).find('.readmore').css("border-color", mostReadable2);
 							$(postExcerptSpan[i-1]).find('.readmore').css("color", mostReadable2);
-														
+							
+							postTitleLength = $(postTitle[i]).attr('post-title').split(' ').length;
+							if (postTitleLength > 12) {
+								$(postTitle[i]).css("font-size", "0.85em");
+							}							
 							
 							if ($(postTitle[i]).hasClass('featured-cover')) {
 								if (coverColor.isDark()) {
